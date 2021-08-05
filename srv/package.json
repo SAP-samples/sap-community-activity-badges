@@ -1,0 +1,43 @@
+{
+  "name": "scn-badges-srv",
+  "version": "1.0.0",
+  "description": "SCN Badges Service Layer",
+  "engines": {
+    "node": "^12.0.0 || ^14.0.0"
+  },
+  "dependencies": {
+    "@cloudnative/health-connect": "^2.1.0",
+    "@sap/logging": "^6.0",
+    "@sap/textbundle": "^4.0",
+    "accept-language-parser": "latest",
+    "cors": "^2.8.5",
+    "debug": "^4.3.1",
+    "event-loop-lag": "1.4.0",
+    "express": "^4.17.1",
+    "glob": "^7.1.7",
+    "helmet": "^4.6",
+    "opossum": "^6.0",
+    "opossum-prometheus": "^0.3",
+    "overload-protection": "^1.1.0",
+    "passport": "~0.4.0",
+    "pg": "^8.6",
+    "sharp": "^0.28.3",
+    "showdown": "^1.9.1",
+    "text-wrapper": "^2.0.2",
+    "then-request": "^6.0.2",
+    "xml-escape": "^1.1.0"
+  },
+  "types": "types/index.d.ts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "types": "npx typescript  --declaration --allowJs --emitDeclarationOnly --outDir types --skipLibCheck"
+  },
+  "author": "SAP",
+  "license": "SEE LICENSE IN LICENSE",
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "typescript": "^4.2.4"
+  }
+}
