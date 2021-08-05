@@ -11,16 +11,11 @@
     "@sap/textbundle": "^4.0",
     "accept-language-parser": "latest",
     "cors": "^2.8.5",
-    "debug": "^4.3.1",
+    "debug": "^4.3.2",
     "event-loop-lag": "1.4.0",
     "express": "^4.17.1",
     "glob": "^7.1.7",
-    "helmet": "^4.6",
-    "opossum": "^6.0",
-    "opossum-prometheus": "^0.3",
     "overload-protection": "^1.1.0",
-    "passport": "~0.4.0",
-    "pg": "^8.6",
     "sharp": "^0.28.3",
     "showdown": "^1.9.1",
     "text-wrapper": "^2.0.2",
@@ -35,9 +30,12 @@
     "types": "npx typescript  --declaration --allowJs --emitDeclarationOnly --outDir types --skipLibCheck"
   },
   "author": "SAP",
+  "bugs": {
+    "url": "https://github.com/SAP-samples/sap-community-activity-badges/issues"
+  },
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
-    "eslint": "^7.27.0",
-    "typescript": "^4.2.4"
+    "eslint": "^7.32.0",
+    "typescript": "^4.3.5"
   }
 }
