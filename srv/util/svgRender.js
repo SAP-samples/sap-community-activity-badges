@@ -43,6 +43,22 @@ function svgStyles(...styles) {
 module.exports.svgStyles = svgStyles
 
 /**
+ * svg Style Font definition
+ * @returns {Promise<string>}
+ */
+async function svgDevtoberfestFont() {
+  return `
+  <style>
+  @font-face {
+      font-family: "Joystix Monospace";
+      src: url("data:application/font-woff;charset=utf-8;base64,${await loadImageB64("../images/devtoberfest/fonts/joystix_monospace.ttf")}");
+  }
+  </style>
+      \n`
+}
+module.exports.svgDevtoberfestFont = svgDevtoberfestFont
+
+/**
  * svg Style header
  * @returns {string}
  */
@@ -55,6 +71,20 @@ function svgStyleHeader() {
       }\n`
 }
 module.exports.svgStyleHeader = svgStyleHeader
+
+/**
+ * svg Style header
+ * @returns {string}
+ */
+function svgStyleDevHeader() {
+  return `
+    .header {
+        font: 600 18px 'Joystix Monospace', Ubuntu, Sans-Serif;
+        fill: #fff;
+        animation: fadeInAnimation 0.8s ease-in-out forwards;
+      }\n`
+}
+module.exports.svgStyleDevHeader = svgStyleDevHeader
 
 /**
  * svg Style bold
@@ -171,6 +201,26 @@ function svgBackground() {
 module.exports.svgBackground = svgBackground
 
 /**
+ * svg Background rectangle
+ * @returns {string}
+ */
+function svgDevtoberfestBackground() {
+  return `
+        <rect
+          data-testid="background"
+          x="0"
+          y="0"
+          rx="0"
+          height="100%"
+          stroke="#e4e2e2"
+          width="100%"
+          fill="#E5E2DD"
+          stroke-opacity="1"
+        /> \n`
+}
+module.exports.svgDevtoberfestBackground = svgDevtoberfestBackground
+
+/**
  * Image Header 
  * @param {string} text 
  * @returns {Promise<string>}
@@ -278,6 +328,81 @@ function svgActivityItem(height, delay, image, title, value, png = false) {
 module.exports.svgActivityItem = svgActivityItem
 
 /**
+ * Render a Devtoberfest Item
+ * @param {number} x
+ * @param {number} y 
+ * @param {number} delay - animation delay in milliseconds
+ * @param {string} image - Base64 encoded image data 
+ * @param {number} scaleX - Scale image X coordinate
+ * @param {number} scaleY - Scale image Y coordinate
+ * @param {boolean} [png] - alter rendering for png
+ * @param {string} [animation] - Special Animation
+
+ * @returns {string}
+ */
+function svgDevtoberfestItem(x, y, delay, image, scaleX, scaleY, png = false, animation) {
+  let content =
+    `
+   <g transform="translate(${y.toString()}, ${x.toString()})">\n`
+
+  if (png) {
+    content += `
+    <g transform="translate(0, 0)">
+    `
+  } else {
+    content += `
+    <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)">
+    `
+  }
+  content += `
+       <image class="icon" href="data:image/png;base64,${image}" height="${scaleX.toString()}" width="${scaleY.toString()}">\n`
+  if (animation) {
+    content += animation
+  }
+
+  content += `</image>    
+       </g>
+   </g>\n`
+
+  return content
+
+}
+module.exports.svgDevtoberfestItem = svgDevtoberfestItem
+
+
+/**
+ * Render a Devtoberfest Text Item
+ * @param {number} height 
+ * @param {number} delay - animation delay in milliseconds
+ * @param {string} title 
+ * @param {boolean} [png] - alter rendering for png
+ * @returns {string}
+ */
+function svgDevtoberfestTextItem(height, delay, title, png) {
+  let content =
+    `
+   <g transform="translate(0, ${height.toString()})">\n`
+
+  if (png) {
+    content += `
+    <g transform="translate(0, 0)">
+    `
+  } else {
+    content += `
+    <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)">
+    `
+  }
+  content += `
+  <text class="header" x="40" y="17">${title}:</text>
+         </g>
+   </g>\n`
+
+  return content
+
+}
+module.exports.svgDevtoberfestTextItem = svgDevtoberfestTextItem
+
+/**
  * Render a Badge Showcase Item
  * @param {number} height 
  * @param {number} width
@@ -295,12 +420,12 @@ async function svgBadgeItem(height, width, delay, image, title, png = false) {
     `
    <g transform="translate(${width.toString()}, ${height.toString()})">\n`
 
-   // @ts-ignore
+  // @ts-ignore
   let imageData = await request('GET', image).getBody()
   let imageBase64 = Buffer.from(imageData).toString('base64')
-  if(image.slice(-3) === 'png'){
+  if (image.slice(-3) === 'png') {
     finalImage = `data:image/png;base64,${imageBase64}`
-  }else{
+  } else {
     finalImage = `data:image/svg+xml;base64,${imageBase64}`
   }
 
