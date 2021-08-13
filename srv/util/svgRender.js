@@ -20,7 +20,8 @@ function svgHeader(width, height) {
     height="${height.toString()}"
     viewBox="0 0 ${width.toString()} ${height.toString()}"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg">\n`
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">\n`
   debug(content)
   return content
 }
@@ -80,11 +81,47 @@ function svgStyleDevHeader() {
   return `
     .header {
         font: 600 18px 'Joystix Monospace', Ubuntu, Sans-Serif;
-        fill: #fff;
+        fill: #000000;
+        animation: fadeInAnimation 0.8s ease-in-out forwards;
+      }\n
+      .crt {
+        font: 600 18px 'Joystix Monospace', Ubuntu, Sans-Serif;
+        fill: #66FF66;
         animation: fadeInAnimation 0.8s ease-in-out forwards;
       }\n`
 }
 module.exports.svgStyleDevHeader = svgStyleDevHeader
+
+/**
+ * svg Style header
+ * @returns {string}
+ */
+ function svgStyleDevNormal() {
+  return `
+    .devNormal {
+        font: 600 12px 'Joystix Monospace', Ubuntu, Sans-Serif;
+        fill: #000000;
+        animation: fadeInAnimation 0.8s ease-in-out forwards;
+      }\n`
+}
+module.exports.svgStyleDevNormal = svgStyleDevNormal
+
+/**
+ * svg Style header
+ * @returns {string}
+ */
+ function svgStyleDevLink() {
+  return `
+    .devLink {
+        font: 600 12px 'Joystix Monospace', Ubuntu, Sans-Serif;
+        animation: fadeInAnimation 0.8s ease-in-out forwards;
+      }\n
+      .crtLink {
+        font: 600 18px 'Joystix Monospace', Ubuntu, Sans-Serif;
+        animation: fadeInAnimation 0.8s ease-in-out forwards;
+      }\n`
+}
+module.exports.svgStyleDevLink = svgStyleDevLink
 
 /**
  * svg Style bold
@@ -369,19 +406,19 @@ function svgDevtoberfestItem(x, y, delay, image, scaleX, scaleY, png = false, an
 }
 module.exports.svgDevtoberfestItem = svgDevtoberfestItem
 
-
 /**
- * Render a Devtoberfest Text Item
+ * Render a Devtoberfest Text Header
  * @param {number} height 
+ * @param {number} width
  * @param {number} delay - animation delay in milliseconds
  * @param {string} title 
  * @param {boolean} [png] - alter rendering for png
  * @returns {string}
  */
-function svgDevtoberfestTextItem(height, delay, title, png) {
+ function svgDevtoberfestTextHeader(height, width, delay, title, png) {
   let content =
     `
-   <g transform="translate(0, ${height.toString()})">\n`
+   <g transform="translate(${width.toString()}, ${height.toString()})">\n`
 
   if (png) {
     content += `
@@ -393,7 +430,74 @@ function svgDevtoberfestTextItem(height, delay, title, png) {
     `
   }
   content += `
-  <text class="header" x="40" y="17">${title}:</text>
+  <text class="header">${title}</text>
+         </g>
+   </g>\n`
+
+  return content
+
+}
+module.exports.svgDevtoberfestTextHeader = svgDevtoberfestTextHeader
+
+/**
+ * Render a Devtoberfest Text Header
+ * @param {number} height 
+ * @param {number} width
+ * @param {number} delay - animation delay in milliseconds
+ * @param {string} title 
+ * @param {boolean} [png] - alter rendering for png
+ * @returns {string}
+ */
+ function svgDevtoberfestCRTText(height, width, delay, title, png) {
+  let content =
+    `
+   <g transform="translate(${width.toString()}, ${height.toString()})">\n`
+
+  if (png) {
+    content += `
+    <g transform="translate(0, 0)">
+    `
+  } else {
+    content += `
+    <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)">
+    `
+  }
+  content += `
+  <text class="crt">${title}</text>
+         </g>
+   </g>\n`
+
+  return content
+
+}
+module.exports.svgDevtoberfestCRTText = svgDevtoberfestCRTText
+
+
+/**
+ * Render a Devtoberfest Text Item
+ * @param {number} height 
+ * @param {number} width
+ * @param {number} delay - animation delay in milliseconds
+ * @param {string} title 
+ * @param {boolean} [png] - alter rendering for png
+ * @returns {string}
+ */
+function svgDevtoberfestTextItem(height, width, delay, title, png) {
+  let content =
+    `
+   <g transform="translate(${width.toString()}, ${height.toString()})">\n`
+
+  if (png) {
+    content += `
+    <g transform="translate(0, 0)">
+    `
+  } else {
+    content += `
+    <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)">
+    `
+  }
+  content += `
+  <text class="devNormal">${title}</text>
          </g>
    </g>\n`
 
@@ -401,6 +505,86 @@ function svgDevtoberfestTextItem(height, delay, title, png) {
 
 }
 module.exports.svgDevtoberfestTextItem = svgDevtoberfestTextItem
+
+/**
+ * Render a Devtoberfest Text Item
+ * @param {number} height 
+ * @param {number} width
+ * @param {number} delay - animation delay in milliseconds
+ * @param {string} title 
+ * @param {boolean} [png] - alter rendering for png
+ * @returns {string}
+ */
+ function svgDevtoberfestTextLink(height, width, delay, title, link, png) {
+  let content =
+    `
+   <g transform="translate(${width.toString()}, ${height.toString()})">\n`
+
+   let className = 'devLink'
+
+  if (png) {
+    className = 'devNormal'
+    content += `
+    <g transform="translate(0, 0)">
+    `
+  } else {
+    content += `
+    <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)">
+    `
+  }
+  
+  content += `
+  <a xlink:href="${link}"
+        target="_blank">
+  <text class="${className}">${title}</text>
+  </a>
+         </g>
+   </g>\n`
+
+  return content
+
+}
+module.exports.svgDevtoberfestTextLink = svgDevtoberfestTextLink
+
+/**
+ * Render a Devtoberfest Text Item
+ * @param {number} height 
+ * @param {number} width
+ * @param {number} delay - animation delay in milliseconds
+ * @param {string} title 
+ * @param {boolean} [png] - alter rendering for png
+ * @returns {string}
+ */
+ function svgDevtoberfestCRTLink(height, width, delay, title, link, png) {
+  let content =
+    `
+   <g transform="translate(${width.toString()}, ${height.toString()})">\n`
+
+   let className = 'crtLink'
+
+  if (png) {
+    className = 'crt'
+    content += `
+    <g transform="translate(0, 0)">
+    `
+  } else {
+    content += `
+    <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)">
+    `
+  }
+  
+  content += `
+  <a xlink:href="${link}"
+        target="_blank">
+  <text class="${className}">${title}</text>
+  </a>
+         </g>
+   </g>\n`
+
+  return content
+
+}
+module.exports.svgDevtoberfestCRTLink = svgDevtoberfestCRTLink
 
 /**
  * Render a Badge Showcase Item
