@@ -14,8 +14,8 @@ const glob = require('glob')
 function ExpressServer() {
     //Default port
     this.port = process.env.PORT || 4000
-    this.baseDir = process.cwd();
-    this.routes = [];
+    this.baseDir = process.cwd()
+    this.routes = []
 
     let app
     let httpServer

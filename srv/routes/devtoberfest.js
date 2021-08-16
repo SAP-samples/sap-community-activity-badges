@@ -64,45 +64,16 @@ async function getSCNProfile(req) {
 }
 
 function renderHTMLBody(svg) {
-    return `
-    <html xmlns="http://www.w3.org/1999/xhtml"><head> 
-<title>Devtoberfest 2021</title>
-<style type="text/css" media="screen">
-body { background:#eee; margin:0 }
-svg {
-display:block; border:1px solid #ccc; position:absolute;
-top:0%; left:0%; width:99%; height:99%; background:#fff;
-}
-.face { stroke:#000; stroke-width:20px; stroke-linecap:round }
-</style>
-<style type="text/css">
-    @namespace svg url(http://www.w3.org/2000/svg);
-html,body,svg { height:100% }
-/* As SVG does not provide a default visual style for links,
-it's considered best practice to add some */
 
-@namespace svg url(http://www.w3.org/2000/svg);
-/* Necessary to select only SVG <a> elements, and not also HTML’s.
-See warning below */
+    const mustache = require('mustache')
+    const path = require('path')
+    let htmlFile = path.join(process.cwd(), '/html/devtoberfest_header.html')
+    const fs = require('fs')
 
-svg|a:link, svg|a:visited {
-cursor: pointer;
-}
+    const data = fs.readFileSync(htmlFile,
+        { encoding: 'utf8' })
 
-svg|a text,
-text svg|a {
-fill: blue; /* Even for text, SVG uses fill over color */
-text-decoration: underline;
-}
-
-svg|a:hover, svg|a:active {
-outline: dotted 1px blue;
-}
-</style>
-</head><body>
-${svg}
-</body></html>
-    `
+    return mustache.render(data, { svg: svg })
 }
 
 async function renderSVG(isPng, profile) {
@@ -172,6 +143,7 @@ async function renderSVG(isPng, profile) {
     let body =
         svg.svgHeader(1347, 1612) +
         await svg.svgDevtoberfestFont() +
+
         svg.svgStyles(
             svg.svgStyleDevHeader(),
             svg.svgStyleDevNormal(),
@@ -199,6 +171,7 @@ async function renderSVG(isPng, profile) {
             svg.svgDevtoberfestTextHeader(127, 820, 1000,
                 `Points: ${profile.points}, Level: ${profile.level}`, isPng),
 
+
             //Menu Awards
             `<a xlink:href="https://github.com/SAP-samples/devtoberfest-2021/tree/main/contest#prize-levels--what-you-can-win"
             target="_blank">`,
@@ -220,7 +193,13 @@ async function renderSVG(isPng, profile) {
             svg.svgDevtoberfestItem(175, 1020, 1025, await svg.loadImageB64('../images/devtoberfest/menu/Frame-2.png'), 32, 29, isPng),
             `</a>`,
 
+            //Menu Sound
+            `<title>SOUND</title>`,
+            svg.svgDevtoberfestItem(175, 1080, 1025, await svg.loadImageB64('../images/devtoberfest/menu/sound.png'), 32, 29, isPng, null, `onclick="if(document.getElementById('audioID').paused){ document.getElementById('audioID').play() } else { document.getElementById('audioID').pause()}" `),
+
+
             //Green Alien Runner
+            `<title></title>`,
             svg.svgDevtoberfestItem(750, 240, 1250, await svg.loadImageB64('../images/devtoberfest/clouds/Runner.png'), 74, 51, isPng,
                 `<animate id="o7" begin="0;o8.end"
         attributeName="x" from="650" to="0" dur="4s" />
@@ -270,6 +249,9 @@ async function renderSVG(isPng, profile) {
 
             //All Text Items
             svg.svgMainContent(items),
+
+
+
 
         ) +
         svg.svgEnd()

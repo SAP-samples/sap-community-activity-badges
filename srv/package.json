@@ -15,6 +15,7 @@
     "event-loop-lag": "1.4.0",
     "express": "^4.17.1",
     "glob": "^7.1.7",
+    "mustache": "^4.2.0",
     "overload-protection": "^1.1.0",
     "sharp": "^0.28.3",
     "showdown": "^1.9.1",

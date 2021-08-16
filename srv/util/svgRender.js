@@ -374,10 +374,11 @@ module.exports.svgActivityItem = svgActivityItem
  * @param {number} scaleY - Scale image Y coordinate
  * @param {boolean} [png] - alter rendering for png
  * @param {string} [animation] - Special Animation
+ * @param {string} [onclick] - onclick event handler
 
  * @returns {string}
  */
-function svgDevtoberfestItem(x, y, delay, image, scaleX, scaleY, png = false, animation) {
+function svgDevtoberfestItem(x, y, delay, image, scaleX, scaleY, png = false, animation, onclick) {
   let content =
     `
    <g transform="translate(${y.toString()}, ${x.toString()})">\n`
@@ -391,8 +392,17 @@ function svgDevtoberfestItem(x, y, delay, image, scaleX, scaleY, png = false, an
     <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)">
     `
   }
-  content += `
-       <image class="icon" href="data:image/png;base64,${image}" height="${scaleX.toString()}" width="${scaleY.toString()}">\n`
+  
+  if(onclick){
+    content += `
+    <image ${onclick} class="icon" href="data:image/png;base64,${image}" height="${scaleX.toString()}" width="${scaleY.toString()}">\n`
+
+  }else {
+    content += `
+    <image class="icon" href="data:image/png;base64,${image}" height="${scaleX.toString()}" width="${scaleY.toString()}">\n`
+
+  }
+
   if (animation) {
     content += animation
   }
