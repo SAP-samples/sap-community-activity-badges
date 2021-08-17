@@ -15,7 +15,7 @@ module.exports = (app) => {
         } catch (error) {
             app.logger.error(error)
             const errHandler = require("../util/error")
-            return await errHandler.handleError(error, req, res)
+            return await errHandler.handleErrorDevtoberfest(error, req, res)
         }
     })
 
@@ -75,6 +75,7 @@ function renderHTMLBody(svg) {
 
     return mustache.render(data, { svg: svg })
 }
+module.exports.renderHTMLBody = renderHTMLBody
 
 async function renderSVG(isPng, profile) {
     const svg = require("../util/svgRender")
@@ -194,12 +195,14 @@ async function renderSVG(isPng, profile) {
             `</a>`,
 
             //Menu Sound
-            `<title>SOUND</title>`,
+            `<a>
+            <title>SOUND</title>`,
             svg.svgDevtoberfestItem(175, 1080, 1025, await svg.loadImageB64('../images/devtoberfest/menu/sound.png'), 32, 29, isPng, null, `onclick="if(document.getElementById('audioID').paused){ document.getElementById('audioID').play() } else { document.getElementById('audioID').pause()}" `),
+            `</a>`,
+
 
 
             //Green Alien Runner
-            `<title></title>`,
             svg.svgDevtoberfestItem(750, 240, 1250, await svg.loadImageB64('../images/devtoberfest/clouds/Runner.png'), 74, 51, isPng,
                 `<animate id="o7" begin="0;o8.end"
         attributeName="x" from="650" to="0" dur="4s" />
@@ -217,11 +220,15 @@ async function renderSVG(isPng, profile) {
             ),
 
             //Main Progress Area
-            svg.svgDevtoberfestItem(220, 150, 1000, await svg.loadImageB64('../images/devtoberfest/clouds/Group_12b.png'), 692, 983, isPng),
+            svg.svgDevtoberfestItem(220, 150, 1000, await svg.loadImageB64('../images/devtoberfest/clouds/Group_12a.png'), 692, 983, isPng),
+
+            //Cloud #1 Banner
+            svg.svgDevtoberfestItem(594, 340, 750, await svg.loadImageB64('../images/devtoberfest/image3.png'), 39, 169, isPng),
+
 
             //SAP Logo
-            `<a xlink:href="https://sap.com/"
-        target="_blank">`,
+            `<a xlink:href="https://sap.com/" target="_blank">`,
+            `<title>SAP Logo</title>`,
             svg.svgDevtoberfestItem(800, 1130, 1000, await svg.loadImageB64('../images/devtoberfest/sap.png'), 64, 128, isPng),
             `</a>`,
 
@@ -241,17 +248,17 @@ async function renderSVG(isPng, profile) {
         attributeName="y" from="0" to="150" dur="3s" />`
             ),
 
-            //Devtoberfest Logo
+            //Devtoberfest Logo            
+            `<a xlink:href="https://developers.sap.com/devtoberfest.html" target="_blank">`,
+            `<title>Devtoberfest</title>`,
             svg.svgDevtoberfestItem(1250, 1000, 0, await svg.loadImageB64('../images/devtoberfest/Frame.png'), 192, 212, isPng),
+            `</a>`,
 
             //Bottom CRT Frame
             svg.svgDevtoberfestItem(1507, 0, 0, await svg.loadImageB64('../images/devtoberfest/okBottom.png'), 105, 1347, isPng),
 
             //All Text Items
             svg.svgMainContent(items),
-
-
-
 
         ) +
         svg.svgEnd()
