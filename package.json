@@ -1,0 +1,10 @@
+{
+  "name": "scn-badges-mta",
+  "devDependencies": {
+    "mbt": "^1.2.3"
+  },
+  "scripts": {
+    "build": "mbt build"
+  },
+  "version": "1.0.0"
+}

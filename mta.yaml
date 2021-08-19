@@ -1,14 +1,14 @@
 _schema-version: "3.3"
 ID: scn-badges
-version: 0.2.1
-modules:
+version: 0.2.4
 
-- name: scn-badges-srv
-  type: nodejs
-  path: srv
-  provides:
-   - name: srv-api      # required by consumers of services (e.g. approuter)
-     properties:
-       srv-url: ${default-url}
-  build-parameters:
-    ignore: ["/node_modules"]      
+modules:
+  - name: scn-badges-srv
+    type: nodejs
+    path: srv
+    provides:
+      - name: srv-api # required by consumers of services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    build-parameters:
+      ignore: ["/node_modules"]

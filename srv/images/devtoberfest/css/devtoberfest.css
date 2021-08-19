@@ -1,0 +1,21 @@
+body {
+    background: #eee;
+    margin: 0
+}
+
+svg {
+    display: block;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 99%;
+    height: 99%;
+    background: #fff;
+}
+
+.face {
+    stroke: #000;
+    stroke-width: 20px;
+    stroke-linecap: round
+}

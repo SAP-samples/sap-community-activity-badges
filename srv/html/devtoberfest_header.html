@@ -6,66 +6,17 @@
     <meta name="viewport" content="width=device-width">
 
     <title>Devtoberfest 2021</title>
-    <style type="text/css" media="screen">
-        body {
-            background: #eee;
-            margin: 0
-        }
+    
 
-        svg {
-            display: block;
-            border: 1px solid #ccc;
-            position: absolute;
-            top: 0%;
-            left: 0%;
-            width: 99%;
-            height: 99%;
-            background: #fff;
-        }
 
-        .face {
-            stroke: #000;
-            stroke-width: 20px;
-            stroke-linecap: round
-        }
-    </style>
-    <style type="text/css">
-        @namespace svg url(http://www.w3.org/2000/svg);
-
-        html,
-        body,
-        svg {
-            height: 100%
-        }
-
-        /* As SVG does not provide a default visual style for links,
-        it's considered best practice to add some */
-        @namespace svg url(http://www.w3.org/2000/svg);
-
-        /* Necessary to select only SVG <a> elements, and not also HTML’s.
-        See warning below */
-        svg|a:link,
-        svg|a:visited {
-            cursor: pointer;
-        }
-
-        svg|a text,
-        text svg|a {
-            fill: #31A6D9;  /* blue; */
-            /* Even for text, SVG uses fill over color */
-            text-decoration: underline;
-        }
-
-        svg|a:hover,
-        svg|a:active {
-            outline: dotted 1px blue;
-        }
-    </style>
+     <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" href="/images/devtoberfest/css/devtoberfest.css" type="text/css" media="screen"/>
+     <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" href="/images/devtoberfest/css/font.css" type="text/css"/>
+     <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" href="/images/devtoberfest/css/devtoberfestSVG.css" type="text/css"/>
 
 </head>
 
 <body>
-    <audio id="audioID" src="/images/music/8bit.mp3" controls autoplay playsinline loop>
+    <audio id="audioID" src="/images/music/8bit.mp3" autoplay playsinline loop>
     </audio>
 
     {{{svg}}}

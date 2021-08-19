@@ -1,5 +1,4 @@
 // @ts-check
-
 /**
  * @module svgRender - Utilities to help with the SVG Rendering
  */
@@ -49,13 +48,19 @@ module.exports.svgStyles = svgStyles
  */
 async function svgDevtoberfestFont() {
   return `
+  @font-face {
+      font-family: "Joystix Monospace";
+      src: url("data:application/font-woff;charset=utf-8;base64,${await loadImageB64("../images/devtoberfest/fonts/joystix_monospace.ttf")}");
+  }`
+
+ /*  return `
   <style>
   @font-face {
       font-family: "Joystix Monospace";
       src: url("data:application/font-woff;charset=utf-8;base64,${await loadImageB64("../images/devtoberfest/fonts/joystix_monospace.ttf")}");
   }
   </style>
-      \n`
+      \n` */
 }
 module.exports.svgDevtoberfestFont = svgDevtoberfestFont
 
@@ -73,55 +78,6 @@ function svgStyleHeader() {
 }
 module.exports.svgStyleHeader = svgStyleHeader
 
-/**
- * svg Style header
- * @returns {string}
- */
-function svgStyleDevHeader() {
-  return `
-    .header {
-        font: 600 18px 'Joystix Monospace', Ubuntu, Sans-Serif;
-        fill: #000000;
-        animation: fadeInAnimation 0.8s ease-in-out forwards;
-      }\n
-      .crt {
-        font: 600 18px 'Joystix Monospace', Ubuntu, Sans-Serif;
-        fill: #66FF66;
-        animation: fadeInAnimation 0.8s ease-in-out forwards;
-      }\n`
-}
-module.exports.svgStyleDevHeader = svgStyleDevHeader
-
-/**
- * svg Style header
- * @returns {string}
- */
- function svgStyleDevNormal() {
-  return `
-    .devNormal {
-        font: 600 12px 'Joystix Monospace', Ubuntu, Sans-Serif;
-        fill: #000000;
-        animation: fadeInAnimation 0.8s ease-in-out forwards;
-      }\n`
-}
-module.exports.svgStyleDevNormal = svgStyleDevNormal
-
-/**
- * svg Style header
- * @returns {string}
- */
- function svgStyleDevLink() {
-  return `
-    .devLink {
-        font: 600 12px 'Joystix Monospace', Ubuntu, Sans-Serif;
-        animation: fadeInAnimation 0.8s ease-in-out forwards;
-      }\n
-      .crtLink {
-        font: 600 18px 'Joystix Monospace', Ubuntu, Sans-Serif;
-        animation: fadeInAnimation 0.8s ease-in-out forwards;
-      }\n`
-}
-module.exports.svgStyleDevLink = svgStyleDevLink
 
 /**
  * svg Style bold
@@ -423,9 +379,10 @@ module.exports.svgDevtoberfestItem = svgDevtoberfestItem
  * @param {number} delay - animation delay in milliseconds
  * @param {string} title 
  * @param {boolean} [png] - alter rendering for png
+ * @param {string} [cssClass] - CSS Class
  * @returns {string}
  */
- function svgDevtoberfestTextHeader(height, width, delay, title, png) {
+ function svgDevtoberfestTextHeader(height, width, delay, title, png, cssClass) {
   let content =
     `
    <g transform="translate(${width.toString()}, ${height.toString()})">\n`
@@ -439,8 +396,11 @@ module.exports.svgDevtoberfestItem = svgDevtoberfestItem
     <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)">
     `
   }
+  if(!cssClass){
+    cssClass = `class="header"`
+  }
   content += `
-  <text class="header">${title}</text>
+  <text ${cssClass}>${title}</text>
          </g>
    </g>\n`
 

@@ -1,0 +1,113 @@
+@namespace svg url(http://www.w3.org/2000/svg);
+
+html,
+body,
+svg {
+    height: 100%
+}
+
+/* As SVG does not provide a default visual style for links,
+        it's considered best practice to add some */
+@namespace svg url(http://www.w3.org/2000/svg);
+
+/* Necessary to select only SVG <a> elements, and not also HTML’s.
+        See warning below */
+svg|a:link,
+svg|a:visited {
+    cursor: pointer;
+}
+
+svg|a text,
+text svg|a {
+    fill: #31A6D9;
+    /* blue; */
+    /* Even for text, SVG uses fill over color */
+    text-decoration: underline;
+}
+
+svg|a:hover,
+svg|a:active {
+    outline: dotted 1px blue;
+}
+
+.header {
+    font: 600 18px 'Joystix Monospace', Ubuntu, Sans-Serif;
+    fill: #000000;
+    animation: fadeInAnimation 0.8s ease-in-out forwards;
+}
+
+.crt {
+    font: 600 18px 'Joystix Monospace', Ubuntu, Sans-Serif;
+    fill: #66FF66;
+    animation: fadeInAnimation 0.8s ease-in-out forwards;
+}
+
+.devNormal {
+    font: 600 12px 'Joystix Monospace', Ubuntu, Sans-Serif;
+    fill: #000000;
+    animation: fadeInAnimation 0.8s ease-in-out forwards;
+}
+
+.devLink {
+    font: 600 12px 'Joystix Monospace', Ubuntu, Sans-Serif;
+    animation: fadeInAnimation 0.8s ease-in-out forwards;
+}
+
+.crtLink {
+    font: 600 18px 'Joystix Monospace', Ubuntu, Sans-Serif;
+    animation: fadeInAnimation 0.8s ease-in-out forwards;
+}
+
+.bold {
+    font-weight: 700
+}
+
+.stat {
+    font: 600 14px 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif;
+    fill: #9f9f9f;
+}
+
+.error {
+    font: 600 12px 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif;
+    fill: #9f9f9f;
+}
+
+.stagger {
+    opacity: 0;
+    animation: fadeInAnimation 0.3s ease-in-out forwards;
+}
+
+.icon {
+    fill: #79ff97;
+    display: block;
+}
+
+@keyframes rankAnimation {
+    from {
+        stroke-dashoffset: 251.32741228718345;
+    }
+
+    to {
+        stroke-dashoffset: 113.71626719291889;
+    }
+}
+
+@keyframes scaleInAnimation {
+    from {
+        transform: translate(-5px, 5px) scale(0);
+    }
+
+    to {
+        transform: translate(-5px, 5px) scale(1);
+    }
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

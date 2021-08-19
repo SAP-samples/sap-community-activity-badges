@@ -4,6 +4,11 @@ const express = require('express')
 
 module.exports = (app) => {
     app.use('/images', express.static(path.join(__dirname, '../images')))
+    app.use('/images/devtoberfest/css/font.css', async (req, res) =>{
+        const svg = require("../util/svgRender")
+        res.type('text/css').status(200).send(await svg.svgDevtoberfestFont())
+    })
+
     app.get('/', async (req, res) => {
 
         try {

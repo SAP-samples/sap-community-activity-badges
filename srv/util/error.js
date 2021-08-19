@@ -107,26 +107,12 @@ async function handleErrorDevtoberfest(error, req, res) {
 
         let body =
             svg.svgHeader(1347, 1612) +
-            await svg.svgDevtoberfestFont() +
-
-            svg.svgStyles(
-                svg.svgStyleDevHeader(),
-                svg.svgStyleDevNormal(),
-                svg.svgStyleDevLink(),
-                svg.svgStyleBold(),
-                svg.svgStyleStat(),
-                svg.svgStyleStagger(),
-                svg.svgStyleIcon(),
-                svg.svgStyleAnimate()
-            ) +
 
             svg.svgDevtoberfestBackground() +
             svg.svgDevtoberfestItem(0, 0, 0, await svg.loadImageB64('../images/devtoberfest/BackgroundOKG.png'), 1007, 1347, isPng) +
             //Devtoberfest Gameboard title
             svg.svgDevtoberfestItem(80, 50, 750, await svg.loadImageB64('../images/devtoberfest/Group_13.png'), 103, 668, isPng) +
 
-
-            //await svg.svgErrorHeader(text.getText('errorTitle')) +
             svg.svgMainContent(items) +
 
             //Devtoberfest Logo            
