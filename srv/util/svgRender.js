@@ -331,10 +331,11 @@ module.exports.svgActivityItem = svgActivityItem
  * @param {boolean} [png] - alter rendering for png
  * @param {string} [animation] - Special Animation
  * @param {string} [onclick] - onclick event handler
+ * @param {string} [style] - custom style
 
  * @returns {string}
  */
-function svgDevtoberfestItem(x, y, delay, image, scaleX, scaleY, png = false, animation, onclick) {
+function svgDevtoberfestItem(x, y, delay, image, scaleX, scaleY, png = false, animation, onclick, style) {
   let content =
     `
    <g transform="translate(${y.toString()}, ${x.toString()})">\n`
@@ -343,10 +344,16 @@ function svgDevtoberfestItem(x, y, delay, image, scaleX, scaleY, png = false, an
     content += `
     <g transform="translate(0, 0)">
     `
-  } else {
+  } else {  //stagger style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)"
+    if(style){
+      content += `
+      <g class="${style}" style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)">
+      `
+    }else{
     content += `
     <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)">
     `
+    }
   }
   
   if(onclick){
@@ -354,6 +361,7 @@ function svgDevtoberfestItem(x, y, delay, image, scaleX, scaleY, png = false, an
     <image ${onclick} class="icon" href="data:image/png;base64,${image}" height="${scaleX.toString()}" width="${scaleY.toString()}">\n`
 
   }else {
+
     content += `
     <image class="icon" href="data:image/png;base64,${image}" height="${scaleX.toString()}" width="${scaleY.toString()}">\n`
 

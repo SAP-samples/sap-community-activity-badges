@@ -34,7 +34,7 @@ async function renderSVG(isPng, profile, req) {
     let gameboardHeader = text.getText('devtoberfest.gameboardHeader', [profile.userName])
     const text_wrapper_lib = require('text-wrapper')
     const wrapper = text_wrapper_lib.wrapper
-    const wrappedOutput = wrapper(gameboardHeader, { wrapOn: 35 })
+    let wrappedOutput = wrapper(gameboardHeader, { wrapOn: 35 })
     let wrappedArray = wrappedOutput.split("\n")
     for (let item of wrappedArray) {
         items.push(await svg.svgDevtoberfestCRTText(itemHeight, 120, itemDelay,
@@ -51,46 +51,34 @@ async function renderSVG(isPng, profile, req) {
     itemHeight = 1095
     itemDelay = 450
     items.push(svg.svgDevtoberfestTextHeader(1050, 60, itemDelay,
-        `HOW TO PLAY`, isPng))
+        text.getText('devtoberfest.column1'), isPng))
 
     items.push(svg.svgDevtoberfestTextItem(itemHeight, 60, itemDelay,
-        `It’s simple.  Register for`, isPng))
+        text.getText('devtoberfest.column1.1'), isPng))
     itemHeight += 18
     itemDelay += 50
     items.push(svg.svgDevtoberfestTextLink(itemHeight, 60, itemDelay,
-        `Devtoberfest HERE`,
+        `${text.getText('devtoberfest')} ${text.getText('devtoberfest.here')}`,
         `https://developers.sap.com/devtoberfest.html`, isPng))
-    itemHeight += 18
-    itemDelay += 50
-    items.push(svg.svgDevtoberfestTextItem(itemHeight, 60, itemDelay,
-        `Complete activities like`, isPng))
-    itemHeight += 18
-    itemDelay += 50
-    items.push(svg.svgDevtoberfestTextItem(itemHeight, 60, itemDelay,
-        `tutorials or event surveys.`, isPng))
     itemHeight += 36
     itemDelay += 50
-    items.push(svg.svgDevtoberfestTextItem(itemHeight, 60, itemDelay,
-        `Contribute to a project or `, isPng))
-    itemHeight += 18
-    itemDelay += 50
-    items.push(svg.svgDevtoberfestTextItem(itemHeight, 60, itemDelay,
-        `make your own open source project.`, isPng))
-    itemHeight += 36
-    itemDelay += 50
-    items.push(svg.svgDevtoberfestTextItem(itemHeight, 60, itemDelay,
-        `Please reference the published`, isPng))
-    itemHeight += 18
-    itemDelay += 50
-    items.push(svg.svgDevtoberfestTextItem(itemHeight, 60, itemDelay,
-        `list of activities to see`, isPng))
-    itemHeight += 18
-    itemDelay += 50
+    wrappedOutput = wrapper(text.getText('devtoberfest.column1.2'), { wrapOn: 35 })
+    wrappedArray = wrappedOutput.split("\n")
+    for (let item of wrappedArray) {
+        items.push(await svg.svgDevtoberfestTextItem(itemHeight, 60, itemDelay,
+            item, isPng))
+        itemHeight += 18
+        itemDelay += 50
+    }
+
     items.push(svg.svgDevtoberfestTextLink(itemHeight, 60, itemDelay,
-        `where you can earn points HERE`,
+        text.getText('devtoberfest.here'),
         `https://github.com/SAP-samples/devtoberfest-2021/blob/main/contest/readme.md`, isPng))
     itemHeight += 18
     itemDelay += 50
+
+    let avatar = '../images/devtoberfest/avatars/Group-0.png'
+
 
     let body =
         svg.svgHeader(1347, 1612) +
@@ -154,10 +142,45 @@ async function renderSVG(isPng, profile, req) {
 
             //Cloud #1 Banner
             svg.svgDevtoberfestItem(594, 340, 750, await svg.loadImageB64('../images/devtoberfest/image3.png'), 39, 169, isPng),
+            //Cloud #1 Hearts
+            svg.svgDevtoberfestItem(570, 370, 750, await svg.loadImageB64('../images/devtoberfest/levels/Group5.png'), 22, 111, isPng),
             //Cloud #1 Banner Text
             svg.svgDevtoberfestTextHeader(614, 425, 800,
                 text.getText('devtoberfest.level1'),
                 isPng, `class="header" dominant-baseline="middle" text-anchor="middle"`),
+
+                svg.svgDevtoberfestTextHeader(592, 369, 2000,
+                    `♥`,
+                    isPng, `class="heart"`),                
+
+            //Cloud #2 Banner
+            svg.svgDevtoberfestItem(875, 390, 750, await svg.loadImageB64('../images/devtoberfest/image3.png'), 39, 169, isPng),
+            //Cloud #2 Hearts
+            svg.svgDevtoberfestItem(851, 420, 750, await svg.loadImageB64('../images/devtoberfest/levels/Group4.png'), 22, 111, isPng),
+            //Cloud #2 Banner Text
+            svg.svgDevtoberfestTextHeader(895, 475, 800,
+                text.getText('devtoberfest.level2'),
+                isPng, `class="header" dominant-baseline="middle" text-anchor="middle"`),
+
+            //Cloud #3 Banner
+            svg.svgDevtoberfestItem(735, 855, 750, await svg.loadImageB64('../images/devtoberfest/image3.png'), 39, 169, isPng),
+            //Cloud #3 Hearts
+            svg.svgDevtoberfestItem(711, 885, 750, await svg.loadImageB64('../images/devtoberfest/levels/Group6.png'), 22, 111, isPng),
+            //Cloud #3 Banner Text
+            svg.svgDevtoberfestTextHeader(755, 940, 800,
+                text.getText('devtoberfest.level3'),
+                isPng, `class="header" dominant-baseline="middle" text-anchor="middle"`),
+
+            //Cloud #4 Banner
+            svg.svgDevtoberfestItem(450, 735, 750, await svg.loadImageB64('../images/devtoberfest/image6.png'), 72, 311, isPng),
+            //Cloud #4 Server
+            svg.svgDevtoberfestItem(280, 765, 750, await svg.loadImageB64('../images/devtoberfest/levels/Frame.png'), 165, 117, isPng),
+            //Cloud #4 Stars
+            svg.svgDevtoberfestItem(228, 720, 750, await svg.loadImageB64('../images/devtoberfest/levels/Group11.png'), 124, 208, isPng),
+            //Cloud #4 Banner Text
+            svg.svgDevtoberfestTextHeader(486, 890, 800,
+                text.getText('devtoberfest.level4'),
+                isPng, `class="headerWin" dominant-baseline="middle" text-anchor="middle"`),
 
             //SAP Logo
             `<a xlink:href="https://sap.com/" target="_blank">`,
@@ -175,6 +198,10 @@ async function renderSVG(isPng, profile, req) {
             svg.svgDevtoberfestItem(600, 95, 1250, await svg.loadImageB64('../images/devtoberfest/clouds/Group10.png'), 103, 91, isPng,
                 `<animate id="o3" begin="0;o4.end" attributeName="y" from="150" to="0" dur="3s" />` +
                 `<animate id="o4" begin="o3.end" attributeName="y" from="0" to="150" dur="3s" />`
+            ),
+
+            //Avatar 
+            svg.svgDevtoberfestItem(435, 280, 2000, await svg.loadImageB64(avatar), 124, 124, isPng, null, null, 'stagger avatar'
             ),
 
             //Devtoberfest Logo            
@@ -212,7 +239,7 @@ async function getSCNProfile(req) {
         userName = scnProfile.contentItems[0].title
     }
 
-    let profile = { userName: userName, scnId: req.params.scnId, badges: scnItems, points: 200500, level: 2 }
+    let profile = { userName: userName, scnId: req.params.scnId, badges: scnItems, points: 200500, level: 1 }
     return profile
 }
 

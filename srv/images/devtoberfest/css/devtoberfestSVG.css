@@ -36,6 +36,12 @@ svg|a:active {
     animation: fadeInAnimation 0.8s ease-in-out forwards;
 }
 
+.headerWin {
+    font: 600 36px 'Joystix Monospace', Ubuntu, Sans-Serif;
+    fill: #000000;
+    animation: fadeInAnimation 0.8s ease-in-out forwards;
+}
+
 .crt {
     font: 600 18px 'Joystix Monospace', Ubuntu, Sans-Serif;
     fill: #66FF66;
@@ -77,6 +83,12 @@ svg|a:active {
     animation: fadeInAnimation 0.3s ease-in-out forwards;
 }
 
+.avatar {
+    opacity: 0;
+    animation: bounce-7 3s ease-in-out forwards;
+    animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+
 .icon {
     fill: #79ff97;
     display: block;
@@ -110,4 +122,30 @@ svg|a:active {
     to {
         opacity: 1;
     }
+}
+
+.bounce-7 {
+    animation-name: bounce-7;
+    animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+@keyframes bounce-7 {
+    0%   { transform: scale(1,1)      translateY(0); opacity: 0;}
+    10%  { transform: scale(1.1,.9)   translateY(0); opacity: 1;}
+    30%  { transform: scale(.9,1.1)   translateY(-100px); }
+    50%  { transform: scale(1.05,.95) translateY(0); }
+    57%  { transform: scale(1,1)      translateY(-7px); }
+    64%  { transform: scale(1,1)      translateY(0); }
+    100% { transform: scale(1,1)      translateY(0); opacity: 1;}
+}
+
+.heart {
+    font: 600 18px 'Joystix Monospace', Ubuntu, Sans-Serif;
+    fill: red;
+    animation: 
+    beat 1s 0s 300;
+}
+@keyframes beat {
+    0% {font-size:2em;fill:black}
+    50% {font-size:4em;fill:red}
+    100% {font-size:2em;fill:white}
 }

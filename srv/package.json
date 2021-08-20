@@ -27,7 +27,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index",
+    "start": "nodemon index",
     "types": "npx typescript  --declaration --allowJs --emitDeclarationOnly --outDir types --skipLibCheck"
   },
   "author": "SAP",
