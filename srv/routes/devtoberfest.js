@@ -128,8 +128,8 @@ async function renderSVG(isPng, profile, req) {
 async function getSCNProfile(req) {
     const request = require('then-request')
     const urlBadges = `https://people-api.services.sap.com/rs/badge/${req.params.scnId}?sort=timestamp,desc&size=1000`
-    const urlProfile = `https://searchproxy.api.community.sap.com/api/v1/search?limit=20&orderBy=UPDATE_TIME&order=DESC&contentTypes%5B0%5D=people&authorId=${req.params.scnId}`
-
+    //const urlProfile = `https://searchproxy.api.community.sap.com/api/v1/search?limit=20&orderBy=UPDATE_TIME&order=DESC&contentTypes%5B0%5D=people&authorId=${req.params.scnId}`
+    const urlProfile = `https://content.services.sap.com/cse/search/user?name=${req.params.scnId}&sort=published:desc&size=1&page=0`
     let [itemsRes, profileRes] = await Promise.all([
         request('GET', urlBadges),
         request('GET', urlProfile)
@@ -138,8 +138,9 @@ async function getSCNProfile(req) {
     const scnProfile = JSON.parse(profileRes.getBody())
 
     let userName = req.params.scnId
-    if (scnProfile.contentItems[0]) {
-        userName = scnProfile.contentItems[0].title
+    console.table(scnProfile)
+    if (scnProfile._embedded  && scnProfile._embedded.contents[0] && scnProfile._embedded.contents[0].author) {
+        userName = scnProfile._embedded.contents[0].author.displayName
     }
 
     let userNameScore = stringScore(userName)
@@ -152,7 +153,6 @@ function stringScore(string) {
 
     for (j = 0; j < string.length; j++) {
         score += string.charAt(j).charCodeAt(0) 
-        console.log(score)
     }
 
     //Calculate Modulo of Score and maximum Avatar number of 19 
