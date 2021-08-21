@@ -12,6 +12,11 @@ export function svgHeader(width: number, height: number): string;
  */
 export function svgStyles(...styles: string[]): string;
 /**
+ * svg Style Font definition
+ * @returns {Promise<string>}
+ */
+export function svgDevtoberfestFont(): Promise<string>;
+/**
  * svg Style header
  * @returns {string}
  */
@@ -52,6 +57,11 @@ export function svgStyleAnimate(): string;
  */
 export function svgBackground(): string;
 /**
+ * svg Background rectangle
+ * @returns {string}
+ */
+export function svgDevtoberfestBackground(): string;
+/**
  * Image Header
  * @param {string} text
  * @returns {Promise<string>}
@@ -85,6 +95,73 @@ export function svgMainContent(...content: string[]): string;
  * @returns {string}
  */
 export function svgActivityItem(height: number, delay: number, image: string, title: string, value: string, png?: boolean): string;
+/**
+ * Render a Devtoberfest Item
+ * @param {number} x
+ * @param {number} y
+ * @param {number} delay - animation delay in milliseconds
+ * @param {string} image - Base64 encoded image data
+ * @param {number} scaleX - Scale image X coordinate
+ * @param {number} scaleY - Scale image Y coordinate
+ * @param {boolean} [png] - alter rendering for png
+ * @param {string} [animation] - Special Animation
+ * @param {string} [onclick] - onclick event handler
+ * @param {string} [style] - custom style
+
+ * @returns {string}
+ */
+export function svgDevtoberfestItem(x: number, y: number, delay: number, image: string, scaleX: number, scaleY: number, png?: boolean, animation?: string, onclick?: string, style?: string): string;
+/**
+ * Render a Devtoberfest Text Header
+ * @param {number} height
+ * @param {number} width
+ * @param {number} delay - animation delay in milliseconds
+ * @param {string} title
+ * @param {boolean} [png] - alter rendering for png
+ * @param {string} [cssClass] - CSS Class
+ * @returns {string}
+ */
+export function svgDevtoberfestTextHeader(height: number, width: number, delay: number, title: string, png?: boolean, cssClass?: string): string;
+/**
+ * Render a Devtoberfest Text Header
+ * @param {number} height
+ * @param {number} width
+ * @param {number} delay - animation delay in milliseconds
+ * @param {string} title
+ * @param {boolean} [png] - alter rendering for png
+ * @returns {string}
+ */
+export function svgDevtoberfestCRTText(height: number, width: number, delay: number, title: string, png?: boolean): string;
+/**
+ * Render a Devtoberfest Text Item
+ * @param {number} height
+ * @param {number} width
+ * @param {number} delay - animation delay in milliseconds
+ * @param {string} title
+ * @param {boolean} [png] - alter rendering for png
+ * @returns {string}
+ */
+export function svgDevtoberfestTextItem(height: number, width: number, delay: number, title: string, png?: boolean): string;
+/**
+ * Render a Devtoberfest Text Item
+ * @param {number} height
+ * @param {number} width
+ * @param {number} delay - animation delay in milliseconds
+ * @param {string} title
+ * @param {boolean} [png] - alter rendering for png
+ * @returns {string}
+ */
+export function svgDevtoberfestTextLink(height: number, width: number, delay: number, title: string, link: any, png?: boolean): string;
+/**
+ * Render a Devtoberfest Text Item
+ * @param {number} height
+ * @param {number} width
+ * @param {number} delay - animation delay in milliseconds
+ * @param {string} title
+ * @param {boolean} [png] - alter rendering for png
+ * @returns {string}
+ */
+export function svgDevtoberfestCRTLink(height: number, width: number, delay: number, title: string, link: any, png?: boolean): string;
 /**
  * Render a Badge Showcase Item
  * @param {number} height

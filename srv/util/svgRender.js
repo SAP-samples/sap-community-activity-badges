@@ -284,6 +284,24 @@ function svgMainContent(...content) {
 module.exports.svgMainContent = svgMainContent
 
 /**
+ * svg Bulk Content Body
+ * @param  {...string} content 
+ * @returns {string}
+ */
+ function svgBulkContent(...content) {
+  let output = '\n'
+
+  for (let item of content) {
+    output += item
+  }
+
+  output += '\n'
+  debug(output)
+  return output
+}
+module.exports.svgBulkContent = svgBulkContent
+
+/**
  * Render an Activity Item
  * @param {number} height 
  * @param {number} delay - animation delay in milliseconds
