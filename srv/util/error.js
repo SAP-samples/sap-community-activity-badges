@@ -99,7 +99,7 @@ async function handleErrorDevtoberfest(error, req, res) {
         let wrappedArray = wrappedOutput.split("\n")
         let items = []
         for (let item of wrappedArray) {
-            items.push(await svg.svgDevtoberfestCRTText(itemHeight, 120, itemDelay, 
+            items.push(await svg.svgDevtoberfestCRTText(itemHeight, 120, itemDelay,
                 xmlescape(item), isPng))
             itemHeight += 20
             itemDelay += 200
@@ -118,12 +118,17 @@ async function handleErrorDevtoberfest(error, req, res) {
             //Devtoberfest Logo            
             `<a xlink:href="https://developers.sap.com/devtoberfest.html" target="_blank">` +
             `<title>Devtoberfest</title>` +
-            svg.svgDevtoberfestItem(1250, 1000, 0, await svg.loadImageB64('../images/devtoberfest/Frame.png'), 192, 212, isPng) +
+            svg.svgDevtoberfestItem(1250, 925, 0, await svg.loadImageB64('../images/devtoberfest/Frame.png'), 192, 212, isPng) +
             `</a>` +
-
+            //SAP Logo
+            `<a xlink:href="https://sap.com/" target="_blank">` +
+            `<title>SAP Logo</title>` +
+            svg.svgDevtoberfestItem(1350, 1180, 0, await svg.loadImageB64('../images/devtoberfest/sap.svg'), 64, 128, isPng, null, null, null, 'sap.svg') +
+            `</a>` +
             //Bottom CRT Frame
             svg.svgDevtoberfestItem(1507, 0, 0, await svg.loadImageB64('../images/devtoberfest/okBottom.png'), 105, 1347, isPng) +
-
+            //Blinking LED
+            `<g transform="translate(1180, 1581)"class="led-green" ><rect class="led-green"  ></rect></g>` +
             svg.svgEnd()
         if (req.query.png) {
             const sharp = require('sharp')

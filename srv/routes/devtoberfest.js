@@ -28,6 +28,7 @@ module.exports = (app) => {
 async function renderSVG(isPng, profile, req) {
     let [gameboardHeader,
         column1,
+        column2,
         backgroundCRTFrame,
         gameboardTitle,
         pointsBanner,
@@ -44,10 +45,12 @@ async function renderSVG(isPng, profile, req) {
         redAlien,
         avatarItems,
         devtoberfestLogo,
-        bottomCRTFrame
+        bottomCRTFrame,
+        blinky
     ] = await Promise.all([
         buildGameboardHeader(isPng, profile, req),
         buildHowToPlay(isPng, profile, req),
+        buildLawyersHappy(isPng, profile, req),
         //Background CRT Frame
         svg.svgDevtoberfestItem(0, 0, 0, await svg.loadImageB64('../images/devtoberfest/BackgroundOKG.png'), 1007, 1347, isPng),
         //Devtoberfest Gameboard title
@@ -73,7 +76,7 @@ async function renderSVG(isPng, profile, req) {
         //SAP Logo
         `<a xlink:href="https://sap.com/" target="_blank">` +
         `<title>SAP Logo</title>` +
-        svg.svgDevtoberfestItem(800, 1130, 1000, await svg.loadImageB64('../images/devtoberfest/sap.png'), 64, 128, isPng) +
+        svg.svgDevtoberfestItem(1350, 1180, 0, await svg.loadImageB64('../images/devtoberfest/sap.svg'), 64, 128, isPng, null, null, null, 'sap.svg') +
         `</a>`,
         //Yellow Lobster
         svg.svgDevtoberfestItem(220, 1000, 1250, await svg.loadImageB64('../images/devtoberfest/clouds/Group8.png'), 103, 91, isPng,
@@ -89,11 +92,12 @@ async function renderSVG(isPng, profile, req) {
         //Devtoberfest Logo            
         `<a xlink:href="https://developers.sap.com/devtoberfest.html" target="_blank">` +
         `<title>Devtoberfest</title>` +
-        svg.svgDevtoberfestItem(1250, 1000, 0, await svg.loadImageB64('../images/devtoberfest/Frame.png'), 192, 212, isPng) +
+        svg.svgDevtoberfestItem(1250, 925, 0, await svg.loadImageB64('../images/devtoberfest/Frame.png'), 192, 212, isPng) +
         `</a>`,
         //Bottom CRT Frame
         svg.svgDevtoberfestItem(1507, 0, 0, await svg.loadImageB64('../images/devtoberfest/okBottom.png'), 105, 1347, isPng),
-
+        //Blinking LED
+        `<g transform="translate(1180, 1581)"class="led-green" ><rect class="led-green"  ></rect></g>`
     ])
 
     let body =
@@ -118,7 +122,9 @@ async function renderSVG(isPng, profile, req) {
             bottomCRTFrame,
             svg.svgBulkContent(avatarItems),
             svg.svgBulkContent(gameboardHeader),
-            svg.svgBulkContent(column1)
+            svg.svgBulkContent(column1),
+            svg.svgBulkContent(column2),
+            blinky
         ) +
         svg.svgEnd()
 
@@ -138,7 +144,6 @@ async function getSCNProfile(req) {
     const scnProfile = JSON.parse(profileRes.getBody())
 
     let userName = req.params.scnId
-    console.table(scnProfile)
     if (scnProfile._embedded  && scnProfile._embedded.contents[0] && scnProfile._embedded.contents[0].author) {
         userName = scnProfile._embedded.contents[0].author.displayName
     }
@@ -234,6 +239,36 @@ async function buildHowToPlay(isPng, profile, req) {
     items.push(svg.svgDevtoberfestTextLink(itemHeight, 60, itemDelay,
         text.getText('devtoberfest.here'),
         `https://github.com/SAP-samples/devtoberfest-2021/blob/main/contest/readme.md`, isPng))
+    itemHeight += 18
+    itemDelay += 50
+
+    return items
+}
+
+async function buildLawyersHappy(isPng, profile, req) {
+
+    let text = texts.getBundle(req)
+    let items = []
+
+    let itemHeight = 1095
+    let itemDelay = 450
+    let columnStart = 500
+
+    items.push(svg.svgDevtoberfestTextHeader(1050, columnStart, itemDelay,
+        text.getText('devtoberfest.column2'), isPng))
+
+    wrappedOutput = wrapper(text.getText('devtoberfest.column2.1'), { wrapOn: 35 })
+    wrappedArray = wrappedOutput.split("\n")
+    for (let item of wrappedArray) {
+        items.push(await svg.svgDevtoberfestTextItem(itemHeight, columnStart, itemDelay,
+            item, isPng))
+        itemHeight += 18
+        itemDelay += 50
+    }
+
+    items.push(svg.svgDevtoberfestTextLink(itemHeight, columnStart, itemDelay,
+        text.getText('devtoberfest.here'),
+        `https://github.com/SAP-samples/sap-devtoberfest-2020/blob/master/TOC.md`, isPng))
     itemHeight += 18
     itemDelay += 50
 
@@ -376,16 +411,23 @@ async function buildAvatar(isPng, profile, req) {
     if(!avatarNumber || avatarNumber < 0 || avatarNumber > 18){
         avatarNumber = 0
     }
+    if(profile.scnId && profile.scnId === 'josh.bentley') {
+        avatarNumber = 12
+    } 
     let avatar = `../images/devtoberfest/avatars/Group-${avatarNumber.toString()}.png`
+    if(profile.scnId && profile.scnId === 'lars.hvam') {
+        avatar = `../images/devtoberfest/avatars/cowboy.png`
+    } 
 
-    items.push(svg.svgDevtoberfestTextHeader(592, 369, 2000,
-        `♥`,
-        isPng, `class="heart"`))
+
 
     //Avatar 
     items.push(svg.svgDevtoberfestItem(435, 280, 2000,
         await svg.loadImageB64(avatar), 124, 124, isPng, null, null, 'stagger avatar'
     ))
+    items.push(svg.svgDevtoberfestTextHeader(592, 369, 2000,
+        `♥`,
+        isPng, `class="heart"`))
 
     return items
 }

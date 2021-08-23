@@ -124,31 +124,113 @@ svg|a:active {
         opacity: 1;
     }
 }
+
 .bounce-8 {
     animation-name: bounce-7;
     animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
 }
+
 .bounce-7 {
     animation: bounce-7 1s 0s 300;
 }
+
 @keyframes bounce-7 {
-    0%   { transform: scale(1,1)      translateY(0); opacity: 0;}
-    10%  { transform: scale(1.1,.9)   translateY(0); opacity: 1;}
-    30%  { transform: scale(.9,1.1)   translateY(-100px); }
-    50%  { transform: scale(1.05,.95) translateY(0); }
-    57%  { transform: scale(1,1)      translateY(-7px); }
-    64%  { transform: scale(1,1)      translateY(0); }
-    100% { transform: scale(1,1)      translateY(0); opacity: 1;}
+    0% {
+        transform: scale(1, 1) translateY(0);
+        opacity: 0;
+    }
+
+    10% {
+        transform: scale(1.1, .9) translateY(0);
+        opacity: 1;
+    }
+
+    30% {
+        transform: scale(.9, 1.1) translateY(-100px);
+    }
+
+    50% {
+        transform: scale(1.05, .95) translateY(0);
+    }
+
+    57% {
+        transform: scale(1, 1) translateY(-7px);
+    }
+
+    64% {
+        transform: scale(1, 1) translateY(0);
+    }
+
+    100% {
+        transform: scale(1, 1) translateY(0);
+        opacity: 1;
+    }
 }
 
 .heart {
     font: 600 18px 'Joystix Monospace', Ubuntu, Sans-Serif;
     fill: red;
-    animation: 
-    beat 1s 0s 300;
+    animation:
+        beat 1s 0s 300;
 }
+
 @keyframes beat {
-    0% {font-size:2em;fill:black}
-    50% {font-size:4em;fill:red}
-    100% {font-size:2em;fill:white}
+    0% {
+        font-size: 2em;
+        fill: black
+    }
+
+    50% {
+        font-size: 4em;
+        fill: red
+    }
+
+    100% {
+        font-size: 2em;
+        fill: white
+    }
+}
+
+.led-box {
+    height: 3px;
+    width: 20px;
+    margin: 10px 0;
+    float: left;
+}
+
+.led-green {
+    margin: 0 auto;
+    width: 20px;
+    height: 4px;
+    fill: #ABFF00;
+    stroke-width:1px;
+    stroke: #304701;
+    background-color: #ABFF00;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;
+    animation: blinkGreen 0.5s infinite;
+}
+
+@keyframes blinkGreen {
+    from {
+        fill: #89FF00;
+    }
+    25% {
+        fill: #76a518;
+        stroke: rgba(0, 0, 0, 0.2) 0 -1px 1px 1px, inset #304701 0 -1px 1px, #89FF00 0 1px 0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 0;
+    }
+    50% {
+        fill: #304701;
+        stroke: rgba(0, 0, 0, 0.2) 0 -1px 1px 1px, inset #304701 0 -1px 1px, #89FF00 0 1px 0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 0;
+    }
+    75% {
+        fill: #76a518;
+        stroke: rgba(0, 0, 0, 0.2) 0 -1px 1px 1px, inset #304701 0 -1px 1px, #89FF00 0 1px 0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 0;
+    }
+    to {
+        fill: #ABFF00;
+    }
 }
