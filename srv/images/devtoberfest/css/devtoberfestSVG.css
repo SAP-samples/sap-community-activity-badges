@@ -89,6 +89,25 @@ svg|a:active {
     animation-iteration-count: 3;
     animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
 }
+.server-4 {
+    opacity: 0;
+    animation: fadeInAnimationPartial 0.3s ease-in-out forwards;
+}
+.avatar-0 {
+    animation-iteration-count: 0;
+}
+.avatar-1 {
+    animation-iteration-count: 1;
+}
+.avatar-2 {
+    animation-iteration-count: 2;
+}
+.avatar-3 {
+    animation-iteration-count: 3;
+}
+.avatar-4 {
+    animation-iteration-count: infinite;
+}
 
 .icon {
     fill: #79ff97;
@@ -122,6 +141,16 @@ svg|a:active {
 
     to {
         opacity: 1;
+    }
+}
+
+@keyframes fadeInAnimationPartial {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.33;
     }
 }
 

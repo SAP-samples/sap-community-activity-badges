@@ -49,7 +49,8 @@ async function renderSVG(isPng, profile, req) {
         avatarItems,
         devtoberfestLogo,
         bottomCRTFrame,
-        blinky
+        blinky,
+        stars
     ] = await Promise.all([
         buildGameboardHeader(isPng, profile, req),
         buildHowToPlay(isPng, profile, req),
@@ -100,7 +101,10 @@ async function renderSVG(isPng, profile, req) {
         //Bottom CRT Frame
         svg.svgDevtoberfestItem(1507, 0, 0, await svg.loadImageB64('../images/devtoberfest/okBottom.png'), 105, 1347, isPng),
         //Blinking LED
-        `<g transform="translate(1180, 1581)"class="led-green" ><rect class="led-green"  ></rect></g>`
+        `<g transform="translate(1180, 1581)"class="led-green" ><rect class="led-green"  ></rect></g>`,
+        //Cloud #4 Stars
+        svg.svgDevtoberfestItem(228, 720, 750,
+            await svg.loadImageB64('../images/devtoberfest/levels/Group11.png'), 124, 208, isPng)
     ])
 
     let body =
@@ -127,7 +131,8 @@ async function renderSVG(isPng, profile, req) {
             svg.svgBulkContent(gameboardHeader),
             svg.svgBulkContent(column1),
             svg.svgBulkContent(column2),
-            blinky
+            blinky,
+            stars
         ) +
         svg.svgEnd()
 
@@ -139,7 +144,7 @@ async function getSCNProfile(req) {
     switch (req.params.scnId) {
         //Dummy Redirect SCN ID when none is supplied
         case 'scnId.Here':
-            let e =  new Error('No SCN ID')
+            let e = new Error('No SCN ID')
             e.name = 'No SCN ID'
             e.scnId = req.params.scnId
             throw e
@@ -195,9 +200,9 @@ async function getSCNProfile(req) {
 
             let userNameScore = stringScore(userName)
             let points = 0
-            for(let item of scnItems.content){
+            for (let item of scnItems.content) {
                 let badgeValue = badges.find(x => x.badge == item.name)
-                if(badgeValue){
+                if (badgeValue) {
                     points = points + badgeValue.points
                 }
             }
@@ -453,11 +458,12 @@ async function buildCloud4(isPng, profile, req) {
     items.push(svg.svgDevtoberfestItem(450, 735, 750,
         await svg.loadImageB64('../images/devtoberfest/image6.png'), 72, 311, isPng))
     //Cloud #4 Server
+    let serverStyle = 'stagger'
+    if(profile.level === 4){
+        serverStyle = 'server-4'
+    }
     items.push(svg.svgDevtoberfestItem(280, 765, 750,
-        await svg.loadImageB64('../images/devtoberfest/levels/Frame.png'), 165, 117, isPng))
-    //Cloud #4 Stars
-    items.push(svg.svgDevtoberfestItem(228, 720, 750,
-        await svg.loadImageB64('../images/devtoberfest/levels/Group11.png'), 124, 208, isPng))
+        await svg.loadImageB64('../images/devtoberfest/levels/Frame.png'), 165, 117, isPng, null, null, serverStyle))
     //Cloud #4 Banner Text
     items.push(svg.svgDevtoberfestTextHeader(486, 890, 800,
         text.getText('devtoberfest.level4'),
@@ -482,14 +488,54 @@ async function buildAvatar(isPng, profile, req) {
     }
 
 
+    avatarX = 0
+    avatarY = 0
+    avatarStyle = 'stagger avatar'
+    hearts = []
+    delay = 2000
+    switch (profile.level) {
+        case 0:
+            avatarX = 285
+            avatarY = 420
+            avatarStyle += ' avatar-1'
+            break
+        case 1:
+            avatarX = 435
+            avatarY = 280
+            avatarStyle += ' avatar-1'
+            hearts.push({ x: 592, y: 369 })
+            break
+        case 2:
+            avatarX = 715
+            avatarY = 445
+            avatarStyle += ' avatar-2'
+            hearts.push({ x: 875, y: 420 }, { x: 875, y: 448 },)
+            break
+        case 3:
+            avatarX = 575
+            avatarY = 930
+            avatarStyle += ' avatar-3'
+            hearts.push({ x: 735, y: 888 }, { x: 735, y: 916 }, { x: 735, y: 944 })
+            break
+        case 4:
+            avatarX = 325
+            avatarY = 760
+            avatarStyle += ' avatar-4'
+            break
+        default:
+    }
 
     //Avatar 
-    items.push(svg.svgDevtoberfestItem(435, 280, 2000,
-        await svg.loadImageB64(avatar), 124, 124, isPng, null, null, 'stagger avatar'
+    items.push(svg.svgDevtoberfestItem(avatarX, avatarY, delay,
+        await svg.loadImageB64(avatar), 124, 124, isPng, null, null, avatarStyle
     ))
-    items.push(svg.svgDevtoberfestTextHeader(592, 369, 2000,
-        `♥`,
-        isPng, `class="heart"`))
+
+    for (let heart of hearts) {
+        items.push(svg.svgDevtoberfestTextHeader(heart.x, heart.y, delay,
+            `♥`,
+            isPng, `class="heart"`))
+    }
+
 
     return items
 }

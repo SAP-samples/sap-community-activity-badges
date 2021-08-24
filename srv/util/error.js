@@ -86,10 +86,10 @@ async function handleErrorDevtoberfest(error, req, res) {
 
         let errorString = ''
         if (error.name && error.name === 'No SCN ID'){
-            errorString = `Custom No ID Message`
+            errorString = text.getText('devtoberfest.missingID')
         }
         else if (error.statusCode && error.statusCode === 404){
-            errorString = `Custom User Not Found`
+            errorString = errorString = text.getText('devtoberfest.idNotFound')
         }
         else if (error.error) {
             errorString = error.error
@@ -110,13 +110,26 @@ async function handleErrorDevtoberfest(error, req, res) {
             itemDelay += 200
         }
 
+        if (error.name && error.name === 'No SCN ID' || error.statusCode && error.statusCode === 404){
+            items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
+                text.getText('devtoberfest.profileTutorial'),
+                `https://developers.sap.com/tutorials/community-profile.html`, isPng))
+                itemHeight += 20
+                itemDelay += 200
+        }
+        if (error.statusCode && error.statusCode === 404){
+            items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
+                text.getText('devtoberfest.privacy'),
+                `https://www.sap.com/about/legal/privacy.html`, isPng))
+        }
+
         let body =
             svg.svgHeader(1347, 1612) +
 
             svg.svgDevtoberfestBackground() +
             svg.svgDevtoberfestItem(0, 0, 0, await svg.loadImageB64('../images/devtoberfest/BackgroundOKG.png'), 1007, 1347, isPng) +
             //Devtoberfest Gameboard title
-            svg.svgDevtoberfestItem(80, 50, 750, await svg.loadImageB64('../images/devtoberfest/Group_13.png'), 103, 668, isPng) +
+            svg.svgDevtoberfestItem(80, 50, 0, await svg.loadImageB64('../images/devtoberfest/Group_13.png'), 103, 668, isPng) +
 
             svg.svgMainContent(items) +
 
