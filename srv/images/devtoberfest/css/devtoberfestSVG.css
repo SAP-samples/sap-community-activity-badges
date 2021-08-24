@@ -171,7 +171,7 @@ svg|a:active {
     font: 600 18px 'Joystix Monospace', Ubuntu, Sans-Serif;
     fill: red;
     animation:
-        beat 1s 0s 300;
+        beat 1s 0s infinite;
 }
 
 @keyframes beat {

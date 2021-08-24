@@ -74,7 +74,6 @@ module.exports.handleError = handleError
  */
 async function handleErrorDevtoberfest(error, req, res) {
     try {
-        console.log(error)
         const svg = require("../util/svgRender")
         const texts = require("../util/texts")
         const devtoberfest = require("../routes/devtoberfest")
@@ -86,7 +85,13 @@ async function handleErrorDevtoberfest(error, req, res) {
         let itemDelay = 450
 
         let errorString = ''
-        if (error.error) {
+        if (error.name && error.name === 'No SCN ID'){
+            errorString = `Custom No ID Message`
+        }
+        else if (error.statusCode && error.statusCode === 404){
+            errorString = `Custom User Not Found`
+        }
+        else if (error.error) {
             errorString = error.error
         } else {
             errorString = error.toString()

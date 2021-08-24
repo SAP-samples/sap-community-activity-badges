@@ -7,6 +7,9 @@ module.exports = (app) => {
     app.get('/devtoberfest', async (req, res) => {
         return res.redirect("/")
     })
+    app.get('/devtoberfestContest', async (req, res) => {
+        return res.redirect("/devtoberfestContest/scnId.Here")
+    })
 
     app.get('/devtoberfestContest/:scnId', async (req, res) => {
         try {
@@ -132,38 +135,97 @@ async function renderSVG(isPng, profile, req) {
 }
 
 async function getSCNProfile(req) {
-    const request = require('then-request')
-    const urlBadges = `https://people-api.services.sap.com/rs/badge/${req.params.scnId}?sort=timestamp,desc&size=1000`
-    //const urlProfile = `https://searchproxy.api.community.sap.com/api/v1/search?limit=20&orderBy=UPDATE_TIME&order=DESC&contentTypes%5B0%5D=people&authorId=${req.params.scnId}`
-    const urlProfile = `https://content.services.sap.com/cse/search/user?name=${req.params.scnId}&sort=published:desc&size=1&page=0`
-    let [itemsRes, profileRes] = await Promise.all([
-        request('GET', urlBadges),
-        request('GET', urlProfile)
-    ])
-    const scnItems = JSON.parse(itemsRes.getBody())
-    const scnProfile = JSON.parse(profileRes.getBody())
+    let profile = {}
+    switch (req.params.scnId) {
+        //Dummy Redirect SCN ID when none is supplied
+        case 'scnId.Here':
+            let e =  new Error('No SCN ID')
+            e.name = 'No SCN ID'
+            e.scnId = req.params.scnId
+            throw e
+        //special test users
+        case 'test0':
+            profile = {
+                userName: req.params.scnId, scnId: req.params.scnId, userNameScore: stringScore(req.params.scnId),
+                points: 0, level: 0
+            }
+            return profile
+        case 'test1':
+            profile = {
+                userName: req.params.scnId, scnId: req.params.scnId, userNameScore: stringScore(req.params.scnId),
+                points: 50, level: 1
+            }
+            return profile
+        case 'test2':
+            profile = {
+                userName: req.params.scnId, scnId: req.params.scnId, userNameScore: stringScore(req.params.scnId),
+                points: 5500, level: 2
+            }
+            return profile
+        case 'test3':
+            profile = {
+                userName: req.params.scnId, scnId: req.params.scnId, userNameScore: stringScore(req.params.scnId),
+                points: 10500, level: 3
+            }
+            return profile
+        case 'test4':
+            profile = {
+                userName: req.params.scnId, scnId: req.params.scnId, userNameScore: stringScore(req.params.scnId),
+                points: 50500, level: 4
+            }
+            return profile
+        default:
+            const request = require('then-request')
+            const urlBadges = `https://people-api.services.sap.com/rs/badge/${req.params.scnId}?sort=timestamp,desc&size=1000`
+            //const urlProfile = `https://searchproxy.api.community.sap.com/api/v1/search?limit=20&orderBy=UPDATE_TIME&order=DESC&contentTypes%5B0%5D=people&authorId=${req.params.scnId}`
+            const urlProfile = `https://content.services.sap.com/cse/search/user?name=${req.params.scnId}&sort=published:desc&size=1&page=0`
+            let [itemsRes, profileRes, pointsLevels, badges] = await Promise.all([
+                request('GET', urlBadges),
+                request('GET', urlProfile),
+                require('../util/points.json'),
+                require('../util/badges.json')
+            ])
+            const scnItems = JSON.parse(itemsRes.getBody())
+            const scnProfile = JSON.parse(profileRes.getBody())
 
-    let userName = req.params.scnId
-    if (scnProfile._embedded  && scnProfile._embedded.contents[0] && scnProfile._embedded.contents[0].author) {
-        userName = scnProfile._embedded.contents[0].author.displayName
+            let userName = req.params.scnId
+            if (scnProfile._embedded && scnProfile._embedded.contents[0] && scnProfile._embedded.contents[0].author) {
+                userName = scnProfile._embedded.contents[0].author.displayName
+            }
+
+            let userNameScore = stringScore(userName)
+            let points = 0
+            for(let item of scnItems.content){
+                let badgeValue = badges.find(x => x.badge == item.name)
+                if(badgeValue){
+                    points = points + badgeValue.points
+                }
+            }
+
+            let level = 0
+            for (const index in pointsLevels) {
+                if (points >= pointsLevels[index].points) {
+                    level = pointsLevels[index].level
+                }
+            }
+
+
+            profile = { userName: userName, scnId: req.params.scnId, badges: scnItems, userNameScore: userNameScore, points: points, level: level }
+            return profile
     }
-
-    let userNameScore = stringScore(userName)
-    let profile = { userName: userName, scnId: req.params.scnId, badges: scnItems, userNameScore: userNameScore, points: 200500, level: 1 }
-    return profile
 }
 
 function stringScore(string) {
     let score = 0
 
     for (j = 0; j < string.length; j++) {
-        score += string.charAt(j).charCodeAt(0) 
+        score += string.charAt(j).charCodeAt(0)
     }
 
     //Calculate Modulo of Score and maximum Avatar number of 19 
     //Given two positive numbers a and n, a modulo n (abbreviated as a mod n) is the remainder of the Euclidean division of a by n, where a is the dividend and n is the divisor
-    score = ((score % 19 ) + 19 ) % 19
-    if(score > 0){ score = score - 1}
+    score = ((score % 19) + 19) % 19
+    if (score > 0) { score = score - 1 }
     return score
 }
 
@@ -408,16 +470,16 @@ async function buildAvatar(isPng, profile, req) {
     let text = texts.getBundle(req)
     let items = []
     let avatarNumber = profile.userNameScore
-    if(!avatarNumber || avatarNumber < 0 || avatarNumber > 18){
+    if (!avatarNumber || avatarNumber < 0 || avatarNumber > 18) {
         avatarNumber = 0
     }
-    if(profile.scnId && profile.scnId === 'josh.bentley') {
+    if (profile.scnId && profile.scnId === 'josh.bentley') {
         avatarNumber = 12
-    } 
+    }
     let avatar = `../images/devtoberfest/avatars/Group-${avatarNumber.toString()}.png`
-    if(profile.scnId && profile.scnId === 'lars.hvam') {
+    if (profile.scnId && profile.scnId === 'lars.hvam') {
         avatar = `../images/devtoberfest/avatars/cowboy.png`
-    } 
+    }
 
 
 
