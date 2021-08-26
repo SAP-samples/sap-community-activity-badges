@@ -8,7 +8,7 @@ process.on('uncaughtException', function (err) {
 
 const express = require('express')
 const path = require('path')
-const favicon = require('serve-favicon');
+const favicon = require('serve-favicon')
 const fileExists = require('fs').existsSync
 const glob = require('glob')
 
@@ -24,21 +24,21 @@ function ExpressServer() {
     app.express = express
     this.app = app
 
-    this.app.use(favicon(path.join(__dirname, 'images', 'favicon.ico')));
+    this.app.use(favicon(path.join(__dirname, 'images', 'favicon.ico')))
 
     this.start = async function () {
-        app.baseDir = this.baseDir;
+        app.baseDir = this.baseDir
 
         //Load express.js
-        let expressFile = path.join(app.baseDir, 'server/express.js');
+        let expressFile = path.join(app.baseDir, 'server/express.js')
         if (fileExists(expressFile)) {
             await require(expressFile)(app)
         }
 
         //Load routes
-        let routesDir = path.join(this.baseDir, 'routes/**/*.js');
-        let files = glob.sync(routesDir);
-        this.routerFiles = files;
+        let routesDir = path.join(this.baseDir, 'routes/**/*.js')
+        let files = glob.sync(routesDir)
+        this.routerFiles = files
         if (files.length !== 0) {
             for (let file of files) {
                 await require(file)(app)
@@ -53,4 +53,4 @@ function ExpressServer() {
         httpServer.close()
     }
 }
-module.exports = ExpressServer
+module.exports.ExpressServer = ExpressServer
