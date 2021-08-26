@@ -8,6 +8,7 @@ process.on('uncaughtException', function (err) {
 
 const express = require('express')
 const path = require('path')
+const favicon = require('serve-favicon');
 const fileExists = require('fs').existsSync
 const glob = require('glob')
 
@@ -23,7 +24,9 @@ function ExpressServer() {
     app.express = express
     this.app = app
 
-    this.start = async  function () {
+    this.app.use(favicon(path.join(__dirname, 'images', 'favicon.ico')));
+
+    this.start = async function () {
         app.baseDir = this.baseDir;
 
         //Load express.js
