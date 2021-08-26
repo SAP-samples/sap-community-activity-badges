@@ -198,6 +198,7 @@ svg|a:active {
 
 .heart {
     font: 600 18px 'Joystix Monospace', Ubuntu, Sans-Serif;
+    text-anchor: middle;
     fill: red;
     animation:
         beat 1s 0s infinite;

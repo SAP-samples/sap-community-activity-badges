@@ -507,19 +507,19 @@ async function buildAvatar(isPng, profile, req) {
             avatarX = 435
             avatarY = 280
             avatarStyle += ' avatar-1'
-            hearts.push({ x: 592, y: 369 })
+            hearts.push({ x: 592, y: 383 })
             break
         case 2:
             avatarX = 715
             avatarY = 445
             avatarStyle += ' avatar-2'
-            hearts.push({ x: 875, y: 420 }, { x: 875, y: 448 },)
+            hearts.push({ x: 875, y: 434 }, { x: 875, y: 462 },)
             break
         case 3:
             avatarX = 575
             avatarY = 930
             avatarStyle += ' avatar-3'
-            hearts.push({ x: 735, y: 888 }, { x: 735, y: 916 }, { x: 735, y: 944 })
+            hearts.push({ x: 735, y: 902 }, { x: 735, y: 930 }, { x: 735, y: 958 })
             break
         case 4:
             avatarX = 325
