@@ -283,13 +283,17 @@ async function buildHowToPlay(isPng, profile, req) {
     items.push(svg.svgDevtoberfestTextHeader(1050, 60, itemDelay,
         text.getText('devtoberfest.column1'), isPng))
 
-    items.push(svg.svgDevtoberfestTextItem(itemHeight, 60, itemDelay,
-        text.getText('devtoberfest.column1.1'), isPng))
-    itemHeight += 18
-    itemDelay += 50
+    wrappedOutput = wrapper(text.getText('devtoberfest.column1.1'), { wrapOn: 35 })
+    wrappedArray = wrappedOutput.split("\n")
+    for (let item of wrappedArray) {
+        items.push(await svg.svgDevtoberfestTextItem(itemHeight, 60, itemDelay,
+            item, isPng))
+        itemHeight += 18
+        itemDelay += 50
+    }
 
     items.push(svg.svgDevtoberfestTextLink(itemHeight, 60, itemDelay,
-        `${text.getText('devtoberfest')} ${text.getText('devtoberfest.here')}`,
+        `${text.getText('devtoberfest')}`,
         `https://developers.sap.com/devtoberfest.html`, isPng))
     itemHeight += 36
     itemDelay += 50
@@ -304,7 +308,7 @@ async function buildHowToPlay(isPng, profile, req) {
     }
 
     items.push(svg.svgDevtoberfestTextLink(itemHeight, 60, itemDelay,
-        text.getText('devtoberfest.here'),
+        text.getText('devtoberfest.column1.here'),
         `https://github.com/SAP-samples/devtoberfest-2021/blob/main/contest/readme.md`, isPng))
     itemHeight += 18
     itemDelay += 50
@@ -334,7 +338,7 @@ async function buildLawyersHappy(isPng, profile, req) {
     }
 
     items.push(svg.svgDevtoberfestTextLink(itemHeight, columnStart, itemDelay,
-        text.getText('devtoberfest.here'),
+        text.getText('devtoberfest.column2.here'),
         `https://github.com/SAP-samples/sap-devtoberfest-2020/blob/master/TOC.md`, isPng))
     itemHeight += 18
     itemDelay += 50
