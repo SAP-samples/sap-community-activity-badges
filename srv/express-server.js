@@ -53,4 +53,4 @@ function ExpressServer() {
         httpServer.close()
     }
 }
-module.exports.ExpressServer = ExpressServer
+module.exports = ExpressServer
