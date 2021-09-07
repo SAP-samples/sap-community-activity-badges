@@ -94,7 +94,7 @@ async function renderSVG(isPng, profile, req) {
         ),
         buildAvatar(isPng, profile, req),
         //Devtoberfest Logo            
-        `<a xlink:href="https://developers.sap.com/devtoberfest.html" target="_blank">` +
+        `<a xlink:href="https://github.com/SAP-samples/devtoberfest-2021" target="_blank">` +
         `<title>Devtoberfest</title>` +
         svg.svgDevtoberfestItem(1250, 925, 0, await svg.loadImageB64('../images/devtoberfest/Frame.png'), 192, 212, isPng) +
         `</a>`,
@@ -294,7 +294,7 @@ async function buildHowToPlay(isPng, profile, req) {
 
     items.push(svg.svgDevtoberfestTextLink(itemHeight, 60, itemDelay,
         `${text.getText('devtoberfest')}`,
-        `https://developers.sap.com/devtoberfest.html`, isPng))
+        `https://www.eventbrite.com/e/devtoberfest-2021-registration-168612930815`, isPng))
     itemHeight += 36
     itemDelay += 50
 
