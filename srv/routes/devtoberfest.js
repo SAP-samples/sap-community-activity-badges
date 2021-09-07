@@ -158,25 +158,25 @@ async function getSCNProfile(req) {
         case 'test1':
             profile = {
                 userName: req.params.scnId, scnId: req.params.scnId, userNameScore: stringScore(req.params.scnId),
-                points: 50, level: 1
+                points: 2010, level: 1
             }
             return profile
         case 'test2':
             profile = {
                 userName: req.params.scnId, scnId: req.params.scnId, userNameScore: stringScore(req.params.scnId),
-                points: 5500, level: 2
+                points: 12500, level: 2
             }
             return profile
         case 'test3':
             profile = {
                 userName: req.params.scnId, scnId: req.params.scnId, userNameScore: stringScore(req.params.scnId),
-                points: 10500, level: 3
+                points: 18400, level: 3
             }
             return profile
         case 'test4':
             profile = {
                 userName: req.params.scnId, scnId: req.params.scnId, userNameScore: stringScore(req.params.scnId),
-                points: 50500, level: 4
+                points: 24500, level: 4
             }
             return profile
         default:
