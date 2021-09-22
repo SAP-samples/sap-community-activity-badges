@@ -1,7 +1,200 @@
 [
-    {
-        "badge": "manual_SAP TechEd in 2020 Registered Attendee",
-        "points": 10
-    }
-    
-]
+  {
+    "badge_id": "Devtoberfest 2021 badge no stars",
+    "activity_name": "register with eventbrite",
+    "points": 10,
+    "displayName": "Devtoberfest 2021 Participant"
+  },
+  {
+    "badge_id": "#9B7B6E",
+    "activity_name": "contribute line of code to codocs",
+    "points": 500,
+    "displayName": "Open Documentation Initiative – Contribute Content"
+  },
+  {
+    "badge_id": "#2F243B",
+    "activity_name": "submit project to devtoberfest github",
+    "points": 1000,
+    "displayName": "#2F243B - Devtoberfest 2021- Project Submitted to Github"
+  },
+  {
+    "badge_id": "#580415",
+    "activity_name": "accepted code to another community member project",
+    "points": 150,
+    "displayName": "#580415 - Devtoberfest 2021- Code Submitted to Member Project"
+  },
+  {
+    "badge_id": "#F709F2",
+    "activity_name": "Week 1 Speaker/Intro Points Event",
+    "points": 50,
+    "displayName": "#F709F2 - Devtoberfest 2021 - Week 1 Attended Speaker Event"
+  },
+  {
+    "badge_id": "#5B4701",
+    "activity_name": "Week 1 Fun Friday Event",
+    "points": 300,
+    "displayName": "#5B4701 - Devtoberfest 2021 - Week 1 Fun Friday Attendee"
+  },
+  {
+    "badge_id": "#F29C1F",
+    "activity_name": "Week 2 Speaker",
+    "points": 100,
+    "displayName": "#F29C1F - Devtoberfest 2021 - Week 2 Attended Speaker Event"
+  },
+  {
+    "badge_id": "#C418DA",
+    "activity_name": "Create a User Interface with CAP (SAP HANA Cloud)",
+    "points": 200,
+    "displayName": "#C418DA - Devtoberfest 2021 - Create a User Interface with CAP (SAP HANA Cloud)"
+  },
+  {
+    "badge_id": "#77CE8B",
+    "activity_name": "Add User Authentication to Your Application (SAP HANA Cloud)",
+    "points": 200,
+    "displayName": "#77CE8B - Devtoberfest 2021 - Add User Authentication to Your Application (SAP HANA Cloud)"
+  },
+  {
+    "badge_id": "#3BF10C",
+    "activity_name": "Introduction to Application Development Using CAP and Node.js",
+    "points": 200,
+    "displayName": "#3BF10C - Devtoberfest 2021 - Introduction to Application Development Using CAP and Node.js"
+  },
+  {
+    "badge_id": "#BDFA47",
+    "activity_name": "Set Up Local Development Using VS Code",
+    "points": 200,
+    "displayName": "#BDFA47 - Devtoberfest 2021 - Set Up Local Development Using VS Code"
+  },
+  {
+    "badge_id": "#70F4EE",
+    "activity_name": "Create a Directory for Development",
+    "points": 200,
+    "displayName": "#70F4EE - Devtoberfest 2021 - Create a Directory for Development"
+  },
+  {
+    "badge_id": "#8BF866",
+    "activity_name": "Create a CAP-Based Application",
+    "points": 200,
+    "displayName": "#8BF866 - Devtoberfest 2021 - Create a CAP-Based Application"
+  },
+  {
+    "badge_id": "#64F2BC",
+    "activity_name": "Create an SAP Fiori Elements-Based UI",
+    "points": 200,
+    "displayName": "#64F2BC - Devtoberfest 2021 - Create an SAP Fiori Elements-Based UI"
+  },
+  {
+    "badge_id": "#A644E8",
+    "activity_name": "Add Business Logic to Your Application",
+    "points": 200,
+    "displayName": "#A644E8 - Devtoberfest 2021 - Add Business Logic to Your Application"
+  },
+  {
+    "badge_id": "#195B26",
+    "activity_name": "Create a UI Using Freestyle SAPUI5",
+    "points": 200,
+    "displayName": "#195B26 - Devtoberfest 2021 - Create a UI Using Freestyle SAPUI5"
+  },
+  {
+    "badge_id": "#042272",
+    "activity_name": "Add More Than One Application to the Launch Page",
+    "points": 200,
+    "displayName": "#042272 - Devtoberfest 2021 - Add More Than One Application to the Launch Page"
+  },
+  {
+    "badge_id": "#FB7260",
+    "activity_name": "Implement Roles and Authorization Checks In CAP",
+    "points": 200,
+    "displayName": "#FB7260 - Devtoberfest 2021 - Implement Roles and Authorization Checks In CAP"
+  },
+  {
+    "badge_id": "#CF3434",
+    "activity_name": "Prepare for SAP BTP Development",
+    "points": 200,
+    "displayName": "#CF3434 - Devtoberfest 2021 - Prepare for SAP BTP Development"
+  },
+  {
+    "badge_id": "#91086F",
+    "activity_name": "Set Up the SAP HANA Cloud Service",
+    "points": 200,
+    "displayName": "#91086F - Devtoberfest 2021 - Set Up the SAP HANA Cloud Service"
+  },
+  {
+    "badge_id": "#F9EEE7",
+    "activity_name": "Prepare User Authentication and Authorization (XSUAA) Setup",
+    "points": 200,
+    "displayName": "#F9EEE7 - Devtoberfest 2021 - Prepare User Authentication and Authorization (XSUAA) Setup"
+  },
+  {
+    "badge_id": "#F4C6D3",
+    "activity_name": "Deploy Your Multi-Target Application (MTA)",
+    "points": 200,
+    "displayName": "#F4C6D3 - Devtoberfest 2021 - Deploy Your Multi-Target Application (MTA)"
+  },
+  {
+    "badge_id": "#6B1572",
+    "activity_name": "Add the SAP Launchpad Service",
+    "points": 200,
+    "displayName": "#6B1572 - Devtoberfest 2021 - Add the SAP Launchpad Service"
+  },
+  {
+    "badge_id": "#770BAB",
+    "activity_name": "Assign a Role Collection to a User",
+    "points": 200,
+    "displayName": "#770BAB - Devtoberfest 2021 - Assign a Role Collection to a User"
+  },
+  {
+    "badge_id": "#4E3D3E",
+    "activity_name": "Enable Logging Service for Your Application",
+    "points": 200,
+    "displayName": "#4E3D3E - Devtoberfest 2021 - Enable Logging Service for Your Application"
+  },
+  {
+    "badge_id": "#3837DF",
+    "activity_name": "Undeploy Your Multi-Target Application (MTA)",
+    "points": 200,
+    "displayName": "#3837DF - Devtoberfest 2021 - Undeploy Your Multi-Target Application (MTA)"
+  },
+  {
+    "badge_id": "#C32EC0",
+    "activity_name": "Configure and Run a Predefined SAP Continuous Integration and Delivery (CI/CD) Pipeline",
+    "points": 200,
+    "displayName": "#C32EC0 - Devtoberfest 2021 - Configure and Run a Predefined SAP Continuous Integration and Delivery (CI/CD) Pipeline"
+  },
+  {
+    "badge_id": "#9C2DB2",
+    "activity_name": "Create Table Persistence and Generate Data",
+    "points": 200,
+    "displayName": "#9C2DB2 - Devtoberfest 2021 - Create Table Persistence and Generate Data"
+  },
+  {
+    "badge_id": "#BF3202",
+    "activity_name": "Define and Expose a CDS-Based Travel Data Model",
+    "points": 200,
+    "displayName": "#BF3202 - Devtoberfest 2021 - Completed Tutorial Define and Expose a CDS-Based Travel Data Model"
+  },
+  {
+    "badge_id": "#859773",
+    "activity_name": "Create Behavior Definition for Managed Scenario",
+    "points": 200,
+    "displayName": "#859773 - Devtoberfest 2021 - Create Behavior Definition for Managed Scenario"
+  },
+  {
+    "badge_id": "#50E9F6",
+    "activity_name": "Enhance Behavior With Action and Validation",
+    "points": 200,
+    "displayName": "#50E9F6 - Devtoberfest 2021 - Enhance Behavior With Action and Validation"
+  },
+  {
+    "badge_id": "#9E3498",
+    "activity_name": "Week 2  Fun Friday Event",
+    "points": 300,
+    "displayName": "#9E3498 - Devtoberfest 2021 - Week 2 Fun Friday Attendee"
+  },
+  {
+    "badge_id": "",
+    "activity_name": "Dogtoberfest",
+    "points": 100,
+    "displayName": "Devtoberfest 2021 - #Dogtoberfest"
+  }
+ ]

@@ -201,7 +201,7 @@ async function getSCNProfile(req) {
             let userNameScore = stringScore(userName)
             let points = 0
             for (let item of scnItems.content) {
-                let badgeValue = badges.find(x => x.badge == item.name)
+                let badgeValue = badges.find(x => x.displayName == item.displayName)
                 if (badgeValue) {
                     points = points + badgeValue.points
                 }
