@@ -88,6 +88,9 @@ async function handleErrorDevtoberfest(error, req, res) {
         if (error.name && error.name === 'No SCN ID'){
             errorString = text.getText('devtoberfest.missingID')
         }
+        else if (error.name && error.name === 'Not Registered'){
+            errorString = text.getText('devtoberfest.missingReg')
+        }
         else if (error.statusCode && error.statusCode === 404){
             errorString = errorString = text.getText('devtoberfest.idNotFound')
         }
@@ -114,6 +117,20 @@ async function handleErrorDevtoberfest(error, req, res) {
             items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
                 text.getText('devtoberfest.profileTutorial'),
                 `https://developers.sap.com/tutorials/community-profile.html`, isPng))
+                itemHeight += 20
+                itemDelay += 200
+        }
+        if (error.name && error.name === 'Not Registered' || error.statusCode && error.statusCode === 404){
+            items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
+                text.getText('devtoberfest.regLink'),
+                `https://www.eventbrite.com/e/168612930815`, isPng))
+                itemHeight += 20
+                itemDelay += 200
+        }
+        if (error.name && error.name === 'Not Registered' || error.statusCode && error.statusCode === 404){
+            items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
+                text.getText('devtoberfest.regTutorial'),
+                `https://blogs.sap.com/2021/09/23/devtoberfest-2021-one-week-to-go/#reg`, isPng))
                 itemHeight += 20
                 itemDelay += 200
         }

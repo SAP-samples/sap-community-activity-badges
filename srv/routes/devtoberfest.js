@@ -198,6 +198,15 @@ async function getSCNProfile(req) {
                 userName = scnProfile._embedded.contents[0].author.displayName
             }
 
+            //Check if they are registered for Devtoberfest - "Devtoberfest 2021 Participant"
+            let registered = scnItems.content.find(x => x.displayName == 'Devtoberfest 2021 Participant')
+            if (!registered) {
+                let e = new Error('Not Registered')
+                e.name = 'Not Registered'
+                e.scnId = req.params.scnId
+                throw e
+            }
+
             let userNameScore = stringScore(userName)
             let points = 0
             for (let item of scnItems.content) {
@@ -463,7 +472,7 @@ async function buildCloud4(isPng, profile, req) {
         await svg.loadImageB64('../images/devtoberfest/image6.png'), 72, 311, isPng))
     //Cloud #4 Server
     let serverStyle = 'stagger'
-    if(profile.level === 4){
+    if (profile.level === 4) {
         serverStyle = 'server-4'
     }
     items.push(svg.svgDevtoberfestItem(280, 765, 750,
