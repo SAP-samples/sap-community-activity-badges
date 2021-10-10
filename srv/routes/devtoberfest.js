@@ -348,7 +348,7 @@ async function buildLawyersHappy(isPng, profile, req) {
 
     items.push(svg.svgDevtoberfestTextLink(itemHeight, columnStart, itemDelay,
         text.getText('devtoberfest.column2.here'),
-        `https://github.com/SAP-samples/sap-devtoberfest-2020/blob/master/TOC.md`, isPng))
+        `https://github.com/SAP-samples/devtoberfest-2021/blob/main/TOC.md`, isPng))
     itemHeight += 18
     itemDelay += 50
 
