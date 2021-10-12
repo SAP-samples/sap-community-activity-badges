@@ -74,6 +74,11 @@ function svgStyleHeader() {
         font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
         fill: #fff;
         animation: fadeInAnimation 0.8s ease-in-out forwards;
+      }\n
+      .headerGroup {
+        font: 600 12px 'Segoe UI', Ubuntu, Sans-Serif;
+        fill: #fff;
+        animation: fadeInAnimation 0.8s ease-in-out forwards;
       }\n`
 }
 module.exports.svgStyleHeader = svgStyleHeader
@@ -230,7 +235,23 @@ async function svgContentHeader(text) {
     </g>\n`
 }
 module.exports.svgContentHeader = svgContentHeader
-
+/**
+ * Image Header 
+ * @param {string} text 
+ * @returns {Promise<string>}
+ */
+ async function svgContentHeaderGroups(text) {
+  return `
+    <g data-testid="title" transform="translate(25, 35)">
+        <g transform="translate(0, 0)">
+            <image x="-23" y="-33" class="header" href="data:image/png;base64,${await loadImageB64("../images/sap_18.png")}" height="25" width="50"/> 
+        </g>
+        <g transform="translate(0, 0)">
+            <text x="28" y="-22" class="headerGroup" data-testid="header">${text}</text>
+        </g>
+    </g>\n`
+}
+module.exports.svgContentHeaderGroups = svgContentHeaderGroups
 /**
  * Error Image Header 
  * @param {string} text 
@@ -636,6 +657,55 @@ async function svgBadgeItem(height, width, delay, image, title, png = false) {
 }
 module.exports.svgBadgeItem = svgBadgeItem
 
+/**
+ * Render a Badge Showcase Item
+ * @param {number} height 
+ * @param {number} width
+ * @param {number} delay - animation delay in milliseconds
+ * @param {string} image - Base64 encoded image data 
+ * @param {string} title 
+ * @param {boolean} [png] - alter rendering for png
+ * @returns {Promise<string>}
+ */
+ async function svgBadgeItemGroups(height, width, delay, image, title, png = false) {
+  const request = require('then-request')
+
+  let finalImage = image
+  let content =
+    `
+   <g transform="translate(${width.toString()}, ${height.toString()})">\n`
+
+  // @ts-ignore
+  let imageData = await request('GET', image).getBody()
+  let imageBase64 = Buffer.from(imageData).toString('base64')
+  if (image.slice(-3) === 'png') {
+    finalImage = `data:image/png;base64,${imageBase64}`
+  } else {
+    finalImage = `data:image/svg+xml;base64,${imageBase64}`
+  }
+
+
+  if (png) {
+    content += `
+    <g transform="translate(25, 0)">
+    `
+  } else {
+    content += `
+    <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(25, 0)">
+    `
+  }
+  content += `
+  <a xlink:href="${image}" target="_blank">
+        <title>${title}</title>
+       <image y="4" class="icon" href="${finalImage}" height="25" width="25"/>    
+       </a>
+       </g>
+   </g>\n`
+
+  return content
+
+}
+module.exports.svgBadgeItemGroups = svgBadgeItemGroups
 /**
  * Render a Badge Showcase Item 2nd line when wrapped
  * @param {number} height 
