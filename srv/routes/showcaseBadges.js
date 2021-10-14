@@ -1,13 +1,18 @@
 module.exports = (app) => {
-
     const svg = require("../util/svgRender")
     const texts = require("../util/texts")
+    function nocache(req, res, next) {
+        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate')
+        res.header('Expires', '-1')
+        res.header('Pragma', 'no-cache')
+        next()
+    }
 
-    app.get('/showcaseBadges', async (req, res) =>{
+    app.get('/showcaseBadges', async (req, res) => {
         return res.redirect("/")
     })
 
-    app.get('/showcaseBadges/:scnId', async (req, res) => {
+    app.get('/showcaseBadges/:scnId', nocache, async (req, res) => {
         try {
             let isPng = false
             if (req.query.png) { isPng = true }
@@ -48,7 +53,7 @@ module.exports = (app) => {
                             if (wrappedArray.length > 2) {
                                 if (wrappedArray[numItems].length > 17) {
                                     wrappedArray[numItems] = wrappedArray[numItems].substring(0, 17) + '...'
-                                }else{
+                                } else {
                                     wrappedArray[numItems] += '...'
                                 }
                             }

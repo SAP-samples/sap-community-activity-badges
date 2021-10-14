@@ -6,6 +6,7 @@ module.exports = function (app) {
 	let appContext = logging.createAppContext({})
 	app.logger = appContext.createLogContext().getLogger('/Application')
 
+	app.set('etag', false)
 
 	require('./healthCheck')(app)
 	require('./overloadProtection')(app)

@@ -2,12 +2,17 @@ module.exports = (app) => {
 
     const svg = require("../util/svgRender")
     const texts = require("../util/texts")
-
+    function nocache(req, res, next) {
+        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate')
+        res.header('Expires', '-1')
+        res.header('Pragma', 'no-cache')
+        next()
+    }
     app.get('/activity', async (req, res) =>{
         return res.redirect("/")
     })
 
-    app.get('/activity/:scnId', async (req, res) => {
+    app.get('/activity/:scnId', nocache, async (req, res) => {
         try {
             let isPng = false
             if (req.query.png) { isPng = true }

@@ -16,6 +16,7 @@
     "express": "^4.17.1",
     "glob": "^7.1.7",
     "mustache": "^4.2.0",
+    "nocache": "^3.0.1",
     "overload-protection": "^1.1.0",
     "serve-favicon": "^2.5.0",
     "sharp": "^0.28.3",
