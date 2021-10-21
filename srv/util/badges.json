@@ -45,7 +45,7 @@
     "badge_id": "#C418DA",
     "activity_name": "Create a User Interface with CAP (SAP HANA Cloud)",
     "points": 200,
-    "displayName": "#C418DA - Devtoberfest 2021 - Create a User Interface with CAP (SAP HANA Cloud)"
+    "displayName": "#C418DA - Devtoberfest 2021 - Create a User Interface with CAP (SAP HANA Cloud) (Week 2)"
   },
   {
     "badge_id": "#77CE8B",
@@ -99,7 +99,7 @@
     "badge_id": "#042272",
     "activity_name": "Add More Than One Application to the Launch Page",
     "points": 200,
-    "displayName": "#042272 - Devtoberfest 2021 - Add More Than One Application to the Launch Page"
+    "displayName": "#042272 - Devtoberfest 2021 - Add More Than One Application to the Launch Page (Week 2)"
   },
   {
     "badge_id": "#FB7260",
@@ -123,7 +123,7 @@
     "badge_id": "#F9EEE7",
     "activity_name": "Prepare User Authentication and Authorization (XSUAA) Setup",
     "points": 200,
-    "displayName": "#F9EEE7 - Devtoberfest 2021 - Prepare User Authentication and Authorization (XSUAA) Setup"
+    "displayName": "#F9EEE7 - Devtoberfest 2021 - Prepare User Authentication and Authorization (XSUAA) Setup (Week 2)"
   },
   {
     "badge_id": "#F4C6D3",
@@ -159,7 +159,7 @@
     "badge_id": "#C32EC0",
     "activity_name": "Configure and Run a Predefined SAP Continuous Integration and Delivery (CI/CD) Pipeline",
     "points": 200,
-    "displayName": "#C32EC0 - Devtoberfest 2021 - Configure and Run a Predefined SAP Continuous Integration and Delivery (CI/CD) Pipeline"
+    "displayName": "#C32EC0 - Devtoberfest 2021 - Configure and Run a Predefined SAP Continuous Integration and Delivery (CI/CD) Pipeline (Week 2)"
   },
   {
     "badge_id": "#9C2DB2",
@@ -285,13 +285,13 @@
     "badge_id": "#6CA24C",
     "activity_name": "Create a User Interface with CAP (SAP HANA Cloud)",
     "points": 200,
-    "displayName": "#6CA24C - Devtoberfest 2021 - Create a User Interface with CAP (SAP HANA Cloud)"
+    "displayName": "#6CA24C - Devtoberfest 2021 - Create a User Interface with CAP (SAP HANA Cloud) (Scavenger Hunt)"
   },
   {
     "badge_id": "#2AE84C",
     "activity_name": "Add More Than One Application to the Launch Page",
     "points": 200,
-    "displayName": "#2AE84C - Devtoberfest 2021 - Add More Than One Application to the Launch Page"
+    "displayName": "#2AE84C - Devtoberfest 2021 - Add More Than One Application to the Launch Page (Scavenger Hunt)"
   },
   {
     "badge_id": "#D29ABD",
@@ -333,7 +333,7 @@
     "badge_id": "#059CBE",
     "activity_name": "add continuos integration/ delivery to pipeline",
     "points": 200,
-    "displayName": "#059CBE - Devtoberfest 2021 - Configure and Run a Predefined SAP Continuous Integration and Delivery (CI/CD) Pipeline"
+    "displayName": "#059CBE - Devtoberfest 2021 - Configure and Run a Predefined SAP Continuous Integration and Delivery (CI/CD) Pipeline (Scavenger Hunt)"
   },
   {
     "badge_id": "#F3078A",
@@ -405,7 +405,7 @@
     "badge_id": "#904712",
     "activity_name": "Prepare User Authentication and Authorization (XSUAA) Setup",
     "points": 200,
-    "displayName": "#904712 - Devtoberfest 2021 - Prepare User Authentication and Authorization (XSUAA) Setup"
+    "displayName": "#904712 - Devtoberfest 2021 - Prepare User Authentication and Authorization (XSUAA) Setup (Week 4)"
   },
   {
     "badge_id": "#EC9122",
