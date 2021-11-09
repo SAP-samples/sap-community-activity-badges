@@ -555,6 +555,48 @@
     "badge_id": "#947380",
     "activity_name": "Create an SAP Fiori Elements-Based UI",
     "points": 200,
-    "displayName": "#947380 - Devtoberfest 2021 - Create an SAP Fiori Elements-Bas"
+    "displayName": "#947380 - Devtoberfest 2021 - Create an SAP Fiori Elements-Based UI (Week 6)"
+  },
+  {
+    "badge_id": "#B4A328",
+    "activity_name": "Create a UI Using Freestyle SAPUI5",
+    "points": 200,
+    "displayName": "#B4A328 - Devtoberfest 2021 - Create a UI Using Freestyle SAPUI5 (Week 6)"
+  },
+  {
+    "badge_id": "#5113E5",
+    "activity_name": "Add the SAP Launchpad Service",
+    "points": 200,
+    "displayName": "#5113E5 - Devtoberfest 2021 - Add the SAP Launchpad Service (Week 6)"
+  },
+  {
+    "badge_id": "#AE2D85",
+    "activity_name": "Integrate Charts and Conditional Rendering (React.js)",
+    "points": 200,
+    "displayName": "#AE2D85 - Devtoberfest 2021 - Integrate Charts and Conditional Rendering"
+  },
+  {
+    "badge_id": "#A4BF5F",
+    "activity_name": "Develop a Vue.js Application for SAP BTP on Cloud Foundry",
+    "points": 200,
+    "displayName": "#A4BF5F - Devtoberfest 2021 - Develop a Vue Application for SAP BTP on Cloud Foundry"
+  },
+  {
+    "badge_id": "#0F03FE",
+    "activity_name": "Build Luigi App with React",
+    "points": 200,
+    "displayName": "#0F03FE - Devtoberfest 2021 - Build Luigi App with React"
+  },
+  {
+    "badge_id": "#103738",
+    "activity_name": "Week 6 Fun Friday Event",
+    "points": 300,
+    "displayName": "#103738 - Devtoberfest 2021 - Week 6 Fun Friday Attendee"
+  },
+  {
+    "badge_id": "#AE19A0",
+    "activity_name": "Week 6 Frontend Coding Challenge",
+    "points": 500,
+    "displayName": "#AE19A0 - Devtoberfest 2021 - Week 6 Frontend Coding Challenge"
   }
  ]
