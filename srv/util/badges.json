@@ -171,7 +171,7 @@
     "badge_id": "#BF3202",
     "activity_name": "Define and Expose a CDS-Based Travel Data Model",
     "points": 200,
-    "displayName": "#BF3202 - Devtoberfest 2021 - Define and Expose a CDS-Based Travel Data Model"
+    "displayName": "#BF3202 - Devtoberfest 2021 - Completed Tutorial Define and Expose a CDS-Based Travel Data Model"
   },
   {
     "badge_id": "#859773",
@@ -321,13 +321,13 @@
     "badge_id": "#CEBCE3",
     "activity_name": "Use Machine Learning to Extract Information From Documents with Document Extraction Trial UI",
     "points": 200,
-    "displayName": " #CEBCE3 – Devtoberfest 2021 Use Machine Learning to Extract Information From Documents with Document Extraction Trial UI"
+    "displayName": " #CEBCE3 – Devtoberfest 2021 - Use Machine Learning to Extract Information From Documents with Document Extraction Trial UI"
   },
   {
     "badge_id": "#5DAEBC",
     "activity_name": "add SAP launchpad service",
     "points": 200,
-    "displayName": "https://developers.sap.com/tutorials/cp-aibus-dox-ui.html"
+    "displayName": "#5DAEBC - Devtoberfest 2021 - Add the SAP Launchpad Service (Scavenger Hunt)"
   },
   {
     "badge_id": "#059CBE",
@@ -502,6 +502,12 @@
     "activity_name": "Smart Multi-Model Data Processing with SAP HANA Cloud",
     "points": 200,
     "displayName": "#8D2AAF - Devtoberfest 2021 - Smart Multi-Model Data Processing with SAP HANA Cloud"
+  },
+  {
+    "badge_id": "#E6DB90",
+    "activity_name": "Get Started with a Standalone SAP HANA Cloud, Data Lake",
+    "points": 200,
+    "displayName": "#E6DB90 - Devtoberfest 2021 - Get Started with a Standalone SAP HANA Cloud, Data Lake"
   },
   {
     "badge_id": "#F46421",
