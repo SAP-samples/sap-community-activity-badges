@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "SCN Badges Service Layer",
   "engines": {
-    "node": "^12.0.0 || ^14.0.0"
+    "node": "^12.0.0 || ^14.0.0 || ^16.0.0"
   },
   "dependencies": {
     "@cloudnative/health-connect": "^2.1.0",

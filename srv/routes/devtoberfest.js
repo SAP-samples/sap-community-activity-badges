@@ -209,10 +209,15 @@ async function getSCNProfile(req) {
 
             let userNameScore = stringScore(userName)
             let points = 0
+            let endDate = new Date(2021, 10, 13)
             for (let item of scnItems.content) {
                 let badgeValue = badges.find(x => x.displayName == item.displayName)
                 if (badgeValue) {
-                    points = points + badgeValue.points
+                    console.log(item.timestamp)
+                    if (Date.parse(item.timestamp) < endDate) {
+                        console.log(badgeValue.points)
+                        points = points + badgeValue.points
+                    }
                 }
             }
 
@@ -265,7 +270,8 @@ async function buildGameboardHeader(isPng, profile, req) {
     let itemHeight = 220
     let itemDelay = 450
 
-    let gameboardHeader = text.getText('devtoberfest.gameboardHeader', [profile.userName])
+    // let gameboardHeader = text.getText('devtoberfest.gameboardHeader', [profile.userName])
+    let gameboardHeader = text.getText('devtoberfest.gameboardHeaderEnd', [profile.userName])
     let wrappedOutput = wrapper(gameboardHeader, { wrapOn: 35 })
     let wrappedArray = wrappedOutput.split("\n")
     for (let item of wrappedArray) {
@@ -274,9 +280,9 @@ async function buildGameboardHeader(isPng, profile, req) {
         itemHeight += 20
         itemDelay += 50
     }
-    items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
-        text.getText('devtoberfest.scn'),
-        `https://people.sap.com/${profile.scnId}#reputation`, isPng))
+    /*   items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
+          text.getText('devtoberfest.scn'),
+          `https://people.sap.com/${profile.scnId}#reputation`, isPng)) */
 
     return items
 }
