@@ -45,8 +45,8 @@ module.exports = (app) => {
             } else if (err) {
                 return res.send(err.toString()).status(500)
             }
-            console.log(req.file)
-            const uploadContent = await sharp(req.file.buffer).png().toBuffer()
+           // console.log(req.file)
+            const uploadContent = await sharp(req.file.buffer).rotate().png().toBuffer()
 
             let body = 
               svg.svgHeader(1512, 2016) +
