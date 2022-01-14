@@ -1,88 +1,149 @@
-<html class="no-js">
+<!DOCTYPE HTML>
+<html>
 
 <head>
-    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= title %></title>
-    <style type="text/css">
-        * {
-            font: 600 16px system-ui, sans-serif;
-        }
+    <meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+    <title>ABAP File Uploader</title>
+    <script id="sap-ui-bootstrap" src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_fiori_3_dark" data-sap-ui-xx-bindingSyntax="complex" data-sap-ui-compatVersion="edge"
+        data-sap-ui-async="true">
+    </script>
+    <script>
+        sap.ui.require(['sap/ui/core/Core'], (oCore, ) => {
 
-        form {
-            width: 320px;
-            margin: 50px auto;
-            text-align: center;
-        }
+            sap.ui.getCore().loadLibrary("sap.f", {
+                async: true
+            }).then(() => {
+                let shell = new sap.f.ShellBar("shell")
+                shell.setTitle("ABAP File Uploader")
+                shell.setShowCopilot(true)
+                shell.setShowSearch(true)
+                shell.setShowNotifications(true)
+                shell.setShowProductSwitcher(true)
+                shell.placeAt("uiArea")
+                sap.ui.getCore().loadLibrary("sap.ui.layout", {
+                    async: true
+                }).then(() => {
+                    let layout = new sap.ui.layout.VerticalLayout("layout")
+                    layout.placeAt("uiArea")
+                    let line2 = new sap.ui.layout.HorizontalLayout("line2")
+                    let line3 = new sap.ui.layout.HorizontalLayout("line3")
+                    let line4 = new sap.ui.layout.HorizontalLayout("line4")
+                    let line5 = new sap.ui.layout.HorizontalLayout("line5")
+                    sap.ui.getCore().loadLibrary("sap.m", {
+                        async: true
+                    }).then(() => {})
+                    let button = new sap.m.Button("button")
+                    button.setText("Upload File")
+                    button.attachPress(async function () {
+                        let oFileUploader = oCore.byId("fileToUpload")
+                        if (!oFileUploader.getValue()) {
+                            sap.m.MessageToast.show("Choose a file first")
+                            return
+                        }
+                        let oInput = oCore.byId("tablename")
+                        let oGroup = oCore.byId("grpDataOptions")
+                        if (!oInput.getValue()) {
+                            sap.m.MessageToast.show("Target Table is Required")
+                            return
+                        }
+                        let param = oCore.byId("uploadParam")
+                        param.setValue(oInput.getValue())
+                        oFileUploader.getParameters()
+                        oFileUploader.setAdditionalData(JSON.stringify({
+                            tablename: oInput.getValue(),
+                            dataOption: oGroup.getSelectedIndex()
+                        }))
+                        oFileUploader.upload()
+                    })
+                    let input = new sap.m.Input("tablename")
+                    input.placeAt("layout")
+                    input.setRequired(true)
+                    input.setWidth("600px")
+                    input.setPlaceholder("Target ABAP Table")
+                    line2.placeAt("layout")
+                    line3.placeAt("layout")
+                    line4.placeAt("layout")
+                    line5.placeAt("layout")
+                    let groupDataOptions = new sap.m.RadioButtonGroup("grpDataOptions")
+                    let lblGroupDataOptions = new sap.m.Label("lblDataOptions")
+                    lblGroupDataOptions.setLabelFor(groupDataOptions)
+                    lblGroupDataOptions.setText("Data Upload Options")
+                    lblGroupDataOptions.placeAt("line3")
+                    groupDataOptions.placeAt("line4")
+                    rbAppend = new sap.m.RadioButton("rbAppend")
+                    rbReplace = new sap.m.RadioButton("rbReplace")
+                    rbAppend.setText("Append")
+                    rbReplace.setText("Replace")
+                    groupDataOptions.addButton(rbAppend)
+                    groupDataOptions.addButton(rbReplace)
+                    rbAppend.setGroupName("grpDataOptions")
+                    rbReplace.setGroupName("grpDataOptions")
+                    let image1 = new sap.m.Image("outputImage")
+                    image1.setSrc(
+                        "https://sapui5.hana.ondemand.com/test-resources/sap/ui/documentation/sdk/images/HT-7777-large.jpg"
+                        )
+                    image1.placeAt("line5")
 
-        form>legend {
-            font-size: 36px;
-            color: #3c5b6d;
-            padding: 150px 0 20px;
-        }
+                    sap.ui.getCore().loadLibrary("sap.ui.unified", {
+                        async: true
+                    }).then(() => {
+                        var fileUploader = new sap.ui.unified.FileUploader(
+                            "fileToUpload")
+                        fileUploader.setFileType(["png", "jpg", "bmp"])
+                        fileUploader.setSendXHR(true)
+                        fileUploader.setUploadUrl("/upload_selfie")
+                        fileUploader.setWidth("400px")
+                        let param = new sap.ui.unified.FileUploaderParameter(
+                            "uploadParam")
+                        param.setName("tablename")
 
-        form>input[type=file],
-        form>input[type=file]:before {
-            display: block;
-            width: 240px;
-            height: 50px;
-            margin: 0 auto;
-            line-height: 50px;
-            text-align: center;
-            cursor: pointer;
-        }
+                        fileUploader.addParameter(param)
+                        fileUploader.placeAt("line2")
+                        button.placeAt("line2")
+                        fileUploader.setPlaceholder(
+                            "Choose File for Upload...")
+                        fileUploader.attachUploadComplete(function (oEvent) {
+                            // alert(oEvent.getParameters().response)
+                            console.log(oEvent.getParameters())
+                            // console.log(oEvent.getParameters().responseRaw)
+                            var arr = new Uint8Array(oEvent.getParameters()
+                                .responseRaw)
 
-        form>input[type=file] {
-            position: relative;
-        }
 
-        form>input[type=file]:before {
-            content: 'Choose a Photo';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            color: #3c5b6d;
-            font-size: 18px;
-            background: #fff;
-            border-radius: 3px;
-            border: 2px solid #3c5b6d;
-        }
+                            // Convert the int array to a binary string
+                            // We have to use apply() as we are converting an *array*
+                            // and String.fromCharCode() takes one or more single values, not
+                            // an array.
+                            var raw = String.fromCharCode.apply(null, arr)
 
-        form>button[type=submit] {
-            border-radius: 3px;
-            font-size: 18px;
-            display: block;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-            background: #2a76cd;
-            width: 240px;
-            margin: 20px auto;
-            padding: 15px 20px;
-        }
-    </style>
+                            var response = oEvent.getParameters().responseRaw;
+			var binary = ""
+			
+			for(i=0;i<response.length;i++){
+				binary += String.fromCharCode(response.charCodeAt(i) & 0xff);
+			}
+
+                            // This works!!!
+                            var b64 = btoa(binary)
+                            var dataURL = "data:image/png;base64,"  + oEvent.getParameters().responseRaw
+
+
+                            let image = oCore.byId("outputImage")
+                            image.setSrc(dataURL)
+                        })
+
+
+                    })
+                })
+            })
+        })
+    </script>
 </head>
-<script>
-    function validate() {
-        let size = 1024 * 1024 * 20
-        let file_size = document.getElementById('file_upload').files[0].size
-        console.log(file_size)
-        if (file_size >= size) {
-            alert('File too large')
-            return false
-        }
-    }
-</script>
 
-<body>
-    <form action="/upload_selfie" method="post" enctype="multipart/form-data">
-
-        <legend>Upload Your Photo</legend>
-        <input type="file" accept="image/jpeg,image/pjpeg,image/png,image/gif" name="selfie">
-        <button type="submit" onClick="return validate()" class="btn btn-primary">Upload</button>
-
-    </form>
+<body class="sapUiBody">
+    <div id="uiArea"></div>
 </body>
 
 </html>

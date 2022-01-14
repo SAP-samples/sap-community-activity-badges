@@ -33,7 +33,7 @@ module.exports = (app) => {
         fileFilter: fileFilter
     })
 
-    const uploadHandler = upload.single('selfie')
+    const uploadHandler = upload.any() //.single('selfie')
     app.post('/upload_selfie', async (req, res, next) => {
         await uploadHandler(req, res, async (err) => {
             if (err instanceof multer.MulterError) {
@@ -45,27 +45,31 @@ module.exports = (app) => {
             } else if (err) {
                 return res.send(err.toString()).status(500)
             }
-           // console.log(req.file)
-            const uploadContent = await sharp(req.file.buffer).rotate().png().toBuffer()
+            let file
+            req.files.forEach( function(f) {
+                file = f
+            })
+            console.log(req.body.tablename)
+            const uploadContent = await sharp(file.buffer).rotate().png().toBuffer()
+            const advPic = '../images/devtoberfest/selfie/selfie1.png'
+            const advPicMeta = await sharp(path.resolve(__dirname, advPic)).metadata()
 
             let body = 
-              svg.svgHeader(1512, 2016) +
+              svg.svgHeader(advPicMeta.width, advPicMeta.height) +
               svg.svgStyles(
                 svg.svgStyleHeader(),
                 svg.svgStyleBold()
             ) +
-              svg.svgDevtoberfestItem(0, 0, 0, uploadContent.toString('base64'), 2016, 1512, true) +
-              svg.svgDevtoberfestItem(0, 0, 0, await svg.loadImageB64('../images/devtoberfest/selfie/selfie1.png'), 2016, 1512, true) +
+              svg.svgDevtoberfestItem(0, 0, 0, uploadContent.toString('base64'), advPicMeta.height, advPicMeta.width, true) +
+              svg.svgDevtoberfestItem(0, 0, 0, await svg.loadImageB64(advPic), advPicMeta.height, advPicMeta.width, true) +
               svg.svgEnd()
 
-              //return res.type("image/svg+xml").status(200).send(body)
-
-
               const png = await sharp(Buffer.from(body)).png().toBuffer()
-              res.type("image/png").status(200).send(png)
-           // res.contentType(req.file.mimetype)
-           // res.send(req.file.buffer).status(200)
+              const pngOut = await png.toString('base64')
+              //console.log(pngOut)
+              res.type("image/png").status(200).send(pngOut)
         })
 
     })
 }
+
