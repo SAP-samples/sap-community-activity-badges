@@ -74,7 +74,7 @@ sap.ui.define([
         startBusy: function () {
             if (!this._pBusyDialog) {
                 this._pBusyDialog = Fragment.load({
-                    name: "sap.hanacli.common.view.BusyDialog",
+                    name: "selfie.view.BusyDialog",
                     controller: this
                 }).then(function (oBusyDialog) {
                     this.getView().addDependent(oBusyDialog)

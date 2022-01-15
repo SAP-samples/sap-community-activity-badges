@@ -11,7 +11,7 @@ module.exports = (app) => {
     })
 
     app.use('/selfie', express.static(path.join(__dirname, '../app/selfie')))
-    app.get('/selfie', async (req, res) => {
+    app.get('/selfie/', async (req, res) => {
         return res.redirect("/selfie/#selfie-ui")
     })
     app.use('/i18n', express.static(path.join(__dirname, '../_i18n')))

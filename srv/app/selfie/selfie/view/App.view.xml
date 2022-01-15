@@ -1,4 +1,4 @@
-<mvc:View controllerName="selfie.controller.App" height="100%" width="100%"
+<mvc:View controllerName="selfie.controller.App" width="100%" height="100%"
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
     xmlns:mvc="sap.ui.core.mvc"
@@ -39,7 +39,7 @@
             </OverflowToolbar>
         </headerToolbar>
         <content>
-            <unified:FileUploader id="fileToUpload" sendXHR="true" width="400px" placeholder="{i18n>placeholder}" uploadUrl="/upload_selfie" uploadComplete="uploadComplete">
+            <unified:FileUploader id="fileToUpload" sendXHR="true" width="400px" fileType="jpg,png,bmp" placeholder="{i18n>placeholder}" uploadUrl="/upload_selfie" uploadComplete="uploadComplete" uploadStart="uploadStart">
                 <unified:parameters>
                     <unified:FileUploaderParameter id="uploadParam" name="selectedPic"/>
                 </unified:parameters>
@@ -47,30 +47,30 @@
             <Button id="button" text="{i18n>Upload}" press="uploadPressed"></Button>
         </content>
     </Panel>
-    <e:ImageEditorContainer id="editor" enabledButtons="Transform,Filter,Crop">
-        <e:ImageEditor id="image" loaded="onImageLoaded"/>
-        <e:customToolbarControls>
-            <Button type="Emphasized" text="Save As" press="onSaveAsPress" />
-        </e:customToolbarControls>
-        <e:customResizeItems>
-            <e:CustomSizeItem width="1920" height="1200" label="1920 x 1200" relative="false"/>
-            <e:CustomSizeItem width="1600" height="900" label="1600 x 900" relative="false"/>
-            <e:CustomSizeItem width="1440" height="900" label="1440 x 900" relative="false"/>
-            <e:CustomSizeItem width="1024" height="768" label="1024 x 768" relative="false"/>
-            <e:CustomSizeItem width="2" height="2" label="double size" relative="true"/>
-            <e:CustomSizeItem width="0.5" height="0.5" label="half size" relative="true"/>
-            <e:CustomSizeItem width="2" height="1" label="make wider" relative="true"/>
-            <e:CustomSizeItem width="1" height="2" label="make higher" relative="true"/>
-        </e:customResizeItems>
-        <e:customRectangleCropItems>
-            <e:CustomSizeItem width="16" height="9" label="16:9" relative="true"/>
-            <e:CustomSizeItem width="16" height="10" label="16:10" relative="true"/>
-            <e:CustomSizeItem width="1" height="1" label="1:1" relative="true"/>
-            <e:CustomSizeItem width="4" height="3" label="4:3" relative="true"/>
-        </e:customRectangleCropItems>
-        <e:customEllipseCropItems>
-            <e:CustomSizeItem width="1" height="1" label="1:1" relative="true"/>
-            <e:CustomSizeItem width="2" height="1" label="2:1" relative="true"/>
-        </e:customEllipseCropItems>
-    </e:ImageEditorContainer>
+        <e:ImageEditorResponsiveContainer id="editor" enabledButtons="Transform,Filter,Crop">
+            <e:ImageEditor id="image" loaded="onImageLoaded"/>
+            <e:customToolbarControls>
+                <Button type="Emphasized" text="Save As" press="onSaveAsPress" />
+            </e:customToolbarControls>
+            <e:customResizeItems>
+                <e:CustomSizeItem width="1920" height="1200" label="1920 x 1200" relative="false"/>
+                <e:CustomSizeItem width="1600" height="900" label="1600 x 900" relative="false"/>
+                <e:CustomSizeItem width="1440" height="900" label="1440 x 900" relative="false"/>
+                <e:CustomSizeItem width="1024" height="768" label="1024 x 768" relative="false"/>
+                <e:CustomSizeItem width="2" height="2" label="double size" relative="true"/>
+                <e:CustomSizeItem width="0.5" height="0.5" label="half size" relative="true"/>
+                <e:CustomSizeItem width="2" height="1" label="make wider" relative="true"/>
+                <e:CustomSizeItem width="1" height="2" label="make higher" relative="true"/>
+            </e:customResizeItems>
+            <e:customRectangleCropItems>
+                <e:CustomSizeItem width="16" height="9" label="16:9" relative="true"/>
+                <e:CustomSizeItem width="16" height="10" label="16:10" relative="true"/>
+                <e:CustomSizeItem width="1" height="1" label="1:1" relative="true"/>
+                <e:CustomSizeItem width="4" height="3" label="4:3" relative="true"/>
+            </e:customRectangleCropItems>
+            <e:customEllipseCropItems>
+                <e:CustomSizeItem width="1" height="1" label="1:1" relative="true"/>
+                <e:CustomSizeItem width="2" height="1" label="2:1" relative="true"/>
+            </e:customEllipseCropItems>
+        </e:ImageEditorResponsiveContainer>
 </mvc:View>

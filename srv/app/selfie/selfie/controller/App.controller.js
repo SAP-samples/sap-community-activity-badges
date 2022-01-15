@@ -30,6 +30,12 @@ sap.ui.define([
                 oFileUploader.upload()
             },
 
+            uploadStart: async function (oEvent) {
+                let view = this.getView()
+                let controller = view.getController()
+                controller.startBusy()
+            },
+
             uploadComplete: async function (oEvent){
                 let view = this.getView()
                 console.log(oEvent.getParameters())
@@ -44,8 +50,16 @@ sap.ui.define([
                 oImageEditor.openSaveDialog()
             },
             onImageLoaded: async function(oEvent){
+                let view = this.getView()
+                let controller = view.getController()
+                let panel1 = view.byId("carouselContainer")
+                panel1.setExpanded(false)
+                let panel2 = view.byId("fileUploadContainer")
+                panel2.setExpanded(false)
                 console.log(oEvent.getSource().getZoomLevel())
                 oEvent.getSource().zoomToFit(true)
+                controller.endBusy(controller)
+
             }
         })
     }
