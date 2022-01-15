@@ -49,9 +49,11 @@ module.exports = (app) => {
             req.files.forEach( function(f) {
                 file = f
             })
-            console.log(req.body.tablename)
+            let selectedPic = req.body.selectedPic
+            selectedPic = selectedPic.replace('application-selfie-ui-component---App--', '')
+            console.log(selectedPic)
             const uploadContent = await sharp(file.buffer).rotate().png().toBuffer()
-            const advPic = '../images/devtoberfest/selfie/selfie1.png'
+            const advPic = `../images/devtoberfest/selfie/${selectedPic}.png`
             const advPicMeta = await sharp(path.resolve(__dirname, advPic)).metadata()
 
             let body = 

@@ -1,0 +1,76 @@
+<mvc:View controllerName="selfie.controller.App" height="100%" width="100%"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:unified="sap.ui.unified"
+    xmlns:e="sap.suite.ui.commons.imageeditor"
+    xmlns="sap.m">
+    <Panel id="carouselContainer" expandable="true" expanded="true" width="auto" class="sapUiResponsiveMargin">
+        <headerToolbar>
+            <OverflowToolbar style="Clear">
+                <Title text="{i18n>Toolbar1}" />
+            </OverflowToolbar>
+        </headerToolbar>
+        <content>
+            <Carousel id="carouselSample" loop="true" class="sapUiContentPadding" height="350px">
+
+                <Image src="/images/devtoberfest/selfie/thumbnails/Group1.png" id="Group1" alt="Entire Group #1" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Group2.png" id="Group2" alt="Entire Group #2" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Group3.png" id="Group3" alt="Entire Group #3" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Group4.png" id="Group4" alt="Entire Group #4" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/DJ.png" id="DJ" alt="DJ Adams" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Josh.png" id="Josh" alt="Josh Bentley" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Josh2.png" id="Josh2" alt="Josh Bentley #2" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Kasmire.png" id="Kasmire" alt="Kasmire the TechEd Cat" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Kevin.png" id="Kevin" alt="Kevin Muessig" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Mamikee.png" id="Mamikee" alt="Mamikee Kanneh" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Rich.png" id="Rich" alt="Rich Heilman" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Thomas.png" id="Thomas" alt="Thomas Jung" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Witalij.png" id="Witalij" alt="Witalij Rudnicki" />
+            </Carousel>
+        </content>
+    </Panel>
+
+    <Panel id="fileUploadContainer" expandable="true" expanded="true" width="auto" class="sapUiResponsiveMargin">
+        <headerToolbar>
+            <OverflowToolbar style="Clear">
+                <Title text="{i18n>Toolbar2}" />
+            </OverflowToolbar>
+        </headerToolbar>
+        <content>
+            <unified:FileUploader id="fileToUpload" sendXHR="true" width="400px" placeholder="{i18n>placeholder}" uploadUrl="/upload_selfie" uploadComplete="uploadComplete">
+                <unified:parameters>
+                    <unified:FileUploaderParameter id="uploadParam" name="selectedPic"/>
+                </unified:parameters>
+            </unified:FileUploader>
+            <Button id="button" text="{i18n>Upload}" press="uploadPressed"></Button>
+        </content>
+    </Panel>
+    <e:ImageEditorResponsiveContainer id="editor" enabledButtons="Transform,Filter,Crop">
+        <e:ImageEditor id="image" loaded="onImageLoaded"/>
+        <e:customToolbarControls>
+            <Button type="Emphasized" text="Save As" press="onSaveAsPress" />
+        </e:customToolbarControls>
+        <e:customResizeItems>
+            <e:CustomSizeItem width="1920" height="1200" label="1920 x 1200" relative="false"/>
+            <e:CustomSizeItem width="1600" height="900" label="1600 x 900" relative="false"/>
+            <e:CustomSizeItem width="1440" height="900" label="1440 x 900" relative="false"/>
+            <e:CustomSizeItem width="1024" height="768" label="1024 x 768" relative="false"/>
+            <e:CustomSizeItem width="2" height="2" label="double size" relative="true"/>
+            <e:CustomSizeItem width="0.5" height="0.5" label="half size" relative="true"/>
+            <e:CustomSizeItem width="2" height="1" label="make wider" relative="true"/>
+            <e:CustomSizeItem width="1" height="2" label="make higher" relative="true"/>
+        </e:customResizeItems>
+        <e:customRectangleCropItems>
+            <e:CustomSizeItem width="16" height="9" label="16:9" relative="true"/>
+            <e:CustomSizeItem width="16" height="10" label="16:10" relative="true"/>
+            <e:CustomSizeItem width="1" height="1" label="1:1" relative="true"/>
+            <e:CustomSizeItem width="4" height="3" label="4:3" relative="true"/>
+        </e:customRectangleCropItems>
+        <e:customEllipseCropItems>
+            <e:CustomSizeItem width="1" height="1" label="1:1" relative="true"/>
+            <e:CustomSizeItem width="2" height="1" label="2:1" relative="true"/>
+        </e:customEllipseCropItems>
+    </e:ImageEditorResponsiveContainer>
+</mvc:View>

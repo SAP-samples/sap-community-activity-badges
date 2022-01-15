@@ -1,0 +1,36 @@
+{
+    "defaultRenderer": "fiori2",
+    "bootstrapPlugins": {
+        "RuntimeAuthoringPlugin": {
+            "component": "sap.ushell.plugins.rta"
+        },
+        "PersonalizePlugin": {
+            "component": "sap.ushell.plugins.rta-personalize"
+        }
+    },
+    "services": {
+        "NavTargetResolution": {
+            "config": {
+                "allowTestUrlComponentConfig": true,
+                "enableClientSideTargetResolution": true
+            }
+        },
+        "EndUserFeedback": {
+            "adapter": {
+                "config": {
+                    "enabled": true
+                }
+            }
+        }
+    },
+    "applications": {
+        "selfie-ui": {
+            "title": "Selfie with the Dev Advocates",
+            "description": "Devtoberfest 2021 Selfie with the Dev Advocates",
+            "additionalInformation": "SAPUI5.Component=sap.selfie",
+            "applicationType": "URL",
+            "url": "./selfie",
+            "navigationMode": "embedded"
+        }
+    }
+}
