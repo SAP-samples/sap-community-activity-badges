@@ -11,6 +11,9 @@ module.exports = (app) => {
     })
 
     app.use('/selfie', express.static(path.join(__dirname, '../app/selfie')))
+    app.get('/selfie', async (req, res) => {
+        return res.redirect("/selfie/#selfie-ui")
+    })
     app.use('/i18n', express.static(path.join(__dirname, '../_i18n')))
     app.use('/favicon.ico', express.static(path.join(__dirname, '../app/favicon.ico')))
     app.get('/appconfig/fioriSandboxConfig.json', async (req, res) => {

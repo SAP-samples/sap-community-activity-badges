@@ -47,7 +47,7 @@
             <Button id="button" text="{i18n>Upload}" press="uploadPressed"></Button>
         </content>
     </Panel>
-    <e:ImageEditorResponsiveContainer id="editor" enabledButtons="Transform,Filter,Crop">
+    <e:ImageEditorContainer id="editor" enabledButtons="Transform,Filter,Crop">
         <e:ImageEditor id="image" loaded="onImageLoaded"/>
         <e:customToolbarControls>
             <Button type="Emphasized" text="Save As" press="onSaveAsPress" />
@@ -72,5 +72,5 @@
             <e:CustomSizeItem width="1" height="1" label="1:1" relative="true"/>
             <e:CustomSizeItem width="2" height="1" label="2:1" relative="true"/>
         </e:customEllipseCropItems>
-    </e:ImageEditorResponsiveContainer>
+    </e:ImageEditorContainer>
 </mvc:View>
