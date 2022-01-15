@@ -39,7 +39,7 @@
             </OverflowToolbar>
         </headerToolbar>
         <content>
-            <unified:FileUploader id="fileToUpload" sendXHR="true" width="400px" fileType="jpg,png,bmp" placeholder="{i18n>placeholder}" uploadUrl="/upload_selfie" uploadComplete="uploadComplete" uploadStart="uploadStart">
+            <unified:FileUploader id="fileToUpload" sendXHR="true" width="400px" placeholder="{i18n>placeholder}" uploadUrl="/upload_selfie" uploadComplete="uploadComplete" uploadStart="uploadStart">
                 <unified:parameters>
                     <unified:FileUploaderParameter id="uploadParam" name="selectedPic"/>
                 </unified:parameters>

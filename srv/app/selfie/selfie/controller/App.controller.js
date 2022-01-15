@@ -38,10 +38,11 @@ sap.ui.define([
 
             uploadComplete: async function (oEvent){
                 let view = this.getView()
-                console.log(oEvent.getParameters())
+                let controller = view.getController()
                 let dataURL = "data:image/png;base64,"  + oEvent.getParameters().responseRaw
                 let oImageEditor = view.byId("image")
                 await oImageEditor.setSrc(dataURL)
+                controller.endBusy(controller)
             },
 
             onSaveAsPress: async function() {
@@ -51,14 +52,12 @@ sap.ui.define([
             },
             onImageLoaded: async function(oEvent){
                 let view = this.getView()
-                let controller = view.getController()
+
                 let panel1 = view.byId("carouselContainer")
                 panel1.setExpanded(false)
                 let panel2 = view.byId("fileUploadContainer")
                 panel2.setExpanded(false)
-                console.log(oEvent.getSource().getZoomLevel())
-                oEvent.getSource().zoomToFit(true)
-                controller.endBusy(controller)
+
 
             }
         })
