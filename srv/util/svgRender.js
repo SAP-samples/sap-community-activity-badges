@@ -53,14 +53,14 @@ async function svgDevtoberfestFont() {
       src: url("data:application/font-woff;charset=utf-8;base64,${await loadImageB64("../images/devtoberfest/fonts/joystix_monospace.ttf")}");
   }`
 
- /*  return `
-  <style>
-  @font-face {
-      font-family: "Joystix Monospace";
-      src: url("data:application/font-woff;charset=utf-8;base64,${await loadImageB64("../images/devtoberfest/fonts/joystix_monospace.ttf")}");
-  }
-  </style>
-      \n` */
+  /*  return `
+   <style>
+   @font-face {
+       font-family: "Joystix Monospace";
+       src: url("data:application/font-woff;charset=utf-8;base64,${await loadImageB64("../images/devtoberfest/fonts/joystix_monospace.ttf")}");
+   }
+   </style>
+       \n` */
 }
 module.exports.svgDevtoberfestFont = svgDevtoberfestFont
 
@@ -240,7 +240,7 @@ module.exports.svgContentHeader = svgContentHeader
  * @param {string} text 
  * @returns {Promise<string>}
  */
- async function svgContentHeaderGroups(text) {
+async function svgContentHeaderGroups(text) {
   return `
     <g data-testid="title" transform="translate(25, 35)">
         <g transform="translate(0, 0)">
@@ -309,7 +309,7 @@ module.exports.svgMainContent = svgMainContent
  * @param  {...string} content 
  * @returns {string}
  */
- function svgBulkContent(...content) {
+function svgBulkContent(...content) {
   let output = '\n'
 
   for (let item of content) {
@@ -385,12 +385,12 @@ function svgDevtoberfestItem(x, y, delay, image, scaleX, scaleY, png = false, an
     <g transform="translate(0, 0)">
     `
   } else {  //stagger style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)"
-    if(style){
+    if (style) {
       content += `
       <g class="${style}" style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)">
       `
-    }else{
-    content += `
+    } else {
+      content += `
     <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)">
     `
     }
@@ -400,12 +400,12 @@ function svgDevtoberfestItem(x, y, delay, image, scaleX, scaleY, png = false, an
   if (imageName && imageName.slice(-3) === 'svg') {
     imageType = `svg+xml`
   }
-  
-  if(onclick){
+
+  if (onclick) {
     content += `
     <image ${onclick} class="icon" href="data:image/${imageType};base64,${image}" height="${scaleX.toString()}" width="${scaleY.toString()}">\n`
 
-  }else {
+  } else {
 
     content += `
     <image class="icon" href="data:image/${imageType};base64,${image}" height="${scaleX.toString()}" width="${scaleY.toString()}">\n`
@@ -435,7 +435,7 @@ module.exports.svgDevtoberfestItem = svgDevtoberfestItem
  * @param {string} [cssClass] - CSS Class
  * @returns {string}
  */
- function svgDevtoberfestTextHeader(height, width, delay, title, png, cssClass) {
+function svgDevtoberfestTextHeader(height, width, delay, title, png, cssClass) {
   let content =
     `
    <g transform="translate(${width.toString()}, ${height.toString()})">\n`
@@ -449,7 +449,7 @@ module.exports.svgDevtoberfestItem = svgDevtoberfestItem
     <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)">
     `
   }
-  if(!cssClass){
+  if (!cssClass) {
     cssClass = `class="header"`
   }
   content += `
@@ -471,7 +471,7 @@ module.exports.svgDevtoberfestTextHeader = svgDevtoberfestTextHeader
  * @param {boolean} [png] - alter rendering for png
  * @returns {string}
  */
- function svgDevtoberfestCRTText(height, width, delay, title, png) {
+function svgDevtoberfestCRTText(height, width, delay, title, png) {
   let content =
     `
    <g transform="translate(${width.toString()}, ${height.toString()})">\n`
@@ -538,12 +538,12 @@ module.exports.svgDevtoberfestTextItem = svgDevtoberfestTextItem
  * @param {boolean} [png] - alter rendering for png
  * @returns {string}
  */
- function svgDevtoberfestTextLink(height, width, delay, title, link, png) {
+function svgDevtoberfestTextLink(height, width, delay, title, link, png) {
   let content =
     `
    <g transform="translate(${width.toString()}, ${height.toString()})">\n`
 
-   let className = 'devLink'
+  let className = 'devLink'
 
   if (png) {
     className = 'devNormal'
@@ -555,7 +555,7 @@ module.exports.svgDevtoberfestTextItem = svgDevtoberfestTextItem
     <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)">
     `
   }
-  
+
   content += `
   <a xlink:href="${link}"
         target="_blank">
@@ -578,12 +578,12 @@ module.exports.svgDevtoberfestTextLink = svgDevtoberfestTextLink
  * @param {boolean} [png] - alter rendering for png
  * @returns {string}
  */
- function svgDevtoberfestCRTLink(height, width, delay, title, link, png) {
+function svgDevtoberfestCRTLink(height, width, delay, title, link, png) {
   let content =
     `
    <g transform="translate(${width.toString()}, ${height.toString()})">\n`
 
-   let className = 'crtLink'
+  let className = 'crtLink'
 
   if (png) {
     className = 'crt'
@@ -595,7 +595,7 @@ module.exports.svgDevtoberfestTextLink = svgDevtoberfestTextLink
     <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(0, 0)">
     `
   }
-  
+
   content += `
   <a xlink:href="${link}"
         target="_blank">
@@ -667,7 +667,7 @@ module.exports.svgBadgeItem = svgBadgeItem
  * @param {boolean} [png] - alter rendering for png
  * @returns {Promise<string>}
  */
- async function svgBadgeItemGroups(height, width, delay, image, title, png = false) {
+async function svgBadgeItemGroups(height, width, delay, image, title, png = false) {
   const request = require('then-request')
 
   let finalImage = image
@@ -695,10 +695,10 @@ module.exports.svgBadgeItem = svgBadgeItem
     `
   }
   content += `
-  <a xlink:href="${image}" target="_blank">
+
         <title>${title}</title>
        <image y="4" class="icon" href="${finalImage}" height="25" width="25"/>    
-       </a>
+
        </g>
    </g>\n`
 
@@ -788,3 +788,14 @@ function svgErrorDetails(height, delay, text, png = false) {
 
 }
 module.exports.svgErrorDetails = svgErrorDetails
+
+
+const escapeHTML = str => str.replace(/[&<>'"]/g,
+  tag => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    "'": '&#39;',
+    '"': '&quot;'
+  }[tag]))
+module.exports.escapeHTML = escapeHTML

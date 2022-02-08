@@ -34,7 +34,7 @@ module.exports = (app) => {
             let items = []
             let width = 50
             for (let scnItem of scnItems) {
-                    items.push(await svg.svgBadgeItemGroups(itemHeight, width, itemDelay += 200, scnItem.imageUrl, scnItem.displayName, isPng))
+                    items.push(await svg.svgBadgeItemGroups(itemHeight, width, itemDelay += 200, scnItem.imageUrl, svg.escapeHTML(scnItem.displayName), isPng))
                     if (width == 50) {
                         width = 100
                     } else {

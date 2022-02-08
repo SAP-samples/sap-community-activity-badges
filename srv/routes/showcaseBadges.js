@@ -1,4 +1,5 @@
 module.exports = (app) => {
+
     const svg = require("../util/svgRender")
     const texts = require("../util/texts")
     function nocache(req, res, next) {
@@ -42,12 +43,12 @@ module.exports = (app) => {
                 if (scnItem.displayName.length > 20) {
                     const text_wrapper_lib = require('text-wrapper')
                     const wrapper = text_wrapper_lib.wrapper
-                    const wrappedOutput = wrapper(scnItem.displayName, { wrapOn: 20 })
+                    const wrappedOutput = wrapper(svg.escapeHTML(scnItem.displayName), { wrapOn: 20 })
                     let wrappedArray = wrappedOutput.split("\n")
                     let secondHeight = itemHeight
                     for (let numItems = 0; numItems < wrappedArray.length; numItems++) {
                         if (numItems === 0) {
-                            items.push(await svg.svgBadgeItem(secondHeight, width, itemDelay += 200, scnItem.imageUrl, wrappedArray[numItems], isPng))
+                            items.push(await svg.svgBadgeItem(secondHeight, width, itemDelay += 200, encodeURI(scnItem.imageUrl), wrappedArray[numItems], isPng))
                             secondHeight += 20
                         } else if (numItems === 1) {
                             if (wrappedArray.length > 2) {
@@ -67,7 +68,7 @@ module.exports = (app) => {
                         itemHeight += 40
                     }
                 } else {
-                    items.push(await svg.svgBadgeItem(itemHeight, width, itemDelay += 200, scnItem.imageUrl, scnItem.displayName, isPng))
+                    items.push(await svg.svgBadgeItem(itemHeight, width, itemDelay += 200, encodeURI(scnItem.imageUrl), svg.escapeHTML(scnItem.displayName), isPng))
                     if (width == 0) {
                         width = 200
                     } else {
