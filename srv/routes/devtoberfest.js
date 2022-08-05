@@ -11,12 +11,21 @@ module.exports = (app) => {
         return res.redirect("/devtoberfestContest/scnId.Here")
     })
 
+    
+    app.get('/devtoberfest/profile/:scnId', async (req, res) => {
+        try {
+            let profile = await getSCNProfile(req)
+            return res.type("application/json").status(200).send(profile)
+        } catch (error) {
+            app.logger.error(error)
+            const errHandler = require("../util/error")
+            return await errHandler.handleErrorDevtoberfestText(error, req, res)
+        }
+    })
+
     app.get('/devtoberfestContest/:scnId', async (req, res) => {
         try {
-
-
             let profile = await getSCNProfile(req)
-
             let body = await renderSVG(false, profile, req)
             return res.type("text/html").status(200).send(renderHTMLBody(body))
         } catch (error) {

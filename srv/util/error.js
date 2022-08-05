@@ -84,21 +84,7 @@ async function handleErrorDevtoberfest(error, req, res) {
         let itemHeight = 220
         let itemDelay = 450
 
-        let errorString = ''
-        if (error.name && error.name === 'No SCN ID'){
-            errorString = text.getText('devtoberfest.missingID')
-        }
-        else if (error.name && error.name === 'Not Registered'){
-            errorString = text.getText('devtoberfest.missingReg')
-        }
-        else if (error.statusCode && error.statusCode === 404){
-            errorString = errorString = text.getText('devtoberfest.idNotFound')
-        }
-        else if (error.error) {
-            errorString = error.error
-        } else {
-            errorString = error.toString()
-        }
+        let errorString = await getDevtoberfestText(error, req)
 
         const xmlescape = require('xml-escape')
         const text_wrapper_lib = require('text-wrapper')
@@ -178,3 +164,70 @@ async function handleErrorDevtoberfest(error, req, res) {
     }
 }
 module.exports.handleErrorDevtoberfest = handleErrorDevtoberfest
+
+/**
+ * Format Devtoberfest texts
+ * @param {express.error} error - caught error object 
+ * @param {express.req} req 
+ */
+async function getDevtoberfestText(error, req){
+    const texts = require("../util/texts")
+    let text = texts.getBundle(req)
+    let errorString = ''
+    if (error.name && error.name === 'No SCN ID'){
+        errorString = text.getText('devtoberfest.missingID')
+    }
+    else if (error.name && error.name === 'Not Registered'){
+        errorString = text.getText('devtoberfest.missingReg')
+    }
+    else if (error.statusCode && error.statusCode === 404){
+        errorString = errorString = text.getText('devtoberfest.idNotFound')
+    }
+    else if (error.error) {
+        errorString = error.error
+    } else {
+        errorString = error.toString()
+    }
+
+    return errorString
+}
+
+/**
+ * Handle Errors, render them as images and output that image
+ * @param {express.error} error - caught error object 
+ * @param {express.req} req 
+ * @param {express.res} res 
+ */
+ async function handleErrorDevtoberfestText(error, req, res) {
+    try {
+        const texts = require("../util/texts")
+        let text = texts.getBundle(req)
+        let errorObj = {}
+        let errorString = await getDevtoberfestText(error, req)
+        errorObj.errorString = errorString
+
+        if (error.name && error.name === 'No SCN ID' || error.statusCode && error.statusCode === 404){
+            errorObj.profile = text.getText('devtoberfest.profileTutorial')
+            errorObj.profileURL = `https://developers.sap.com/tutorials/community-profile.html`
+        }
+         if (error.name && error.name === 'Not Registered' || error.statusCode && error.statusCode === 404){
+            errorObj.reg = text.getText('devtoberfest.regLink')
+            errorObj.regURL = `https://www.eventbrite.com/e/168612930815`
+        }
+        if (error.name && error.name === 'Not Registered' || error.statusCode && error.statusCode === 404){
+            errorObj.regTutorial = text.getText('devtoberfest.regTutorial')
+            errorObj.regTutorialURL = `https://blogs.sap.com/2021/09/23/devtoberfest-2021-one-week-to-go/#reg`
+        }
+        if (error.statusCode && error.statusCode === 404){
+            errorObj.privacy =  text.getText('devtoberfest.privacy')
+            errorObj.privacyURL = `https://www.sap.com/about/legal/privacy.html`
+        } 
+        console.error(errorObj)
+        res.type("application/json").status(200).send(JSON.stringify(errorObj))
+
+    } catch (error) {
+        console.error(error)
+        res.status(500).send(error.toString())
+    }
+}
+module.exports.handleErrorDevtoberfestText = handleErrorDevtoberfestText
