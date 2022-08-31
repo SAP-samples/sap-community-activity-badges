@@ -33,23 +33,24 @@ Example: **/activity/your.SCN.ID**
 
 ![Example Activity Card](/srv/images/demo2.png)
 
-You can also add the URL parameter `png=true` if you want to recieve a png image file instead of the default svg
+You can also add the URL parameter `png=true` if you want to receive a png image file instead of the default svg
 
 Example: **/activity/your.SCN.ID?png=true**
 
 ### Devtoberfest Gameboard
 
-Unlike the other parts of this sample, the Devtoberfest Gameboard is not direct image generator that can be used as a badge.  It is a full website that uses similiar SVG rendering and SAP Community Profile APIs.  
+Unlike the other parts of this sample, the Devtoberfest Gameboard is not direct image generator that can be used as a badge.  It is a full website that uses similar SVG rendering and SAP Community Profile APIs.  
 
 We wanted the contest for this year's Devtoberfest to be accessible to a much greater number of community members.  Therefore this year’s Devtoberfest contest will include many different and smaller types of activities.
 
-It will be a points based contest.  Points are awarded for things like attending one of the educational sessions, completing certain developer tutorials tied to the topic weeks, or other activities that contribute to the SAP Developer Community (such as contributions to the [CoDoc project](https://blogs.sap.com/2021/05/20/introducing-the-open-documentation-initiative/)). Prizes are awarded based upon SAP Community badges which you earn and your must have a public Community profile to participate.
+It will be a points based contest.  Points are awarded for things like attending one of the educational sessions, completing certain developer tutorials tied to the topic weeks, or other activities that contribute to the SAP Developer Community. Prizes are awarded based upon SAP Community badges which you earn and your must have a public Community profile to participate.
 
-For the listing of activities, points and other contest details, please see [this page](https://github.com/SAP-samples/devtoberfest-2021/blob/main/contest/readme.md)
+For the listing of activities, points and other contest details, please see [the Devtoberfest Group in the SAP Community](https://groups.community.sap.com/t5/devtoberfest/gh-p/Devtoberfest)
 
 But the fun doesn’t end there.  We have this animated Contest Gameboard to help you track your progress through the contest.  Just add your SAP Community Profile ID to the end of the following URL: **/devtoberfestContest/scnId.Here**.
 
 ![Example Devtoberfest Gameboard](/srv/images/devtoberfest/devtoberfest_gameboard_promo1.png)
+
 ## Requirements
 
 This project runs as an [MTAR](https://sap.github.io/cloud-mta-build-tool/) that deploys a single Node.js service to Cloud Foundry. The Node.js service runs without authentication and uses [Express](https://expressjs.com/) for its main HTTP framework.
@@ -57,11 +58,13 @@ This project runs as an [MTAR](https://sap.github.io/cloud-mta-build-tool/) that
 ## Download and Installation
 
 We have a hosted version of this service at [https://devrel-tools-prod-scn-badges-srv.cfapps.eu10.hana.ondemand.com/](https://devrel-tools-prod-scn-badges-srv.cfapps.eu10.hana.ondemand.com/). However the project is also setup so that you can host your own version (or forked version). An mta.yaml for the project is included and you can build the MTAR and deploy to SAP BTP, Cloud Foundry environment. Or you can use the pre-built MTAR in the [Releases repository here in GitHub](https://github.com/SAP-samples/sap-community-activity-badges/releases)
+
 ## How to obtain support
 
 [Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
- 
+
 For additional support, [ask a question in SAP Community](https://answers.sap.com/questions/ask.html).
 
 ## License
+
 Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.

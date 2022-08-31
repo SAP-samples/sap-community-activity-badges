@@ -109,17 +109,17 @@ async function handleErrorDevtoberfest(error, req, res) {
         if (error.name && error.name === 'Not Registered' || error.statusCode && error.statusCode === 404){
             items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
                 text.getText('devtoberfest.regLink'),
-                `https://www.eventbrite.com/e/168612930815`, isPng))
+                `https://groups.community.sap.com/t5/devtoberfest/gh-p/Devtoberfest`, isPng))
                 itemHeight += 20
                 itemDelay += 200
         }
-        if (error.name && error.name === 'Not Registered' || error.statusCode && error.statusCode === 404){
+/*         if (error.name && error.name === 'Not Registered' || error.statusCode && error.statusCode === 404){
             items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
                 text.getText('devtoberfest.regTutorial'),
                 `https://blogs.sap.com/2021/09/23/devtoberfest-2021-one-week-to-go/#reg`, isPng))
                 itemHeight += 20
                 itemDelay += 200
-        }
+        } */
         if (error.statusCode && error.statusCode === 404){
             items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
                 text.getText('devtoberfest.privacy'),
@@ -137,7 +137,7 @@ async function handleErrorDevtoberfest(error, req, res) {
             svg.svgMainContent(items) +
 
             //Devtoberfest Logo            
-            `<a xlink:href="https://developers.sap.com/devtoberfest.html" target="_blank">` +
+            `<a xlink:href="https://groups.community.sap.com/t5/devtoberfest/gh-p/Devtoberfest" target="_blank">` +
             `<title>Devtoberfest</title>` +
             svg.svgDevtoberfestItem(1250, 925, 0, await svg.loadImageB64('../images/devtoberfest/Frame.png'), 192, 212, isPng) +
             `</a>` +

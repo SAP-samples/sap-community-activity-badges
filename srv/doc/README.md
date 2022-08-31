@@ -1,6 +1,6 @@
 # SAP Community Cards
 
-## Introduction 
+## Introduction
 
 <img src="../images/sap_18.png" alt="SAP Logo" width="100"/>
 
@@ -8,7 +8,7 @@ This service creates cards as images (svg or png) to display your SAP Community 
 
 For more details on your SAP Community Profile in general, we'd suggest you access this tutorial: [Update and Maintain Your SAP Profile at people.sap.com](https://developers.sap.com/tutorials/community-profile.html)
 
-This service only works with data which you've choosen to expose from your public SAP Community Profile. Please refer to the [SAP Community Privacy statement](https://www.sap.com/about/legal/privacy.html) for more details
+This service only works with data which you've chosen to expose from your public SAP Community Profile. Please refer to the [SAP Community Privacy statement](https://www.sap.com/about/legal/privacy.html) for more details
 
 ## Showcase Badges
 
@@ -18,7 +18,7 @@ Example: [/showcaseBadges/your.SCN.ID](./showcaseBadges/your.SCN.ID)
 
 ![Example Showcase Badges Card](../images/demo1.png)
 
-You can also add the URL parameter `png=true` if you want to recieve a png image file instead of the default svg
+You can also add the URL parameter `png=true` if you want to receive a png image file instead of the default svg
 
 Example: [/showcaseBadges/your.SCN.ID?png=true](./showcaseBadges/your.SCN.ID?png=true)
 
@@ -30,6 +30,6 @@ Example: [/activity/your.SCN.ID](./activity/your.SCN.ID)
 
 ![Example Activity Card](../images/demo2.png)
 
-You can also add the URL parameter `png=true` if you want to recieve a png image file instead of the default svg
+You can also add the URL parameter `png=true` if you want to receive a png image file instead of the default svg
 
 Example: [/activity/your.SCN.ID?png=true](./activity/your.SCN.ID?png=true)
