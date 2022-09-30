@@ -11,7 +11,7 @@ module.exports = (app) => {
         return res.redirect("/devtoberfestContest/scnId.Here")
     })
 
-    
+
     app.get('/devtoberfest/profile/:scnId', async (req, res) => {
         try {
             let profile = await getSCNProfile(req)
@@ -209,21 +209,19 @@ async function getSCNProfile(req) {
 
             //Check if they are registered for Devtoberfest - "Devtoberfest 2022 Participant"
             //TODO Add back in check when contest goes live
-/*             let registered = scnItems.content.find(x => x.displayName == 'Devtoberfest 2022 Participant')
-            if (!registered) {
-                let e = new Error('Not Registered')
-                e.name = 'Not Registered'
-                e.scnId = req.params.scnId
-                throw e
-            }
- */
+/*                          let registered = scnItems.content.find(x => x.displayName == 'Devtoberfest 2022 Participant')
+                        if (!registered) {
+                            let e = new Error('Not Registered')
+                            e.name = 'Not Registered'
+                            e.scnId = req.params.scnId
+                            throw e
+                        } */
             let userNameScore = stringScore(userName)
             let points = 0
-            let endDate = new Date(2021, 10, 13)
+            let endDate = new Date(2022, 11, 1)
             for (let item of scnItems.content) {
                 let badgeValue = badges.find(x => x.displayName == item.displayName)
                 if (badgeValue) {
-                    console.log(item.timestamp)
                     if (Date.parse(item.timestamp) < endDate) {
                         console.log(badgeValue.points)
                         points = points + badgeValue.points
@@ -280,8 +278,8 @@ async function buildGameboardHeader(isPng, profile, req) {
     let itemHeight = 220
     let itemDelay = 450
 
-    // let gameboardHeader = text.getText('devtoberfest.gameboardHeader', [profile.userName])
-    let gameboardHeader = text.getText('devtoberfest.gameboardHeaderEnd', [profile.userName])
+    let gameboardHeader = text.getText('devtoberfest.gameboardHeader', [profile.userName])
+    //let gameboardHeader = text.getText('devtoberfest.gameboardHeaderEnd', [profile.userName])
     let wrappedOutput = wrapper(gameboardHeader, { wrapOn: 35 })
     let wrappedArray = wrappedOutput.split("\n")
     for (let item of wrappedArray) {
@@ -290,9 +288,9 @@ async function buildGameboardHeader(isPng, profile, req) {
         itemHeight += 20
         itemDelay += 50
     }
-    /*   items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
-          text.getText('devtoberfest.scn'),
-          `https://people.sap.com/${profile.scnId}#reputation`, isPng)) */
+    items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
+        text.getText('devtoberfest.scn'),
+        `https://people.sap.com/${profile.scnId}#reputation`, isPng))
 
     return items
 }
@@ -334,7 +332,7 @@ async function buildHowToPlay(isPng, profile, req) {
 
     items.push(svg.svgDevtoberfestTextLink(itemHeight, 60, itemDelay,
         text.getText('devtoberfest.column1.here'),
-        `https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-welcome/ba-p/9358`, isPng))
+        `https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2022-contest-activities-and-points/ba-p/119178`, isPng))
     itemHeight += 18
     itemDelay += 50
 
@@ -404,7 +402,7 @@ async function buildMenu(isPng, profile, req) {
 
     //Menu Points
     items.push(
-        `<a xlink:href="https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-contest/ba-p/9357" target="_blank">` +
+        `<a xlink:href="https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2022-contest-activities-and-points/ba-p/119178" target="_blank">` +
         `<title>${text.getText('devtoberfest.points')}</title>` +
         svg.svgDevtoberfestItem(175, 960, 900, await svg.loadImageB64('../images/devtoberfest/menu/Frame-1.png'), 32, 29, isPng) +
         `</a>`)

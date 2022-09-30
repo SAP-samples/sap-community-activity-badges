@@ -1,6 +1,6 @@
 {
   "name": "scn-badges-srv",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "SCN Badges Service Layer",
   "engines": {
     "node": "^14.0.0 || ^16.0.0 || ^18.0.0"
@@ -16,16 +16,16 @@
     "event-loop-lag": "1.4.0",
     "express": "^4.18.1",
     "glob": "^8.0.3",
-    "inquirer": "^9.1.0",
+    "inquirer": "^9.1.2",
     "inquirer-fuzzy-path": "^2.3.0",
     "lodash": "^4.17.21",
-    "multer": "^1.4.4",
+    "multer": "^1.4.5-lts.1",
     "mustache": "^4.2.0",
     "nocache": "^3.0.4",
     "node-xlsx": "^0.21.0",
     "overload-protection": "^1.2.3",
     "serve-favicon": "^2.5.0",
-    "sharp": "^0.30.7",
+    "sharp": "^0.31.1",
     "showdown": "^2.1.0",
     "text-wrapper": "^2.0.2",
     "then-request": "^6.0.2",
@@ -38,7 +38,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index",
     "start": "node index",
-    "types": "npx typescript  --declaration --allowJs --emitDeclarationOnly --outDir types --skipLibCheck"
+    "types": "tsc --declaration --allowJs --emitDeclarationOnly --outDir types --skipLibCheck"
   },
   "author": "SAP",
   "bugs": {

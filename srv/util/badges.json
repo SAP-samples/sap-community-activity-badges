@@ -1,3 +1,150 @@
 [
-
- ]
+    {
+      "points": 10,
+      "displayName": "Devtoberfest 2022 Participant"
+    },
+    {
+      "points": 200,
+      "displayName": "#C2C241 - Devtoberfest 2022 - Introduction to ABAP Object Oriented Patterns"
+    },
+    {
+      "points": 200,
+      "displayName": "#2B0BA2 - Devtoberfest 2022 - Get Your Eclipse ADT installed"
+    },
+    {
+      "points": 175,
+      "displayName": "#7B2BE8 - Devtoberfest 2022 - Add Transactional Behavior to Your Core Data Services  "
+    },
+    {
+      "points": 175,
+      "displayName": "#4C72A3 - Devtoberfest 2022 - Create an ABAP Project in ABAP Development Tools (ADT)  "
+    },
+    {
+      "points": 175,
+      "displayName": "#1E3AD7 - Devtoberfest 2022 - Create an SAP BTP ABAP Environment Trial User "
+    },
+    {
+      "points": 175,
+      "displayName": "#01021E - Devtoberfest 2022 - Create an ABAP Package "
+    },
+    {
+      "points": 175,
+      "displayName": "#407F05 - Devtoberfest 2022 - Create and Run an ABAP Application "
+    },
+    {
+      "points": 175,
+      "displayName": "#E916A7 - Devtoberfest 2022 - Display Database Content and Run SQL Queries "
+    },
+    {
+      "points": 175,
+      "displayName": "#4F1E64 - Devtoberfest 2022 - Create a New ABAP Dictionary Structure "
+    },
+    {
+      "points": 175,
+      "displayName": "#C5EB2C - Devtoberfest 2022 - Create a Global ABAP Class "
+    },
+    {
+      "points": 175,
+      "displayName": "#D945AF - Devtoberfest 2022 - Create a Data Element "
+    },
+    {
+      "points": 175,
+      "displayName": "#A1A776 - Devtoberfest 2022 - Create ABAPDoc Comments in Your Class (On-Premise) "
+    },
+    {
+      "points": 200,
+      "displayName": "#FA3822 - Devtoberfest 2022 - How to Make State Management Work for You with Redux and Redux Toolkit"
+    },
+    {
+      "points": 200,
+      "displayName": "#68FF5F - Devtoberfest 2022 - How to simplify your data fetching life with Redux Toolkit Query"
+    },
+    {
+      "points": 175,
+      "displayName": "#FCC9AB - Devtoberfest 2022 - Get Started with UI5 Web Components for React"
+    },
+    {
+      "points": 175,
+      "displayName": "#DC2312 - Devtoberfest 2022 - Create a Card Component"
+    },
+    {
+      "points": 175,
+      "displayName": "#C4FE19 - Devtoberfest 2022 - Integrate Charts and Conditional Rendering"
+    },
+    {
+      "points": 175,
+      "displayName": "#C2DC65 - Devtoberfest 2022 - Create an Analytical Dashboard via UI5 Web Components for React"
+    },
+    {
+      "points": 175,
+      "displayName": "#3FF5A9 - Devtoberfest 2022 - Add Routing to a UI5 Web Components for React Project"
+    },
+    {
+      "points": 175,
+      "displayName": "#C94292 - Devtoberfest 2022 - Add Custom Styles and Components for UI5 Web Components for React"
+    },
+    {
+      "points": 200,
+      "displayName": "#D34394 - Devtoberfest 2022 - Build your Machine Learning Scenario for your SAP HANA Cloud application from Python"
+    },
+    {
+      "points": 200,
+      "displayName": "#A69088 - Devtoberfest 2022 - Machine Learning engines embedded in SAP Data Warehouse Cloud"
+    },
+    {
+      "points": 175,
+      "displayName": "#1036D7 - Devtoberfest 2022 - Start Using SAP HANA Cloud Free Tier Model or Trial in SAP BTP Cockpit"
+    },
+    {
+      "points": 175,
+      "displayName": "#7E301E - Devtoberfest 2022 - Provision an Instance of SAP HANA Cloud, SAP HANA Database"
+    },
+    {
+      "points": 175,
+      "displayName": "#861B7C - Devtoberfest 2022 - Tools to Manage and Access the SAP HANA Cloud, SAP HANA Database"
+    },
+    {
+      "points": 175,
+      "displayName": "#C40339 - Devtoberfest 2022 - Create Users and Manage Roles and Privileges"
+    },
+    {
+      "points": 175,
+      "displayName": "#5AD4AB - Devtoberfest 2022 -  Import Data into SAP HANA Cloud, SAP HANA Database"
+    },
+    {
+      "points": 175,
+      "displayName": "#07D3BF - Devtoberfest 2022 -  Query the Database Using SQL Statements"
+    },
+    {
+      "points": 800,
+      "displayName": "#13D064 - Devtoberfest 2022 - Low-Code, No-Code - Session Review"
+    },
+    {
+      "points": 175,
+      "displayName": "#D08285 - Devtoberfest 2022 - Create a Data Model and Expose It as a Service"
+    },
+    {
+      "points": 175,
+      "displayName": "#D5ADA6 - Devtoberfest 2022 - Create a Responsive User Interface Application"
+    },
+    {
+      "points": 1250,
+      "displayName": "#687EEA - Petoberfest 2022 - #Petoberfest"
+    },
+    {
+      "points": 400,
+      "displayName": "#D56104 - Devtoberfest 2022 - Week 1 - Cloud Native Speakers"
+    },
+    {
+      "points": 175,
+      "displayName": "#78227C - Devtoberfest 2022 - Enable SAP BTP, Kyma Runtime"
+    },
+    {
+      "points": 175,
+      "displayName": "#492B43 - Devtoberfest 2022 - Deploy Commerce Mock Application in the Kyma Runtime"
+    },
+    {
+      "points": 175,
+      "displayName": "#EF32DA - Devtoberfest 2022 - Use Redis in the Kyma Runtime to Store and Retrieve Data"
+    }
+   ]

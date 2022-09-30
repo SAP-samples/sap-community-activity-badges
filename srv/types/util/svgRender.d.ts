@@ -68,6 +68,12 @@ export function svgDevtoberfestBackground(): string;
  */
 export function svgContentHeader(text: string): Promise<string>;
 /**
+ * Image Header
+ * @param {string} text
+ * @returns {Promise<string>}
+ */
+export function svgContentHeaderGroups(text: string): Promise<string>;
+/**
  * Error Image Header
  * @param {string} text
  * @returns {Promise<string>}
@@ -84,6 +90,12 @@ export function svgEnd(): string;
  * @returns {string}
  */
 export function svgMainContent(...content: string[]): string;
+/**
+ * svg Bulk Content Body
+ * @param  {...string} content
+ * @returns {string}
+ */
+export function svgBulkContent(...content: string[]): string;
 /**
  * Render an Activity Item
  * @param {number} height
@@ -107,10 +119,11 @@ export function svgActivityItem(height: number, delay: number, image: string, ti
  * @param {string} [animation] - Special Animation
  * @param {string} [onclick] - onclick event handler
  * @param {string} [style] - custom style
+ * @param {string} [imageName] - imageName
 
  * @returns {string}
  */
-export function svgDevtoberfestItem(x: number, y: number, delay: number, image: string, scaleX: number, scaleY: number, png?: boolean, animation?: string, onclick?: string, style?: string): string;
+export function svgDevtoberfestItem(x: number, y: number, delay: number, image: string, scaleX: number, scaleY: number, png?: boolean, animation?: string, onclick?: string, style?: string, imageName?: string): string;
 /**
  * Render a Devtoberfest Text Header
  * @param {number} height
@@ -174,6 +187,17 @@ export function svgDevtoberfestCRTLink(height: number, width: number, delay: num
  */
 export function svgBadgeItem(height: number, width: number, delay: number, image: string, title: string, png?: boolean): Promise<string>;
 /**
+ * Render a Badge Showcase Item
+ * @param {number} height
+ * @param {number} width
+ * @param {number} delay - animation delay in milliseconds
+ * @param {string} image - Base64 encoded image data
+ * @param {string} title
+ * @param {boolean} [png] - alter rendering for png
+ * @returns {Promise<string>}
+ */
+export function svgBadgeItemGroups(height: number, width: number, delay: number, image: string, title: string, png?: boolean): Promise<string>;
+/**
  * Render a Badge Showcase Item 2nd line when wrapped
  * @param {number} height
  * @param {number} width
@@ -198,3 +222,4 @@ export function loadImageB64(image: string): Promise<string>;
  * @returns {string}
  */
 export function svgErrorDetails(height: number, delay: number, text: string, png?: boolean): string;
+export function escapeHTML(str: any): any;
