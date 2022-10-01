@@ -209,13 +209,13 @@ async function getSCNProfile(req) {
 
             //Check if they are registered for Devtoberfest - "Devtoberfest 2022 Participant"
             //TODO Add back in check when contest goes live
-/*                          let registered = scnItems.content.find(x => x.displayName == 'Devtoberfest 2022 Participant')
-                        if (!registered) {
-                            let e = new Error('Not Registered')
-                            e.name = 'Not Registered'
-                            e.scnId = req.params.scnId
-                            throw e
-                        } */
+            let registered = scnItems.content.find(x => x.displayName == 'Devtoberfest 2022 Participant')
+            if (!registered) {
+                let e = new Error('Not Registered')
+                e.name = 'Not Registered'
+                e.scnId = req.params.scnId
+                throw e
+            }
             let userNameScore = stringScore(userName)
             let points = 0
             let endDate = new Date(2022, 11, 1)
