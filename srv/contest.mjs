@@ -1,10 +1,25 @@
+import { fileURLToPath } from 'url'
+import { URL } from 'url'
+ const __dirname = fileURLToPath(new URL('.', import.meta.url))
+ import { createRequire } from 'module'
+  // @ts-ignore
+ const require = createRequire(import.meta.url)
 const excel = require("node-xlsx")
 const fs = require("fs")
+import inquirer from 'inquirer'
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
 
 async function init() {
   try {
 
-    const inquirer = require('inquirer')
+   // const inquirer = require('inquirer')
     inquirer.registerPrompt('fuzzypath', require('inquirer-fuzzy-path'))
     const answer = await inquirer.prompt([
       {
@@ -45,28 +60,32 @@ async function init() {
     const workSheetsFromFile = excel.parse(answer.path, { raw: false })
     await Promise.all(workSheetsFromFile[0].data.map(async (item) => {
       try {
-        if (item[0] === `Order #`) {
-          item[8] = 'Score'
-          item[9] = 'Level'
+        if (item[0] === `username`) {
+   //       item[8] = 'Score'
+   //       item[9] = 'Level'
           return
         }
 
-        if (!item[5]) {
+        if (!item[0]) {
           return
         }
 
-        let scnId = item[5] //SCN Id
+        if(item[8]){
+          return
+        }
+        let scnId = item[0] //SCN Id
         scnId = scnId.replace("@", "")
         scnId = scnId.replace("https://people.sap.com/", "")
         scnId = scnId.replace("http://scn.sap.com/people/", "")
         scnId = scnId.replace("people.sap.com/", "")
         
-        scnId.toLowerCase()
+        scnId = scnId.toLowerCase()
 
         const request = require('then-request')
         const urlBadges = `https://people-api.services.sap.com/rs/badge/${scnId}?sort=timestamp,desc&size=1000`
 
         let itemsRes = await request('GET', urlBadges)
+        sleep(20)
         const scnItems = JSON.parse(itemsRes.getBody())
 
         let points = 0
@@ -87,7 +106,7 @@ async function init() {
         item[8] = points
         item[9] = level
       } catch (error) {
-        console.error(error)
+       console.error(error)
       }
     }
 

@@ -224,6 +224,7 @@ async function getSCNProfile(req) {
                 if (badgeValue) {
                     if (Date.parse(item.timestamp) < endDate) {
                         console.log(badgeValue.points)
+                        item.points = badgeValue.points
                         points = points + badgeValue.points
                     }
                 }

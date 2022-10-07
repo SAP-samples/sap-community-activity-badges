@@ -117,7 +117,7 @@
     },
     {
       "points": 800,
-      "displayName": "#13D064 - Devtoberfest 2022 - Low-Code, No-Code - Session Review"
+      "displayName": "#13D064 - Devtoberfest 2022 - Low-Code, No-Code Speakers and Events"
     },
     {
       "points": 175,
@@ -146,5 +146,169 @@
     {
       "points": 175,
       "displayName": "#EF32DA - Devtoberfest 2022 - Use Redis in the Kyma Runtime to Store and Retrieve Data"
+    },
+    {
+      "points": 200,
+      "displayName": "#2B60E1 - Devtoberfest 2022 - Developer Extensibility and Business Events with RAP on SAP S/4HANA Cloud"
+    },
+    {
+      "points": 200,
+      "displayName": "#E1FD10 - Devtoberfest 2022 - Exercism Demo & Presentation with Lars Hvam Petersen"
+    },
+    {
+      "points": 175,
+      "displayName": "#4E2E45 - Devtoberfest 2022 - Create Table Persistence and Generate Data"
+    },
+    {
+      "points": 175,
+      "displayName": "#1974A5 - Devtoberfest 2022 - Define and Expose a CDS-Based Travel Data Model"
+    },
+    {
+      "points": 175,
+      "displayName": "#2B2F9C - Devtoberfest 2022 - Create Your First ABAP Console Application"
+    },
+    {
+      "points": 175,
+      "displayName": "#8B9AC5 - Devtoberfest 2022 - Create Behavior Definition for Managed Scenario"
+    },
+    {
+      "points": 175,
+      "displayName": "#1B340B - Devtoberfest 2022 - Create Behavior and Service in SAP BTP, ABAP Environment"
+    },
+    {
+      "points": 175,
+      "displayName": "#61BAE0 - Devtoberfest 2022 - Enhance Behavior With Action and Validation"
+    },
+    {
+      "points": 200,
+      "displayName": "#04CFB2 - Devtoberfest 2022 - Configuring BTP Cross-Account and Cross-Region Destinations For Use in UI Tooling"
+    },
+    {
+      "points": 200,
+      "displayName": "#58B299 - Devtoberfest 2022 - Outside the lines: SAP Fiori elements flexible programming model"
+    },
+    {
+      "points": 175,
+      "displayName": "#2D33D7 - Devtoberfest 2022 - Get Familiar with SAP BTP SDK for iOS"
+    },
+    {
+      "points": 175,
+      "displayName": "#E66C62 - Devtoberfest 2022 - Implement Your First Screen in an iOS App"
+    },
+    {
+      "points": 175,
+      "displayName": "#E09977 - Devtoberfest 2022 - Build a Product List"
+    },
+    {
+      "points": 175,
+      "displayName": "#97009A - Devtoberfest 2022 - Build a Customer List"
+    },
+    {
+      "points": 175,
+      "displayName": "#A426CD - Devtoberfest 2022 - Understand Mac Catalyst"
+    },
+    {
+      "points": 175,
+      "displayName": "#1EB04C - Devtoberfest 2022 - Adapt Your App to the Needs of a MacOS Application"
+    },
+    {
+      "points": 200,
+      "displayName": "#5BDD78 - Devtoberfest 2022 - Bi-directional integration between SAP Data Warehouse Cloud and SAP Analytics Cloud for planning"
+    },
+    {
+      "points": 200,
+      "displayName": "#3EA291 - Devtoberfest 2022 - Enhancing Analytic Application functionality with simple scripting"
+    },
+    {
+      "points": 175,
+      "displayName": "#A1AB40 - Devtoberfest 2022 -  Create a Development Project in SAP Business Application Studio"
+    },
+    {
+      "points": 175,
+      "displayName": "#7C9036 - Devtoberfest 2022 - Create a Calculation View"
+    },
+    {
+      "points": 175,
+      "displayName": "#EEBB8B - Devtoberfest 2022 - Grant Access to Calculation Views"
+    },
+    {
+      "points": 175,
+      "displayName": "#FE7686 - Devtoberfest 2022 - Get started with Guided Experiences"
+    },
+    {
+      "points": 175,
+      "displayName": "#12BDDE - Devtoberfest 2022 - Introduction to SAP Analytics Cloud"
+    },
+    {
+      "points": 800,
+      "displayName": "#8845B2 - Devtoberfest 2022 - Low-Code, No-Code Speakers Session Review (Week 2)"
+    },
+    {
+      "points": 200,
+      "displayName": "#435F62 - Devtoberfest 2022 - Challenge - AppGyver - easy (Week 2)"
+    },
+    {
+      "points": 500,
+      "displayName": "#4BEB54 - Devtoberfest 2022 - Challenge - AppGyver - tough (Week 2)"
+    },
+    {
+      "points": 175,
+      "displayName": "#3B7FA4 - Devtoberfest 2022 - Create an Application with SAP AppGyver"
+    },
+    {
+      "points": 175,
+      "displayName": "#B4AACE - Devtoberfest 2022 - Configure Your AppGyver Application to Open your Device Camera"
+    },
+    {
+      "points": 175,
+      "displayName": "#B721B1 - Devtoberfest 2022 - Connect Your AppGyver Application to a Public API"
+    },
+    {
+      "points": 175,
+      "displayName": "#368EEA - Devtoberfest 2022 - Fetch Data from Public API to Your AppGyver Application"
+    },
+    {
+      "points": 175,
+      "displayName": "#45EE50 - Devtoberfest 2022 - Display Fetched Data in Your AppGyver Application"
+    },
+    {
+      "points": 200,
+      "displayName": "#0569C5 - Devtoberfest 2022 - Day-2 Operations with the SAP BTP, Kyma runtime - Part 1"
+    },
+    {
+      "points": 200,
+      "displayName": "#4B1500 - Devtoberfest 2022 - SAP HANA Cloud from the SAP BTP, Kyma runtime"
+    },
+    {
+      "points": 175,
+      "displayName": "#CFC309 - Devtoberfest 2022 - Enable SAP BTP, Kyma Runtime"
+    },
+    {
+      "points": 175,
+      "displayName": "#4391EA - Devtoberfest 2022 - Install the Kubernetes Command Line Tool"
+    },
+    {
+      "points": 175,
+      "displayName": "#4580FE - Devtoberfest 2022 - Introduce Multitenant Application Development on SAP BTP, Kyma Runtime"
+    },
+    {
+      "points": 175,
+      "displayName": "#19C033 - Devtoberfest 2022 - Create and Configure the Approuter Application for a Multitenant Application"
+    },
+    {
+      "points": 175,
+      "displayName": "#73415D - Devtoberfest 2022 - Secure a Multitenant Application with the Authorization and Trust Management Service (XSUAA)"
+    },
+    {
+      "points": 175,
+      "displayName": "#5337D2 - Devtoberfest 2022 - Implement Subscription Callbacks for a Multitenant Application"
+    },
+    {
+      "points": 175,
+      "displayName": "#28F3A5 - Devtoberfest 2022 - Register a Multitenant Application to the SAP SaaS Provisioning Service"
+    },
+    {
+      "points": 175,
+      "displayName": "#86B195 - Devtoberfest 2022 - Subscribe a Multitenant Application by a Consumer"
     }
    ]
