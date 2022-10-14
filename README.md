@@ -7,7 +7,7 @@
 
 ## Description
 
-This service creates cards as images (svg or png) to display your SAP Community activity and achievements. Now you can share you SAP Community pride in other locations, such as you GitHub README. It also contains the service for the [Devtoberfest 2021 Gameboard](https://github.com/SAP-samples/devtoberfest-2021#contest-the-game)
+This service creates cards as images (svg or png) to display your SAP Community activity and achievements. Now you can share you SAP Community pride in other locations, such as you GitHub README. It also contains the service for the [Devtoberfest 2021 Gameboard](https://github.com/SAP-samples/devtoberfest-2021#contest-the-game).
 
 For more details on your SAP Community Profile in general, we'd suggest you access this tutorial: [Update and Maintain Your SAP Profile at people.sap.com](https://developers.sap.com/tutorials/community-profile.html).
 
