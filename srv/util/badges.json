@@ -310,5 +310,161 @@
     {
       "points": 175,
       "displayName": "#86B195 - Devtoberfest 2022 - Subscribe a Multitenant Application by a Consumer"
+    },
+    {
+      "points": 200,
+      "displayName": "#A92D49 - Devtoberfest 2022 - History of ABAP (R/2 -> R/3)"
+    },
+    {
+      "points": 200,
+      "displayName": "#86B8EB - Devtoberfest 2022 - Troubleshoot RAP-based Fiori Apps in the ABAP Development Tools"
+    },
+    {
+      "points": 175,
+      "displayName": "#5F2288 - Devtoberfest 2022 - Create a Simple ABAP CDS View in ADT"
+    },
+    {
+      "points": 175,
+      "displayName": "#88C2C1 - Devtoberfest 2022 - Display a CDS View Using ALV with IDA"
+    },
+    {
+      "points": 1000,
+      "displayName": "#7E5B1E - Devtoberfest 2022 - Cryptic Crossword"
+    },
+    {
+      "points": 200,
+      "displayName": "#44F118 - Devtoberfest 2022 - Clean SAPUI5: More readable, maintainable and testable code"
+    },
+    {
+      "points": 200,
+      "displayName": "#D5B4BC - Devtoberfest 2022 - Testing UI5 Apps with wdi5 - Zero to Hero to Continuous Integration"
+    },
+    {
+      "points": 175,
+      "displayName": "#0092C5 - Devtoberfest 2022 - Set Up SAP Launchpad Service Using a Trial Account"
+    },
+    {
+      "points": 175,
+      "displayName": "#DD2F29 - Devtoberfest 2022 - Set Up SAP Business Application Studio for Development"
+    },
+    {
+      "points": 175,
+      "displayName": "#C6D3DE - Devtoberfest 2022 - Create a Dev Space for SAP Fiori Apps"
+    },
+    {
+      "points": 175,
+      "displayName": "#E497CC - Devtoberfest 2022 - Create a Destination in the SAP BTP Cockpit"
+    },
+    {
+      "points": 175,
+      "displayName": "#92DD66 - Devtoberfest 2022 - Create an Empty SAPUI5 Project"
+    },
+    {
+      "points": 175,
+      "displayName": "#85DF73 - Devtoberfest 2022 - Add Views and Define Routes to Access Them"
+    },
+    {
+      "points": 175,
+      "displayName": "#CE879B - Devtoberfest 2022 - Improve User Experience of the List and Detail Page"
+    },
+    {
+      "points": 175,
+      "displayName": "#D7D75B - Devtoberfest 2022 - Deploy Your SAPUI5 App"
+    },
+    {
+      "points": 200,
+      "displayName": "#8E1EC9 - Devtoberfest 2022 - Why you should know more about SAP Data Warehouse Cloud"
+    },
+    {
+      "points": 200,
+      "displayName": "#8660BA - Devtoberfest 2022 - Innovate your IT landscape with SAP Data Warehouse Cloud, SAP BW Bridge"
+    },
+    {
+      "points": 175,
+      "displayName": "#74A529 - Devtoberfest 2022 - SAP HANA Database Explorer Overview"
+    },
+    {
+      "points": 175,
+      "displayName": "#CAC5FF - Devtoberfest 2022 - Add Databases to the SAP HANA Database Explorer"
+    },
+    {
+      "points": 175,
+      "displayName": "#F61DDD - Devtoberfest 2022 - Browse Schema with the Database Browser in SAP HANA Database Explorer"
+    },
+    {
+      "points": 175,
+      "displayName": "#9796A4 - Devtoberfest 2022 - Query with the SQL Console in SAP HANA Database Explorer"
+    },
+    {
+      "points": 175,
+      "displayName": "#2BA482 - Devtoberfest 2022 - Troubleshoot SQL with SAP HANA Database Explorer"
+    },
+    {
+      "points": 800,
+      "displayName": "#F7B642 - Devtoberfest 2022 - Devtoberfest 2022 Week 3 - Low-Code, No-Code Speakers (Overview)"
+    },
+    {
+      "points": 175,
+      "displayName": "#16B8BB - Devtoberfest 2022 - Create a Business Process"
+    },
+    {
+      "points": 175,
+      "displayName": "#B40FB3 - Devtoberfest 2022 - Create and Configure Forms"
+    },
+    {
+      "points": 175,
+      "displayName": "#DC2FE7 - Devtoberfest 2022 - Create a Process Condition"
+    },
+    {
+      "points": 175,
+      "displayName": "#8E1D2A - Devtoberfest 2022 - Run the Business Process"
+    },
+    {
+      "points": 175,
+      "displayName": "#3EE888 - Devtoberfest 2022 - Create an Invoice Approval Process"
+    },
+    {
+      "points": 175,
+      "displayName": "#7301A7 - Devtoberfest 2022 - Create an automation to extract Invoice Details"
+    },
+    {
+      "points": 175,
+      "displayName": "#838AA0 - Devtoberfest 2022 - Create a Decision for Invoice Approval Process"
+    },
+    {
+      "points": 175,
+      "displayName": "#A16AF5 - Devtoberfest 2022 - Create Forms for Invoice Approval Process"
+    },
+    {
+      "points": 175,
+      "displayName": "#079B9A - Devtoberfest 2022 - Release, Deploy and Run the Process"
+    },
+    {
+      "points": 200,
+      "displayName": "#1040DD - Devtoberfest 2022 - Week 3 - Challenge - SPA - Easy"
+    },
+    {
+      "points": 500,
+      "displayName": "#319FA5 - Devtoberfest 2022 - Week 3 - Challenge - SPA - Tough"
+    },
+    {
+      "points": 200,
+      "displayName": "#CD865A - Devtoberfest 2022 - Day-2 Operations with the SAP BTP, Kyma runtime - Part 2"
+    },
+    {
+      "points": 200,
+      "displayName": "#D63BA5 - Devtoberfest 2022 - Basics of Containerization"
+    },
+    {
+      "points": 175,
+      "displayName": "#C47933 - Devtoberfest 2022 -  Deploy a Go MSSQL API Endpoint in the Kyma Runtime"
+    },
+    {
+      "points": 175,
+      "displayName": "#8F8FEE - Devtoberfest 2022 - Trigger a Microservice with an Event"
+    },
+    {
+      "points": 1972,
+      "displayName": "SAP TechEd in 2022 Registered Attendee"
     }
    ]
