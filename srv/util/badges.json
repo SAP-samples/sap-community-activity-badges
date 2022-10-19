@@ -466,5 +466,89 @@
     {
       "points": 1972,
       "displayName": "SAP TechEd in 2022 Registered Attendee"
+    },
+    {
+      "points": 175,
+      "displayName": "#A78634 - Devtoberfest 2022 Scavenger Hunt - Get an Account on SAP BTP to Try Out Free Tier Service Plans"
+    },
+    {
+      "points": 175,
+      "displayName": "#27C9D1 - Devtoberfest 2022 Scavenger Hunt - Manage Entitlements Using the Cockpit"
+    },
+    {
+      "points": 175,
+      "displayName": "#D5066C - Devtoberfest 2022 Scavenger Hunt - Create a Service Instance in SAP BTP"
+    },
+    {
+      "points": 175,
+      "displayName": "#D906DC - Devtoberfest 2022 Scavenger Hunt - Consume SAP BTP Services In SAP Kyma"
+    },
+    {
+      "points": 175,
+      "displayName": "#E49477 - Devtoberfest 2022 Scavenger Hunt - Set Up Initial Configuration for an MDK App"
+    },
+    {
+      "points": 175,
+      "displayName": "#FCF8F3 - Devtoberfest 2022 Scavenger Hunt - Start Your MDK Application in the Editor"
+    },
+    {
+      "points": 175,
+      "displayName": "#CFFF0B - Devtoberfest 2022 Scavenger Hunt - Create a UI Using Freestyle SAPUI5"
+    },
+    {
+      "points": 175,
+      "displayName": "#B722F9 - Devtoberfest 2022 Scavenger Hunt - Create an SAP Fiori Elements-Based UI"
+    },
+    {
+      "points": 175,
+      "displayName": "#BCCA93 - Devtoberfest 2022 Scavenger Hunt - Help Thomas Get Started with SAP HANA Cloud"
+    },
+    {
+      "points": 175,
+      "displayName": "#AB1F9B - Devtoberfest 2022 Scavenger Hunt - Take a Tour of SAP Analytics Cloud"
+    },
+    {
+      "points": 175,
+      "displayName": "#D7E729 - Devtoberfest 2022 Scavenger Hunt - Understand Why Data Anonymization is Important"
+    },
+    {
+      "points": 175,
+      "displayName": "#41503A - Devtoberfest 2022 Scavenger Hunt - Understand Spatial Reference Systems in SAP HANA Spatial"
+    },
+    {
+      "points": 175,
+      "displayName": "#96C312 - Devtoberfest 2022 Scavenger Hunt - Prepare Your Development Environment for CAP"
+    },
+    {
+      "points": 175,
+      "displayName": "#EC0055 - Devtoberfest 2022 Scavenger Hunt - Create a CAP Business Service with Node.js Using Visual Studio Code"
+    },
+    {
+      "points": 175,
+      "displayName": "#D93FDE - Devtoberfest 2022 Scavenger Hunt - Create an SAP Cloud Application Programming Model Project for SAP HANA Cloud"
+    },
+    {
+      "points": 175,
+      "displayName": "#EEE7A3 - Devtoberfest 2022 Scavenger Hunt - Create Database Artifacts Using Core Data Services (CDS) for SAP HANA Cloud"
+    },
+    {
+      "points": 175,
+      "displayName": "#39FADD - Devtoberfest 2022 Scavenger Hunt - Create a User Interface with CAP (SAP HANA Cloud)"
+    },
+    {
+      "points": 175,
+      "displayName": "#9EA2E7 - Devtoberfest 2022 Scavenger Hunt - Add User Authentication to Your Application (SAP HANA Cloud)"
+    },
+    {
+      "points": 175,
+      "displayName": "#1CA67B - Devtoberfest 2022 Scavenger Hunt - Create Calculation View and Expose via CAP (SAP HANA Cloud)"
+    },
+    {
+      "points": 175,
+      "displayName": "#23CBD5 - Devtoberfest 2022 Scavenger Hunt - Create HANA Stored Procedure and Expose as CAP Service Function (SAP HANA Cloud)"
+    },
+    {
+      "points": 3000,
+      "displayName": "#96C587 - Devtoberfest 2022 Scavenger Hunt - Completion Bonus"
     }
    ]
