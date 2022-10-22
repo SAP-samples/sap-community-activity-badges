@@ -550,5 +550,93 @@
     {
       "points": 3000,
       "displayName": "#96C587 - Devtoberfest 2022 Scavenger Hunt - Completion Bonus"
+    },
+    {
+      "points": 200,
+      "displayName": "#D1C812 - Devtoberfest 2022 - Interview with Michael Keller about starting with ABAP"
+    },
+    {
+      "points": 200,
+      "displayName": "#92E01F - Devtoberfest 2022 - A Beginner's Guide to the ABAP RESTful Application Programming Model"
+    },
+    {
+      "points": 175,
+      "displayName": "#44085F - Devtoberfest 2022 - Get to Know the ABAP RESTful Application Programming Model"
+    },
+    {
+      "points": 175,
+      "displayName": "#C13A8B - Devtoberfest 2022 - Create a SAP Fiori App and Deploy it to SAP BTP, ABAP Environment"
+    },
+    {
+      "points": 200,
+      "displayName": "#F4255F - Devtoberfest 2022 - Improving the Performance of UI5 Applications"
+    },
+    {
+      "points": 200,
+      "displayName": "#AA84AC - Devtoberfest 2022 - Build beautiful, native mobile applications with SAP Fiori for iOS"
+    },
+    {
+      "points": 175,
+      "displayName": "#554A2C - Devtoberfest 2022 - Prepare Your Development Environment for SAP Fiori Elements"
+    },
+    {
+      "points": 175,
+      "displayName": "#48E373 - Devtoberfest 2022 - Create an SAP Fiori Elements Application"
+    },
+    {
+      "points": 175,
+      "displayName": "#A19E60 - Devtoberfest 2022 - Refine the List Report with Additional Annotations"
+    },
+    {
+      "points": 175,
+      "displayName": "#F06D1D - Devtoberfest 2022 - Extend the Object Page by Adding More Functionality"
+    },
+    {
+      "points": 200,
+      "displayName": "#5F7DA5 - Devtoberfest 2022 - Python Operators in SAP Data Intelligence: Leverage the new features"
+    },
+    {
+      "points": 200,
+      "displayName": "#9D5205 - Devtoberfest 2022 - Build data pipelines with SAP Data Intelligence"
+    },
+    {
+      "points": 175,
+      "displayName": "#829A72 - Devtoberfest 2022 - Choose an SAP HANA Database"
+    },
+    {
+      "points": 175,
+      "displayName": "#A48C6F - Devtoberfest 2022 - Install the SAP HANA Client"
+    },
+    {
+      "points": 175,
+      "displayName": "#9AEAD6 - Devtoberfest 2022 - Create a User, Tables and Import Data Using SAP HANA HDBSQL"
+    },
+    {
+      "points": 175,
+      "displayName": "#6EE0A2 - Devtoberfest 2022 - Connect Using the SAP HANA Python Interface"
+    },
+    {
+      "points": 175,
+      "displayName": "#AAEE93 - Devtoberfest 2022 - Trace an SAP HANA Client Connection"
+    },
+    {
+      "points": 800,
+      "displayName": "#F63F0F - Devtoberfest 2022 - Week 4 - Low-Code, No-Code Speakers (Overview)"
+    },
+    {
+      "points": 200,
+      "displayName": "#67D3C5 - Devtoberfest 2022 - Developing Front-End Applications in Cloud Foundry - an End-to-End Journey"
+    },
+    {
+      "points": 200,
+      "displayName": "#0C1082 - Devtoberfest 2022 - Develop your first CAP application on the SAP BTP, Kyma runtime"
+    },
+    {
+      "points": 175,
+      "displayName": "#5C1D3E - Devtoberfest 2022 - Deploy Your CAP Application to Kyma"
+    },
+    {
+      "points": 175,
+      "displayName": "#D50EEF - Devtoberfest 2022 - Prepare SAP Launchpad Service Setup"
     }
    ]
