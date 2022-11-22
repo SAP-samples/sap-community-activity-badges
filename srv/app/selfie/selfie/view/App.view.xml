@@ -19,15 +19,26 @@
                 <Image src="/images/devtoberfest/selfie/thumbnails/Group2.png" id="Group2" alt="Entire Group #2" />
                 <Image src="/images/devtoberfest/selfie/thumbnails/Group3.png" id="Group3" alt="Entire Group #3" />
                 <Image src="/images/devtoberfest/selfie/thumbnails/Group4.png" id="Group4" alt="Entire Group #4" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Background.png" id="Background" alt="2021 Background" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Background2.png" id="Background2" alt="2022 Background" />
                 <Image src="/images/devtoberfest/selfie/thumbnails/DJ.png" id="DJ" alt="DJ Adams" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/DJ2.png" id="DJ2" alt="DJ Adams #2" />
                 <Image src="/images/devtoberfest/selfie/thumbnails/Josh.png" id="Josh" alt="Josh Bentley" />
                 <Image src="/images/devtoberfest/selfie/thumbnails/Josh2.png" id="Josh2" alt="Josh Bentley #2" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Josh3.png" id="Josh3" alt="Josh Bentley #3" />
                 <Image src="/images/devtoberfest/selfie/thumbnails/Kasmire.png" id="Kasmire" alt="Kasmire the TechEd Cat" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Antonio.png" id="Antonio" alt="Antonio Maradiaga" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Michelle.png" id="Michelle" alt="Michelle Moudy" />
                 <Image src="/images/devtoberfest/selfie/thumbnails/Kevin.png" id="Kevin" alt="Kevin Muessig" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Kevin2.png" id="Kevin2" alt="Kevin Muessig #2" />
                 <Image src="/images/devtoberfest/selfie/thumbnails/Mamikee.png" id="Mamikee" alt="Mamikee Kanneh" />
                 <Image src="/images/devtoberfest/selfie/thumbnails/Rich.png" id="Rich" alt="Rich Heilman" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Rich2.png" id="Rich2" alt="Rich Heilman #2" />
                 <Image src="/images/devtoberfest/selfie/thumbnails/Thomas.png" id="Thomas" alt="Thomas Jung" />
                 <Image src="/images/devtoberfest/selfie/thumbnails/Witalij.png" id="Witalij" alt="Witalij Rudnicki" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Nico.png" id="Nico" alt="Nico Schoenteich" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Nora.png" id="Nora" alt="Nora von Thenen" />
+                <Image src="/images/devtoberfest/selfie/thumbnails/Daniel.png" id="Daniel" alt="Daniel Wroblewski" />
             </Carousel>
         </content>
     </Panel>
