@@ -1,9 +1,9 @@
 {
   "name": "scn-badges-srv",
-  "version": "2.4.3",
+  "version": "3.0.0",
   "description": "SCN Badges Service Layer",
   "engines": {
-    "node": "^14.0.0 || ^16.0.0 || ^18.0.0"
+    "node": "^14.0.0 || ^16.0.0 || ^18.0.0 || ^20.0.0"
   },
   "dependencies": {
     "@cloudnative/health-connect": "^2.1.0",

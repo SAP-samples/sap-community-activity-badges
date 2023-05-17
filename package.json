@@ -1,7 +1,7 @@
 {
   "name": "scn-badges-mta",
   "devDependencies": {
-    "mbt": "^1.2.3"
+    "mbt": "^1.2.23"
   },
   "scripts": {
     "build": "mbt build"
