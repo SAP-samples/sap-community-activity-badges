@@ -36,6 +36,18 @@ module.exports = (app) => {
         }
     })
 
+    //CodeJam Events Board: codejam-events
+    app.get('/khoros/eventRegs/:boardId', async (req, res) => {
+        try {
+            let profile = await getEventsRegs(req)
+            return res.type("application/json").status(200).send(profile)
+        } catch (error) {
+            app.logger.error(error)
+            const errHandler = require("../util/error")
+            return await errHandler.handleErrorDevtoberfestText(error, req, res)
+        }
+    })
+
     app.get('/khoros/boards/', async (req, res) => {
         try {
             let profile = await getBoards(req)
@@ -70,6 +82,31 @@ async function getBoards(req) {
     let boardDetails = await request('GET', boardURL)
     const boardOutput = JSON.parse(boardDetails.getBody())
     return boardOutput
+}
+
+async function getEventsRegs(req) {
+    const request = require('then-request')
+    const start = new Date()
+
+    const eventURL = 
+    `https://groups.community.sap.com/api/2.0/search?q=` +
+    `SELECT id, subject, occasion_data.start_time ` +
+    `FROM messages WHERE board.id='${req.params.boardId}' and occasion_data.start_time >= '${start.toISOString()}' order by occasion_data.start_time asc`
+    let eventDetails = await request('GET', eventURL)
+    const eventOutput = JSON.parse(eventDetails.getBody())
+    let finalOutput = await Promise.all(eventOutput.data.items.map(async (item) => {
+        let newItem ={}
+        const rsvpURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT count(*) FROM rsvps WHERE message.id = '${item.id}' and rsvp_response = 'yes'`
+        const rsvpDetails = await request('GET', rsvpURL)
+        const rsvpOutput = JSON.parse(rsvpDetails.getBody())
+        newItem.name = item.subject
+        newItem.start_time = item.occasion_data.start_time
+        newItem.rsvpCount = rsvpOutput.data.count        
+
+        return newItem
+    })) 
+    return finalOutput
+
 }
 
 async function getEvents(req) {
