@@ -1,9 +1,6 @@
 # SAP Community Activity Badges
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/sap-community-activity-badges)](https://api.reuse.software/info/github.com/SAP-samples/sap-community-activity-badges)
-[![Visits Badge](https://badges.pufler.dev/visits/SAP-samples/sap-community-activity-badges)](https://badges.pufler.dev)
-[![Updated Badge](https://badges.pufler.dev/updated/SAP-samples/sap-community-activity-badges)](https://badges.pufler.dev)
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/SAP-samples/sap-community-activity-badges)
 
 ## Description
 
