@@ -55,6 +55,24 @@ module.exports = (app) => {
             let output = '<!DOCTYPE html><html><body>'
             for (let item of profile) {
                 output += `<a href="${item.href}"><h3>${item.name}</h2></a>`
+                output += `
+                    <a
+                        target="_blank"
+                        rel="noreferrer"
+                        href="https://groups.community.sap.com/api/2.0/search?q=%20SELECT%20id,%20user.login,%20user.email,%20user.first_name,%20user.last_name,%20rsvp_response%20FROM%20rsvps%20WHERE%20message.id%20=%20%27${item.id}%27">
+                        <button>
+                            Open event details in new tab
+                        </button></a>
+                    <br><br>
+                    <div>
+                        <button onclick="composeEmail(this)">
+                            Compose email to attendees
+                        </button>
+                        <div style="display: flex; gap: 1em; align-items: flex-end; margin-top: 1em;">
+                            <textarea style="display: none; width: 300px; height: 200px; margin-bottom: 1em;" placeholder="Paste the event details content here."></textarea>
+                            <button style="display: none;" onclick="openEmailDraft(this, '${item.name}')">Open email draft</button>
+                        </div>
+                    </div>`
                 if(item.rsvpCount >= 25){
                     output += `<li>RSVP Count: ${item.rsvpCount} 🛑</li>`
                 }else if(item.rsvpCount >= 20){
@@ -75,6 +93,32 @@ module.exports = (app) => {
                 `</script>`
                 output += `<li>Location: ${item.location}</li>`
             }
+            output += `
+                <script>
+                    const composeEmail = (element) => {
+                        const textArea = element.parentNode.getElementsByTagName("TEXTAREA")[0]
+                        textArea.style.display = "block"
+                        textArea.addEventListener("change", (e) => {
+                            const buttonNextToText = e.target.parentNode.getElementsByTagName("BUTTON")[0]
+                            buttonNextToText.style.display = "block"
+                        })
+                    }
+                    const openEmailDraft = (element, name) => {
+                        try {
+                            const textArea = element.parentNode.getElementsByTagName("TEXTAREA")[0]
+                            const json = JSON.parse(textArea.value)
+                            let attendeeEmails = []
+                            json.data.items.forEach(item => {
+                                attendeeEmails.push(item.user.email)
+                            })
+                            const attendeeEmailsAsString = attendeeEmails.join(",")
+                            window.open('mailto:?bcc='+attendeeEmailsAsString+'&subject='+name, '_blank')
+                        } catch(error) {
+                            console.error(error)
+                            alert("Oops! Something went wrong while composing your email. Did you paste the whole API response into the text area? Check the console for details and blame the developer.")
+                        }
+                    }
+                </script>`
 
             output += `</body></html>`
             return res.type("text/html").status(200).send(output)
