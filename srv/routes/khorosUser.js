@@ -70,7 +70,7 @@ module.exports = (app) => {
                         </button>
                         <div style="display: flex; gap: 1em; align-items: flex-end; margin-top: 1em;">
                             <textarea style="display: none; width: 300px; height: 200px; margin-bottom: 1em;" placeholder="Paste the event details content here."></textarea>
-                            <button style="display: none;" onclick="openEmailDraft(this, '${item.name}')">Open email draft</button>
+                            <button style="display: none; margin-bottom: 1em;" onclick="openEmailDraft(this, '${item.name}')">Open email draft</button>
                         </div>
                     </div>`
                 if(item.rsvpCount >= 25){
