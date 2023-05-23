@@ -53,26 +53,45 @@ module.exports = (app) => {
         try {
             let profile = await getEventsRegs(req.params.boardId)
             let output = '<!DOCTYPE html><html><body>'
+            output += 
+            `
+            <script type="module">
+              import Parser  from 'https://cdn.jsdelivr.net/gh/juanjoDiaz/json2csv@6.1.3/dist/cdn/plainjs/Parser.js'
+              import flatten  from 'https://cdn.jsdelivr.net/gh/juanjoDiaz/json2csv@6.1.3/dist/cdn/transforms/flatten.js'
+              window.Parser = Parser
+              window.flatten = flatten
+            </script>
+            <script>
+            const formatDate = (element, startTime, timeZone) =>{
+                let date1 = new Date((typeof date === "string" ? new Date(startTime) : startTime) 
+                    ).toLocaleString(Intl.DateTimeFormat().resolvedOptions().locale, { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, dateStyle: 'full', timeStyle: 'full' })
+                let date2 = new Date((typeof date === "string" ? new Date(startTime) : startTime) 
+                    ).toLocaleString(Intl.DateTimeFormat().resolvedOptions().locale, { timeZone: timeZone, dateStyle: 'full', timeStyle: 'full' })
+                document.getElementById(element).innerHTML = 'Start Time: ' + date1 + ' / ' + date2
+            }
+            </script>
+            `
             for (let item of profile) {
-                output += `<a href="${item.href}"><h3>${item.name}</h2></a>`
+                output += `\n<a href="${item.href}"><h3>${item.name}</h2></a>`    
+                output += `<div style="border-width:3px; border-style:solid; border-color:grey; padding: 1em;">`           
                 output += `
                     <a
                         target="_blank"
                         rel="noreferrer"
-                        href="https://groups.community.sap.com/api/2.0/search?q=%20SELECT%20id,%20user.login,%20user.email,%20user.first_name,%20user.last_name,%20rsvp_response%20FROM%20rsvps%20WHERE%20message.id%20=%20%27${item.id}%27">
+                        href="${encodeURI("https://groups.community.sap.com/api/2.0/search?q=SELECT id, user.login, user.email, user.first_name, user.last_name, rsvp_response, user.sso_id FROM rsvps WHERE rsvp_response = 'yes' and message.id = '" + item.id +"'")}">
                         <button>
-                            Open event details in new tab
+                            Open event registrations in new tab
                         </button></a>
-                    <br><br>
-                    <div>
+                    &nbsp &nbsp 
+
                         <button onclick="composeEmail(this)">
-                            Compose email to attendees
+                            Post-process registrations
                         </button>
                         <div style="display: flex; gap: 1em; align-items: flex-end; margin-top: 1em;">
-                            <textarea style="display: none; width: 300px; height: 200px; margin-bottom: 1em;" placeholder="Paste the event details content here."></textarea>
+                            <textarea style="display: none; width: 300px; height: 200px; margin-bottom: 1em;" placeholder="Paste the event registrations here."></textarea>
                             <button style="display: none; margin-bottom: 1em;" onclick="openEmailDraft(this, '${item.name}')">Open email draft</button>
-                        </div>
-                    </div>`
+                            <button style="display: none; margin-bottom: 1em;" onclick="openExcel(this, '${item.name}')">Download Excel</button>
+                        </div>`
                 if(item.rsvpCount >= 25){
                     output += `<li>RSVP Count: ${item.rsvpCount} 🛑</li>`
                 }else if(item.rsvpCount >= 20){
@@ -82,16 +101,11 @@ module.exports = (app) => {
                 }
                 output += `<li id="${item.id}"></li>`
                 output += 
-                `<script>` +
-                `date1 = new Date( ` +
-                `    (typeof date === "string" ? new Date('${item.startTime}') : '${item.startTime}') ` +
-                `  ).toLocaleString(Intl.DateTimeFormat().resolvedOptions().locale, { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, dateStyle: 'full', timeStyle: 'full' }); ` +
-                `date2 = new Date( ` +
-                `    (typeof date === "string" ? new Date('${item.startTime}') : '${item.startTime}') ` +
-                `  ).toLocaleString(Intl.DateTimeFormat().resolvedOptions().locale, { timeZone: '${item.timezone}', dateStyle: 'full', timeStyle: 'full' }); ` +
-                `document.getElementById("${item.id}").innerHTML = 'Start Time: ' + date1 + ' / ' + date2` +
-                `</script>`
+                `<script>
+                    formatDate('${item.id}', '${item.startTime}', '${item.timezone}', )
+                </script>`
                 output += `<li>Location: ${item.location}</li>`
+                output += `</div>`   
             }
             output += `
                 <script>
@@ -101,6 +115,8 @@ module.exports = (app) => {
                         textArea.addEventListener("change", (e) => {
                             const buttonNextToText = e.target.parentNode.getElementsByTagName("BUTTON")[0]
                             buttonNextToText.style.display = "block"
+                            const buttonNextToText2 = e.target.parentNode.getElementsByTagName("BUTTON")[1]
+                            buttonNextToText2.style.display = "block"
                         })
                     }
                     const openEmailDraft = (element, name) => {
@@ -111,11 +127,29 @@ module.exports = (app) => {
                             json.data.items.forEach(item => {
                                 attendeeEmails.push(item.user.email)
                             })
-                            const attendeeEmailsAsString = attendeeEmails.join(",")
+                            const attendeeEmailsAsString = attendeeEmails.join("; ")
                             window.open('mailto:?bcc='+attendeeEmailsAsString+'&subject='+name, '_blank')
                         } catch(error) {
                             console.error(error)
                             alert("Oops! Something went wrong while composing your email. Did you paste the whole API response into the text area? Check the console for details and blame the developer.")
+                        }
+                    }
+
+                    const openExcel = (element, name) => {
+                        try {
+                            const textArea = element.parentNode.getElementsByTagName("TEXTAREA")[0]
+                            const json = JSON.parse(textArea.value)
+                            const opts = {
+                                transforms: [
+                                    flatten({ separator: '_' })
+                                ]
+                              }
+                            const parser = new Parser(opts)
+                            const csv = parser.parse(json.data.items)
+                            window.open("data:text/csv;charset=utf-8," + escape(csv))
+                        } catch(error) {
+                            console.error(error)
+                            alert("Oops! Something went wrong while reformatting for Excel. Did you paste the whole API response into the text area? Check the console for details and blame the developer.")
                         }
                     }
                 </script>`
@@ -174,6 +208,7 @@ async function getEventsRegs(boardId) {
         `https://groups.community.sap.com/api/2.0/search?q=` +
         `SELECT id, subject, view_href, occasion_data.location, occasion_data.start_time, occasion_data.end_time, occasion_data.timezone ` +
         `FROM messages WHERE board.id='${boardId}' and occasion_data.start_time >= '${start.toISOString()}' order by occasion_data.start_time asc`
+
     let eventDetails = await request('GET', eventURL)
     const eventOutput = JSON.parse(eventDetails.getBody())
     let finalOutput = await Promise.all(eventOutput.data.items.map(async (item) => {
