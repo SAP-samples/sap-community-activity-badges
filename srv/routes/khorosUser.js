@@ -72,6 +72,9 @@ module.exports = (app) => {
             </script>
             `
             for (let item of profile) {
+                let date2 = new Date((typeof date === "string" ? new Date(item.startTime) : item.startTime) 
+                ).toLocaleString(Intl.DateTimeFormat().resolvedOptions().locale, { timeZone: item.timezone, dateStyle: 'full', timeStyle: 'full' })
+
                 output += `\n<a href="${item.href}"><h3>${item.name}</h2></a>`    
                 output += `<div style="border-width:3px; border-style:solid; border-color:grey; padding: 1em;">`           
                 output += `
@@ -89,7 +92,7 @@ module.exports = (app) => {
                         </button>
                         <div style="display: flex; gap: 1em; align-items: flex-end; margin-top: 1em;">
                             <textarea style="display: none; width: 300px; height: 200px; margin-bottom: 1em;" placeholder="Paste the event registrations here."></textarea>
-                            <button style="display: none; margin-bottom: 1em;" onclick="openEmailDraft(this, '${item.name}')">Open email draft</button>
+                            <button style="display: none; margin-bottom: 1em;" onclick="openEmailDraft(this, '${item.name}', '${date2}', '${item.location}', '${item.href}')">Open email draft</button>
                             <button style="display: none; margin-bottom: 1em;" onclick="openExcel(this, '${item.name}')">Download Excel</button>
                         </div>`
                 if(item.rsvpCount >= 25){
@@ -119,7 +122,7 @@ module.exports = (app) => {
                             buttonNextToText2.style.display = "block"
                         })
                     }
-                    const openEmailDraft = (element, name) => {
+                    const openEmailDraft = (element, name, start, location, url) => {
                         try {
                             const textArea = element.parentNode.getElementsByTagName("TEXTAREA")[0]
                             const json = JSON.parse(textArea.value)
@@ -128,7 +131,14 @@ module.exports = (app) => {
                                 attendeeEmails.push(item.user.email)
                             })
                             const attendeeEmailsAsString = attendeeEmails.join("; ")
-                            window.open('mailto:?bcc='+attendeeEmailsAsString+'&subject='+name, '_blank')
+ 
+                            const emailBody = 'This is a reminder that you are registered for the ' +
+                                              name + '\\n' +
+                                              '* Start Time: ' + start + '\\n' +
+                                              '* Location: ' + location + '\\n' + '\\n' +
+                                              'This is a hands-on learning event! Be sure to bring your own laptop and review the prerequisites ' + '\\n' +
+                                              'If you have any questions about the event, you can post in the Event page or feel free to reply directly to this email.' 
+                            window.open(encodeURI('mailto:?bcc='+attendeeEmailsAsString+'&subject='+name+'&body='+emailBody), '_blank')
                         } catch(error) {
                             console.error(error)
                             alert("Oops! Something went wrong while composing your email. Did you paste the whole API response into the text area? Check the console for details and blame the developer.")
