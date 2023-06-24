@@ -138,7 +138,7 @@ module.exports = (app) => {
                                               '* Location: ' + location + '\\n' + '\\n' +
                                               'This is a hands-on learning event! Be sure to bring your own laptop and review the prerequisites ' + '\\n' +
                                               'If you have any questions about the event, you can post in the Event page or feel free to reply directly to this email.' 
-                            window.open(encodeURI('mailto:?bcc='+attendeeEmailsAsString+'&subject='+name+'&body='+emailBody), '_blank')
+                            window.open('mailto:?bcc='+attendeeEmailsAsString+'&subject='+encodeURIComponent(name)+'&body='+encodeURIComponent(emailBody), '_blank')
                         } catch(error) {
                             console.error(error)
                             alert("Oops! Something went wrong while composing your email. Did you paste the whole API response into the text area? Check the console for details and blame the developer.")
