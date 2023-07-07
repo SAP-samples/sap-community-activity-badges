@@ -105,7 +105,7 @@ async function renderSVG(isPng, profile, req) {
         //Devtoberfest Logo            
         `<a xlink:href="https://groups.community.sap.com/t5/devtoberfest/gh-p/Devtoberfest" target="_blank">` +
         `<title>Devtoberfest</title>` +
-        svg.svgDevtoberfestItem(1250, 925, 0, await svg.loadImageB64('../images/devtoberfest/Frame.png'), 192, 212, isPng) +
+        svg.svgDevtoberfestItem(1250, 925, 0, await svg.loadImageB64('../images/devtoberfest/Devtoberfest_Circular_Website.png'), 192, 212, isPng) +
         `</a>`,
         //Bottom CRT Frame
         svg.svgDevtoberfestItem(1507, 0, 0, await svg.loadImageB64('../images/devtoberfest/okBottom.png'), 105, 1347, isPng),
@@ -250,9 +250,9 @@ function stringScore(string) {
         score += string.charAt(j).charCodeAt(0)
     }
 
-    //Calculate Modulo of Score and maximum Avatar number of 19 
+    //Calculate Modulo of Score and maximum Avatar number of 29 
     //Given two positive numbers a and n, a modulo n (abbreviated as a mod n) is the remainder of the Euclidean division of a by n, where a is the dividend and n is the divisor
-    score = ((score % 19) + 19) % 19
+    score = ((score % 29) + 29) % 29
     if (score > 0) { score = score - 1 }
     return score
 }
@@ -279,8 +279,8 @@ async function buildGameboardHeader(isPng, profile, req) {
     let itemHeight = 220
     let itemDelay = 450
 
-    let gameboardHeader = text.getText('devtoberfest.gameboardHeader', [profile.userName])
-    //let gameboardHeader = text.getText('devtoberfest.gameboardHeaderEnd', [profile.userName])
+    //let gameboardHeader = text.getText('devtoberfest.gameboardHeader', [profile.userName])
+    let gameboardHeader = text.getText('devtoberfest.gameboardHeaderEnd', [profile.userName])
     let wrappedOutput = wrapper(gameboardHeader, { wrapOn: 35 })
     let wrappedArray = wrappedOutput.split("\n")
     for (let item of wrappedArray) {
@@ -504,11 +504,11 @@ async function buildAvatar(isPng, profile, req) {
     let text = texts.getBundle(req)
     let items = []
     let avatarNumber = profile.userNameScore
-    if (!avatarNumber || avatarNumber < 0 || avatarNumber > 18) {
+    if (!avatarNumber || avatarNumber < 0 || avatarNumber > 28) {
         avatarNumber = 0
     }
     if (profile.scnId && profile.scnId === 'josh.bentley') {
-        avatarNumber = 12
+        avatarNumber = 27
     }
     let avatar = `../images/devtoberfest/avatars/Group-${avatarNumber.toString()}.png`
     if (profile.scnId && profile.scnId === 'lars.hvam') {

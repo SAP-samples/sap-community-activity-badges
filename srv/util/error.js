@@ -139,7 +139,7 @@ async function handleErrorDevtoberfest(error, req, res) {
             //Devtoberfest Logo            
             `<a xlink:href="https://groups.community.sap.com/t5/devtoberfest/gh-p/Devtoberfest" target="_blank">` +
             `<title>Devtoberfest</title>` +
-            svg.svgDevtoberfestItem(1250, 925, 0, await svg.loadImageB64('../images/devtoberfest/Frame.png'), 192, 212, isPng) +
+            svg.svgDevtoberfestItem(1250, 925, 0, await svg.loadImageB64('../images/devtoberfest/Devtoberfest_Circular_Website.png'), 192, 212, isPng) +
             `</a>` +
             //SAP Logo
             `<a xlink:href="https://sap.com/" target="_blank">` +
