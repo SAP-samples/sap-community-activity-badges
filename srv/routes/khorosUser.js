@@ -17,22 +17,6 @@ module.exports = (app) => {
      *     responses:
      *       200:
      *         description: A single user.
-     *         content:
-     *           application/json:
-     *             schema:
-     *               type: object
-     *               properties:
-     *                 data:
-     *                   type: object
-     *                   properties:
-     *                     id:
-     *                       type: integer
-     *                       description: The user ID.
-     *                       example: 0
-     *                     name:
-     *                       type: string
-     *                       description: The user's name.
-     *                       example: Leanne Graham 
      */
     app.get('/khoros/user/:scnId', async (req, res) => {
         try {
@@ -298,7 +282,7 @@ async function getMessagePosters(boardId, conversationId) {
         }
         i++
     }
-    const allAuthors = allMessages.map(e => { return { "login": e.author.login, "id": e.author.id } })
+    const allAuthors = allMessages.map(e => { return { "login": e.author.login, "id": e.author.id, "view_href": e.author.view_href } })
     const uniqueAuthors = [...new Set(allAuthors.map(o => JSON.stringify(o)))].map(s => JSON.parse(s))
     return uniqueAuthors
 }
