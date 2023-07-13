@@ -145,7 +145,7 @@ function svgStyleIcon() {
 module.exports.svgStyleIcon = svgStyleIcon
 
 /**
- * svg Style annimations
+ * svg Style animations
  * @returns {string}
  */
 function svgStyleAnimate() {

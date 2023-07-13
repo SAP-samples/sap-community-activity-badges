@@ -16,7 +16,7 @@ module.exports = function (app) {
 
 	require('./expressSecurity')(app)
 
-
+	require('./swagger')(app)
 	app.use(logging.middleware({ appContext: appContext, logNetwork: true }));
 
 }

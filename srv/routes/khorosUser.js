@@ -1,7 +1,39 @@
 
 module.exports = (app) => {
 
-
+    /**
+     * @swagger
+     * /khoros/user/{scnId}:
+     *   get:
+     *     summary: Retrieve a single Khoros user.
+     *     description: Retrieve a single Khoros user.
+     *     parameters:
+     *       - in: path
+     *         name: scnId
+     *         required: true
+     *         description: Numeric ID of the user to retrieve.
+     *         schema:
+     *           type: integer
+     *     responses:
+     *       200:
+     *         description: A single user.
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: object
+     *               properties:
+     *                 data:
+     *                   type: object
+     *                   properties:
+     *                     id:
+     *                       type: integer
+     *                       description: The user ID.
+     *                       example: 0
+     *                     name:
+     *                       type: string
+     *                       description: The user's name.
+     *                       example: Leanne Graham 
+     */
     app.get('/khoros/user/:scnId', async (req, res) => {
         try {
             let profile = await getSCNProfile(req.params.scnId)
@@ -251,23 +283,23 @@ async function getEventsRegs(boardId) {
     return finalOutput
 }
 
-async function getMessagePosters(boardId,conversationId){
+async function getMessagePosters(boardId, conversationId) {
     const request = require('then-request')
     let newMessages = []
     let allMessages = []
     let i = 0
     while (newMessages.length > 1 || i === 0) {
-        const searchURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT%20*%20FROM%20messages%20WHERE%20board.id%20=%20%27${boardId}%27%20LIMIT%20${(i + 1) * 100}%20OFFSET%20${i * 100}`
+        const searchURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT%20*%20FROM%20messages%20WHERE%20board.id%20=%20%27${boardId}%27%20and%20topic.id%20=%20%27${conversationId}%27LIMIT%20${(i + 1) * 100}%20OFFSET%20${i * 100}`
         let searchDetails = await request('GET', searchURL)
-         const searchOutput = JSON.parse(searchDetails.getBody())
-        newMessages = searchOutput.data.items.filter(e => e.conversation.id === conversationId)
+        const searchOutput = JSON.parse(searchDetails.getBody())
+        newMessages = searchOutput.data.items
         if (newMessages.length > 1) {
             allMessages = allMessages.concat(newMessages)
         }
         i++
     }
-    const allAuthors = allMessages.map(e => { return e.author.login })
-    const uniqueAuthors = [...new Set(allAuthors)]
+    const allAuthors = allMessages.map(e => { return { "login": e.author.login, "id": e.author.id } })
+    const uniqueAuthors = [...new Set(allAuthors.map(o => JSON.stringify(o)))].map(s => JSON.parse(s))
     return uniqueAuthors
 }
 
