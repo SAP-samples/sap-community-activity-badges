@@ -48,13 +48,24 @@ module.exports = (app) => {
         }
     })
 
+    app.get('/khoros/messagePosters/:boardId/:conversationId', async (req, res) => {
+        try {
+            let posters = await getMessagePosters(req.params.boardId, req.params.conversationId)
+            return res.type("application/json").status(200).send(posters)
+        } catch (error) {
+            app.logger.error(error)
+            const errHandler = require("../util/error")
+            return await errHandler.handleErrorDevtoberfestText(error, req, res)
+        }
+    })
+
     //CodeJam Events Board: codejam-events
     app.get('/khoros/eventRegs/:boardId', async (req, res) => {
         try {
             let profile = await getEventsRegs(req.params.boardId)
             let output = '<!DOCTYPE html><html><body>'
-            output += 
-            `
+            output +=
+                `
             <script type="module">
               import Parser  from 'https://cdn.jsdelivr.net/gh/juanjoDiaz/json2csv@6.1.3/dist/cdn/plainjs/Parser.js'
               import flatten  from 'https://cdn.jsdelivr.net/gh/juanjoDiaz/json2csv@6.1.3/dist/cdn/transforms/flatten.js'
@@ -72,16 +83,16 @@ module.exports = (app) => {
             </script>
             `
             for (let item of profile) {
-                let date2 = new Date((typeof date === "string" ? new Date(item.startTime) : item.startTime) 
+                let date2 = new Date((typeof date === "string" ? new Date(item.startTime) : item.startTime)
                 ).toLocaleString(Intl.DateTimeFormat().resolvedOptions().locale, { timeZone: item.timezone, dateStyle: 'full', timeStyle: 'full' })
 
-                output += `\n<a href="${item.href}"><h3>${item.name}</h2></a>`    
-                output += `<div style="border-width:3px; border-style:solid; border-color:grey; padding: 1em;">`           
+                output += `\n<a href="${item.href}"><h3>${item.name}</h2></a>`
+                output += `<div style="border-width:3px; border-style:solid; border-color:grey; padding: 1em;">`
                 output += `
                     <a
                         target="_blank"
                         rel="noreferrer"
-                        href="${encodeURI("https://groups.community.sap.com/api/2.0/search?q=SELECT id, user.login, user.email, user.first_name, user.last_name, rsvp_response, user.sso_id FROM rsvps WHERE rsvp_response = 'yes' and message.id = '" + item.id +"'")}">
+                        href="${encodeURI("https://groups.community.sap.com/api/2.0/search?q=SELECT id, user.login, user.email, user.first_name, user.last_name, rsvp_response, user.sso_id FROM rsvps WHERE rsvp_response = 'yes' and message.id = '" + item.id + "'")}">
                         <button>
                             Open event registrations in new tab
                         </button></a>
@@ -95,20 +106,20 @@ module.exports = (app) => {
                             <button style="display: none; margin-bottom: 1em;" onclick="openEmailDraft(this, '${item.name}', '${date2}', '${item.location}', '${item.href}')">Open email draft</button>
                             <button style="display: none; margin-bottom: 1em;" onclick="openExcel(this, '${item.name}')">Download Excel</button>
                         </div>`
-                if(item.rsvpCount >= 25){
+                if (item.rsvpCount >= 25) {
                     output += `<li>RSVP Count: ${item.rsvpCount} 🛑</li>`
-                }else if(item.rsvpCount >= 20){
+                } else if (item.rsvpCount >= 20) {
                     output += `<li>RSVP Count: ${item.rsvpCount} 🟡</li>`
-                }else{
+                } else {
                     output += `<li>RSVP Count: ${item.rsvpCount} </li>`
                 }
                 output += `<li id="${item.id}"></li>`
-                output += 
-                `<script>
+                output +=
+                    `<script>
                     formatDate('${item.id}', '${item.startTime}', '${item.timezone}', )
                 </script>`
                 output += `<li>Location: ${item.location}</li>`
-                output += `</div>`   
+                output += `</div>`
             }
             output += `
                 <script>
@@ -240,6 +251,26 @@ async function getEventsRegs(boardId) {
     return finalOutput
 }
 
+async function getMessagePosters(boardId,conversationId){
+    const request = require('then-request')
+    let newMessages = []
+    let allMessages = []
+    let i = 0
+    while (newMessages.length > 1 || i === 0) {
+        const searchURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT%20*%20FROM%20messages%20WHERE%20board.id%20=%20%27${boardId}%27%20LIMIT%20${(i + 1) * 100}%20OFFSET%20${i * 100}`
+        let searchDetails = await request('GET', searchURL)
+         const searchOutput = JSON.parse(searchDetails.getBody())
+        newMessages = searchOutput.data.items.filter(e => e.conversation.id === conversationId)
+        if (newMessages.length > 1) {
+            allMessages = allMessages.concat(newMessages)
+        }
+        i++
+    }
+    const allAuthors = allMessages.map(e => { return e.author.login })
+    const uniqueAuthors = [...new Set(allAuthors)]
+    return uniqueAuthors
+}
+
 async function getEvents(boardId) {
     const request = require('then-request')
     const start = new Date()
@@ -254,6 +285,7 @@ async function getEvents(boardId) {
     return eventOutput
 
 }
+
 async function getEvent(eventId) {
 
     let eventDetails = {}
