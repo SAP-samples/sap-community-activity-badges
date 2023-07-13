@@ -1,6 +1,6 @@
 {
   "name": "scn-badges-srv",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "SCN Badges Service Layer",
   "engines": {
     "node": "^14.0.0 || ^16.0.0 || ^18.0.0 || ^20.0.0"
@@ -15,17 +15,17 @@
     "ejs": "^3.1.9",
     "event-loop-lag": "1.4.0",
     "express": "^4.18.2",
-    "glob": "^8.0.3",
-    "inquirer": "^9.2.4",
+    "glob": "10.3.3",
+    "inquirer": "^9.2.7",
     "inquirer-fuzzy-path": "^2.3.0",
     "lodash": "^4.17.21",
     "multer": "^1.4.5-lts.1",
     "mustache": "^4.2.0",
-    "nocache": "^3.0.4",
-    "node-xlsx": "^0.21.2",
+    "nocache": "^4.0.0",
+    "node-xlsx": "^0.23.0",
     "overload-protection": "^1.2.3",
     "serve-favicon": "^2.5.0",
-    "sharp": "^0.32.1",
+    "sharp": "^0.32.2",
     "showdown": "^2.1.0",
     "text-wrapper": "^2.0.2",
     "then-request": "^6.0.2",
@@ -47,7 +47,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
     "eslint": "^8.20.0",
-    "typescript": "^4.3.5",
-    "nodemon": "^2"
+    "typescript": "^5.1.6",
+    "nodemon": "^3"
   }
 }

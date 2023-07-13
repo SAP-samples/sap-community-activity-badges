@@ -11,7 +11,7 @@ const path = require('path')
 const upath = require('upath')
 const favicon = require('serve-favicon')
 const fileExists = require('fs').existsSync
-const glob = require('glob')
+const { glob } = require('glob')
 
 function ExpressServer() {
     //Default port
@@ -38,8 +38,7 @@ function ExpressServer() {
 
         //Load routes
         let routesDir = path.join(this.baseDir, 'routes/**/*.js')
-        let files = glob.sync(upath.normalize(routesDir))
-       // let files = glob.sync(routesDir)
+        let files = await glob(upath.normalize(routesDir))
         console.log(routesDir)
         this.routerFiles = files
         if (files.length !== 0) {
