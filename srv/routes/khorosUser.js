@@ -273,7 +273,7 @@ async function getMessagePosters(boardId, conversationId) {
     let allMessages = []
     let i = 0
     while (newMessages.length > 1 || i === 0) {
-        const searchURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT%20*%20FROM%20messages%20WHERE%20board.id%20=%20%27${boardId}%27%20and%20topic.id%20=%20%27${conversationId}%27LIMIT%20${(i + 1) * 100}%20OFFSET%20${i * 100}`
+        const searchURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT%20author%20FROM%20messages%20WHERE%20board.id%20=%20%27${boardId}%27%20and%20topic.id%20=%20%27${conversationId}%27LIMIT%20${(i + 1) * 100}%20OFFSET%20${i * 100}`
         let searchDetails = await request('GET', searchURL)
         const searchOutput = JSON.parse(searchDetails.getBody())
         newMessages = searchOutput.data.items
