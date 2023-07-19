@@ -1,14 +1,17 @@
 /* eslint-disable no-console */
-
+// @ts-check
 
 //Catch uncaught errors
+//@ts-ignore
 process.on('uncaughtException', function (err) {
     console.error(err.name + ': ' + err.message, err.stack.replace(/.*\n/, '\n')) // eslint-disable-line
 })
 
+// @ts-ignore
 const express = require('express')
 const path = require('path')
 const upath = require('upath')
+// @ts-ignore
 const favicon = require('serve-favicon')
 const fileExists = require('fs').existsSync
 const { glob } = require('glob')
@@ -28,6 +31,7 @@ function ExpressServer() {
     this.app.use(favicon(path.join(__dirname, 'images', 'favicon.ico')))
 
     this.start = async function () {
+        // @ts-ignore
         app.baseDir = this.baseDir
 
         //Load express.js
@@ -37,6 +41,7 @@ function ExpressServer() {
         }
 
         //Load routes
+        // @ts-ignore
         let routesDir = path.join(this.baseDir, 'routes/**/*.js')
         let files = await glob(upath.normalize(routesDir))
         console.log(routesDir)
@@ -47,7 +52,9 @@ function ExpressServer() {
             }
         }
 
+        // @ts-ignore
         httpServer = app.listen(this.port)
+        // @ts-ignore
         console.log(`Express Server Now Running On http://localhost:${this.port}/`)
     }
 

@@ -7,11 +7,73 @@ module.exports = (app) => {
     app.get('/devtoberfest', async (req, res) => {
         return res.redirect("/")
     })
+
     app.get('/devtoberfestContest', async (req, res) => {
         return res.redirect("/devtoberfestContest/scnId.Here")
     })
 
-
+    /**
+     * @swagger
+     * /devtoberfest/profile/{scnId}:
+     *   get:
+     *     summary: Retrieve a single Khoros event.
+     *     description: Retrieve a single Khoros event.
+     *     parameters:
+     *       - in: path
+     *         name: scnId
+     *         required: true
+     *         description: User ID as string from old SAP Community System
+     *         default: thomas.jung
+     *         schema:
+     *           type: string
+     *     responses:
+     *       200:
+     *         description: All badges assigned to the specified user
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: object
+     *               properties:
+     *                 userName:
+     *                   type: string
+     *                 scnId:
+     *                   type: string
+     *                 userNameScore:
+     *                   type: integer
+     *                 points:
+     *                   type: integer
+     *                 level:
+     *                   type: integer
+     *                 badges:
+     *                   type: object
+     *                   properties:
+     *                     content:
+     *                       type: array
+     *                       items:
+     *                         type: object
+     *                         properties:
+     *                           name:
+     *                             type: string
+     *                           displayName:
+     *                             type: string
+     *                           description:
+     *                             type: string
+     *                           imageUrl:
+     *                             type: string
+     *                             format: uri
+     *                           type:
+     *                             type: string
+     *                           userName:
+     *                             type: string
+     *                           timestamp:
+     *                             type: string
+     *                             format: date-time
+     *                           modified:
+     *                             type: string
+     *                             format: date-time
+     *                           count:
+     *                             type: integer
+     */ 
     app.get('/devtoberfest/profile/:scnId', async (req, res) => {
         try {
             let profile = await getSCNProfile(req)

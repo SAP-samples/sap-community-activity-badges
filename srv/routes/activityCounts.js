@@ -12,6 +12,29 @@ module.exports = (app) => {
         return res.redirect("/")
     })
 
+    /**
+     * @swagger
+     * /activity/{scnId}:
+     *   get:
+     *     summary: Retrieve a activity details for a single SAP Community User
+     *     description: Retrieve a activity details for a single SAP Community User
+     *     parameters:
+     *       - in: path
+     *         name: scnId
+     *         required: true
+     *         description: String ID of the user to retrieve - old SAP Community ID
+     *         default: thomas.jung
+     *         schema:
+     *           type: string
+     *       - in: query
+     *         name: png
+     *         type: boolean
+     *         description: Output PNG graphic instead of SVG
+     *         default: false
+     *     responses:
+     *       200:
+     *         description: A single user.
+     */    
     app.get('/activity/:scnId', nocache, async (req, res) => {
         try {
             let isPng = false
@@ -19,18 +42,18 @@ module.exports = (app) => {
 
             const request = require('then-request')
             const urlActivity = `https://content.services.sap.com/cse/search/user-counts?name=${req.params.scnId}`
-            const urlProfile = `https://searchproxy.api.community.sap.com/api/v1/search?limit=20&orderBy=UPDATE_TIME&order=DESC&contentTypes%5B0%5D=people&authorId=${req.params.scnId}`
+            const urlProfile = `https://content.services.sap.com/cse/search/user?name=${req.params.scnId}&sort=published:desc&size=1&page=0`
 
             let [itemsRes, profileRes] = await Promise.all([
-                request('GET', urlActivity),
-                request('GET', urlProfile)
+                request('GET', encodeURI(urlActivity)),
+                request('GET', encodeURI(urlProfile))
             ])
             const scnItems = JSON.parse(itemsRes.getBody())
             const scnProfile = JSON.parse(profileRes.getBody())
 
             let userName = req.params.scnId
-            if (scnProfile.contentItems[0]) {
-                userName = scnProfile.contentItems[0].title
+            if (scnProfile._embedded && scnProfile._embedded.contents[0] && scnProfile._embedded.contents[0].author) {
+                userName = scnProfile._embedded.contents[0].author.displayName
             }
             let text = texts.getBundle(req)
             let numFormat = new Intl.NumberFormat(texts.getLocale(req))

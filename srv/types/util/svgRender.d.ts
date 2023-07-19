@@ -47,7 +47,7 @@ export function svgStyleStagger(): string;
  */
 export function svgStyleIcon(): string;
 /**
- * svg Style annimations
+ * svg Style animations
  * @returns {string}
  */
 export function svgStyleAnimate(): string;
