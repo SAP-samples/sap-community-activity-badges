@@ -167,7 +167,7 @@ async function renderSVG(isPng, profile, req) {
         //Devtoberfest Logo            
         `<a xlink:href="https://groups.community.sap.com/t5/devtoberfest/gh-p/Devtoberfest" target="_blank">` +
         `<title>Devtoberfest</title>` +
-        svg.svgDevtoberfestItem(1250, 925, 0, await svg.loadImageB64('../images/devtoberfest/Devtoberfest_Circular_Website.png'), 192, 212, isPng) +
+        svg.svgDevtoberfestItem(1250, 925, 0, await svg.loadImageB64('../images/devtoberfest/devtoberfest_2023_square_small.gif'), 192, 212, isPng) +
         `</a>`,
         //Bottom CRT Frame
         svg.svgDevtoberfestItem(1507, 0, 0, await svg.loadImageB64('../images/devtoberfest/okBottom.png'), 105, 1347, isPng),
@@ -269,18 +269,18 @@ async function getSCNProfile(req) {
                 userName = scnProfile._embedded.contents[0].author.displayName
             }
 
-            //Check if they are registered for Devtoberfest - "Devtoberfest 2022 Participant"
+            //Check if they are registered for Devtoberfest - "Devtoberfest 2023 Participant"
             //TODO Add back in check when contest goes live
-            let registered = scnItems.content.find(x => x.displayName == 'Devtoberfest 2022 Participant')
-            if (!registered) {
+            let registered = scnItems.content.find(x => x.displayName == 'Devtoberfest 2023 Participant')
+/*             if (!registered) {
                 let e = new Error('Not Registered')
                 e.name = 'Not Registered'
                 e.scnId = req.params.scnId
                 throw e
-            }
+            } */
             let userNameScore = stringScore(userName)
             let points = 0
-            let endDate = new Date(2022, 11, 1)
+            let endDate = new Date(2023, 10, 16)
             for (let item of scnItems.content) {
                 let badgeValue = badges.find(x => x.displayName == item.displayName)
                 if (badgeValue) {
@@ -395,7 +395,7 @@ async function buildHowToPlay(isPng, profile, req) {
 
     items.push(svg.svgDevtoberfestTextLink(itemHeight, 60, itemDelay,
         text.getText('devtoberfest.column1.here'),
-        `https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2022-contest-activities-and-points/ba-p/119178`, isPng))
+        `https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2023-contest/ba-p/9357`, isPng))
     itemHeight += 18
     itemDelay += 50
 
@@ -425,7 +425,7 @@ async function buildLawyersHappy(isPng, profile, req) {
 
     items.push(svg.svgDevtoberfestTextLink(itemHeight, columnStart, itemDelay,
         text.getText('devtoberfest.column2.here'),
-        `https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2022-contest-official-rules/ba-p/9344`, isPng))
+        `https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2023-contest/ba-p/9357`, isPng))
     itemHeight += 18
     itemDelay += 50
 
@@ -458,21 +458,21 @@ async function buildMenu(isPng, profile, req) {
 
     //Menu Awards
     items.push(
-        `<a xlink:href="https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-contest/ba-p/9357" target="_blank">` +
+        `<a xlink:href="https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2023-contest/ba-p/9357" target="_blank">` +
         `<title>${text.getText('devtoberfest.awards')}</title>` +
         svg.svgDevtoberfestItem(175, 900, 750, await svg.loadImageB64('../images/devtoberfest/menu/Frame.png'), 32, 29, isPng) +
         `</a>`)
 
     //Menu Points
     items.push(
-        `<a xlink:href="https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2022-contest-activities-and-points/ba-p/119178" target="_blank">` +
+        `<a xlink:href="https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2023-contest/ba-p/9357" target="_blank">` +
         `<title>${text.getText('devtoberfest.points')}</title>` +
         svg.svgDevtoberfestItem(175, 960, 900, await svg.loadImageB64('../images/devtoberfest/menu/Frame-1.png'), 32, 29, isPng) +
         `</a>`)
 
     //Menu Rules
     items.push(
-        `<a xlink:href="https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2022-contest-official-rules/ba-p/9344" target="_blank">` +
+        `<a xlink:href="https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2023-contest/ba-p/9357" target="_blank">` +
         `<title>${text.getText('devtoberfest.rules')}</title>` +
         svg.svgDevtoberfestItem(175, 1020, 1025, await svg.loadImageB64('../images/devtoberfest/menu/Frame-2.png'), 32, 29, isPng) +
         `</a>`)
