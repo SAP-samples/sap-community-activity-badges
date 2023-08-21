@@ -425,7 +425,7 @@ async function buildLawyersHappy(isPng, profile, req) {
 
     items.push(svg.svgDevtoberfestTextLink(itemHeight, columnStart, itemDelay,
         text.getText('devtoberfest.column2.here'),
-        `https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2023-contest/ba-p/9357`, isPng))
+        `https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2023-contest-official-rules/ba-p/277749`, isPng))
     itemHeight += 18
     itemDelay += 50
 
@@ -472,7 +472,7 @@ async function buildMenu(isPng, profile, req) {
 
     //Menu Rules
     items.push(
-        `<a xlink:href="https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2023-contest/ba-p/9357" target="_blank">` +
+        `<a xlink:href="https://groups.community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2023-contest-official-rules/ba-p/277749" target="_blank">` +
         `<title>${text.getText('devtoberfest.rules')}</title>` +
         svg.svgDevtoberfestItem(175, 1020, 1025, await svg.loadImageB64('../images/devtoberfest/menu/Frame-2.png'), 32, 29, isPng) +
         `</a>`)
