@@ -3,7 +3,7 @@ module.exports = (app) => {
     const svg = require("../util/svgRender")
     const texts = require("../util/texts")
 
-    app.get('/showcaseBadgesGroups', async (req, res) =>{
+    app.get('/showcaseBadgesGroups', async (req, res) => {
         return res.redirect("/")
     })
 
@@ -29,11 +29,11 @@ module.exports = (app) => {
      *     responses:
      *       200:
      *         description: A single user.
-     */      
+     */
     app.get('/showcaseBadgesGroups/:scnId', async (req, res) => {
         try {
             let isPng = false
-            if (req.query.png) { isPng = true }
+            if (req.query.png || req.query.gif) { isPng = true }
 
             const request = require('then-request')
             const urlBadges = `https://people-api.services.sap.com/rs/showcaseBadge/${req.params.scnId}`
@@ -57,13 +57,13 @@ module.exports = (app) => {
             let items = []
             let width = 50
             for (let scnItem of scnItems) {
-                    items.push(await svg.svgBadgeItemGroups(itemHeight, width, itemDelay += 200, scnItem.imageUrl, svg.escapeHTML(scnItem.displayName), isPng))
-                    if (width == 50) {
-                        width = 100
-                    } else {
-                        width += 50
-                        //itemHeight += 40
-                    }                
+                items.push(await svg.svgBadgeItemGroups(itemHeight, width, itemDelay += 200, scnItem.imageUrl, svg.escapeHTML(scnItem.displayName), isPng))
+                if (width == 50) {
+                    width = 100
+                } else {
+                    width += 50
+                    //itemHeight += 40
+                }
             }
 
             let body =
@@ -80,11 +80,16 @@ module.exports = (app) => {
                 await svg.svgContentHeaderGroups(text.getText('badgesShowcaseTitle', [userName, `'`])) +
                 svg.svgMainContent(items) +
                 svg.svgEnd()
+            const sharp = require('sharp')
             if (req.query.png) {
-                const sharp = require('sharp')
                 const png = await sharp(Buffer.from(body)).png().toBuffer()
                 res.type("image/png").status(200).send(png)
-            } else {
+            } else if (req.query.gif) {
+                const gif = await sharp(Buffer.from(body), { animated: true }).gif({ loop: 1 }).toBuffer()
+                console.log(`Output GIF`)
+                res.type("image/gif").status(200).send(gif)
+            }
+            else {
                 res.type("image/svg+xml").status(200).send(body)
             }
         } catch (error) {

@@ -35,11 +35,11 @@ module.exports = (app) => {
      *     responses:
      *       200:
      *         description: A single user.
-     */     
+     */
     app.get('/showcaseBadges/:scnId', nocache, async (req, res) => {
         try {
             let isPng = false
-            if (req.query.png) { isPng = true }
+            if (req.query.png || req.query.gif) { isPng = true }
 
             const request = require('then-request')
             const urlBadges = `https://people-api.services.sap.com/rs/showcaseBadge/${req.params.scnId}`
@@ -116,11 +116,19 @@ module.exports = (app) => {
                 await svg.svgContentHeader(text.getText('badgesShowcaseTitle', [userName, `'`])) +
                 svg.svgMainContent(items) +
                 svg.svgEnd()
+
+            const sharp = require('sharp')
             if (req.query.png) {
-                const sharp = require('sharp')
-                const png = await sharp(Buffer.from(body)).png().toBuffer()
+                const png = await sharp(Buffer.from(body), {svg: true, animated: true, pages: -1}).png({animated: true}).toBuffer()
+                console.log(`Output PNG`)
                 res.type("image/png").status(200).send(png)
-            } else {
+            } else if (req.query.gif) {
+                const gif = await sharp(Buffer.from(body), {svg: true, animated: true, pages: -1}).gif({loop: 1, animated: true}).toBuffer()
+                console.log(`Output GIF`)
+                res.type("image/gif").status(200).send(gif)
+            }
+            else {
+                console.log(`Output SVG`)
                 res.type("image/svg+xml").status(200).send(body)
             }
         } catch (error) {

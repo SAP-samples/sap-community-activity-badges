@@ -621,6 +621,7 @@ module.exports.svgDevtoberfestCRTLink = svgDevtoberfestCRTLink
  */
 async function svgBadgeItem(height, width, delay, image, title, png = false) {
   const request = require('then-request')
+  const sharp = require('sharp')
 
   let finalImage = image
   let content =
@@ -633,15 +634,21 @@ async function svgBadgeItem(height, width, delay, image, title, png = false) {
   if (image.slice(-3) === 'png') {
     finalImage = `data:image/png;base64,${imageBase64}`
   } else {
-    finalImage = `data:image/svg+xml;base64,${imageBase64}`
+    if (png) {
+      let newImageBase64 = (await sharp(Buffer.from(imageData)).png().toBuffer()).toString('base64')
+      finalImage = `data:image/png;base64,${newImageBase64}`  //svg+xml
+    } else {
+      finalImage = `data:image/svg+xml;base64,${imageBase64}`
+    }
+
   }
 
 
-  if (png) {
+ if (png) {
     content += `
     <g transform="translate(25, 0)">
     `
-  } else {
+  } else { 
     content += `
     <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(25, 0)">
     `
@@ -669,6 +676,7 @@ module.exports.svgBadgeItem = svgBadgeItem
  */
 async function svgBadgeItemGroups(height, width, delay, image, title, png = false) {
   const request = require('then-request')
+  const sharp = require('sharp')
 
   let finalImage = image
   let content =
@@ -681,9 +689,14 @@ async function svgBadgeItemGroups(height, width, delay, image, title, png = fals
   if (image.slice(-3) === 'png') {
     finalImage = `data:image/png;base64,${imageBase64}`
   } else {
-    finalImage = `data:image/svg+xml;base64,${imageBase64}`
-  }
+    if (png) {
+      let newImageBase64 = (await sharp(Buffer.from(imageData)).png().toBuffer()).toString('base64')
+      finalImage = `data:image/png;base64,${newImageBase64}`  //svg+xml
+    } else {
+      finalImage = `data:image/svg+xml;base64,${imageBase64}`
+    }
 
+  }
 
   if (png) {
     content += `
