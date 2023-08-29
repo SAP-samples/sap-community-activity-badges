@@ -1,5 +1,41 @@
+//const got = require('got') 
+const request = require('then-request')
+// Expect an optional Devtoberfest year, default to current year.
+const year = process.argv[2] || new Date().getFullYear()
+// Khoros Community Search API
+const communitysearchapibase = 'https://groups.community.sap.com/api/2.0/search'
+
 
 module.exports = (app) => {
+
+    app.get('/khoros/members/:grouphub', async (req, res) => {
+        try {
+            let groupHub = ''
+            if(req.params.grouphub){
+                groupHub = req.params.grouphub
+            }else{
+                groupHub = 'Devtoberfest'
+            }
+            const memberQuery = 
+            `select id, sso_id, login, email, first_name, last_name from users where node.id = 'grouphub:${req.params.grouphub}' `
+            const query = `${memberQuery} LIMIT 3000`
+            const outputQuery = `${communitysearchapibase}?q=${query}`
+            let output = '<!DOCTYPE html><html><body>'
+            output +=
+                `
+                \n<a href="${encodeURI(outputQuery)}"><h3>${groupHub} Members</h2></a>
+                `
+            output += `</body></html>`
+            return res.type("text/html").status(200).send(output)
+
+        } catch (error) {
+            app.logger.error(error)
+            const errHandler = require("../util/error")
+            return await errHandler.handleErrorDevtoberfestText(error, req, res)
+        }
+    })
+
+
 
     /**
      * @swagger
@@ -77,7 +113,7 @@ module.exports = (app) => {
      *                       view_href:
      *                         type: string
      *                         format: uri
-     */    
+     */
     app.get('/khoros/event/:eventId', async (req, res) => {
         try {
             let profile = await getEvent(req.params.eventId, app)
@@ -106,7 +142,7 @@ module.exports = (app) => {
      *     responses:
      *       200:
      *         description: A list of events for the specified board
-     */    
+     */
     app.get('/khoros/events/:boardId', async (req, res) => {
         try {
             let profile = await getEvents(req.params.boardId, app)
@@ -163,7 +199,7 @@ module.exports = (app) => {
      *                     type: integer
      *                   location:
      *                     type: string
-     */ 
+     */
     app.get('/khoros/eventRegsRaw/:boardId', async (req, res) => {
         try {
             let profile = await getEventsRegs(req.params.boardId, app)
@@ -214,7 +250,7 @@ module.exports = (app) => {
      *                   view_href:
      *                     type: string
      *                     format: uri
-     */ 
+     */
     app.get('/khoros/messagePosters/:boardId/:conversationId', async (req, res) => {
         try {
             let posters = await getMessagePosters(req.params.boardId, req.params.conversationId, app)
@@ -243,7 +279,7 @@ module.exports = (app) => {
      *     responses:
      *       200:
      *         description: Critical details for all upcoming events
-     */ 
+     */
     app.get('/khoros/eventRegs/:boardId', async (req, res) => {
         try {
             let profile = await getEventsRegs(req.params.boardId, app)
@@ -377,7 +413,7 @@ module.exports = (app) => {
      *     responses:
      *       200:
      *         description: List of Boards
-     */     
+     */
     app.get('/khoros/boards/', async (req, res) => {
         try {
             let profile = await getBoards(app)
@@ -406,7 +442,7 @@ module.exports = (app) => {
      *     responses:
      *       200:
      *         description: Details for a single board
-     */     
+     */
     app.get('/khoros/board/:boardId', async (req, res) => {
         try {
             let profile = await getBoard(req.params.boardId, app)
@@ -416,7 +452,7 @@ module.exports = (app) => {
             const errHandler = require("../util/error")
             return await errHandler.handleErrorDevtoberfestText(error, req, res)
         }
-    })    
+    })
 
     /**
      * @swagger
@@ -435,7 +471,7 @@ module.exports = (app) => {
      *     responses:
      *       200:
      *         description: List of all conversations
-     */     
+     */
     app.get('/khoros/topics/:boardId', async (req, res) => {
         try {
             let profile = await getTopics(req.params.boardId, app)
@@ -445,7 +481,7 @@ module.exports = (app) => {
             const errHandler = require("../util/error")
             return await errHandler.handleErrorDevtoberfestText(error, req, res)
         }
-    })      
+    })
 }
 
 /**
@@ -463,7 +499,6 @@ async function getSCNProfile(scnId, app) {
             e.scnId = scnId
             throw e
         default:
-            const request = require('then-request')
             const userURL = `https://groups.community.sap.com/api/2.0/users/${scnId}`
             app.logger.info(userURL)
             let userDetails = await request('GET', encodeURI(userURL))
@@ -478,7 +513,6 @@ async function getSCNProfile(scnId, app) {
  * @returns {object}
  */
 async function getBoards(app) {
-    const request = require('then-request')
     const boardURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT * FROM boards`
     app.logger.info(boardURL)
     let boardDetails = await request('GET', encodeURI(boardURL))
@@ -493,7 +527,6 @@ async function getBoards(app) {
  * @returns {object}
  */
 async function getBoard(boardId, app) {
-    const request = require('then-request')
     const boardURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT * FROM boards where id = '${boardId}'`
     app.logger.info(boardURL)
     let boardDetails = await request('GET', encodeURI(boardURL))
@@ -508,7 +541,6 @@ async function getBoard(boardId, app) {
  * @returns {object}
  */
 async function getTopics(boardId, app) {
-    const request = require('then-request')
     const boardURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT * FROM messages WHERE board.id = '${boardId}' AND depth = 0`
     app.logger.info(boardURL)
     let boardDetails = await request('GET', encodeURI(boardURL))
@@ -523,7 +555,6 @@ async function getTopics(boardId, app) {
  * @returns {object}
  */
 async function getEventsRegs(boardId, app) {
-    const request = require('then-request')
     const start = new Date()
 
     const eventURL =
@@ -537,7 +568,7 @@ async function getEventsRegs(boardId, app) {
     let finalOutput = await Promise.all(eventOutput.data.items.map(async (item) => {
         let newItem = {}
         const rsvpURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT count(*) ` +
-                        `FROM rsvps WHERE message.id = '${item.id}' and rsvp_response = 'yes'`
+            `FROM rsvps WHERE message.id = '${item.id}' and rsvp_response = 'yes'`
         const rsvpDetails = await request('GET', encodeURI(rsvpURL))
         const rsvpOutput = JSON.parse(rsvpDetails.getBody())
         newItem.id = item.id
@@ -562,13 +593,12 @@ async function getEventsRegs(boardId, app) {
  * @returns {object}
  */
 async function getMessagePosters(boardId, conversationId, app) {
-    const request = require('then-request')
     let newMessages = []
     let allMessages = []
     let i = 0
     while (newMessages.length > 1 || i === 0) {
         const searchURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT author FROM messages WHERE ` +
-                          `board.id = '${boardId}' and topic.id = '${conversationId}' LIMIT ${(i + 1) * 100} OFFSET ${i * 100}`
+            `board.id = '${boardId}' and topic.id = '${conversationId}' LIMIT ${(i + 1) * 100} OFFSET ${i * 100}`
         app.logger.info(searchURL)
         let searchDetails = await request('GET', encodeURI(searchURL))
         const searchOutput = JSON.parse(searchDetails.getBody())
@@ -590,11 +620,10 @@ async function getMessagePosters(boardId, conversationId, app) {
  * @returns {object}
  */
 async function getEvents(boardId, app) {
-    const request = require('then-request')
     const start = new Date()
 
     const eventURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT * FROM messages WHERE board.id='${boardId}' ` +
-                     `and occasion_data.start_time >= '${start.toISOString()}' order by occasion_data.start_time asc`
+        `and occasion_data.start_time >= '${start.toISOString()}' order by occasion_data.start_time asc`
     app.logger.info(eventURL)
     let eventDetails = await request('GET', encodeURI(eventURL))
     const eventOutput = JSON.parse(eventDetails.getBody())
@@ -611,10 +640,9 @@ async function getEvents(boardId, app) {
 async function getEvent(eventId, app) {
 
     let eventDetails = {}
-    const request = require('then-request')
     const eventURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT occasion_data FROM messages WHERE id='${eventId}'`
     const rsvpURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT id, user.login, user.email, user.first_name, user.last_name, ` +
-                    `rsvp_response, user.view_href, user.sso_id FROM rsvps WHERE message.id = '${eventId}'`
+        `rsvp_response, user.view_href, user.sso_id FROM rsvps WHERE message.id = '${eventId}'`
     app.logger.info(eventURL)
     app.logger.info(rsvpURL)
     let [event, rsvp] = await Promise.all([
@@ -641,5 +669,40 @@ async function getEvent(eventId, app) {
         rsvp: outputItems
     }
     return eventDetails
+
+}
+
+
+// Function to make an API call to the Community Search API, and deal with the
+// pagination mechanism too, by following any next_cursor pointers until all the
+// data for the query result has been retrieved. For details on the pagination, see
+// https://developer.khoros.com/khoroscommunitydevdocs/docs/pagination-with-community-api-v2
+const retrieve = async (q) => {
+
+    let cursor, result, data = []
+
+    do {
+
+        // Retrieve as many records as we are allowed (LIMIT 1000) and also use the
+        // next_cursor mechanism to consume all "pages" of the result set.
+        const query = `${q} LIMIT 1000 ${cursor ? `CURSOR '${cursor}'` : ''}`
+
+        // Make the call, expect JSON in response.
+        result = await request('GET', `${communitysearchapibase}?q=${query}`)
+        console.log( `${communitysearchapibase}?q=${query}`)
+        result = JSON.parse(result.getBody())
+        console.log(result)
+        // got(`${communitysearchapibase}?q=${encodeURIComponent(query)}`, {}).json()
+
+        // Add the items to the existing data array.
+        data = data.concat(result.data.items)
+
+        // Save any next_cursor value.
+        cursor = result.data.next_cursor
+
+        // Repeat as long as there's a next_cursor.
+    } while (cursor && cursor.length > 0)
+
+    return data
 
 }
