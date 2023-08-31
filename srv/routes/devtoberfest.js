@@ -73,7 +73,7 @@ module.exports = (app) => {
      *                             format: date-time
      *                           count:
      *                             type: integer
-     */ 
+     */
     app.get('/devtoberfest/profile/:scnId', async (req, res) => {
         try {
             let profile = await getSCNProfile(req)
@@ -229,25 +229,25 @@ async function getSCNProfile(req) {
         case 'test1':
             profile = {
                 userName: req.params.scnId, scnId: req.params.scnId, userNameScore: stringScore(req.params.scnId),
-                points: 2010, level: 1
+                points: 3010, level: 1
             }
             return profile
         case 'test2':
             profile = {
                 userName: req.params.scnId, scnId: req.params.scnId, userNameScore: stringScore(req.params.scnId),
-                points: 12500, level: 2
+                points: 14500, level: 2
             }
             return profile
         case 'test3':
             profile = {
                 userName: req.params.scnId, scnId: req.params.scnId, userNameScore: stringScore(req.params.scnId),
-                points: 18400, level: 3
+                points: 22400, level: 3
             }
             return profile
         case 'test4':
             profile = {
                 userName: req.params.scnId, scnId: req.params.scnId, userNameScore: stringScore(req.params.scnId),
-                points: 24500, level: 4
+                points: 30500, level: 4
             }
             return profile
         default:
@@ -270,14 +270,13 @@ async function getSCNProfile(req) {
             }
 
             //Check if they are registered for Devtoberfest - "Devtoberfest 2023 Participant"
-            //TODO Add back in check when contest goes live
             let registered = scnItems.content.find(x => x.displayName == 'Devtoberfest 2023 Participant')
-/*             if (!registered) {
+            if (!registered) {
                 let e = new Error('Not Registered')
                 e.name = 'Not Registered'
                 e.scnId = req.params.scnId
                 throw e
-            } */
+            }
             let userNameScore = stringScore(userName)
             let points = 0
             let endDate = new Date(2023, 10, 16)
