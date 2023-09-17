@@ -10,5 +10,193 @@
    {
       "displayName": "SAP TechEd in 2023 Attendee - Bangalore",
       "points": 1000
-   }     
+   },
+   {
+      "displayName": "#E3CF57 - Devtoberfest 2023 - Petoberfest",
+      "points": 1000
+   },
+   {
+      "displayName": "#CD9B1D - Devtoberfest 2023 - Making SAP Extensibility real with CAP in 60 minutes",
+      "points": 300
+   },
+   {
+      "displayName": "#D2691E - Devtoberfest 2023 - Capire: Introduction, enhancements, and facilitating the development process",
+      "points": 300
+   },
+   {
+      "displayName": "#B0171F - Devtoberfest 2023 - Overview of ABAP Cloud",
+      "points": 300
+   },
+   {
+      "displayName": "#9C661F - Devtoberfest 2023 - ABAP Cloud for Classic ABAP Developers",
+      "points": 300
+   },
+   {
+      "displayName": "#CAE1FF - Devtoberfest 2023 - SAP BTP ABAP Environment – How to Build a Multitenancy SaaS Application",
+      "points": 300
+   },
+   {
+      "displayName": "#DAA520 - Devtoberfest 2023 - Create an SAP BTP ABAP Environment Trial User",
+      "points": 150
+   },
+   {
+      "displayName": "#292421 - Devtoberfest 2023 - Create a CAP Project with SAP Business Application Studio",
+      "points": 200
+   },
+   {
+      "displayName": "#EE7621 - Devtoberfest 2023 - Learn About Selected CAP Conventions",
+      "points": 450
+   },
+   {
+      "displayName": "#ED9121 - Devtoberfest 2023 - Get to Know the ABAP RESTful Application Programming Model",
+      "points": 50
+   },
+   {
+      "displayName": "#FF00FF - Devtoberfest 2023 - Create Database Table and Generate UI Service",
+      "points": 200
+   },
+   {
+      "displayName": "#9B30FF - Devtoberfest 2023 - Enhance the Business Object Data Model and Enable OData Streams",
+      "points": 150
+   },
+   {
+      "displayName": "#BF3EFF - Devtoberfest 2023 - Enhance the Business Object Behavior With Unmanaged Internal Numbering",
+      "points": 150
+   },
+   {
+      "displayName": "#228B22 - Devtoberfest 2023 - What is SAP Build and How to Start Your Journey ",
+      "points": 300
+   },
+   {
+      "displayName": "#698B22 - Devtoberfest 2023 - From Idea to Reality: Simplifying App Development for Everyone ",
+      "points": 300
+   },
+   {
+      "displayName": "#EEB422 - Devtoberfest 2023 - Custom UI & Theming Essentials in SAP Build Apps ",
+      "points": 300
+   },
+   {
+      "displayName": "#6B8E23 - Devtoberfest 2023 - Build SAP S/4HANA Extensions with SAP Build Apps and Key User Extensibility",
+      "points": 300
+   },
+   {
+      "displayName": "#FF7F24 - Devtoberfest 2023 - Create a Composite Component (List with Rating)",
+      "points": 200
+   },
+   {
+      "displayName": "#FFC125 - Devtoberfest 2023 - Create a Social Media Backend",
+      "points": 100
+   },
+   {
+      "displayName": "#8B5A2B - Devtoberfest 2023 - Create a Product List Page with Ratings",
+      "points": 100
+   },
+   {
+      "displayName": "#A0522D - Devtoberfest 2023 - Prepare a Product Page",
+      "points": 100
+   },
+   {
+      "displayName": "#F5FFFA - Devtoberfest 2023 - Create the Product Page UI with Ratings/Comments",
+      "points": 250
+   },
+   {
+      "displayName": "#556B2F - Devtoberfest 2023 - Event-Driven Architecture: Bringing SAP and Microsoft closer together in real time",
+      "points": 300
+   },
+   {
+      "displayName": "#ADFF2F - Devtoberfest 2023 - Develop an LLM-Based Application with Graph in SAP Integration Suite",
+      "points": 300
+   },
+   {
+      "displayName": "#32CD32 - Devtoberfest 2023 - Integrate SAP API Management with 3rd party IDP for SAML/JWT/OAuth based Authentication",
+      "points": 300
+   },
+   {
+      "displayName": "#9ACD32 - Devtoberfest 2023 - Set Up API Management from Integration Suite",
+      "points": 150
+   },
+   {
+      "displayName": "#B3EE3A - Devtoberfest 2023 - Add an API Proxy to a Product",
+      "points": 150
+   },
+   {
+      "displayName": "#DC143C - Devtoberfest 2023 - Configure SAP API Management policies to avoid CORS issues and generate an API Key",
+      "points": 200
+   },
+   {
+      "displayName": "#6E8B3D - Devtoberfest 2023 - Protect Your API Proxy by Adding Application Key Verification",
+      "points": 200
+   },
+   {
+      "displayName": "#E066FF - Devtoberfest 2023 - Manage APIs with Policies",
+      "points": 200
+   },
+   {
+      "displayName": "#836FFF - Devtoberfest 2023 - Create Custom Dimensions and Measures",
+      "points": 150
+   },
+   {
+      "displayName": "#8470FF - Devtoberfest 2023 - Get Started with API Revisions",
+      "points": 150
+   },
+   {
+      "displayName": "#C0FF3E - Devtoberfest 2023 - Create Destination for SAP API Management Service",
+      "points": 150
+   },
+   {
+      "displayName": "#CD853F - Devtoberfest 2023 - Hybrid development on SAP HANA Cloud and SAP HANA using SAP Business Application Studio",
+      "points": 300
+   },
+   {
+      "displayName": "#FF7D40 - Devtoberfest 2023 - SAP Datasphere - the evolution towards a business data fabric",
+      "points": 300
+   },
+   {
+      "displayName": "#3D9140 - Devtoberfest 2023 - Openness and flexibility with SAP Analytics Cloud’s APIs for data import and export",
+      "points": 300
+   },
+   {
+      "displayName": "#008B45 - Devtoberfest 2023 - Sign up for an SAP HANA Cloud Trial account",
+      "points": 100
+   },
+   {
+      "displayName": "#EE9A49 - Devtoberfest 2023 - Start Using SAP HANA Cloud Trial in SAP BTP Cockpit",
+      "points": 100
+   },
+   {
+      "displayName": "#8B814C - Devtoberfest 2023 - Provision an Instance of SAP HANA Cloud, SAP HANA Database",
+      "points": 100
+   },
+   {
+      "displayName": "#8B864E - Devtoberfest 2023 - SAP HANA Database Explorer Overview",
+      "points": 100
+   },
+   {
+      "displayName": "#2F4F4F - Devtoberfest 2023 - Create Database Objects with SAP HANA Database Explorer",
+      "points": 100
+   },
+   {
+      "displayName": "#FFA54F - Devtoberfest 2023 - wdi5 2.0: New Features and Migration from v1",
+      "points": 300
+   },
+   {
+      "displayName": "#8B0A50 - Devtoberfest 2023 - Using UI5 Web Components with Svelte",
+      "points": 300
+   },
+   {
+      "displayName": "#548B54 - Devtoberfest 2023 - Setup for Mobile Development Kit",
+      "points": 100
+   },
+   {
+      "displayName": "#8B7355 - Devtoberfest 2023 - Start Your MDK Application in the Editor",
+      "points": 150
+   },
+   {
+      "displayName": "#872657 - Devtoberfest 2023 - Create a Customer List Page in an MDK App",
+      "points": 100
+   },
+   {
+      "displayName": "#2E8B57 - Devtoberfest 2023 - Create a Customer Detail Page in an MDK App",
+      "points": 200
+   }
 ]

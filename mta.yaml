@@ -1,6 +1,6 @@
 _schema-version: "3.3"
 ID: scn-badges
-version: 3.0.10
+version: 3.1.0
 
 modules:
   - name: scn-badges-srv
