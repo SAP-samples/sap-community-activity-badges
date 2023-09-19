@@ -89,7 +89,11 @@ async function init() {
         const scnItems = JSON.parse(itemsRes.getBody())
 
         let points = 0
+        let trees = false
         for (let item of scnItems.content) {
+          if(item.displayName === 'SAP TechEd in 2023 Registered Attendee' || item.displayName === 'SAP TechEd in 2023 Attendee - Bangalore'){
+            trees = true
+          }
           let badgeValue = badges.find(x => x.displayName == item.displayName)
           if (badgeValue) {
             points = points + badgeValue.points
@@ -105,6 +109,7 @@ async function init() {
 
         item[8] = points
         item[9] = level
+        item[10] = trees
       } catch (error) {
        console.error(error)
       }
@@ -119,7 +124,7 @@ async function init() {
       name: `Devtoberfest Results`,
       data: workSheetsFromFile[0].data
     }])
-    fs.writeFileSync(`../../devtoberfest-data/devtoberfest-${new Date().getFullYear()}-${currentMonth}-${currentDay}.xlsx`, result)
+    fs.writeFileSync(`../../devtoberfest-data/devtoberfest-trees-${new Date().getFullYear()}-${currentMonth}-${currentDay}.xlsx`, result)
 
   } catch (error) {
     console.error(error)
