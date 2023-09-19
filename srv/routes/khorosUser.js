@@ -312,7 +312,7 @@ module.exports = (app) => {
                     <a
                         target="_blank"
                         rel="noreferrer"
-                        href="${encodeURI("https://groups.community.sap.com/api/2.0/search?q=SELECT id, user.login, user.email, user.first_name, user.last_name, rsvp_response, user.sso_id FROM rsvps WHERE rsvp_response = 'yes' and message.id = '" + item.id + "'")}">
+                        href="${encodeURI("https://groups.community.sap.com/api/2.0/search?q=SELECT id, user.login, user.email, user.first_name, user.last_name, rsvp_response, user.sso_id FROM rsvps WHERE rsvp_response = 'yes' and message.id = '" + item.id + "' LIMIT 1000")}">
                         <button>
                             Open event registrations in new tab
                         </button></a>
