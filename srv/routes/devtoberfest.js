@@ -284,10 +284,11 @@ async function getSCNProfile(req) {
                 let badgeValue = badges.find(x => x.displayName == item.displayName)
                 if (badgeValue) {
                     if (Date.parse(item.timestamp) < endDate) {
-                        console.log(badgeValue.points)
+                       // console.log(badgeValue.points)
                         item.points = badgeValue.points
                         points = points + badgeValue.points
                     }
+                    item.itemURL = badgeValue.URL
                 }
             }
 

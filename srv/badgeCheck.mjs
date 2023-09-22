@@ -44,7 +44,7 @@ async function init() {
         for (let item of badges){
           let badgeValue = scnItems.content.find(x => x.displayName == item.displayName)
           if(!badgeValue){
-            console.log(`${item.displayName};${item.points}`)
+            console.log(`${item.displayName};${item.points};${item.URL}`)
           }
         }
 /*         let points = 0
