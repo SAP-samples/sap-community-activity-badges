@@ -287,8 +287,8 @@ module.exports = (app) => {
             output +=
                 `
             <script type="module">
-              import Parser  from 'https://cdn.jsdelivr.net/gh/juanjoDiaz/json2csv@7.0.3/dist/cdn/plainjs/Parser.js'
-              import flatten  from 'https://cdn.jsdelivr.net/gh/juanjoDiaz/json2csv@7.0.3/dist/cdn/transforms/flatten.js'
+              import Parser  from 'https://cdn.jsdelivr.net/gh/jung-thomas/json2csv@test4/dist/cdn/plainjs/Parser.js'
+              import flatten  from 'https://cdn.jsdelivr.net/gh/jung-thomas/json2csv@test4/dist/cdn/transforms/flatten.js'
               window.Parser = Parser
               window.flatten = flatten
             </script>
