@@ -2,456 +2,638 @@
    {
       "displayName": "Devtoberfest 2023 Participant",
       "points": 200,
-      "URL": "https://groups.community.sap.com/t5/devtoberfest/gh-p/Devtoberfest"
+      "URL": "https://groups.community.sap.com/t5/devtoberfest/gh-p/Devtoberfest",
+      "Date": "2023-09-18",
+      "Week": "Week 0"
    },
    {
       "displayName": "SAP TechEd in 2023 Registered Attendee",
       "points": 1000,
-      "URL": "https://www.sap.com/events/teched.html"
+      "URL": "https://www.sap.com/events/teched.html",
+      "Date": "2023-09-18",
+      "Week": "Week 0"
    },
    {
       "displayName": "SAP TechEd in 2023 Attendee - Bangalore",
       "points": 1000,
-      "URL": "https://www.sap.com/events/teched.html"
+      "URL": "https://www.sap.com/events/teched.html",
+      "Date": "2023-09-18",
+      "Week": "Week 0"
    },
    {
       "displayName": "#E3CF57 - Devtoberfest 2023 - Petoberfest",
       "points": 1000,
-      "URL": "https://groups.community.sap.com/t5/devtoberfest-discussions/petoberfest-day-2023/m-p/287228"
+      "URL": "https://groups.community.sap.com/t5/devtoberfest-discussions/petoberfest-day-2023/m-p/287228",
+      "Date": "2023-09-22",
+      "Week": "Week 1"
    },
    {
       "displayName": "#CD9B1D - Devtoberfest 2023 - Making SAP Extensibility real with CAP in 60 minutes",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-abap-cap-extensibility.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-abap-cap-extensibility.html",
+      "Date": "2023-09-18",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#D2691E - Devtoberfest 2023 - Capire: Introduction, enhancements, and facilitating the development process",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-abap-cap-capire.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-abap-cap-capire.html",
+      "Date": "2023-09-18",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#B0171F - Devtoberfest 2023 - Overview of ABAP Cloud",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-abap-cap-overview.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-abap-cap-overview.html",
+      "Date": "2023-09-18",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#9C661F - Devtoberfest 2023 - ABAP Cloud for Classic ABAP Developers",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-abap-cap-abapcloud.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-abap-cap-abapcloud.html",
+      "Date": "2023-09-18",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#CAE1FF - Devtoberfest 2023 - SAP BTP ABAP Environment – How to Build a Multitenancy SaaS Application",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-abap-cap-multitenancysaasapp.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-abap-cap-multitenancysaasapp.html",
+      "Date": "2023-09-18",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#DAA520 - Devtoberfest 2023 - Create an SAP BTP ABAP Environment Trial User",
       "points": 150,
-      "URL": "https://developers.sap.com/tutorials/abap-environment-trial-onboarding.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/abap-environment-trial-onboarding.html",
+      "Date": "2023-09-18",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#292421 - Devtoberfest 2023 - Create a CAP Project with SAP Business Application Studio",
       "points": 200,
-      "URL": "https://developers.sap.com/tutorials/btp-cap-beginner-bas-wizard.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/btp-cap-beginner-bas-wizard.html",
+      "Date": "2023-09-18",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#EE7621 - Devtoberfest 2023 - Learn About Selected CAP Conventions",
       "points": 450,
-      "URL": "https://developers.sap.com/tutorials/btp-cap-beginner-golden-path.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/btp-cap-beginner-golden-path.html",
+      "Date": "2023-09-18",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#ED9121 - Devtoberfest 2023 - Get to Know the ABAP RESTful Application Programming Model",
       "points": 50,
-      "URL": "https://developers.sap.com/tutorials/abap-environment-restful-programming-model.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/abap-environment-restful-programming-model.html",
+      "Date": "2023-09-18",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#FF00FF - Devtoberfest 2023 - Create Database Table and Generate UI Service",
       "points": 200,
-      "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-generate-ui-service.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-generate-ui-service.html",
+      "Date": "2023-09-18",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#9B30FF - Devtoberfest 2023 - Enhance the Business Object Data Model and Enable OData Streams",
       "points": 150,
-      "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-enhance-data-model.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-enhance-data-model.html",
+      "Date": "2023-09-18",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#BF3EFF - Devtoberfest 2023 - Enhance the Business Object Behavior With Unmanaged Internal Numbering",
       "points": 150,
-      "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-early-numbering.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-early-numbering.html",
+      "Date": "2023-09-18",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#228B22 - Devtoberfest 2023 - What is SAP Build and How to Start Your Journey ",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-lcnc-sap-build.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-lcnc-sap-build.html",
+      "Date": "2023-09-19",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#698B22 - Devtoberfest 2023 - From Idea to Reality: Simplifying App Development for Everyone",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-lcnc-app-development.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-lcnc-app-development.html",
+      "Date": "2023-09-19",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#EEB422 - Devtoberfest 2023 - Custom UI & Theming Essentials in SAP Build Apps ",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-lcnc-ui-theming.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-lcnc-ui-theming.html",
+      "Date": "2023-09-19",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#6B8E23 - Devtoberfest 2023 - Build SAP S/4HANA Extensions with SAP Build Apps and Key User Extensibility",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-lcnc-s4hana-extensibility.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-lcnc-s4hana-extensibility.html",
+      "Date": "2023-09-19",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#FF7F24 - Devtoberfest 2023 - Create a Composite Component (List with Rating)",
       "points": 200,
-      "URL": "https://developers.sap.com/tutorials/build-apps-socialmedia-1-custom-component.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/build-apps-socialmedia-1-custom-component.html",
+      "Date": "2023-09-19",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#FFC125 - Devtoberfest 2023 - Create a Social Media Backend",
       "points": 100,
-      "URL": "https://developers.sap.com/tutorials/build-apps-socialmedia-2-backend.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/build-apps-socialmedia-2-backend.html",
+      "Date": "2023-09-19",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#8B5A2B - Devtoberfest 2023 - Create a Product List Page with Ratings",
       "points": 100,
-      "URL": "https://developers.sap.com/tutorials/build-apps-socialmedia-3-product-list.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/build-apps-socialmedia-3-product-list.html",
+      "Date": "2023-09-19",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#A0522D - Devtoberfest 2023 - Prepare a Product Page",
       "points": 100,
-      "URL": "https://developers.sap.com/tutorials/build-apps-socialmedia-4-details-page.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/build-apps-socialmedia-4-details-page.html",
+      "Date": "2023-09-19",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#F5FFFA - Devtoberfest 2023 - Create the Product Page UI with Ratings/Comments",
       "points": 250,
-      "URL": "https://developers.sap.com/tutorials/build-apps-socialmedia-5-details-page.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/build-apps-socialmedia-5-details-page.html",
+      "Date": "2023-09-19",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#556B2F - Devtoberfest 2023 - Event-Driven Architecture: Bringing SAP and Microsoft closer together in real time",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-integration-eda-with-sap-and-microsoft.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-integration-eda-with-sap-and-microsoft.html",
+      "Date": "2023-09-20",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#ADFF2F - Devtoberfest 2023 - Develop an LLM-Based Application with Graph in SAP Integration Suite",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-integration-sap-graph.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-integration-sap-graph.html",
+      "Date": "2023-09-20",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#32CD32 - Devtoberfest 2023 - Integrate SAP API Management with 3rd party IDP for SAML/JWT/OAuth based Authentication",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-integration-sap-api-management.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-integration-sap-api-management.html",
+      "Date": "2023-09-20",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#9ACD32 - Devtoberfest 2023 - Set Up API Management from Integration Suite",
       "points": 150,
-      "URL": "https://developers.sap.com/tutorials/api-mgmt-isuite-initial-setup.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/api-mgmt-isuite-initial-setup.html",
+      "Date": "2023-09-20",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#B3EE3A - Devtoberfest 2023 - Add an API Proxy to a Product",
       "points": 150,
-      "URL": "https://developers.sap.com/tutorials/hcp-apim-create-product.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/hcp-apim-create-product.html",
+      "Date": "2023-09-20",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#DC143C - Devtoberfest 2023 - Configure SAP API Management policies to avoid CORS issues and generate an API Key",
       "points": 200,
-      "URL": "https://developers.sap.com/tutorials/btp-integration-suite-integral-api-management.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/btp-integration-suite-integral-api-management.html",
+      "Date": "2023-09-20",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#6E8B3D - Devtoberfest 2023 - Protect Your API Proxy by Adding Application Key Verification",
       "points": 200,
-      "URL": "https://developers.sap.com/tutorials/hcp-apim-verify-api.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/hcp-apim-verify-api.html",
+      "Date": "2023-09-20",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#E066FF - Devtoberfest 2023 - Manage APIs with Policies",
       "points": 200,
-      "URL": "https://developers.sap.com/tutorials/cp-apim-sales-tracker-apis-manage.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-apim-sales-tracker-apis-manage.html",
+      "Date": "2023-09-20",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#836FFF - Devtoberfest 2023 - Create Custom Dimensions and Measures",
       "points": 150,
-      "URL": "https://developers.sap.com/tutorials/api-mgmt-analytics-custom-metrics.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/api-mgmt-analytics-custom-metrics.html",
+      "Date": "2023-09-20",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#8470FF - Devtoberfest 2023 - Get Started with API Revisions",
       "points": 150,
-      "URL": "https://developers.sap.com/tutorials/api-mgmt-revisioning.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/api-mgmt-revisioning.html",
+      "Date": "2023-09-20",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#CD853F - Devtoberfest 2023 - Hybrid development on SAP HANA Cloud and SAP HANA using SAP Business Application Studio",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-data-sap-hana-bas.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-data-sap-hana-bas.html",
+      "Date": "2023-09-21",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#FF7D40 - Devtoberfest 2023 - SAP Datasphere - the evolution towards a business data fabric",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-data-sap-datasphere.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-data-sap-datasphere.html",
+      "Date": "2023-09-21",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#3D9140 - Devtoberfest 2023 - Openness and flexibility with SAP Analytics Cloud’s APIs for data import and export",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-data-sac-apis.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-data-sac-apis.html",
+      "Date": "2023-09-21",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#008B45 - Devtoberfest 2023 - Sign up for an SAP HANA Cloud Trial account",
       "points": 100,
-      "URL": "https://developers.sap.com/tutorials/hana-cloud-mission-trial-1.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/hana-cloud-mission-trial-1.html",
+      "Date": "2023-09-21",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#EE9A49 - Devtoberfest 2023 - Start Using SAP HANA Cloud Trial in SAP BTP Cockpit",
       "points": 100,
-      "URL": "https://developers.sap.com/tutorials/hana-cloud-mission-trial-2.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/hana-cloud-mission-trial-2.html",
+      "Date": "2023-09-21",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#8B814C - Devtoberfest 2023 - Provision an Instance of SAP HANA Cloud, SAP HANA Database",
       "points": 100,
-      "URL": "https://developers.sap.com/tutorials/hana-cloud-mission-trial-3.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/hana-cloud-mission-trial-3.html",
+      "Date": "2023-09-21",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#8B864E - Devtoberfest 2023 - SAP HANA Database Explorer Overview",
       "points": 100,
-      "URL": "https://developers.sap.com/tutorials/hana-dbx-overview.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/hana-dbx-overview.html",
+      "Date": "2023-09-21",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#2F4F4F - Devtoberfest 2023 - Create Database Objects with SAP HANA Database Explorer",
       "points": 100,
-      "URL": "https://developers.sap.com/tutorials/hana-dbx-create-schema.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/hana-dbx-create-schema.html",
+      "Date": "2023-09-21",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#FFA54F - Devtoberfest 2023 - wdi5 2.0: New Features and Migration from v1",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-frontend-wdi5-v2.html "
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-frontend-wdi5-v2.html ",
+      "Date": "2023-09-22",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#8B0A50 - Devtoberfest 2023 - Using UI5 Web Components with Svelte",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-frontend-web-comps-svelte.html "
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-frontend-web-comps-svelte.html ",
+      "Date": "2023-09-22",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#548B54 - Devtoberfest 2023 - Setup for Mobile Development Kit",
       "points": 100,
-      "URL": "https://developers.sap.com/tutorials/cp-mobile-dev-kit-ms-setup.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-mobile-dev-kit-ms-setup.html",
+      "Date": "2023-09-22",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#8B7355 - Devtoberfest 2023 - Start Your MDK Application in the Editor",
       "points": 150,
-      "URL": "https://developers.sap.com/tutorials/cp-mobile-dev-kit-offline-app.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-mobile-dev-kit-offline-app.html",
+      "Date": "2023-09-22",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#872657 - Devtoberfest 2023 - Create a Customer List Page in an MDK App",
       "points": 100,
-      "URL": "https://developers.sap.com/tutorials/cp-mobile-dev-kit-list-page.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-mobile-dev-kit-list-page.html",
+      "Date": "2023-09-22",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#2E8B57 - Devtoberfest 2023 - Create a Customer Detail Page in an MDK App",
       "points": 200,
-      "URL": "https://developers.sap.com/tutorials/cp-mobile-dev-kit-detail-page.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-mobile-dev-kit-detail-page.html",
+      "Date": "2023-09-22",
+      "Week": "Week 1"
+  },
+  {
       "displayName": "#8B795E - Devtoberfest 2023 - SAP CAP in Flight: BTP Cloud Foundry Automated Deployments with Azure DevOps",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-abap-cap-capinflight.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week1-abap-cap-capinflight.html",
+      "Date": "2023-09-25",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#F4A460 - Devtoberfest 2023 - SaaS enablement for CAP project on BAS productivity environment",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-abap-cap-saas.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-abap-cap-saas.html",
+      "Date": "2023-09-25",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#8B1C62 - Devtoberfest 2023 - What’s New in the ABAP RESTful Application Programming Model (RAP)?",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-abap-cap-whatnewrap.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-abap-cap-whatnewrap.html",
+      "Date": "2023-09-25",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#8B3A62 - Devtoberfest 2023 - How to clean your ABAP code in seconds with ABAP cleaner",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-abap-cap-abapcleaner.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-abap-cap-abapcleaner.html",
+      "Date": "2023-09-25",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#8B7765 - Devtoberfest 2023 - Download and Prepare App for Cloud Foundry Deployment",
       "points": 100,
-      "URL": "https://developers.sap.com/tutorials/cp-cf-dev-01-prepare-app.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-cf-dev-01-prepare-app.html",
+      "Date": "2023-09-25",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#8B7E66 - Devtoberfest 2023 - Deploy an App to SAP BTP, Cloud Foundry runtime",
       "points": 50,
-      "URL": "https://developers.sap.com/tutorials/cp-cf-dev-02-deploy-app.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-cf-dev-02-deploy-app.html",
+      "Date": "2023-09-25",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#00CD66 - Devtoberfest 2023 - Create a Service Instance and Bind It to Your App",
       "points": 100,
-      "URL": "https://developers.sap.com/tutorials/cp-cf-dev-03-service-instance.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-cf-dev-03-service-instance.html",
+      "Date": "2023-09-25",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#BCEE68 - Devtoberfest 2023 - Start Automating Your Work with SAP Build Process Automation",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-lcnc-automation.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-lcnc-automation.html",
+      "Date": "2023-09-26",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#808069 - Devtoberfest 2023 - What’s New in SAP Build Process Automation",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-lcnc-new.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-lcnc-new.html",
+      "Date": "2023-09-26",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#698B69 - Devtoberfest 2023 - Add Event-Based Triggers To Your Processes",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-lcnc-event.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-lcnc-event.html",
+      "Date": "2023-09-26",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#E3A869 - Devtoberfest 2023 - Introducing Enterprise Automation: Process integration, Analysis, and Automation All together",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-lcnc-enterprise-automation.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-lcnc-enterprise-automation.html",
+      "Date": "2023-09-26",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#8B7D6B - Devtoberfest 2023 - The Build Store: Let Prebuilt Content Turbocharge Your Development",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-lcnc-store.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-lcnc-store.html",
+      "Date": "2023-09-26",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#BDB76B - Devtoberfest 2023 - Subscribe to SAP Build Process Automation Using Booster in SAP BTP Free Tier",
       "points": 150,
-      "URL": "https://developers.sap.com/tutorials/spa-subscribe-booster.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/spa-subscribe-booster.html",
+      "Date": "2023-09-26",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#8B636C - Devtoberfest 2023 - Create a Business Process",
       "points": 100,
-      "URL": "https://developers.sap.com/tutorials/spa-create-process.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/spa-create-process.html",
+      "Date": "2023-09-26",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#191970 - Devtoberfest 2023 - Create and Configure Forms",
       "points": 250,
-      "URL": "https://developers.sap.com/tutorials/spa-create-forms.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/spa-create-forms.html",
+      "Date": "2023-09-26",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#36648B - Devtoberfest 2023 - Create a Process Condition",
       "points": 100,
-      "URL": "https://developers.sap.com/tutorials/spa-create-process-condition.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/spa-create-process-condition.html",
+      "Date": "2023-09-26",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#0000FF - Devtoberfest 2023 - Run the Business Process",
       "points": 150,
-      "URL": "https://developers.sap.com/tutorials/spa-run-process.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/spa-run-process.html",
+      "Date": "2023-09-26",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#8B8970 - Devtoberfest 2023 - Deliver SAP Integrations faster with Figaf",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-integration-figaf-tools.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-integration-figaf-tools.html",
+      "Date": "2023-09-27",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#CDBE70 - Devtoberfest 2023 - Increase developer productivity and code quality of custom scripts in SAP Cloud Integration",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-integration-groovy-scripts.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-integration-groovy-scripts.html",
+      "Date": "2023-09-27",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#CAFF70 - Devtoberfest 2023 - Generative Test Driven Development (gTDD) with ChatGPT for SAP Integration Suite",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-integration-generative-tdd.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-integration-generative-tdd.html",
+      "Date": "2023-09-27",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#3CB371 - Devtoberfest 2023 - Combine event driven programming and EDA with SAP S/4HANA and Advanced Event Mesh",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-integration-sap-s4hana-and-advanced-event.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-integration-sap-s4hana-and-advanced-event.html",
+      "Date": "2023-09-27",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#CDC673 - Devtoberfest 2023 - Learn about SAP Event Mesh",
       "points": 100,
-      "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-learn-messaging-concepts.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-learn-messaging-concepts.html",
+      "Date": "2023-09-27",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#458B74 - Devtoberfest 2023 - Create Instance of SAP Event Mesh",
       "points": 150,
-      "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-instance-create.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-instance-create.html",
+      "Date": "2023-09-27",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#CD1076 - Devtoberfest 2023 - Create Queues and Queue Subscriptions for SAP Event Mesh",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-queue-queuesubscription.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-queue-queuesubscription.html",
+      "Date": "2023-09-27",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#4876FF - Devtoberfest 2023 - Send and Receive Test SAP Event Mesh",
       "points": 150,
-      "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-test-queue-sendreceive.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-test-queue-sendreceive.html",
+      "Date": "2023-09-27",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#AB82FF - Devtoberfest 2023 - Create an Application for Producing Messages",
       "points": 200,
-      "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-nodejs-producing-app.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-nodejs-producing-app.html",
+      "Date": "2023-09-27",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#1E90FF - Devtoberfest 2023 - Create an Application for Receiving Messages",
       "points": 200,
-      "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-nodejs-receiving-app.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-nodejs-receiving-app.html",
+      "Date": "2023-09-27",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#00EE76 - Devtoberfest 2023 - Create App for Sending and Receiving Messages Using a Java-Based Client",
       "points": 450,
-      "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-javaclient-app.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-javaclient-app.html",
+      "Date": "2023-09-27",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#CD3278 - Devtoberfest 2023 - SAP HANA Cloud: processing semi-structured data using the JSON Document Store",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-data-sap-hana-docstore.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-data-sap-hana-docstore.html",
+      "Date": "2023-09-28",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#8B8378 - Devtoberfest 2023 - SAP AI Core Toolkit",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-data-ai-aicore-toolkit.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-data-ai-aicore-toolkit.html",
+      "Date": "2023-09-28",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#8B8878 - Devtoberfest 2023 - Personalized Recommendation",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-data-ai-pr.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-data-ai-pr.html",
+      "Date": "2023-09-28",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#8B8B7A - Devtoberfest 2023 - Use Trial to Set Up Account for Document Information Extraction and Get Service Key",
       "points": 50,
-      "URL": "https://developers.sap.com/tutorials/cp-aibus-dox-booster-key.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-aibus-dox-booster-key.html",
+      "Date": "2023-09-28",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#7CCD7C - Devtoberfest 2023 - Get OAuth Access Token for Document Information Extraction via Web Browser",
       "points": 50,
-      "URL": "https://developers.sap.com/tutorials/cp-aibus-dox-web-oauth-token.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-aibus-dox-web-oauth-token.html",
+      "Date": "2023-09-28",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#CDAA7D - Devtoberfest 2023 - Use Machine Learning to Extract Information from Documents with Swagger UI",
       "points": 150,
-      "URL": "https://developers.sap.com/tutorials/cp-aibus-dox-swagger-ui.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-aibus-dox-swagger-ui.html",
+      "Date": "2023-09-28",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#00FF7F - Devtoberfest 2023 - Use Machine Learning to Enrich Employee Data with Swagger UI",
       "points": 250,
-      "URL": "https://developers.sap.com/tutorials/cp-aibus-dox-data-api-emp.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-aibus-dox-data-api-emp.html",
+      "Date": "2023-09-28",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#000080 - Devtoberfest 2023 - Use Machine Learning to Enrich Business Data with Swagger UI",
       "points": 250,
-      "URL": "https://developers.sap.com/tutorials/cp-aibus-dox-data-api-bus.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/cp-aibus-dox-data-api-bus.html",
+      "Date": "2023-09-28",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#800080 - Devtoberfest 2023 - Typescript Support in UI5 Web Components",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-frontend-ts-web-comps.html "
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-frontend-ts-web-comps.html ",
+      "Date": "2023-09-29",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#008080 - Devtoberfest 2023 - Build your own React application with UI5 Web Components for React",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-frontend-react-web-comps.html "
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-frontend-react-web-comps.html ",
+      "Date": "2023-09-29",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#43CD80 - Devtoberfest 2023 - ui5-test-runner v3",
       "points": 300,
-      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-frontend-ui5-test-runner.html "
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/devtoberfest2023-week2-frontend-ui5-test-runner.html ",
+      "Date": "2023-09-29",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#4B0082 - Devtoberfest 2023 - Get Started with UI5 Web Components for React",
       "points": 150,
-      "URL": "https://developers.sap.com/tutorials/ui5-webcomponents-react-introduction.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/ui5-webcomponents-react-introduction.html",
+      "Date": "2023-09-29",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#8B8682 - Devtoberfest 2023 - Create a Card Component",
       "points": 150,
-      "URL": "https://developers.sap.com/tutorials/ui5-webcomponents-react-card.html"
-   },
-   {
+      "URL": "https://developers.sap.com/tutorials/ui5-webcomponents-react-card.html",
+      "Date": "2023-09-29",
+      "Week": "Week 2"
+  },
+  {
       "displayName": "#EEDC82 - Devtoberfest 2023 - Integrate Charts and Conditional Rendering",
       "points": 200,
-      "URL": "https://developers.sap.com/tutorials/ui5-webcomponents-react-charts.html"
-   }
+      "URL": "https://developers.sap.com/tutorials/ui5-webcomponents-react-charts.html",
+      "Date": "2023-09-29",
+      "Week": "Week 2"
+  }
 ]

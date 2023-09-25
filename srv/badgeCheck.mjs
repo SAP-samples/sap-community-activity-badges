@@ -25,7 +25,12 @@ async function init() {
 
       try {
 
+
         let scnId = 'thomas.jung' //SCN Id
+        if (process.argv.length >= 3) {
+          scnId = process.argv[2]
+          console.log(scnId)
+        }
         scnId = scnId.replace("@", "")
         scnId = scnId.replace("https://people.sap.com/", "")
         scnId = scnId.replace("http://scn.sap.com/people/", "")
@@ -44,7 +49,7 @@ async function init() {
         for (let item of badges){
           let badgeValue = scnItems.content.find(x => x.displayName == item.displayName)
           if(!badgeValue){
-            console.log(`${item.displayName};${item.points};${item.URL}`)
+            console.log(`${item.displayName};${item.points}\n\t${item.URL}\n`)
           }
         }
 /*         let points = 0
