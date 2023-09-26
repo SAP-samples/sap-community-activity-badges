@@ -73,6 +73,14 @@ module.exports = (app) => {
      *                             format: date-time
      *                           count:
      *                             type: integer
+     *                           itemURL:
+     *                             type: string
+     *                             format: uri
+     *                           Date:
+     *                             type: string
+     *                             format: date
+     *                           Week:
+     *                             type: string
      */
     app.get('/devtoberfest/profile/:scnId', async (req, res) => {
         try {
@@ -289,6 +297,8 @@ async function getSCNProfile(req) {
                         points = points + badgeValue.points
                     }
                     item.itemURL = badgeValue.URL
+                    item.Date = new Date(badgeValue.Date)
+                    item.Week = badgeValue.Week
                 }
             }
 
