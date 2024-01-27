@@ -41,19 +41,14 @@ module.exports = (app) => {
             if (req.query.png) { isPng = true }
 
             const request = require('then-request')
-            const urlActivity = `https://content.services.sap.com/cse/search/user-counts?name=${req.params.scnId}`
-            const urlProfile = `https://content.services.sap.com/cse/search/user?name=${req.params.scnId}&sort=published:desc&size=1&page=0`
 
-            let [itemsRes, profileRes] = await Promise.all([
-                request('GET', encodeURI(urlActivity)),
-                request('GET', encodeURI(urlProfile))
-            ])
+            const urlBadges = `https://community.sap.com/khhcw49343/api/2.0/users/${req.params.scnId}`
+            let itemsRes = await request('GET', encodeURI(urlBadges))
             const scnItems = JSON.parse(itemsRes.getBody())
-            const scnProfile = JSON.parse(profileRes.getBody())
 
             let userName = req.params.scnId
-            if (scnProfile._embedded && scnProfile._embedded.contents[0] && scnProfile._embedded.contents[0].author) {
-                userName = scnProfile._embedded.contents[0].author.displayName
+            if (scnItems.data) {
+                userName = scnItems.data.login
             }
             let text = texts.getBundle(req)
             let numFormat = new Intl.NumberFormat(texts.getLocale(req))
@@ -73,10 +68,10 @@ module.exports = (app) => {
                 svg.svgBackground() +
                 await svg.svgContentHeader(text.getText('statsTitle', [userName, `'`])) +
                 svg.svgMainContent(
-                    svg.svgActivityItem(itemHeight, itemDelay, await svg.loadImageB64('../images/blog.png'), text.getText('posts'), numFormat.format(scnItems.blogposts), isPng),
-                    svg.svgActivityItem(itemHeight += 20, itemDelay += 200, await svg.loadImageB64('../images/comment.png'), text.getText('comments'), numFormat.format(scnItems.comments), isPng),
-                    svg.svgActivityItem(itemHeight += 20, itemDelay += 200, await svg.loadImageB64('../images/answer.png'), text.getText('answers'), numFormat.format(scnItems.answers), isPng),
-                    svg.svgActivityItem(itemHeight += 20, itemDelay += 200, await svg.loadImageB64('../images/question.png'), text.getText('questions'), numFormat.format(scnItems.questions), isPng),
+                    svg.svgActivityItem(itemHeight, itemDelay, await svg.loadImageB64('../images/blog.png'), 'Posts', numFormat.format(scnItems.data.metrics.posts), isPng),
+                    svg.svgActivityItem(itemHeight += 20, itemDelay += 200, await svg.loadImageB64('../images/comment.png'), 'Rank', scnItems.data.rank.name, isPng),
+                   // svg.svgActivityItem(itemHeight += 20, itemDelay += 200, await svg.loadImageB64('../images/answer.png'), text.getText('answers'), numFormat.format(scnItems.answers), isPng),
+                   // svg.svgActivityItem(itemHeight += 20, itemDelay += 200, await svg.loadImageB64('../images/question.png'), text.getText('questions'), numFormat.format(scnItems.questions), isPng),
                 ) +
                 svg.svgEnd()
             if (req.query.png) {

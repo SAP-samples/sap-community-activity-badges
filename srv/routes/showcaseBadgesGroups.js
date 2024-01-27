@@ -36,19 +36,14 @@ module.exports = (app) => {
             if (req.query.png || req.query.gif) { isPng = true }
 
             const request = require('then-request')
-            const urlBadges = `https://people-api.services.sap.com/rs/showcaseBadge/${req.params.scnId}`
-            const urlProfile = `https://content.services.sap.com/cse/search/user?name=${req.params.scnId}&sort=published:desc&size=1&page=0`
-
-            let [itemsRes, profileRes] = await Promise.all([
-                request('GET', encodeURI(urlBadges)),
-                request('GET', encodeURI(urlProfile))
-            ])
+            const urlBadges = `https://community.sap.com/khhcw49343/api/2.0/users/${req.params.scnId}`
+   
+            let itemsRes = await request('GET', encodeURI(urlBadges))
             const scnItems = JSON.parse(itemsRes.getBody())
-            const scnProfile = JSON.parse(profileRes.getBody())
 
             let userName = req.params.scnId
-            if (scnProfile._embedded && scnProfile._embedded.contents[0] && scnProfile._embedded.contents[0].author) {
-                userName = scnProfile._embedded.contents[0].author.displayName
+            if (scnItems.data) {
+                userName = scnItems.data.login
             }
             let text = texts.getBundle(req)
             let itemHeight = 15
@@ -56,15 +51,19 @@ module.exports = (app) => {
 
             let items = []
             let width = 50
-            for (let scnItem of scnItems) {
-                items.push(await svg.svgBadgeItemGroups(itemHeight, width, itemDelay += 200, scnItem.imageUrl, svg.escapeHTML(scnItem.displayName), isPng))
+            for (let index = 0; index < scnItems.data.user_badges.items.length; index++) {
+                if(index > 4){
+                    break
+                }
+                const scnItem = scnItems.data.user_badges.items[index]
+                items.push(await svg.svgBadgeItemGroups(itemHeight, width, itemDelay += 200, scnItem.badge.icon_url, svg.escapeHTML(scnItem.badge.title), isPng))
                 if (width == 50) {
                     width = 100
                 } else {
                     width += 50
-                    //itemHeight += 40
                 }
             }
+
 
             let body =
                 svg.svgHeader(500, 48) +//175) +

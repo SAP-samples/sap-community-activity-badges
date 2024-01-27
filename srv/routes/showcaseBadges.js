@@ -42,19 +42,14 @@ module.exports = (app) => {
             if (req.query.png || req.query.gif) { isPng = true }
 
             const request = require('then-request')
-            const urlBadges = `https://people-api.services.sap.com/rs/showcaseBadge/${req.params.scnId}`
-            const urlProfile = `https://content.services.sap.com/cse/search/user?name=${req.params.scnId}&sort=published:desc&size=1&page=0`
-
-            let [itemsRes, profileRes] = await Promise.all([
-                request('GET', encodeURI(urlBadges)),
-                request('GET', encodeURI(urlProfile))
-            ])
+            const urlBadges = `https://community.sap.com/khhcw49343/api/2.0/users/${req.params.scnId}`
+   
+            let itemsRes = await request('GET', encodeURI(urlBadges))
             const scnItems = JSON.parse(itemsRes.getBody())
-            const scnProfile = JSON.parse(profileRes.getBody())
 
             let userName = req.params.scnId
-            if (scnProfile._embedded && scnProfile._embedded.contents[0] && scnProfile._embedded.contents[0].author) {
-                userName = scnProfile._embedded.contents[0].author.displayName
+            if (scnItems.data) {
+                userName = scnItems.data.login
             }
 
             let text = texts.getBundle(req)
@@ -63,16 +58,20 @@ module.exports = (app) => {
 
             let items = []
             let width = 0
-            for (let scnItem of scnItems) {
-                if (scnItem.displayName.length > 20) {
+            for (let index = 0; index < scnItems.data.user_badges.items.length; index++) {
+                if(index > 4){
+                    break
+                }
+                const scnItem = scnItems.data.user_badges.items[index]
+                if (scnItem.badge.title.length > 20) {
                     const text_wrapper_lib = require('text-wrapper')
                     const wrapper = text_wrapper_lib.wrapper
-                    const wrappedOutput = wrapper(svg.escapeHTML(scnItem.displayName), { wrapOn: 20 })
+                    const wrappedOutput = wrapper(svg.escapeHTML(scnItem.badge.title), { wrapOn: 20 })
                     let wrappedArray = wrappedOutput.split("\n")
                     let secondHeight = itemHeight
                     for (let numItems = 0; numItems < wrappedArray.length; numItems++) {
                         if (numItems === 0) {
-                            items.push(await svg.svgBadgeItem(secondHeight, width, itemDelay += 200, encodeURI(scnItem.imageUrl), wrappedArray[numItems], isPng))
+                            items.push(await svg.svgBadgeItem(secondHeight, width, itemDelay += 200, scnItem.badge.icon_url, wrappedArray[numItems], isPng))
                             secondHeight += 20
                         } else if (numItems === 1) {
                             if (wrappedArray.length > 2) {
@@ -92,7 +91,7 @@ module.exports = (app) => {
                         itemHeight += 40
                     }
                 } else {
-                    items.push(await svg.svgBadgeItem(itemHeight, width, itemDelay += 200, encodeURI(scnItem.imageUrl), svg.escapeHTML(scnItem.displayName), isPng))
+                    items.push(await svg.svgBadgeItem(itemHeight, width, itemDelay += 200, scnItem.badge.icon_url, svg.escapeHTML(scnItem.badge.title), isPng))
                     if (width == 0) {
                         width = 200
                     } else {
