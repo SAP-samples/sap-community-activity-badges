@@ -27,6 +27,36 @@ module.exports = (app) => {
      *         default: thomas.jung
      *         schema:
      *           type: string
+     *       - in: path
+     *         name: badge1
+     *         required: false
+     *         description: Unique ID for Badge #1 to display
+     *         schema:
+     *           type: integer     
+     *       - in: path
+     *         name: badge2
+     *         required: false
+     *         description: Unique ID for Badge #2 to display
+     *         schema:
+     *           type: integer     
+     *       - in: path
+     *         name: badge3
+     *         required: false
+     *         description: Unique ID for Badge #3 to display
+     *         schema:
+     *           type: integer     
+     *       - in: path
+     *         name: badge4
+     *         required: false
+     *         description: Unique ID for Badge #4 to display
+     *         schema:
+     *           type: integer     
+     *       - in: path
+     *         name: badge5
+     *         required: false
+     *         description: Unique ID for Badge #5 to display
+     *         schema:
+     *           type: integer
      *       - in: query
      *         name: png
      *         type: boolean
@@ -36,14 +66,14 @@ module.exports = (app) => {
      *       200:
      *         description: A single user.
      */
-    app.get('/showcaseBadges/:scnId', nocache, async (req, res) => {
+    app.get('/showcaseBadges/:scnId/:badge1?/:badge2?/:badge3?/:badge4?/:badge5?', nocache, async (req, res) => {
         try {
             let isPng = false
             if (req.query.png || req.query.gif) { isPng = true }
 
             const request = require('then-request')
             const urlBadges = `https://community.sap.com/khhcw49343/api/2.0/users/${req.params.scnId}`
-   
+
             let itemsRes = await request('GET', encodeURI(urlBadges))
             const scnItems = JSON.parse(itemsRes.getBody())
 
@@ -56,13 +86,32 @@ module.exports = (app) => {
             let itemHeight = 43
             let itemDelay = 250
 
+            let itemsTemp = []
             let items = []
             let width = 0
-            for (let index = 0; index < scnItems.data.user_badges.items.length; index++) {
-                if(index > 4){
-                    break
+            //User Selected Badges via URL parameter
+            if (req.params.badge1) {
+                for (let scnItem of scnItems.data.user_badges.items) {
+                    if (scnItem.badge.id === req.params.badge1 ||
+                        scnItem.badge.id === req.params.badge2 ||
+                        scnItem.badge.id === req.params.badge3 ||
+                        scnItem.badge.id === req.params.badge4 ||
+                        scnItem.badge.id === req.params.badge5) {
+                        itemsTemp.push(scnItem)
+                    }
                 }
-                const scnItem = scnItems.data.user_badges.items[index]
+                //No User Selection, just display the first 5 badges on the profile
+            } else {
+                for (let index = 0; index < scnItems.data.user_badges.items.length; index++) {
+                    if (index > 4) {
+                        break
+                    }
+                    const scnItem = scnItems.data.user_badges.items[index]
+                    itemsTemp.push(scnItem)
+                }
+            }
+
+            for (let scnItem of itemsTemp) {
                 if (scnItem.badge.title.length > 20) {
                     const text_wrapper_lib = require('text-wrapper')
                     const wrapper = text_wrapper_lib.wrapper
@@ -118,11 +167,11 @@ module.exports = (app) => {
 
             const sharp = require('sharp')
             if (req.query.png) {
-                const png = await sharp(Buffer.from(body), {svg: true, animated: true, pages: -1}).png({animated: true}).toBuffer()
+                const png = await sharp(Buffer.from(body), { svg: true, animated: true, pages: -1 }).png({ animated: true }).toBuffer()
                 console.log(`Output PNG`)
                 res.type("image/png").status(200).send(png)
             } else if (req.query.gif) {
-                const gif = await sharp(Buffer.from(body), {svg: true, animated: true, pages: -1}).gif({loop: 1, animated: true}).toBuffer()
+                const gif = await sharp(Buffer.from(body), { svg: true, animated: true, pages: -1 }).gif({ loop: 1, animated: true }).toBuffer()
                 console.log(`Output GIF`)
                 res.type("image/gif").status(200).send(gif)
             }

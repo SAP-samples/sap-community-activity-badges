@@ -18,9 +18,39 @@ module.exports = (app) => {
      *         name: scnId
      *         required: true
      *         description: String ID of the user to retrieve - old SAP Community ID
-     *         default: thomas.jung
+     *         default: 139
      *         schema:
      *           type: string
+     *       - in: path
+     *         name: badge1
+     *         required: false
+     *         description: Unique ID for Badge #1 to display
+     *         schema:
+     *           type: integer     
+     *       - in: path
+     *         name: badge2
+     *         required: false
+     *         description: Unique ID for Badge #2 to display
+     *         schema:
+     *           type: integer     
+     *       - in: path
+     *         name: badge3
+     *         required: false
+     *         description: Unique ID for Badge #3 to display
+     *         schema:
+     *           type: integer     
+     *       - in: path
+     *         name: badge4
+     *         required: false
+     *         description: Unique ID for Badge #4 to display
+     *         schema:
+     *           type: integer     
+     *       - in: path
+     *         name: badge5
+     *         required: false
+     *         description: Unique ID for Badge #5 to display
+     *         schema:
+     *           type: integer
      *       - in: query
      *         name: png
      *         type: boolean
@@ -30,14 +60,14 @@ module.exports = (app) => {
      *       200:
      *         description: A single user.
      */
-    app.get('/showcaseBadgesGroups/:scnId', async (req, res) => {
+    app.get('/showcaseBadgesGroups/:scnId/:badge1?/:badge2?/:badge3?/:badge4?/:badge5?', async (req, res) => {
         try {
             let isPng = false
             if (req.query.png || req.query.gif) { isPng = true }
 
             const request = require('then-request')
             const urlBadges = `https://community.sap.com/khhcw49343/api/2.0/users/${req.params.scnId}`
-   
+
             let itemsRes = await request('GET', encodeURI(urlBadges))
             const scnItems = JSON.parse(itemsRes.getBody())
 
@@ -51,18 +81,39 @@ module.exports = (app) => {
 
             let items = []
             let width = 50
-            for (let index = 0; index < scnItems.data.user_badges.items.length; index++) {
-                if(index > 4){
-                    break
+
+            //User Selected Badges via URL parameter
+            if (req.params.badge1) {
+                for (let scnItem of scnItems.data.user_badges.items) {
+                    if (scnItem.badge.id === req.params.badge1 ||
+                        scnItem.badge.id === req.params.badge2 ||
+                        scnItem.badge.id === req.params.badge3 ||
+                        scnItem.badge.id === req.params.badge4 ||
+                        scnItem.badge.id === req.params.badge5) {
+                        items.push(await svg.svgBadgeItemGroups(itemHeight, width, itemDelay += 200, scnItem.badge.icon_url, svg.escapeHTML(scnItem.badge.title), isPng))
+                        if (width == 50) {
+                            width = 100
+                        } else {
+                            width += 50
+                        }
+                    }
                 }
-                const scnItem = scnItems.data.user_badges.items[index]
-                items.push(await svg.svgBadgeItemGroups(itemHeight, width, itemDelay += 200, scnItem.badge.icon_url, svg.escapeHTML(scnItem.badge.title), isPng))
-                if (width == 50) {
-                    width = 100
-                } else {
-                    width += 50
+            //No User Selection, just display the first 5 badges on the profile
+            } else {
+                for (let index = 0; index < scnItems.data.user_badges.items.length; index++) {
+                    if (index > 4) {
+                        break
+                    }
+                    const scnItem = scnItems.data.user_badges.items[index]
+                    items.push(await svg.svgBadgeItemGroups(itemHeight, width, itemDelay += 200, scnItem.badge.icon_url, svg.escapeHTML(scnItem.badge.title), isPng))
+                    if (width == 50) {
+                        width = 100
+                    } else {
+                        width += 50
+                    }
                 }
             }
+
 
 
             let body =
