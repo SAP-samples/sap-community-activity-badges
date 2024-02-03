@@ -31,6 +31,14 @@
             "applicationType": "URL",
             "url": "./selfie",
             "navigationMode": "embedded"
+        },
+        "profile-ui": {
+            "title": "SAP Community Profile and Badge Signature Tool",
+            "description": "SAP Community Profile and Badge Signature Tool",
+            "additionalInformation": "SAPUI5.Component=sap.profile",
+            "applicationType": "URL",
+            "url": "./profile",
+            "navigationMode": "embedded"
         }
     }
 }

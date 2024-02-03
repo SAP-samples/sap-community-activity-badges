@@ -10,9 +10,12 @@ module.exports = (app) => {
         res.type('text/css').status(200).send(await svg.svgDevtoberfestFont())
     })
 
-    app.use('/selfie', express.static(path.join(__dirname, '../app/selfie')))
+    app.use('/flp', express.static(path.join(__dirname, '../app/flp')))
     app.get('/selfie/', async (req, res) => {
-        return res.redirect("/selfie/#selfie-ui")
+        return res.redirect("/flp/#selfie-ui")
+    })
+    app.get('/profile/', async (req, res) => {
+        return res.redirect("/flp/#profile-ui")
     })
     app.use('/i18n', express.static(path.join(__dirname, '../_i18n')))
     app.use('/favicon.ico', express.static(path.join(__dirname, '../app/favicon.ico')))
