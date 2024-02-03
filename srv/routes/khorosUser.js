@@ -3,7 +3,7 @@ const request = require('then-request')
 // Expect an optional Devtoberfest year, default to current year.
 const year = process.argv[2] || new Date().getFullYear()
 // Khoros Community Search API
-const communitysearchapibase = 'https://groups.community.sap.com/api/2.0/search'
+const communitysearchapibase = 'https://community.sap.com/khhcw49343/api/2.0/search'
 
 
 module.exports = (app) => {

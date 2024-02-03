@@ -633,22 +633,23 @@ async function svgBadgeItem(height, width, delay, image, title, png = false) {
   let imageBase64 = Buffer.from(imageData).toString('base64')
   if (image.slice(-3) === 'png') {
     finalImage = `data:image/png;base64,${imageBase64}`
-  } else {
+  } else if (image.slice(-3) === 'svg') {
     if (png) {
       let newImageBase64 = (await sharp(Buffer.from(imageData)).png().toBuffer()).toString('base64')
       finalImage = `data:image/png;base64,${newImageBase64}`  //svg+xml
     } else {
       finalImage = `data:image/svg+xml;base64,${imageBase64}`
     }
-
+  } else {
+    finalImage = `data:image/png;base64,${imageBase64}`
   }
 
 
- if (png) {
+  if (png) {
     content += `
     <g transform="translate(25, 0)">
     `
-  } else { 
+  } else {
     content += `
     <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(25, 0)">
     `
@@ -688,14 +689,15 @@ async function svgBadgeItemGroups(height, width, delay, image, title, png = fals
   let imageBase64 = Buffer.from(imageData).toString('base64')
   if (image.slice(-3) === 'png') {
     finalImage = `data:image/png;base64,${imageBase64}`
-  } else {
+  } else if (image.slice(-3) === 'svg') {
     if (png) {
       let newImageBase64 = (await sharp(Buffer.from(imageData)).png().toBuffer()).toString('base64')
       finalImage = `data:image/png;base64,${newImageBase64}`  //svg+xml
     } else {
       finalImage = `data:image/svg+xml;base64,${imageBase64}`
     }
-
+  } else {
+    finalImage = `data:image/png;base64,${imageBase64}`
   }
 
   if (png) {
