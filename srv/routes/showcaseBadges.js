@@ -299,25 +299,33 @@ module.exports = (app) => {
 
     function badgeSelection(params, scnItems) {
         let itemsTemp = []
+        let itemsTemp2 = []
         //User Selected Badges via URL parameter
         if (params.badge1) {
             for (let scnItem of scnItems.data.user_badges.items) {
                 if (scnItem.badge.id === params.badge1) {
-                    itemsTemp.splice(0, 0, scnItem)
+                    itemsTemp2[0] = scnItem
+                   // itemsTemp.splice(0, 0, scnItem)
                 }
                 if (scnItem.badge.id === params.badge2) {
-                    itemsTemp.splice(1, 0, scnItem)
+                    itemsTemp2[1] = scnItem
+                    //itemsTemp.splice(1, 0, scnItem)
                 }
                 if (scnItem.badge.id === params.badge3) {
-                    itemsTemp.splice(2, 0, scnItem)
+                    itemsTemp2[2] = scnItem
+                   // itemsTemp.splice(2, 0, scnItem)
                 }
                 if (scnItem.badge.id === params.badge4) {
-                    itemsTemp.splice(3, 0, scnItem)
+                    itemsTemp2[3] = scnItem
+                    //itemsTemp.splice(3, 0, scnItem)
                 }
                 if (scnItem.badge.id === params.badge5) {
-                    itemsTemp.splice(4, 0, scnItem)
+                    itemsTemp2[4] = scnItem
+                   // itemsTemp.splice(4, 0, scnItem)
                 }
             }
+
+            itemsTemp = itemsTemp2
             //No User Selection, just display the first 5 badges on the profile
         } else {
             for (let index = 0; index < scnItems.data.user_badges.items.length; index++) {

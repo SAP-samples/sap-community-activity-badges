@@ -5,6 +5,7 @@
     xmlns:core="sap.ui.core"
     xmlns:unified="sap.ui.unified"
     xmlns:table="sap.ui.table"
+    xmlns:dnd="sap.ui.core.dnd"
     xmlns="sap.m">
     <ScrollContainer id="_IDGenScrollContainer1" height="100%" width="100%" vertical="true" focusable="true">
         <Panel id="carouselContainer" expandable="true" expanded="true" width="auto" class="sapUiResponsiveMargin">
@@ -19,7 +20,7 @@
                         <Label text="{i18n>profile.scnId}" required="true"/>
                         <Input id="scnId" value="{/scnId}" change="loadProfile">
                         </Input>
-                        <Image id="Profile" src="{/data/avatar/profile}" height="45px" width="45px"></Image>
+                        <Avatar id="Profile" src="{/data/avatar/profile}" displaySize="M" showBorder="true"></Avatar>
                     </f:content>
                 </f:SimpleForm>
                 <f:SimpleForm id="SimpleFormProfileDetails" editable="false" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4" adjustLabelSpan="true" singleContainerFullSize="true" ariaLabelledBy="Title1">
@@ -55,25 +56,45 @@
                         <Text id="sig" text="{/signatureFull}" wrapping="true"></Text>
                     </f:content>
                 </f:SimpleForm>
-                <f:SimpleForm id="SimpleFormSelBadges" width="auto" editable="false" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4" adjustLabelSpan="true" singleContainerFullSize="true" ariaLabelledBy="Title2">
-                    <f:content>
-                        <Label text="Badge #1" />
-                        <Text id="badge1" text="{/badge1}"></Text>
-                        <Image id="badge1URL" src="{/badge1URL}" height="25px" width="25px"></Image>
-                        <Label text="Badge #2" />
-                        <Text id="badge2" text="{/badge2}"></Text>
-                        <Image id="badge2URL" src="{/badge2URL}" height="25px" width="25px"></Image>
-                        <Label text="Badge #3" />
-                        <Text id="badge3" text="{/badge3}"></Text>
-                        <Image id="badge3URL" src="{/badge3URL}" height="25px" width="25px"></Image>
-                        <Label text="Badge #4" />
-                        <Text id="badge4" text="{/badge4}"></Text>
-                        <Image id="badge4URL" src="{/badge4URL}" height="25px" width="25px"></Image>
-                        <Label text="Badge #5" />
-                        <Text id="badge5" text="{/badge5}"></Text>
-                        <Image id="badge5URL" src="{/badge5URL}" height="25px" width="25px"></Image>
-                    </f:content>
-                </f:SimpleForm>
+
+                <Table id="selBadgesTable" mode="SingleSelectMaster" items="{/selBadges}" enableBusyIndicator="true">
+                    <contextMenu>
+                        <Menu>
+                            <MenuItem text="Move up" press="moveUp" />
+                            <MenuItem text="Move down" press="moveDown" />
+                        </Menu>
+                    </contextMenu>
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <Title text="Selected Badges" />
+                            <ToolbarSpacer/>
+                            <Button icon="sap-icon://navigation-up-arrow" tooltip="Move up" press="moveUp"/>
+                            <Button icon="sap-icon://navigation-down-arrow" tooltip="Move down" press="moveDown"/>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column width="6rem">
+                            <Label text="Id" />
+                        </Column>
+                        <Column width="8rem">
+                            <Label text="Image" />
+                        </Column>
+                    </columns>
+                    <dragDropConfig>
+                        <dnd:DragInfo groupName="selected2available" sourceAggregation="items" />
+                        <dnd:DropInfo groupName="available2selected" targetAggregation="items" dropPosition="Between" drop="onDropSelectedProductsTable" />
+                        <dnd:DragDropInfo sourceAggregation="items" targetAggregation="items" dropPosition="Between" drop="onDropSelectedProductsTable"/>
+                    </dragDropConfig>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{badge}" />
+                                <Image src="{url}" height="25px" width="25px" />
+
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
             </content>
         </Panel>
         <Panel id="badgePanel" expandable="true" expanded="true" width="auto" class="sapUiResponsiveMargin">
@@ -84,8 +105,7 @@
             </headerToolbar>
             <content>
                 <f:SimpleForm id="SimpleFormBadges" editable="false" layout="ResponsiveGridLayout" adjustLabelSpan="true" singleContainerFullSize="true" ariaLabelledBy="Title2">
-                    <table:Table id="badgesTable" selectionMode="None" visibleRowCount="5" enableSelectAll="false" rows="{/data/user_badges/items}" 
-                                 threshold="15" enableBusyIndicator="true" >
+                    <table:Table id="badgesTable" selectionMode="None" visibleRowCount="5" enableSelectAll="false" rows="{/data/user_badges/items}" threshold="15" enableBusyIndicator="true">
                         <table:columns>
                             <table:Column sortProperty="selected" width="6rem" sorted="true" sortOrder="Descending">
                                 <Label text="Select" />

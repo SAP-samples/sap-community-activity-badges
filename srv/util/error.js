@@ -223,7 +223,7 @@ async function getDevtoberfestText(error, req){
             errorObj.privacyURL = `https://www.sap.com/about/legal/privacy.html`
         } 
         console.error(errorObj)
-        res.type("application/json").status(200).send(JSON.stringify(errorObj))
+        res.type("application/json").status(400).send(JSON.stringify(errorObj))
 
     } catch (error) {
         console.error(error)

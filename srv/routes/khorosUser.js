@@ -61,8 +61,9 @@ module.exports = (app) => {
             return res.type("application/json").status(200).send(profile)
         } catch (error) {
             app.logger.error(error)
-            const errHandler = require("../util/error")
-            return await errHandler.handleErrorDevtoberfestText(error, req, res)
+            //const errHandler = require("../util/error")
+            return res.status(500).send(`The SAP Community ID you specified was not found or does not expose public badge information.`)
+           
         }
     })
 

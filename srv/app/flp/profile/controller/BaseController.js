@@ -101,12 +101,12 @@ sap.ui.define([
             }
             sap.ui.require(["sap/m/MessageBox"], (MessageBox) => {
                 console.log(oError)
-                if (oError.statusCode === 500 || oError.statusCode === 400 || oError.statusCode === "500" || oError.statusCode === "400" || oError.status === 500) {
-                    var errorRes = oError.responseText
-                    MessageBox.alert(errorRes)
+                if (oError.statusCode === 500 || oError.statusCode === 400 || oError.statusCode === "500" || oError.statusCode === "400" || oError.status === 500 || oError.status === 400) {
+                    let errorRes = oError.responseText
+                    MessageBox.error(errorRes)
                     return
                 } else {
-                    MessageBox.alert(oError.statusText)
+                    MessageBox.error(oError.statusText)
                     return
                 }
             })
