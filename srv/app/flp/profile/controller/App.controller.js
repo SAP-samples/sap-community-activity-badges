@@ -2,17 +2,12 @@
 /*eslint-env es6 */
 "use strict";
 sap.ui.define([
-    "profile/controller/BaseController",
-    "sap/m/MessageToast",
-    "sap/ui/core/Core",
-    "sap/m/Text",
-    "sap/m/Link",
-    "sap/ui/table/Column",
+    "profile/controller/BaseController",    
     "sap/m/MessageBox",
     "sap/m/ColumnListItem",
     "./Utils"
 ],
-    function (BaseController, MessageToast, oCore, Text, Link, Column, MessageBox, ColumnListItem, Utils) {
+    function (BaseController,  MessageBox, ColumnListItem, Utils) {
 
         return BaseController.extend("profile.controller.App", {
 
@@ -119,7 +114,7 @@ sap.ui.define([
                     let emptyIndex = selBadges.findIndex(isEmpty)
                     if (emptyIndex === -1) {
                         let oError = {}
-                        oError.statusText = "You can only select five badges"
+                        oError.statusText = this.getModel("i18n").getResourceBundle().getText("profile.limitErr") //"You can only select five badges"
                         MessageBox.alert(oError.statusText)
                         badges[badges.findIndex(isMatch)].selected = ""
                     } else {

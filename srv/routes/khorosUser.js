@@ -4,20 +4,20 @@ const request = require('then-request')
 const year = process.argv[2] || new Date().getFullYear()
 // Khoros Community Search API
 const communitysearchapibase = 'https://community.sap.com/khhcw49343/api/2.0/search'
-
+const texts = require("../util/texts")
 
 module.exports = (app) => {
 
     app.get('/khoros/members/:grouphub', async (req, res) => {
         try {
             let groupHub = ''
-            if(req.params.grouphub){
+            if (req.params.grouphub) {
                 groupHub = req.params.grouphub
-            }else{
+            } else {
                 groupHub = 'Devtoberfest'
             }
-            const memberQuery = 
-            `select id, sso_id, login, email, first_name, last_name from users where node.id = 'grouphub:${req.params.grouphub}' `
+            const memberQuery =
+                `select id, sso_id, login, email, first_name, last_name from users where node.id = 'grouphub:${req.params.grouphub}' `
             const query = `${memberQuery} LIMIT 3000`
             const outputQuery = `${communitysearchapibase}?q=${query}`
             let output = '<!DOCTYPE html><html><body>'
@@ -61,9 +61,8 @@ module.exports = (app) => {
             return res.type("application/json").status(200).send(profile)
         } catch (error) {
             app.logger.error(error)
-            //const errHandler = require("../util/error")
-            return res.status(500).send(`The SAP Community ID you specified was not found or does not expose public badge information.`)
-           
+            let text = texts.getBundle(req)
+            return res.status(500).send(text.getText('errorCommunityID'))
         }
     })
 
@@ -690,7 +689,7 @@ const retrieve = async (q) => {
 
         // Make the call, expect JSON in response.
         result = await request('GET', `${communitysearchapibase}?q=${query}`)
-        console.log( `${communitysearchapibase}?q=${query}`)
+        console.log(`${communitysearchapibase}?q=${query}`)
         result = JSON.parse(result.getBody())
         console.log(result)
         // got(`${communitysearchapibase}?q=${encodeURIComponent(query)}`, {}).json()
