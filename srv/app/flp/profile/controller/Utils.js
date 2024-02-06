@@ -8,38 +8,38 @@ sap.ui.define([
         ranking: {
             Initial: 0,
             Default: 1024,
-            Before: function (iRank) {
-                return iRank + 1024
+            Before: function (rank) {
+                return rank + 1024
             },
-            Between: function (iRank1, iRank2) {
+            Between: function (rank1, rank2) {
                 // limited to 53 rows
-                return (iRank1 + iRank2) / 2
+                return (rank1 + rank2) / 2
             },
-            After: function (iRank) {
-                return iRank / 2
+            After: function (rank) {
+                return rank / 2
             }
         },
 
-        getSelBadgesTable: function (oController) {
-            return oController.getOwnerComponent().getRootControl().byId("selBadgesTable").byId("table")
+        getSelBadgesTable: function (controller) {
+            return controller.getOwnerComponent().getRootControl().byId("application-profile-ui-component---App--selBadgesTable") //.byId("table")
         },
 
-        getSelectedItemContext: function (oTable, fnCallback) {
-            let aSelectedItems = oTable.getSelectedItems()
-            let oSelectedItem = aSelectedItems[0]
+        getSelectedItemContext: function (table, callback) {
+            let selectedItems = table.getSelectedItems()
+            let selectedItem = selectedItems[0]
 
-            if (!oSelectedItem) {
+            if (!selectedItem) {
                 MessageToast.show("Please select a row!")
                 return
             }
 
-            let oSelectedContext = oSelectedItem.getBindingContext()
-            if (oSelectedContext && fnCallback) {
-                let iSelectedIndex = oTable.indexOfItem(oSelectedItem)
-                fnCallback(oSelectedContext, iSelectedIndex, oTable)
+            let selectedContext = selectedItem.getBindingContext()
+            if (selectedContext && callback) {
+                let selectedIndex = table.indexOfItem(selectedItem)
+                callback(selectedContext, selectedIndex, table)
             }
 
-            return oSelectedContext
+            return selectedContext
         }
 
     }

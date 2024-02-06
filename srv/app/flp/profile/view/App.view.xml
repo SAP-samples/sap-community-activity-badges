@@ -57,7 +57,7 @@
                     </f:content>
                 </f:SimpleForm>
 
-                <Table id="selBadgesTable" mode="SingleSelectMaster" items="{/selBadges}" enableBusyIndicator="true">
+                <Table id="selBadgesTable" mode="SingleSelectMaster" beforeOpenContextMenu="onBeforeOpenContextMenu" items="{/selBadges}" enableBusyIndicator="true">
                     <contextMenu>
                         <Menu>
                             <MenuItem text="Move up" press="moveUp" />
@@ -80,17 +80,11 @@
                             <Label text="Image" />
                         </Column>
                     </columns>
-                    <dragDropConfig>
-                        <dnd:DragInfo groupName="selected2available" sourceAggregation="items" />
-                        <dnd:DropInfo groupName="available2selected" targetAggregation="items" dropPosition="Between" drop="onDropSelectedProductsTable" />
-                        <dnd:DragDropInfo sourceAggregation="items" targetAggregation="items" dropPosition="Between" drop="onDropSelectedProductsTable"/>
-                    </dragDropConfig>
                     <items>
                         <ColumnListItem>
                             <cells>
                                 <Text text="{badge}" />
                                 <Image src="{url}" height="25px" width="25px" />
-
                             </cells>
                         </ColumnListItem>
                     </items>

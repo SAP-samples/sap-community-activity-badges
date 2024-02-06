@@ -8,9 +8,11 @@ sap.ui.define([
     "sap/m/Text",
     "sap/m/Link",
     "sap/ui/table/Column",
-    "sap/m/MessageBox"
+    "sap/m/MessageBox",
+    "sap/m/ColumnListItem",
+    "./Utils"
 ],
-    function (BaseController, MessageToast, oCore, Text, Link, Column, MessageBox) {
+    function (BaseController, MessageToast, oCore, Text, Link, Column, MessageBox, ColumnListItem, Utils) {
 
         return BaseController.extend("profile.controller.App", {
 
@@ -48,7 +50,7 @@ sap.ui.define([
 
                         let selBadges = []
                         for (let i = 0; i < 5; i++) {
-                            selBadges.push({ badge: "", url: "" })
+                            selBadges.push({ badge: "", url: ""})
                         }
 
                         if (src !== "") {
@@ -135,38 +137,49 @@ sap.ui.define([
                 return
                
             },
-            onDropSelectedProductsTable: function(oEvent) {
-                let oDraggedItem = oEvent.getParameter("draggedControl")
-                let oDraggedItemContext = oDraggedItem.getBindingContext()
-                if (!oDraggedItemContext) {
-                    return
-                }
-
-                let oDroppedItem = oEvent.getParameter("droppedControl");
-
-                if (oDroppedItem instanceof ColumnListItem) {
-                    // get the dropped row data
-                    var sDropPosition = oEvent.getParameter("dropPosition");
-                    var oDroppedItemContext = oDroppedItem.getBindingContext();
-                   // var iDroppedItemRank = oDroppedItemContext.getProperty("Rank");
-                    var oDroppedTable = oDroppedItem.getParent();
-                    var iDroppedItemIndex = oDroppedTable.indexOfItem(oDroppedItem);
-    
-                    // find the new index of the dragged row depending on the drop position
-                    var iNewItemIndex = iDroppedItemIndex + (sDropPosition === "After" ? 1 : -1);
-                    var oNewItem = oDroppedTable.getItems()[iNewItemIndex];
-                    if (!oNewItem) {
-                        // dropped before the first row or after the last row
-                        iNewRank = oRanking[sDropPosition](iDroppedItemRank);
-                    } else {
-                        // dropped between first and the last row
-                        var oNewItemContext = oNewItem.getBindingContext();
-                        iNewRank = oRanking.Between(iDroppedItemRank, oNewItemContext.getProperty("Rank"));
+            
+            moveSelectedItem: function(direction, controller) {
+                let selBadgesTable = Utils.getSelBadgesTable(this)
+                Utils.getSelectedItemContext(selBadgesTable, function(selectedItemContext, selectedItemIndex) {
+                    let siblingItemIndex = selectedItemIndex + (direction === "Up" ? -1 : 1)
+                    let siblingItem = selBadgesTable.getItems()[siblingItemIndex]
+                    if (!siblingItem) {
+                        return
                     }
-                }
-
-                this.buildSignature()
+                    let siblingItemContext = siblingItem.getBindingContext()
+                    if (!siblingItemContext) {
+                        return
+                    }
     
+                    // swap the selected and the siblings rank
+                    let model = selBadgesTable.getModel()
+                    let siblingItemBadge = siblingItemContext.getProperty("badge")
+                    let siblingItemUrl = siblingItemContext.getProperty("url")
+                    let selectedItemBadge = selectedItemContext.getProperty("badge")
+                    let selectedItemUrl = selectedItemContext.getProperty("url")
+
+                    model.setProperty("badge", siblingItemBadge, selectedItemContext)
+                    model.setProperty("badge", selectedItemBadge, siblingItemContext)
+                    model.setProperty("url", siblingItemUrl, selectedItemContext)
+                    model.setProperty("url", selectedItemUrl, siblingItemContext)
+                   // after move select the sibling
+                    selBadgesTable.getItems()[siblingItemIndex].setSelected(true).focus()
+                    controller.buildSignature()
+                })
+            },
+    
+            moveUp: function(oEvent) {
+                this.moveSelectedItem("Up", this)
+                oEvent.getSource().focus()
+            },
+    
+            moveDown: function(oEvent) {
+                this.moveSelectedItem("Down", this)
+                oEvent.getSource().focus()
+            },
+    
+            onBeforeOpenContextMenu: function(oEvent) {
+                oEvent.getParameters().listItem.setSelected(true)
             }
 
 
