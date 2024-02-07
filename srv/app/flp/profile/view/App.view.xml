@@ -20,7 +20,7 @@
                         <Label text="{i18n>profile.scnId}" required="true"/>
                         <Input id="scnId" value="{/scnId}" change="loadProfile">
                         </Input>
-                        <Avatar id="Profile" src="{/data/avatar/profile}" displaySize="M" showBorder="true"></Avatar>
+                        <Avatar id="Profile" src="{/data/avatar/profile}" displaySize="M" showBorder="true" ></Avatar>
                     </f:content>
                 </f:SimpleForm>
                 <f:SimpleForm id="SimpleFormProfileDetails" editable="false" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4" adjustLabelSpan="true" singleContainerFullSize="true" ariaLabelledBy="Title1">
@@ -28,7 +28,7 @@
                         <Label text="{i18n>profile.login}"/>
                         <Text id="login" text="{/data/login}"></Text>
                         <Label text="{i18n>profile.url}"/>
-                        <Link id="viewHref" href="{/data/view_href}" text="{/data/view_href}"></Link>
+                        <Link id="viewHref" href="{/data/view_href}" text="{/data/view_href}" target="_blank"></Link>
                         <Label text="{i18n>profile.fname}"/>
                         <Text id="firstName" text="{/data/first_name}"></Text>
                         <Label text="{i18n>profile.lname}"/>
@@ -52,11 +52,18 @@
                         <Label text="{i18n>profile.signaturePreview}" />
                         <Image id="sigPreview" src="{/signatureURL}">
                         </Image>
+
                         <Label text="{i18n>profile.signature}" />
                         <Text id="sig" text="{/signatureFull}" wrapping="true"></Text>
+
                     </f:content>
                 </f:SimpleForm>
-
+                <f:SimpleForm id="SimpleFormSignatureBig" width="auto" editable="false" layout="ColumnLayout" columnsM="2" columnsL="2" columnsXL="2" adjustLabelSpan="true" singleContainerFullSize="true" ariaLabelledBy="Title2">
+                    <f:content>
+                        <Image id="signatureBigURL" src="{/signatureBigURL}">
+                        </Image>
+                    </f:content>
+                </f:SimpleForm>
                 <Table id="selBadgesTable" mode="SingleSelectMaster" beforeOpenContextMenu="onBeforeOpenContextMenu" items="{/selBadges}" enableBusyIndicator="true">
                     <contextMenu>
                         <Menu>
@@ -80,6 +87,9 @@
                             <Label text="{i18n>profile.badgeImage}" />
                         </Column>
                     </columns>
+                    <dragDropConfig>
+                        <dnd:DragDropInfo sourceAggregation="items" targetAggregation="items" dropPosition="Between" drop="onDropSelectedBadgesTable"/>
+                    </dragDropConfig>
                     <items>
                         <ColumnListItem>
                             <cells>

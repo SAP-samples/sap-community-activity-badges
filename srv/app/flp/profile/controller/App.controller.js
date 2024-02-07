@@ -2,12 +2,12 @@
 /*eslint-env es6 */
 "use strict";
 sap.ui.define([
-    "profile/controller/BaseController",    
+    "profile/controller/BaseController",
     "sap/m/MessageBox",
     "sap/m/ColumnListItem",
     "./Utils"
 ],
-    function (BaseController,  MessageBox, ColumnListItem, Utils) {
+    function (BaseController, MessageBox, ColumnListItem, Utils) {
 
         return BaseController.extend("profile.controller.App", {
 
@@ -45,7 +45,7 @@ sap.ui.define([
 
                         let selBadges = []
                         for (let i = 0; i < 5; i++) {
-                            selBadges.push({ badge: "", url: ""})
+                            selBadges.push({ badge: "", url: "" })
                         }
 
                         if (src !== "") {
@@ -100,6 +100,7 @@ sap.ui.define([
                     `<img src="https://devrel-tools-prod-scn-badges-srv.cfapps.eu10.hana.ondemand.com${signatureURL}" /></a>`
                 model.setProperty("/signatureFull", signatureFull)
             },
+
             selectBadge: function (oEvent) {
 
                 let sRow = oEvent.getSource().getBindingContext().getPath()
@@ -130,12 +131,37 @@ sap.ui.define([
                 model.setProperty("/data/user_badges/items", badges)
                 this.buildSignature()
                 return
-               
+
             },
-            
-            moveSelectedItem: function(direction, controller) {
+
+            onDropSelectedBadgesTable: function (oEvent) {
+                let draggedItem = oEvent.getParameter("draggedControl")
+                let draggedItemContext = draggedItem.getBindingContext()
+                if (!draggedItemContext) {
+                    return
+                }
+                let droppedItem = oEvent.getParameter("droppedControl")
+                if (droppedItem instanceof ColumnListItem && draggedItem instanceof ColumnListItem) {
+                    // get the dropped row data
+                    let droppedTable = droppedItem.getParent()
+        
+                    let draggedItemIndex = droppedTable.indexOfItem(draggedItem)
+                    let droppedItemIndex = droppedTable.indexOfItem(droppedItem)
+  
+                    let model = droppedTable.getModel()
+                    let selBadges = model.getProperty("/selBadges")
+          
+                    
+                    selBadges.splice(droppedItemIndex, 0, selBadges.splice(draggedItemIndex, 1)[0])
+                    model.setProperty("/selBadges", selBadges)
+                    droppedTable.getItems()[droppedItemIndex].setSelected(true).focus()
+                    this.buildSignature()                    
+                }                
+            },
+
+            moveSelectedItem: function (direction, controller) {
                 let selBadgesTable = Utils.getSelBadgesTable(this)
-                Utils.getSelectedItemContext(selBadgesTable, function(selectedItemContext, selectedItemIndex) {
+                Utils.getSelectedItemContext(selBadgesTable, function (selectedItemContext, selectedItemIndex) {
                     let siblingItemIndex = selectedItemIndex + (direction === "Up" ? -1 : 1)
                     let siblingItem = selBadgesTable.getItems()[siblingItemIndex]
                     if (!siblingItem) {
@@ -145,7 +171,7 @@ sap.ui.define([
                     if (!siblingItemContext) {
                         return
                     }
-    
+
                     // swap the selected and the siblings rank
                     let model = selBadgesTable.getModel()
                     let siblingItemBadge = siblingItemContext.getProperty("badge")
@@ -157,23 +183,23 @@ sap.ui.define([
                     model.setProperty("badge", selectedItemBadge, siblingItemContext)
                     model.setProperty("url", siblingItemUrl, selectedItemContext)
                     model.setProperty("url", selectedItemUrl, siblingItemContext)
-                   // after move select the sibling
+                    // after move select the sibling
                     selBadgesTable.getItems()[siblingItemIndex].setSelected(true).focus()
                     controller.buildSignature()
                 })
             },
-    
-            moveUp: function(oEvent) {
+
+            moveUp: function (oEvent) {
                 this.moveSelectedItem("Up", this)
                 oEvent.getSource().focus()
             },
-    
-            moveDown: function(oEvent) {
+
+            moveDown: function (oEvent) {
                 this.moveSelectedItem("Down", this)
                 oEvent.getSource().focus()
             },
-    
-            onBeforeOpenContextMenu: function(oEvent) {
+
+            onBeforeOpenContextMenu: function (oEvent) {
                 oEvent.getParameters().listItem.setSelected(true)
             }
 
