@@ -482,6 +482,36 @@ module.exports = (app) => {
             return await errHandler.handleErrorDevtoberfestText(error, req, res)
         }
     })
+
+
+    /**
+     * @swagger
+     * /khoros/thread/{threadId}:
+     *   get:
+     *     summary: Get all messages within a discussion thread
+     *     description: Get all messages within a discussion thread
+     *     parameters:
+     *       - in: path
+     *         name: threadId
+     *         required: true
+     *         description: Thread ID
+     *         default: 13622425
+     *         schema:
+     *           type: string
+     *     responses:
+     *       200:
+     *         description: List of all responses
+     */
+        app.get('/khoros/thread/:threadId', async (req, res) => {
+            try {
+                let details = await getMessagesForDiscussion(req.params.threadId, app)
+                return res.type("application/json").status(200).send(details)
+            } catch (error) {
+                app.logger.error(error)
+                const errHandler = require("../util/error")
+                return await errHandler.handleErrorDevtoberfestText(error, req, res)
+            }
+        })
 }
 
 /**
@@ -505,6 +535,22 @@ async function getSCNProfile(scnId, app) {
             const userOutput = JSON.parse(userDetails.getBody())
             return userOutput
     }
+}
+
+/**
+ * Get Single Board Details
+ * @param {string} threadId - SAP Community Unique ID for a discussion thread
+ * @param {object} app - Express App object
+ * @returns {object}
+ */
+async function getMessagesForDiscussion(threadId, app) {
+    const threadURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT ` +
+    `type, id, view_href, author.type, author.id, author.login` +
+    ` FROM messages where ancestors.id = '${threadId}'`
+    app.logger.info(threadURL)
+    let threadDetails = await request('GET', encodeURI(threadURL))
+    const threadOutput = JSON.parse(threadDetails.getBody())
+    return threadOutput.data.items
 }
 
 /**
