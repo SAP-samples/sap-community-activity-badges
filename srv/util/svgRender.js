@@ -79,6 +79,11 @@ function svgStyleHeader() {
         font: 600 12px 'Segoe UI', Ubuntu, Sans-Serif;
         fill: #fff;
         animation: fadeInAnimation 0.8s ease-in-out forwards;
+      }\n
+      .headerGroupLight {
+        font: 600 12px 'Segoe UI', Ubuntu, Sans-Serif;
+        fill: #0070F2;
+        animation: fadeInAnimation 0.8s ease-in-out forwards;
       }\n`
 }
 module.exports.svgStyleHeader = svgStyleHeader
@@ -102,6 +107,9 @@ function svgStyleStat() {
   return `
     .stat {
         font: 600 14px 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif; fill: #9f9f9f;
+    }\n
+    .statLight {
+      font: 600 14px 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif; fill: #002A86;
     }\n`
 }
 module.exports.svgStyleStat = svgStyleStat
@@ -202,6 +210,27 @@ module.exports.svgBackground = svgBackground
  * svg Background rectangle
  * @returns {string}
  */
+function svgBackgroundLight() {
+  return `
+        <rect
+          data-testid="background"
+          x="0.5"
+          y="0.5"
+          rx="4.5"
+          height="99%"
+          stroke="#e4e2e2"
+          width="99%"
+          fill="#D1EFFF"
+          fill-opacity="90"
+          stroke-opacity="1"
+        /> \n`
+}
+module.exports.svgBackgroundLight = svgBackgroundLight
+
+/**
+ * svg Background rectangle
+ * @returns {string}
+ */
 function svgDevtoberfestBackground() {
   return `
         <rect
@@ -240,14 +269,17 @@ module.exports.svgContentHeader = svgContentHeader
  * @param {string} text 
  * @returns {Promise<string>}
  */
-async function svgContentHeaderGroups(text) {
+async function svgContentHeaderGroups(text, light) {
+  let headerClass = `headerGroup`
+  if(light){headerClass = `headerGroupLight`}  
+
   return `
     <g data-testid="title" transform="translate(25, 35)">
         <g transform="translate(0, 0)">
             <image x="-23" y="-33" class="header" href="data:image/png;base64,${await loadImageB64("../images/sap_18.png")}" height="25" width="50"/> 
         </g>
         <g transform="translate(0, 0)">
-            <text x="28" y="-22" class="headerGroup" data-testid="header">${text}</text>
+            <text x="28" y="-22" class="${headerClass}" data-testid="header">${text}</text>
         </g>
     </g>\n`
 }
@@ -654,11 +686,20 @@ async function svgBadgeItem(height, width, delay, image, title, png = false) {
     <g class="stagger" style="animation-delay: ${delay.toString()}ms" transform="translate(25, 0)">
     `
   }
-  content += `
-       <image y="4" class="icon" href="${finalImage}" height="30" width="30"/>    
-       <text class="stat bold" x="40" y="17">${title}</text>
-       </g>
-   </g>\n`
+  if(height === 15){
+    content += `
+    <image y="4" class="icon" href="${finalImage}" height="25" width="25"/>    
+    <text class="statLight bold" fill = "#0070F2" x="40" y="17">${title}</text>
+    </g>
+</g>\n`
+  }else{
+    content += `
+    <image y="4" class="icon" href="${finalImage}" height="30" width="30"/>    
+    <text class="stat bold" x="40" y="17">${title}</text>
+    </g>
+</g>\n`
+  }
+
 
   return content
 
