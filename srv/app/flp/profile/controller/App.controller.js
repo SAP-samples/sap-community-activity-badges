@@ -91,14 +91,28 @@ sap.ui.define([
                 let scnId = model.getProperty("/scnId")
                 let data = model.getData()
                 let signatureURL = `/showcaseBadgesGroups/${scnId}`
+                let signature2URL = `/showcaseSingleBadge/${scnId}`
                 for (let i = 0; i < data.selBadges.length; i++) {
-                    if (data.selBadges[i].badge !== "") signatureURL += `/${data.selBadges[i].badge}`
+                    if (data.selBadges[i].badge !== "") {
+                        signatureURL += `/${data.selBadges[i].badge}`
+                    }
+                }
+                let foundFirst = false
+                for (let i = 0; i < data.selBadges.length; i++) {
+                    if (data.selBadges[i].badge !== "" && !foundFirst) {
+                        signature2URL += `/${data.selBadges[i].badge}`
+                        foundFirst = true
+                    }
                 }
                 model.setProperty("/signatureURL", signatureURL)
+                model.setProperty("/signature2URL", signature2URL)
                 model.setProperty("/signatureBigURL", signatureURL.replace("showcaseBadgesGroups", "showcaseBadges"))
                 let signatureFull = `<a href="${data.data.view_href}" target="_blank">` +
                     `<img src="https://devrel-tools-prod-scn-badges-srv.cfapps.eu10.hana.ondemand.com${signatureURL}" /></a>`
+                let signature2Full = `<a href="${data.data.view_href}" target="_blank">` +
+                    `<img src="https://devrel-tools-prod-scn-badges-srv.cfapps.eu10.hana.ondemand.com${signature2URL}" /></a>`
                 model.setProperty("/signatureFull", signatureFull)
+                model.setProperty("/signature2Full", signature2Full)
             },
 
             selectBadge: function (oEvent) {
@@ -144,19 +158,19 @@ sap.ui.define([
                 if (droppedItem instanceof ColumnListItem && draggedItem instanceof ColumnListItem) {
                     // get the dropped row data
                     let droppedTable = droppedItem.getParent()
-        
+
                     let draggedItemIndex = droppedTable.indexOfItem(draggedItem)
                     let droppedItemIndex = droppedTable.indexOfItem(droppedItem)
-  
+
                     let model = droppedTable.getModel()
                     let selBadges = model.getProperty("/selBadges")
-          
-                    
+
+
                     selBadges.splice(droppedItemIndex, 0, selBadges.splice(draggedItemIndex, 1)[0])
                     model.setProperty("/selBadges", selBadges)
                     droppedTable.getItems()[droppedItemIndex].setSelected(true).focus()
-                    this.buildSignature()                    
-                }                
+                    this.buildSignature()
+                }
             },
 
             moveSelectedItem: function (direction, controller) {

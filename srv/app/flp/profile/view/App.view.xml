@@ -58,6 +58,19 @@
 
                     </f:content>
                 </f:SimpleForm>
+
+                <f:SimpleForm id="SimpleFormSignature2" width="auto" editable="false" layout="ColumnLayout" columnsM="2" columnsL="2" columnsXL="2" adjustLabelSpan="true" singleContainerFullSize="true" ariaLabelledBy="Title2">
+                    <f:content>
+                        <Label text="{i18n>profile.signature2Preview}" />
+                        <Image id="sig2Preview" src="{/signature2URL}">
+                        </Image>
+
+                        <Label text="{i18n>profile.signature}" />
+                        <Text id="sig2" text="{/signature2Full}" wrapping="true"></Text>
+
+                    </f:content>
+                </f:SimpleForm>
+
                 <f:SimpleForm id="SimpleFormSignatureBig" width="auto" editable="false" layout="ColumnLayout" columnsM="2" columnsL="2" columnsXL="2" adjustLabelSpan="true" singleContainerFullSize="true" ariaLabelledBy="Title2">
                     <f:content>
                         <Image id="signatureBigURL" src="{/signatureBigURL}">
