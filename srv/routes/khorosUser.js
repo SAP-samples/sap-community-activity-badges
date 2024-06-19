@@ -1,5 +1,6 @@
 //const got = require('got') 
 const request = require('then-request')
+const querystring = require('node:querystring')
 // Expect an optional Devtoberfest year, default to current year.
 const year = process.argv[2] || new Date().getFullYear()
 // Khoros Community Search API
@@ -283,6 +284,16 @@ module.exports = (app) => {
     app.get('/khoros/eventRegs/:boardId', async (req, res) => {
         try {
             let profile = await getEventsRegs(req.params.boardId, app)
+            function escape(s) {
+                let lookup = {
+                    '&': "",
+                    '"': "",
+                    '\'': "",
+                    '<': "",
+                    '>': ""
+                };
+                return s.replace( /[&"'<>]/g, c => lookup[c] );
+            }
             let output = '<!DOCTYPE html><html><body>'
             output +=
                 `
@@ -300,7 +311,8 @@ module.exports = (app) => {
                     ).toLocaleString(Intl.DateTimeFormat().resolvedOptions().locale, { timeZone: timeZone, dateStyle: 'full', timeStyle: 'full' })
                 document.getElementById(element).innerHTML = 'Start Time: ' + date1 + ' / ' + date2
             }
-            </script>
+
+           </script>
             `
             for (let item of profile) {
                 let date2 = new Date((typeof date === "string" ? new Date(item.startTime) : item.startTime)
@@ -308,6 +320,8 @@ module.exports = (app) => {
 
                 output += `\n<a href="${item.href}"><h3>${item.name}</h2></a>`
                 output += `<div style="border-width:3px; border-style:solid; border-color:grey; padding: 1em;">`
+                let location = escape(item.location) //item.location.replaceAll(`'`, `&#39;` ) //querystring.escape(item.location)//"item.location.replace(/[\\$'"]/g, "\\$&")
+                let name = escape(item.name)
                 output += `
                     <a
                         target="_blank"
@@ -323,8 +337,8 @@ module.exports = (app) => {
                         </button>
                         <div style="display: flex; gap: 1em; align-items: flex-end; margin-top: 1em;">
                             <textarea style="display: none; width: 300px; height: 200px; margin-bottom: 1em;" placeholder="Paste the event registrations here."></textarea>
-                            <button style="display: none; margin-bottom: 1em;" onclick="openEmailDraft(this, '${item.name}', '${date2}', '${item.location}', '${item.href}')">Open email draft</button>
-                            <button style="display: none; margin-bottom: 1em;" onclick="openExcel(this, '${item.name}')">Download Excel</button>
+                            <button style="display: none; margin-bottom: 1em;" onclick="openEmailDraft(this, '${name}', '${date2}', '${location}', '${item.href}')">Open email draft</button>
+                            <button style="display: none; margin-bottom: 1em;" onclick="openExcel(this, '${name}')">Download Excel</button>
                         </div>`
                 if (item.rsvpCount >= 25) {
                     output += `<li>RSVP Count: ${item.rsvpCount} 🛑</li>`
@@ -502,16 +516,16 @@ module.exports = (app) => {
      *       200:
      *         description: List of all responses
      */
-        app.get('/khoros/thread/:threadId', async (req, res) => {
-            try {
-                let details = await getMessagesForDiscussion(req.params.threadId, app)
-                return res.type("application/json").status(200).send(details)
-            } catch (error) {
-                app.logger.error(error)
-                const errHandler = require("../util/error")
-                return await errHandler.handleErrorDevtoberfestText(error, req, res)
-            }
-        })
+    app.get('/khoros/thread/:threadId', async (req, res) => {
+        try {
+            let details = await getMessagesForDiscussion(req.params.threadId, app)
+            return res.type("application/json").status(200).send(details)
+        } catch (error) {
+            app.logger.error(error)
+            const errHandler = require("../util/error")
+            return await errHandler.handleErrorDevtoberfestText(error, req, res)
+        }
+    })
 }
 
 /**
@@ -545,8 +559,8 @@ async function getSCNProfile(scnId, app) {
  */
 async function getMessagesForDiscussion(threadId, app) {
     const threadURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT ` +
-    `type, id, view_href, author.type, author.id, author.login` +
-    ` FROM messages where ancestors.id = '${threadId}'`
+        `type, id, view_href, author.type, author.id, author.login` +
+        ` FROM messages where ancestors.id = '${threadId}'`
     app.logger.info(threadURL)
     let threadDetails = await request('GET', encodeURI(threadURL))
     const threadOutput = JSON.parse(threadDetails.getBody())
