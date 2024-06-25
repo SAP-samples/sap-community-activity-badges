@@ -4,15 +4,23 @@
 
 <img src="../images/sap_18.png" alt="SAP Logo" width="100"/>
 
-This service creates cards as images (svg or png) to display your SAP Community activity and achievements. Now you can share you SAP Community pride in other locations, such as you GitHub README.
+This service creates cards as images (svg or png) to display your SAP Community activity and achievements. Now you can share you SAP Community pride in other locations, such as you GitHub README or in your SAP Community signature.
 
-For more details on your SAP Community Profile in general, we'd suggest you access this tutorial: [Update and Maintain Your SAP Profile at people.sap.com](https://developers.sap.com/tutorials/community-profile.html)
+For more details on your SAP Community Profile in general, we'd suggest you access this tutorial: [Tour the SAP Community 2024](https://developers.sap.com/mission.community-2024.html)
 
-This service only works with data which you've chosen to expose from your public SAP Community Profile. Please refer to the [SAP Community Privacy statement](https://www.sap.com/about/legal/privacy.html) for more details
+This service only works with data which you've chosen to expose from your public SAP Community Profile. Please refer to the [SAP Community Privacy statement](https://www.sap.com/about/legal/privacy.html) for more details.
+
+For these services to work you will need to know your SAP Community ID. You will, of course, need to be signed into the Community.  If so, you can click on the person silhouette in the upper right corner and choose My content. This will navigate you to your profile overview as well as where you can configure settings within the SAP Community.
+
+![Community profile navigation](../images/CommunityProfileNav.png)
+
+The SAP Community ID is an integer that you can find at the end of URL of your public profile page.
+
+![Community ID from Profile URL](../images/Finding_Your_Community_User_Id.png)
 
 ## Showcase Badges
 
-Simply add you SCN Profile ID to the end of the `/showcaseBadges` path and the 5 top badges you have selected to be part of your public profile will appear in this card.
+Simply add you SAP Community ID to the end of the `/showcaseBadges` path and the 5 most recent badges you have have earned will appear in this card.
 
 Example: [/showcaseBadges/your.SCN.ID](./showcaseBadges/your.SCN.ID)
 
@@ -22,9 +30,29 @@ You can also add the URL parameter `png=true` if you want to receive a png image
 
 Example: [/showcaseBadges/your.SCN.ID?png=true](./showcaseBadges/your.SCN.ID?png=true)
 
+There is also smaller version of the showcase badges designed to better fit into the SAP Community Signature. It can be accessed from `/showcaseBadgesGroups`
+
+Example: [/showcaseBadgesGroups/your.SCN.ID](./showcaseBadgesGroups/your.SCN.ID)
+
+![Example Showcase Badges Card for Community Signature](../images/demo3.png)
+
+And there is a variant that uses a light colored theme and only displays a single badge with details. It can be accessed from `/showcaseSingleBadge`
+
+Example: [/showcaseSingleBadge/your.SCN.ID](./showcaseSingleBadge/your.SCN.ID/badge.ID)
+
+![Example Showcase Badges Card Light and Single](../images/demo4.png)
+
+All of the Showcase Badges also allow you to specify specific badges that you have earned instead of displaying only your most recently earned badges. We even have a tool that can help you select these badges and build the showcase URL. That tool can be accessed from `/flp/#profile-ui`.
+
+Example: [/flp/#profile-ui](./flp/#profile-ui)
+
+![Example Badge Signature Tool](../images/demo5.png)
+
+You can read more about how to use this tool here: [New SAP Community - Profile Signatures](https://community.sap.com/t5/what-s-new/new-sap-community-profile-signatures/ba-p/13598678)
+
 ## Activity Badges
 
-Simply add you SCN Profile ID to the end of the `/activity` path and the number of blog posts, comments, answers, and questions will appear in this card.
+Simply add you SCN ID to the end of the `/activity` path and the number of posts and rank will appear in this card.
 
 Example: [/activity/your.SCN.ID](./activity/your.SCN.ID)
 

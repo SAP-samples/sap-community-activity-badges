@@ -2,8 +2,8 @@ module.exports = (app) => {
 
     const svg = require("../util/svgRender")
     const texts = require("../util/texts")
-    const userAPIURL = 'https://community.sap.com/khhcw49343/api/2.0/users/'
-
+    const khoros = require("../util/khoros")
+    
     function nocache(req, res, next) {
         res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate')
         res.header('Expires', '-1')
@@ -73,8 +73,8 @@ module.exports = (app) => {
             let isPng = false
             if (req.query.png || req.query.gif) { isPng = true }
 
-            const scnItems = await callUserAPI(req.params.scnId)
-            const userName = handleUserName(req.params.scnId, scnItems)
+            const scnItems = await khoros.callUserAPI(req.params.scnId)
+            const userName = khoros.handleUserName(req.params.scnId, scnItems)
 
             let text = texts.getBundle(req)
             let itemHeight = 43
@@ -222,8 +222,8 @@ module.exports = (app) => {
             let isPng = false
             if (req.query.png || req.query.gif) { isPng = true }
 
-            const scnItems = await callUserAPI(req.params.scnId)
-            const userName = handleUserName(req.params.scnId, scnItems)
+            const scnItems = await khoros.callUserAPI(req.params.scnId)
+            const userName = khoros.handleUserName(req.params.scnId, scnItems)
 
             let text = texts.getBundle(req)
             let itemHeight = 15
@@ -310,8 +310,8 @@ module.exports = (app) => {
             let isPng = false
             if (req.query.png || req.query.gif) { isPng = true }
 
-            const scnItems = await callUserAPI(req.params.scnId)
-            const userName = handleUserName(req.params.scnId, scnItems)
+            const scnItems = await khoros.callUserAPI(req.params.scnId)
+            const userName = khoros.handleUserName(req.params.scnId, scnItems)
 
             let text = texts.getBundle(req)
             let itemHeight = 15
@@ -363,27 +363,6 @@ module.exports = (app) => {
         }
 
     })
-
-    async function callUserAPI(scnId) {
-        const request = require('then-request')
-        const urlBadges = `${userAPIURL}${scnId}`
-
-        let itemsRes = await request('GET', encodeURI(urlBadges))
-        const scnItems = JSON.parse(itemsRes.getBody())
-        return scnItems
-    }
-
-    function handleUserName(scnId, scnItems) {
-        let userName = scnId
-        if (scnItems.data) {
-            userName = scnItems.data.login
-            if (scnItems.data.first_name && (scnItems.data.first_name !== '')) {
-                userName = `${scnItems.data.first_name} ${scnItems.data.last_name}`
-            }
-        }
-
-        return userName
-    }
 
     function badgeSelection(params, scnItems) {
         let itemsTemp = []

@@ -2,6 +2,9 @@ module.exports = (app) => {
 
     const svg = require("../util/svgRender")
     const texts = require("../util/texts")
+    const khoros = require("../util/khoros")
+    
+
     function nocache(req, res, next) {
         res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate')
         res.header('Expires', '-1')
@@ -38,18 +41,13 @@ module.exports = (app) => {
     app.get('/activity/:scnId', nocache, async (req, res) => {
         try {
             let isPng = false
-            if (req.query.png) { isPng = true }
+            if (req.query.png || req.query.gif) { isPng = true }
 
             const request = require('then-request')
 
-            const urlBadges = `https://community.sap.com/khhcw49343/api/2.0/users/${req.params.scnId}`
-            let itemsRes = await request('GET', encodeURI(urlBadges))
-            const scnItems = JSON.parse(itemsRes.getBody())
+            const scnItems = await khoros.callUserAPI(req.params.scnId)
+            const userName = khoros.handleUserName(req.params.scnId, scnItems)
 
-            let userName = req.params.scnId
-            if (scnItems.data) {
-                userName = scnItems.data.login
-            }
             let text = texts.getBundle(req)
             let numFormat = new Intl.NumberFormat(texts.getLocale(req))
             let itemHeight = 45
