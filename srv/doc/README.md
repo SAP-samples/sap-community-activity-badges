@@ -61,3 +61,44 @@ Example: [/activity/your.SCN.ID](./activity/your.SCN.ID)
 You can also add the URL parameter `png=true` if you want to receive a png image file instead of the default svg
 
 Example: [/activity/your.SCN.ID?png=true](./activity/your.SCN.ID?png=true)
+
+## Swagger UI
+
+This service contains it's own tooling for testing the internal APIs. It can be accessed from `/docs/`.
+
+Example: [/docs/](./docs/)
+
+## Fiori Launchpad
+
+Fiori Launchpad for SAPUI5 applications connected to this service `/flp`
+
+Example: [/flp/](./flp/)
+
+## Selfie with the Dev Advocates
+
+Example: [/flp/#selfie-ui](./flp/#selfie-ui)
+
+## Community Profile and Badge Signature Tool
+
+Example: [/flp/#profile-ui](./flp/#profile-ui)
+
+## Community Event Registration Admin Tool
+
+Internal tool for event organizers to see the users registered for events to send reminder emails or download attendees in Excel format. Uses path `/khoros/eventRegs/eventBoardName`
+
+Example: [/khoros/eventRegs/codejam-events](./khoros/eventRegs/codejam-events)
+
+## Devtoberfest Contest Gameboard
+
+Devtoberfest will be a points-based contest.  Points are awarded for things like attending one of the educational sessions, completing certain developer tutorials tied to the topic weeks, or other activities that contribute to the SAP Developer Community. Prizes are awarded based upon SAP Community badges which you earn and you must have a public Community profile to participate.
+
+We brought back the animated Contest Gameboard to help you track your progress through the contest.  Just add your SAP Community ID  to the end of the following URL: [/devtoberfestContest/scnId.Here](./devtoberfestContest/scnId.Here)
+
+![Community profile navigation](../images/CommunityProfileNav.png)
+
+The SAP Community ID is an integer that you can find at the end of URL of your public profile page.
+
+![Community ID from Profile URL](../images/Finding_Your_Community_User_Id.png)
+
+There is also a profile check tool at: [/devtoberfest/profile/scnId.Here](./devtoberfest/profile/scnId.Here)
+
