@@ -102,7 +102,7 @@ async function handleErrorDevtoberfest(error, req, res) {
         if (error.name && error.name === 'No SCN ID' || error.statusCode && error.statusCode === 404){
             items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
                 text.getText('devtoberfest.profileTutorial'),
-                `https://developers.sap.com/tutorials/community-profile.html`, isPng))
+                `https://developers.sap.com/mission.community-2024.html`, isPng))
                 itemHeight += 20
                 itemDelay += 200
         }
@@ -113,13 +113,6 @@ async function handleErrorDevtoberfest(error, req, res) {
                 itemHeight += 20
                 itemDelay += 200
         }
-/*         if (error.name && error.name === 'Not Registered' || error.statusCode && error.statusCode === 404){
-            items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
-                text.getText('devtoberfest.regTutorial'),
-                `https://blogs.sap.com/2021/09/23/devtoberfest-2021-one-week-to-go/#reg`, isPng))
-                itemHeight += 20
-                itemDelay += 200
-        } */
         if (error.statusCode && error.statusCode === 404){
             items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
                 text.getText('devtoberfest.privacy'),
@@ -208,15 +201,11 @@ async function getDevtoberfestText(error, req){
 
         if (error.name && error.name === 'No SCN ID' || error.statusCode && error.statusCode === 404){
             errorObj.profile = text.getText('devtoberfest.profileTutorial')
-            errorObj.profileURL = `https://developers.sap.com/tutorials/community-profile.html`
+            errorObj.profileURL = `https://developers.sap.com/mission.community-2024.html`
         }
          if (error.name && error.name === 'Not Registered' || error.statusCode && error.statusCode === 404){
             errorObj.reg = text.getText('devtoberfest.regLink')
-            errorObj.regURL = `https://www.eventbrite.com/e/168612930815`
-        }
-        if (error.name && error.name === 'Not Registered' || error.statusCode && error.statusCode === 404){
-            errorObj.regTutorial = text.getText('devtoberfest.regTutorial')
-            errorObj.regTutorialURL = `https://blogs.sap.com/2021/09/23/devtoberfest-2021-one-week-to-go/#reg`
+            errorObj.regURL = `https://groups.community.sap.com/t5/devtoberfest/gh-p/Devtoberfest`
         }
         if (error.statusCode && error.statusCode === 404){
             errorObj.privacy =  text.getText('devtoberfest.privacy')
