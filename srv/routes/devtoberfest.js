@@ -354,7 +354,7 @@ async function buildGameboardHeader(isPng, profile, req) {
     }
     items.push(svg.svgDevtoberfestCRTLink(itemHeight, 120, itemDelay,
         text.getText('devtoberfest.scn'),
-        `https://people.sap.com/${profile.scnId}#reputation`, isPng))
+        `https://community.sap.com/t5/user/viewprofilepage/user-id/${profile.scnId}`, isPng))
 
     return items
 }
