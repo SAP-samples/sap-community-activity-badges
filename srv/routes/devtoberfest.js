@@ -1,5 +1,6 @@
 const svg = require("../util/svgRender")
 const texts = require("../util/texts")
+const khoros = require("../util/khoros")
 const text_wrapper_lib = require('text-wrapper')
 const wrapper = text_wrapper_lib.wrapper
 
@@ -259,26 +260,17 @@ async function getSCNProfile(req) {
             }
             return profile
         default:
-            const request = require('then-request')
-            const urlBadges = `https://people-api.services.sap.com/rs/badge/${req.params.scnId}?sort=timestamp,desc&size=1000`
-            //const urlProfile = `https://searchproxy.api.community.sap.com/api/v1/search?limit=20&orderBy=UPDATE_TIME&order=DESC&contentTypes%5B0%5D=people&authorId=${req.params.scnId}`
-            const urlProfile = `https://content.services.sap.com/cse/search/user?name=${req.params.scnId}&sort=published:desc&size=1&page=0`
-            let [itemsRes, profileRes, pointsLevels, badges] = await Promise.all([
-                request('GET', urlBadges),
-                request('GET', urlProfile),
+            let [scnItems, pointsLevels, badges] = await Promise.all([
+                khoros.callUserAPI(req.params.scnId),
                 require('../util/points.json'),
                 require('../util/badges.json')
             ])
-            const scnItems = JSON.parse(itemsRes.getBody())
-            const scnProfile = JSON.parse(profileRes.getBody())
+            let userName = khoros.handleUserName(req.params.scnId, scnItems)
 
-            let userName = req.params.scnId
-            if (scnProfile._embedded && scnProfile._embedded.contents[0] && scnProfile._embedded.contents[0].author) {
-                userName = scnProfile._embedded.contents[0].author.displayName
-            }
 
-            //Check if they are registered for Devtoberfest - "Devtoberfest 2023 Participant"
-            let registered = scnItems.content.find(x => x.displayName == 'Devtoberfest 2023 Participant')
+            //Check if they are registered for Devtoberfest - "Devtoberfest 2024 Participant"
+            //console.log(scnItems.data.user_badges.items.badge)
+            let registered = scnItems.data.user_badges.items.find(x => x.badge.title == 'Devtoberfest 2024 Participant')
             if (!registered) {
                 let e = new Error('Not Registered')
                 e.name = 'Not Registered'
@@ -287,12 +279,11 @@ async function getSCNProfile(req) {
             }
             let userNameScore = stringScore(userName)
             let points = 0
-            let endDate = new Date(2023, 10, 16)
-            for (let item of scnItems.content) {
-                let badgeValue = badges.find(x => x.displayName == item.displayName)
+            let endDate = new Date(2024, 10, 27)
+            for (let item of scnItems.data.user_badges.items) {
+                let badgeValue = badges.find(x => x.displayName == item.badge.title)
                 if (badgeValue) {
-                    if (Date.parse(item.timestamp) < endDate) {
-                       // console.log(badgeValue.points)
+                    if (Date.parse(item.earned_date) < endDate) {
                         item.points = badgeValue.points
                         points = points + badgeValue.points
                     }
