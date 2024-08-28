@@ -265,6 +265,42 @@ module.exports = (app) => {
 
     /**
      * @swagger
+     * /khoros/tags:
+     *   get:
+     *     summary: Retrieve all community tags
+     *     description: Retrieve all community tags
+     *     responses:
+     *       200:
+     *         description: A list of tags
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: array
+     *               items:
+     *                 type: object
+     *                 properties:
+     *                   id:
+     *                     type: integer
+     *                   title:
+     *                     type: string
+     *                     description: Tag Title
+     *                   view_href:
+     *                     type: string
+     *                     format: uri
+     */
+    app.get('/khoros/tags', async (req, res) => {
+        try {
+            let tags = await getTags(app)
+            return res.type("application/json").status(200).send(tags)
+        } catch (error) {
+            app.logger.error(error)
+            const errHandler = require("../util/error")
+            return await errHandler.handleErrorDevtoberfestText(error, req, res)
+        }
+    })
+
+    /**
+     * @swagger
      * /khoros/eventRegs/{boardId}:
      *   get:
      *     summary: Retrieve upcoming Event details for a board and format the output in HTML
@@ -292,7 +328,7 @@ module.exports = (app) => {
                     '<': "",
                     '>': ""
                 };
-                return s.replace( /[&"'<>]/g, c => lookup[c] );
+                return s.replace(/[&"'<>]/g, c => lookup[c]);
             }
             let output = '<!DOCTYPE html><html><body>'
             output +=
@@ -671,6 +707,55 @@ async function getMessagePosters(boardId, conversationId, app) {
     const allAuthors = allMessages.map(e => { return { "login": e.author.login, "id": e.author.id, "view_href": e.author.view_href } })
     const uniqueAuthors = [...new Set(allAuthors.map(o => JSON.stringify(o)))].map(s => JSON.parse(s))
     return uniqueAuthors
+}
+
+/**
+ * Request the SAP Community Tags
+ * @param {object} app - Express App object
+ * @returns {object}
+ */
+async function getTags(app) {
+    let newTags = []
+    let allTags = []
+    let i = 0
+    const searchURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT id, title, tag_scope FROM products ` +
+        //   `WHERE tag_scope.community.id = 'khhcw49343' `
+        `WHERE status = 'active' LIMIT 10000 `
+    app.logger.info(searchURL)
+    let searchDetails = await request('GET', encodeURI(searchURL))
+    const searchOutput = JSON.parse(searchDetails.getBody())
+    allTags = searchOutput.data.items
+
+
+    function isLetter(char) {
+        return /^[a-zA-Z]$/.test(char)
+    }
+
+    for (let item of allTags) {
+        if (item.title.startsWith(`SAP `)) {
+            item.sortTitle = item.title.slice(4)
+        } else {
+            item.sortTitle = item.title
+        }
+        item.group = item.sortTitle.slice(0, 1).toUpperCase()
+        if (!isLetter(item.group)){
+            item.group = ``
+        }
+        item.link = encodeURI(`https://community.sap.com/t5/c-khhcw49343/${item.title}/pd-p/${item.id}`)
+    }
+
+    allTags.sort((a, b) => a.sortTitle.localeCompare(b.sortTitle))
+
+    let groupedData = allTags.reduce(function (groups, item) {
+        let group = item.group || " " // Handle empty groups
+        if (!groups[group]) {
+            groups[group] = []
+        }
+        groups[group].push(item)
+        return groups
+    }, {})
+
+    return groupedData
 }
 
 /**

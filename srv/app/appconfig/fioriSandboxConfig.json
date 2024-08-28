@@ -26,7 +26,7 @@
     "applications": {
         "selfie-ui": {
             "title": "Selfie with the Dev Advocates",
-            "description": "Devtoberfest 2023 Selfie with the Dev Advocates",
+            "description": "Devtoberfest 2024 Selfie with the Dev Advocates",
             "additionalInformation": "SAPUI5.Component=sap.selfie",
             "applicationType": "URL",
             "url": "./selfie",
@@ -38,6 +38,14 @@
             "additionalInformation": "SAPUI5.Component=sap.profile",
             "applicationType": "URL",
             "url": "./profile",
+            "navigationMode": "embedded"
+        },
+        "tags-ui": {
+            "title": "All SAP Managed Tags",
+            "description": "Check out the comprehensive A-Z list of SAP managed tags, our curated vocabulary to help you categorize and enhance your content creation in SAP Community.",
+            "additionalInformation": "SAPUI5.Component=sap.tags",
+            "applicationType": "URL",
+            "url": "./tags",
             "navigationMode": "embedded"
         }
     }
