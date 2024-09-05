@@ -261,23 +261,35 @@ async function getSCNProfile(req) {
             }
             return profile
         default:
+ 
+
+
+            //Check if they are registered for Devtoberfest - "Devtoberfest 2024 Participant"
+            //console.log(scnItems.data.user_badges.items.badge)
+            //let registered = scnItems.data.user_badges.items.find(x => x.badge.title == 'Devtoberfest 2024 Participant')
+
+            //Check if they are registered for Devtoberfest by checking the members json dump
+            let members = await khoros.getDevtoberfestMembers()
+            let registered = members.data.items.find(x => x.id == req.params.scnId)
+            if(!registered){
+                registered = members.data.items.find(x => x.login == req.params.scnId)
+                if(registered){
+                    req.params.scnId = registered.id
+                }
+            }        
             let [scnItems, pointsLevels, badges] = await Promise.all([
                 khoros.callUserAPI(req.params.scnId),
                 require('../util/points.json'),
                 require('../util/badges.json')
             ])
-            let userName = khoros.handleUserName(req.params.scnId, scnItems)
-
-
-            //Check if they are registered for Devtoberfest - "Devtoberfest 2024 Participant"
-            //console.log(scnItems.data.user_badges.items.badge)
-            let registered = scnItems.data.user_badges.items.find(x => x.badge.title == 'Devtoberfest 2024 Participant')
             if (!registered) {
                 let e = new Error('Not Registered')
                 e.name = 'Not Registered'
                 e.scnId = req.params.scnId
                 throw e
             }
+            let userName = khoros.handleUserName(req.params.scnId, scnItems)
+
             let userNameScore = stringScore(userName)
             let points = 0
             let endDate = new Date(2024, 10, 27)

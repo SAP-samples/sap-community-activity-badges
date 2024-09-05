@@ -1,6 +1,8 @@
 //const got = require('got') 
 const request = require('then-request')
 const querystring = require('node:querystring')
+const khoros = require("../util/khoros")
+
 // Expect an optional Devtoberfest year, default to current year.
 const year = process.argv[2] || new Date().getFullYear()
 // Khoros Community Search API
@@ -37,6 +39,16 @@ module.exports = (app) => {
     })
 
 
+    app.get('/khoros/devtoberfestMembers', async (req, res) => {
+        try {
+            let members = await khoros.getDevtoberfestMembers()
+            return res.type("application/json").status(200).send(members)
+        } catch (error) {
+            app.logger.error(error)
+            const errHandler = require("../util/error")
+            return await errHandler.handleErrorDevtoberfestText(error, req, res)
+        }
+    })
 
     /**
      * @swagger

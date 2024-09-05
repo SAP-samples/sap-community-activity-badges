@@ -57,3 +57,12 @@ function checkFileAge(filePath) {
 
   module.exports.checkFileAge = checkFileAge
   
+  async function getDevtoberfestMembers(){
+    const request = require('then-request')
+    const urlMembers = `https://raw.githubusercontent.com/SAP-samples/sap-community-activity-badges/main/srv/util/members.json`
+
+    let itemsRes = await request('GET', encodeURI(urlMembers))
+    const members = JSON.parse(itemsRes.getBody())
+    return members
+  }
+  module.exports.getDevtoberfestMembers = getDevtoberfestMembers
