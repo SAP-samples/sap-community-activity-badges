@@ -1,9 +1,9 @@
 import { fileURLToPath } from 'url'
 import { URL } from 'url'
- const __dirname = fileURLToPath(new URL('.', import.meta.url))
- import { createRequire } from 'module'
-  // @ts-ignore
- const require = createRequire(import.meta.url)
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
+import { createRequire } from 'module'
+// @ts-ignore
+const require = createRequire(import.meta.url)
 const excel = require("node-xlsx")
 const fs = require("fs")
 import inquirer from 'inquirer'
@@ -19,78 +19,25 @@ function sleep(milliseconds) {
 async function init() {
   try {
 
-   // const inquirer = require('inquirer')
-    inquirer.registerPrompt('fuzzypath', require('inquirer-fuzzy-path'))
-    const answer = await inquirer.prompt([
-      {
-        type: 'fuzzypath',
-        name: 'path',
-        excludePath: nodePath => nodePath.startsWith('node_modules'),
-        // excludePath :: (String) -> Bool
-        // excludePath to exclude some paths from the file-system scan
-        excludeFilter: nodePath => nodePath == '.',
-        // excludeFilter :: (String) -> Bool
-        // excludeFilter to exclude some paths from the final list, e.g. '.'
-        itemType: 'file',
-        // itemType :: 'any' | 'directory' | 'file'
-        // specify the type of nodes to display
-        // default value: 'any'
-        // example: itemType: 'file' - hides directories from the item list
-        rootPath: '../../devtoberfest-data',
-        // rootPath :: String
-        // Root search directory
-        message: 'Select a Contest Excel File to import',
-        default: 'Devtoberfest',
-        suggestOnly: false,
-        // suggestOnly :: Bool
-        // Restrict prompt answer to available choices or use them as suggestions
-        depthLimit: 5,
-        // depthLimit :: integer >= 0
-        // Limit the depth of sub-folders to scan
-        // Defaults to infinite depth if undefined
-      }
-    ])
-
-    let [pointsLevels, badges] = await Promise.all([
+    let [pointsLevels, badges, members] = await Promise.all([
       require('./util/points.json'),
-      require('./util/badges.json')
+      require('./util/badges.json'),
+      require('./util/members.json')
     ])
+    const khoros = require("./util/khoros")
 
-    // Parse a file
-    const workSheetsFromFile = excel.parse(answer.path, { raw: false })
-    await Promise.all(workSheetsFromFile[0].data.map(async (item) => {
-      try {
-        if (item[0] === `type`) {
-   //       item[8] = 'Score'
-   //       item[9] = 'Level'
-          return
-        }
+    try {
+      async function forEachParallel(array, callback) {
+        await Promise.all(array.map(callback))
+      }
 
-        if (!item[0]) {
-          return
-        }
-
-        if(item[8]){
-          return
-        }
-        let scnId = item[6] //SCN Id
-        scnId = scnId.replace("@", "")
-        scnId = scnId.replace("https://people.sap.com/", "")
-        scnId = scnId.replace("http://scn.sap.com/people/", "")
-        scnId = scnId.replace("people.sap.com/", "")
-        
-        scnId = scnId.toLowerCase()
-
-        const request = require('then-request')
-        const urlBadges = `https://people-api.services.sap.com/rs/badge/${scnId}?sort=timestamp,desc&size=1000`
-
-        let itemsRes = await request('GET', urlBadges)
-        sleep(20)
-        const scnItems = JSON.parse(itemsRes.getBody())
-
+      await forEachParallel(members.data.items, async (item) =>  {
+        console.log(`Processing ${item.login}`)
+        let scnId = item.id //SCN Id
+        let scnItems = await khoros.callUserAPI(scnId)
         let points = 0
-        for (let item of scnItems.content) {
-          let badgeValue = badges.find(x => x.displayName == item.displayName)
+        for (let item of scnItems.data.user_badges.items) {
+          let badgeValue = badges.find(x => x.displayName == item.badge.title)
           if (badgeValue) {
             points = points + badgeValue.points
           }
@@ -103,23 +50,18 @@ async function init() {
           }
         }
 
-        item[8] = points
-        item[9] = level
-      } catch (error) {
-       console.error(error)
-      }
+        item.points = points
+        item.level = level
+      })
+    } catch (error) {
+      console.error(error)
     }
-
-    ))
 
     var MyDate = new Date()
     let currentMonth = ('0' + (MyDate.getMonth() + 1)).slice(-2)
     let currentDay = ('0' + MyDate.getDate()).slice(-2)
-    const result = excel.build([{
-      name: `Devtoberfest Results`,
-      data: workSheetsFromFile[0].data
-    }])
-    fs.writeFileSync(`../../devtoberfest-data/devtoberfest-${new Date().getFullYear()}-${currentMonth}-${currentDay}.xlsx`, result)
+    const result = JSON.stringify(members.data.items, null, 2)
+    fs.writeFileSync(`../../devtoberfest-data/devtoberfest-${new Date().getFullYear()}-${currentMonth}-${currentDay}.json`, result)
 
   } catch (error) {
     console.error(error)
