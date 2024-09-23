@@ -1,203 +1,203 @@
 [
     {
         "displayName": "Devtoberfest 2024 Participant",
-        "points": "200",
+        "points": 200,
         "URL": "",
         "Date": "2024-09-23",
         "Week": "Week 1"
     },
     {
         "displayName": "#5E1C26 - Devtoberfest 2024 - ABAP, Week 1",
-        "points": "1200",
+        "points": 1200,
         "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week1-abap-session-validation.html",
         "Date": "2024-09-23",
         "Week": "Week 1"
     },
     {
         "displayName": "#D2EAF1 - Devtoberfest 2024 - Learn about the ABAP Data Dictionary",
-        "points": "150",
+        "points": 150,
         "URL": "https://developers.sap.com/tutorials/abap-dev-learn-ddic.html",
         "Date": "2024-09-23",
         "Week": "Week 1"
     },
     {
         "displayName": "#BA7CC8 - Devtoberfest 2024 - Create an ABAP Database Table and Relevant ABAP Dictionary Objects",
-        "points": "750",
+        "points": 750,
         "URL": "https://developers.sap.com/tutorials/abap-dev-create-table.html",
         "Date": "2024-09-23",
         "Week": "Week 1"
     },
     {
         "displayName": "#1B0B12 - Devtoberfest 2024 - Create Database Table and Generate UI Service",
-        "points": "200",
+        "points": 200,
         "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-generate-ui-service.html",
         "Date": "2024-09-23",
         "Week": "Week 1"
     },
     {
         "displayName": "#725772 - Devtoberfest 2024 - CAP, Week 1",
-        "points": "1200",
+        "points": 1200,
         "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week1-cap-session-validation.html",
         "Date": "2024-09-23",
         "Week": "Week 1"
     },
     {
         "displayName": "#94918C - Devtoberfest 2024 - Create a CAP Business Service with Node.js Using Visual Studio Code",
-        "points": "500",
+        "points": 500,
         "URL": "https://developers.sap.com/tutorials/cp-apm-nodejs-create-service.html",
         "Date": "2024-09-23",
         "Week": "Week 1"
     },
     {
         "displayName": "#FAC0AA - Devtoberfest 2024 - Deploy a CAP Business Service to SAP Business Technology Platform",
-        "points": "300",
+        "points": 300,
         "URL": "https://developers.sap.com/tutorials/cap-service-deploy.html",
         "Date": "2024-09-23",
         "Week": "Week 1"
     },
     {
         "displayName": "#2B2924 - Devtoberfest 2024 - Tooling, Week 1",
-        "points": "1200",
+        "points": 1200,
         "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week1-tooling-session-validation.html",
         "Date": "2024-09-24",
         "Week": "Week 1"
     },
     {
         "displayName": "#D88A4D - Devtoberfest 2024 - SAP Crossword",
-        "points": "1800",
+        "points": 1800,
         "URL": "https://developers.sap.com/tutorials/devtoberfest2024-sap-crossword.html",
         "Date": "2024-09-24",
         "Week": "Week 1"
     },
     {
         "displayName": "#A5E5FB - Devtoberfest 2024 - Create a Composite Component (List with Rating)",
-        "points": "200",
+        "points": 200,
         "URL": "https://developers.sap.com/tutorials/build-apps-socialmedia-1-custom-component.html",
         "Date": "2024-09-24",
         "Week": "Week 1"
     },
     {
         "displayName": "#083676 - Devtoberfest 2024 - Create a Social Media Backend",
-        "points": "150",
+        "points": 150,
         "URL": "https://developers.sap.com/tutorials/build-apps-socialmedia-2-backend.html",
         "Date": "2024-09-24",
         "Week": "Week 1"
     },
     {
         "displayName": "#111D2A - Devtoberfest 2024 - Create a Product List Page with Ratings",
-        "points": "150",
+        "points": 150,
         "URL": "https://developers.sap.com/tutorials/build-apps-socialmedia-3-product-list.html",
         "Date": "2024-09-24",
         "Week": "Week 1"
     },
     {
         "displayName": "#433433 - Devtoberfest 2024 - Prepare a Product Page",
-        "points": "150",
+        "points": 150,
         "URL": "https://developers.sap.com/tutorials/build-apps-socialmedia-4-details-page.html",
         "Date": "2024-09-24",
         "Week": "Week 1"
     },
     {
         "displayName": "#2A170A - Devtoberfest 2024 - Create the Product Page UI with Ratings/Comments",
-        "points": "400",
+        "points": 400,
         "URL": "https://developers.sap.com/tutorials/build-apps-socialmedia-5-details-page.html",
         "Date": "2024-09-24",
         "Week": "Week 1"
     },
     {
         "displayName": "#FEFEFF - Devtoberfest 2024 - Integration, Week 1",
-        "points": "1200",
+        "points": 1200,
         "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week1-integration-session-validation.html",
         "Date": "2024-09-25",
         "Week": "Week 1"
     },
     {
         "displayName": "#676F49 - Devtoberfest 2024 - Set Up Prerequisites for your SAP Integration Suite & SAP Build Apps Mission",
-        "points": "200",
+        "points": 200,
         "URL": "https://developers.sap.com/tutorials/btp-integration-suite-integral-project.html",
         "Date": "2024-09-25",
         "Week": "Week 1"
     },
     {
         "displayName": "#5D219A - Devtoberfest 2024 - Consume a Stripe service from SAP Open Connectors and SAP Cloud Integration to create payment transactions",
-        "points": "100",
+        "points": 100,
         "URL": "https://developers.sap.com/tutorials/btp-integration-suite-integral-openconnectors.html",
         "Date": "2024-09-25",
         "Week": "Week 1"
     },
     {
         "displayName": "#464471 - Devtoberfest 2024 - Save, Filter and Get your needed data in your Integration Flow",
-        "points": "100",
+        "points": 100,
         "URL": "https://developers.sap.com/tutorials/btp-integration-suite-integral-cpi-tasks.html",
         "Date": "2024-09-25",
         "Week": "Week 1"
     },
     {
         "displayName": "#D7D8D8 - Devtoberfest 2024 - Consume a SAP Sales and Service Core API to create Sales Orders using SAP Cloud Integration",
-        "points": "300",
+        "points": 300,
         "URL": "https://developers.sap.com/tutorials/btp-integration-suite-integral-sales-core.html",
         "Date": "2024-09-25",
         "Week": "Week 1"
     },
     {
         "displayName": "#369A33 - Devtoberfest 2024 - Send SMS using SAP Cloud Integration while consuming a Twilio API",
-        "points": "100",
+        "points": 100,
         "URL": "https://developers.sap.com/tutorials/btp-integration-suite-integral-cpi-urlencoded.html",
         "Date": "2024-09-25",
         "Week": "Week 1"
     },
     {
         "displayName": "#B4ABA9 - Devtoberfest 2024 - Configure SAP API Management policies to avoid CORS issues and generate an API Key",
-        "points": "200",
+        "points": 200,
         "URL": "https://developers.sap.com/tutorials/btp-integration-suite-integral-api-management.html",
         "Date": "2024-09-25",
         "Week": "Week 1"
     },
     {
         "displayName": "#EDBABC - Devtoberfest 2024 - MAD (ML, AI & Data), Week 1",
-        "points": "1200",
+        "points": 1200,
         "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week1-ai-session-validation.html",
         "Date": "2024-09-26",
         "Week": "Week 1"
     },
     {
         "displayName": "#190B04 - Devtoberfest 2024 - Use Trial to Set Up Account for Document Information Extraction and Go to Application",
-        "points": "50",
+        "points": 50,
         "URL": "https://developers.sap.com/tutorials/cp-aibus-dox-booster-app.html",
         "Date": "2024-09-26",
         "Week": "Week 1"
     },
     {
         "displayName": "#413E44 - Devtoberfest 2024 - Use Trial to Extract Information from Custom Documents with Generative AI and Document Information Extraction",
-        "points": "250",
+        "points": 250,
         "URL": "https://developers.sap.com/tutorials/cp-aibus-dox-ui-gen-ai.html",
         "Date": "2024-09-26",
         "Week": "Week 1"
     },
     {
         "displayName": "#85A969 - Devtoberfest 2024 - ",
-        "points": "1200",
+        "points": 1200,
         "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week1-frontend-session-validation.html",
         "Date": "2024-09-27",
         "Week": "Week 1"
     },
     {
         "displayName": "#228E80 - Devtoberfest 2024 - Get Ready for UI5-Development on Your Local Machine",
-        "points": "50",
+        "points": 50,
         "URL": "https://developers.sap.com/tutorials/cp-cf-sapui5-local-setup.html",
         "Date": "2024-09-27",
         "Week": "Week 1"
     },
     {
         "displayName": "#8F5D85 - Devtoberfest 2024 - Create an SAPUI5 App from the Command Line",
-        "points": "150",
+        "points": 150,
         "URL": "https://developers.sap.com/tutorials/cp-cf-sapui5-local.html",
         "Date": "2024-09-27",
         "Week": "Week 1"
     },
     {
         "displayName": "Devtoberfest 2024 - Petoberfest",
-        "points": "1000",
+        "points": 1000,
         "URL": "",
         "Date": "2024-09-27",
         "Week": "Week 1"
