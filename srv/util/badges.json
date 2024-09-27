@@ -201,5 +201,264 @@
         "URL": "",
         "Date": "2024-09-27",
         "Week": "Week 1"
+    },
+    {
+        "displayName": "#AEC2D3 - Devtoberfest 2024 - ABAP, Week 2",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week2-abap-session-validation.html",
+        "Date": "2024-09-30",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#9AD6C0 - Devtoberfest 2024 - Get to Know SAP BTP, ABAP Environment",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/abap-environment-taster.html",
+        "Date": "2024-09-30",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#6E4046 - Devtoberfest 2024 - Create an ABAP Core Data Services (CDS) View in SAP BTP, ABAP Environment",
+        "points": 450,
+        "URL": "https://developers.sap.com/tutorials/abap-environment-create-cds-mde.html",
+        "Date": "2024-09-30",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#A28668 - Devtoberfest 2024 - Enhance an ABAP Core Data Services (CDS) View in SAP Business Technology Platform (BTP) ABAP Environment",
+        "points": 600,
+        "URL": "https://developers.sap.com/tutorials/abap-environment-enhance-cds-view.html",
+        "Date": "2024-09-30",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#5D5859 - Devtoberfest 2024 - Create Business Configuration Maintenance Object",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/abap-environment-business-configuration-object.html",
+        "Date": "2024-09-30",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#7662BE - Devtoberfest 2024 - CAP, Week 2",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week2-cap-session-validation.html",
+        "Date": "2024-09-30",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#E1B446 - Devtoberfest 2024 - Introduction to Application Development Using CAP",
+        "points": 70,
+        "URL": "https://developers.sap.com/tutorials/introduction.html",
+        "Date": "2024-09-30",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#D8EAFE - Devtoberfest 2024 - Set Up SAP Business Application Studio",
+        "points": 200,
+        "URL": "https://developers.sap.com/tutorials/set-up-bas.html",
+        "Date": "2024-09-30",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#010101 - Devtoberfest 2024 - Build a CAP Application",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/build-cap-app.html",
+        "Date": "2024-09-30",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#FAFAFA - Devtoberfest 2024 - Add SAP Fiori Elements Uis",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/add-fiori-elements-uis.html",
+        "Date": "2024-09-30",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#E9E8F0 - Devtoberfest 2024 - Add Custom Logic",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/add-custom-logic.html",
+        "Date": "2024-09-30",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#201926- Devtoberfest 2024 - Tooling, Week 2",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week2-tooling-session-validation.html",
+        "Date": "2024-10-01",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#99CEF1 - Devtoberfest 2024 - Tooling, Watch DMS Video",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week2-tooling-watch-dms.html",
+        "Date": "2024-10-01",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#DC879B - Devtoberfest 2024 - Setup SAP Build Code in SAP BTP",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/build-code-setup.html",
+        "Date": "2024-10-01",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#212327 - Devtoberfest 2024 - Create a Full-Stack Application with SAP Fiori UI using Joule in SAP Build Code",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/build-code-test-drive.html",
+        "Date": "2024-10-01",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#C3516F - Devtoberfest 2024 - Subscribe to SAP Build Process Automation",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/spa-subscribe-booster.html",
+        "Date": "2024-10-01",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#BA61B3 - Devtoberfest 2024 - Create a Business Process",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/spa-create-process.html",
+        "Date": "2024-10-01",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#A8416D - Devtoberfest 2024 - Create and Configure Forms",
+        "points": 250,
+        "URL": "https://developers.sap.com/tutorials/spa-create-forms.html",
+        "Date": "2024-10-01",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#905335 - Devtoberfest 2024 - Create a Process Condition",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/spa-create-process-condition.html",
+        "Date": "2024-10-01",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#19E5E5 - Devtoberfest 2024 - Run the Business Process",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/spa-run-process.html",
+        "Date": "2024-10-01",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#1B573D - Devtoberfest 2024 - Integration, Week 2",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week2-integration-session-validation.html",
+        "Date": "2024-10-02",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#28B07A - Devtoberfest 2024 - Learn about SAP Event Mesh",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-learn-messaging-concepts.html",
+        "Date": "2024-10-02",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#B894A3 - Devtoberfest 2024 - Create Instance of SAP Event Mesh",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-instance-create.html",
+        "Date": "2024-10-02",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#10302A - Devtoberfest 2024 - Create Queues and Queue Subscriptions for SAP Event Mesh",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-queue-queuesubscription.html",
+        "Date": "2024-10-02",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#030501 - Devtoberfest 2024 - Send and Receive Test SAP Event Mesh",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-test-queue-sendreceive.html",
+        "Date": "2024-10-02",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#C6CAB4 - Devtoberfest 2024 - Create an Application for Producing Messages",
+        "points": 200,
+        "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-nodejs-producing-app.html",
+        "Date": "2024-10-02",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#27302B - Devtoberfest 2024 - Create an Application for Receiving Messages",
+        "points": 200,
+        "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-nodejs-receiving-app.html",
+        "Date": "2024-10-02",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#62BAC4 - Devtoberfest 2024 - Create App for Sending and Receiving Messages Using a Java-Based Client",
+        "points": 450,
+        "URL": "https://developers.sap.com/tutorials/cp-enterprisemessaging-javaclient-app.html",
+        "Date": "2024-10-02",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#190005 - Devtoberfest 2024 - MAD (ML, AI & Data), Week 2",
+        "points": 2400,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week2-ai-session-validation.html",
+        "Date": "2024-10-03",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#FEF5F4 - Devtoberfest 2024 - Use Trial to Set Up Account for Data Attribute Recommendation and Download Postman Sample Files",
+        "points": 50,
+        "URL": "https://developers.sap.com/tutorials/cp-aibus-dar-booster-postman.html",
+        "Date": "2024-10-03",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#2A2D30 - Devtoberfest 2024 - Install Postman REST Client",
+        "points": 50,
+        "URL": "https://developers.sap.com/tutorials/api-tools-postman-install.html",
+        "Date": "2024-10-03",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#DAD8D6 - Devtoberfest 2024 - Set Up Postman to Call Data Attribute Recommendation APIs",
+        "points": 50,
+        "URL": "https://developers.sap.com/tutorials/cp-aibus-dar-setup-postman.html",
+        "Date": "2024-10-03",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#FCEDED - Devtoberfest 2024 - Upload Data to Data Attribute Recommendation",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/cp-aibus-dar-upload-data.html",
+        "Date": "2024-10-03",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#D3C4D4 - Devtoberfest 2024 - Use Data Attribute Recommendation to Train a Machine Learning Model",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/cp-aibus-dar-model.html",
+        "Date": "2024-10-03",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#53FA4C - Devtoberfest 2024 - Frontend, Week 2",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week2-frontend-session-validation.html",
+        "Date": "2024-10-04",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#9A5A46 - Devtoberfest 2024 - Setup SAP Build Code in SAP BTP",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/build-code-setup.html",
+        "Date": "2024-10-04",
+        "Week": "Week 2"
+    },
+    {
+        "displayName": "#5B1458 - Devtoberfest 2024 - Create a Full-Stack Application with SAP Fiori UI using Joule in SAP Build Code",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/build-code-test-drive.html",
+        "Date": "2024-10-04",
+        "Week": "Week 2"
     }
 ]
