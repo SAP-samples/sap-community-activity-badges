@@ -448,17 +448,38 @@
         "Week": "Week 2"
     },
     {
-        "displayName": "#9A5A46 - Devtoberfest 2024 - Setup SAP Build Code in SAP BTP",
-        "points": 100,
-        "URL": "https://developers.sap.com/tutorials/build-code-setup.html",
+        "displayName": "#608D6F - Devtoberfest 2024 - Prepare Your Development Environment for SAP Fiori Elements",
+        "points": 200,
+        "URL": "https://developers.sap.com/tutorials/fiori-tools-cap-prepare-dev-env.html",
         "Date": "2024-10-04",
         "Week": "Week 2"
     },
     {
-        "displayName": "#5B1458 - Devtoberfest 2024 - Create a Full-Stack Application with SAP Fiori UI using Joule in SAP Build Code",
-        "points": 300,
-        "URL": "https://developers.sap.com/tutorials/build-code-test-drive.html",
+        "displayName": "#170601 - Devtoberfest 2024 - Create an SAP Fiori Elements Application",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/fiori-tools-cap-create-application.html",
         "Date": "2024-10-04",
         "Week": "Week 2"
-    }
+    },
+    {
+        "displayName": "#6EEFE9 - Devtoberfest 2024 - Refine the List Report with Additional UI Elements",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/fiori-tools-cap-modify-list-report.html",
+        "Date": "2024-10-04",
+        "Week": "Week 2"
+    }, 
+    {
+        "displayName": "#913A36 - Devtoberfest 2024 - Extend the Object Page by Adding More Functionality",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/fiori-tools-cap-modify-object-page.html",
+        "Date": "2024-10-04",
+        "Week": "Week 2"
+    },    
+    {
+        "displayName": "Devtoberfest 2024 - Techtoberfest",
+        "points": 1000,
+        "URL": "https://community.sap.com/t5/devtoberfest-discussions/techtoberfest-2024/m-p/13880612",
+        "Date": "2024-10-04",
+        "Week": "Week 2"
+    }         
 ]
