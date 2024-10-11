@@ -482,5 +482,264 @@
         "URL": "https://community.sap.com/t5/devtoberfest-discussions/techtoberfest-2024/m-p/13880612",
         "Date": "2024-10-04",
         "Week": "Week 2"
+    },
+    {
+        "displayName": "#CDD9D5 - Devtoberfest 2024 - ABAP, Week 3",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-abap-session-validation.html",
+        "Date": "2024-10-14",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#170418 - Devtoberfest 2024 - Install the abapGit Plugin",
+        "points": 250,
+        "URL": "https://developers.sap.com/tutorials/abap-install-abapgit-plugin.html",
+        "Date": "2024-10-14",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#030402 - Devtoberfest 2024 - Push Your ABAP Source Code from SAP BTP, ABAP Environment to a GitHub Repository using abapGit",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/abap-environment-abapgit-transfer.html",
+        "Date": "2024-10-14",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#81A7F8 - Devtoberfest 2024 - Create an ABAP Project in ABAP Development Tools (ADT)",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/abap-create-project.html",
+        "Date": "2024-10-14",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#C8EFA9 - Devtoberfest 2024 - CAP, Week 3",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-cap-session-validation.html",
+        "Date": "2024-10-14",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#BFAB9F - Devtoberfest 2024 - Use a Local Launch Page",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/use-local-launch-page.html",
+        "Date": "2024-10-14",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#201300 - Devtoberfest 2024 - Add Authorization",
+        "points": 200,
+        "URL": "https://developers.sap.com/tutorials/add-authorization.html",
+        "Date": "2024-10-14",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#EDBBAC - Devtoberfest 2024 - Add Test Cases",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/add-test-cases.html",
+        "Date": "2024-10-14",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#F1F3E2 - Devtoberfest 2024 - Prepare for Production",
+        "points": 200,
+        "URL": "https://developers.sap.com/tutorials/prep-for-prod.html",
+        "Date": "2024-10-14",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#032027 - Devtoberfest 2024 - Tooling Week 3",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-tooling-session-validation.html",
+        "Date": "2024-10-15",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#B690D5 - Devtoberfest 2024 - Tooling, Watch Trigger Process Video",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-tooling-watch-trigger.html",
+        "Date": "2024-10-15",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#F48FDD - Devtoberfest 2024 - Set Up SAP Build Work Zone, standard edition Using a Trial Account",
+        "points": 50,
+        "URL": "https://developers.sap.com/tutorials/cp-portal-cloud-foundry-getting-started.html",
+        "Date": "2024-10-15",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#F3D0EF - Devtoberfest 2024 - Create a Site Using SAP Build Work Zone, standard edition",
+        "points": 50,
+        "URL": "https://developers.sap.com/tutorials/cp-portal-cloud-foundry-create-sitelaunchpad.html",
+        "Date": "2024-10-15",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#CCF0FE - Devtoberfest 2024 - Integrate an SAPUI5 App to SAP Build Work Zone",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/cp-portal-cloud-foundry-new-sapui5.html",
+        "Date": "2024-10-15",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#7E603D - Devtoberfest 2024 - Integrate a URL App to SAP Build Work Zone",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/cp-portal-cloud-foundry-url-applaunchpad.html",
+        "Date": "2024-10-15",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#06160D - Devtoberfest 2024 - Design Your Site With the New SAP Build Work Zone Experience",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/cp-portal-cloud-foundry-spaces-pages.html",
+        "Date": "2024-10-15",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#72B85B - Devtoberfest 2024 - Integration, Week 3",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-integration-session-validation.html",
+        "Date": "2024-10-16",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#C8DDFA - Devtoberfest 2024 - Integrate SAP Build Apps with SAP Integration Suite",
+        "points": 250,
+        "URL": "https://developers.sap.com/tutorials/btp-integration-suite-integral-appgyver.html",
+        "Date": "2024-10-16",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#F8FAFD - Devtoberfest 2024 - Maintain Filters for Outbound Event Topics",
+        "points": 250,
+        "URL": "https://developers.sap.com/tutorials/abap-environment-maintain-filters-outbound-events.html",
+        "Date": "2024-10-16",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#748556 - Devtoberfest 2024 - Event Processing in an SAP S/4HANA on-premise system",
+        "points": 450,
+        "URL": "https://developers.sap.com/tutorials/abap-environment-event-processing-s4h-onpremise.html",
+        "Date": "2024-10-16",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#F7E2DC - Devtoberfest 2024 - How to Create RAP Business Events in an On-Premise system",
+        "points": 450,
+        "URL": "https://developers.sap.com/tutorials/abap-environment-create-s4hana-rap-business-events.html",
+        "Date": "2024-10-16",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#69D2E9 - Devtoberfest 2024 - Set Up Your CAP Application for Eventing",
+        "points": 400,
+        "URL": "https://developers.sap.com/tutorials/btp-app-events-app-setup-s4hc.html",
+        "Date": "2024-10-16",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#4D3B53 - Devtoberfest 2024 - Enable Events from SAP S/4HANA Cloud to SAP BTP",
+        "points": 200,
+        "URL": "https://developers.sap.com/tutorials/btp-app-events-enable-s4hc.html",
+        "Date": "2024-10-16",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#617176 - Devtoberfest 2024 - Use Events from SAP S/4HANA Cloud to Update Your Deployed CAP Application",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/btp-app-events-s4hc-use.html",
+        "Date": "2024-10-16",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#63481E - Devtoberfest 2024 - Enable Events from SAP S/4HANA Cloud to SAP BTP",
+        "points": 200,
+        "URL": "https://developers.sap.com/tutorials/btp-app-events-enable-s4hc.html",
+        "Date": "2024-10-16",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#E0EEEE - Devtoberfest 2024 - Use Events from SAP S/4HANA Cloud to Update Your Deployed CAP Application",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/btp-app-events-s4hc-use.html",
+        "Date": "2024-10-16",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#C5313E - Devtoberfest 2024 - MAD (ML, AI & Data), Week 3",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-ai-session-validation.html",
+        "Date": "2024-10-17",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#C7D6C2 - Devtoberfest 2024 - Use Data Attribute Recommendation to Classify Records, Delete Model and Dataset",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/cp-aibus-dar-classify-delete.html",
+        "Date": "2024-10-17",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#743679 - Devtoberfest 2024 - Use Data Attribute Recommendation With Your Own Dataset",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/cp-aibus-dar-custom-dataset.html",
+        "Date": "2024-10-17",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#E3E8E9 - Devtoberfest 2024 - Devtoberfest 2024 - Frontend, Week 3",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-frontend-session-validation.html",
+        "Date": "2024-10-18",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#215B58 - Devtoberfest 2024 - Get Started with UI5 Web Components for React",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/ui5-webcomponents-react-introduction.html",
+        "Date": "2024-10-18",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "#DADBE0- Devtoberfest 2024 - Create a Card Component",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/ui5-webcomponents-react-card.html",
+        "Date": "2024-10-18",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "Devtoberfest 2024 - Bugtoberfest - Javascript",
+        "points": 1000,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-bugtoberfest-js.html",
+        "Date": "2024-10-18",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "Devtoberfest 2024 - Bugtoberfest – ABAP",
+        "points": 1000,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-bugtoberfest-abap.html",
+        "Date": "2024-10-18",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "Devtoberfest 2024 - Bugtoberfest - Python",
+        "points": 1000,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-bugtoberfest-python.html",
+        "Date": "2024-10-18",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "Devtoberfest 2024 - Bugtoberfest - Bash",
+        "points": 1000,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-bugtoberfest-bash.html",
+        "Date": "2024-10-18",
+        "Week": "Week 3"
+    },
+    {
+        "displayName": "Devtoberfest 2024 - Bugtoberfest - jq",
+        "points": 1000,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-bugtoberfest-jq.html",
+        "Date": "2024-10-18",
+        "Week": "Week 3"
     }         
 ]
