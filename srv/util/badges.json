@@ -741,5 +741,355 @@
         "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-bugtoberfest-jq.html",
         "Date": "2024-10-18",
         "Week": "Week 3"
-    }         
+    },
+    {
+        "displayName": "#63032E - Devtoberfest 2024 - ABAP, Week 4",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week4-abap-session-validation.html",
+        "Date": "2024-10-21",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#01171F - Devtoberfest 2024 - Prepare the RAP-Based Travel Service",
+        "points": 200,
+        "URL": "https://developers.sap.com/tutorials/fiori-tools-rap-prepare-service.html",
+        "Date": "2024-10-21",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#605663 - Devtoberfest 2024 - Generate an SAP Fiori Elements Application based on a RAP-based Service",
+        "points": 200,
+        "URL": "https://developers.sap.com/tutorials/fiori-tools-rap-create-application.html",
+        "Date": "2024-10-21",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#30996A - Devtoberfest 2024 - Refine the List Report with Annotations",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/fiori-tools-rap-modify-list-report.html",
+        "Date": "2024-10-21",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#61122E - Devtoberfest 2024 - Refine the Object Page with Annotations",
+        "points": 400,
+        "URL": "https://developers.sap.com/tutorials/fiori-tools-rap-modify-object-page.html",
+        "Date": "2024-10-21",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#959595 - Devtoberfest 2024 - CAP, Week 4",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week4-cap-session-validation.html",
+        "Date": "2024-10-21",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#FFDCD3 - Devtoberfest 2024 - Create a Full-Stack Application with SAP Fiori UI using Joule in SAP Build Code",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/build-code-test-drive.html",
+        "Date": "2024-10-21",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#E9ECFD - Devtoberfest 2024 - Tooling Week 4",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week4-tooling-session-validation.html",
+        "Date": "2024-10-22",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#716B54 - Devtoberfest 2024 - Tooling, Watch Video on Process Automation",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week4-tooling-watch-sbpa.html",
+        "Date": "2024-10-22",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#BE9EF3 - Devtoberfest 2024 - Store User Preferences on Device",
+        "points": 250,
+        "URL": "https://developers.sap.com/tutorials/build-apps-offline-storage.html",
+        "Date": "2024-10-22",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#0352A0 - Devtoberfest 2024 - Create Sales Order Business Process",
+        "points": 450,
+        "URL": "https://developers.sap.com/tutorials/spa-academy-salesorder.html",
+        "Date": "2024-10-22",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#48A3BC - Devtoberfest 2024 - Run the Sales Order Business Process",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/spa-academy-run-salesorderprocess.html",
+        "Date": "2024-10-22",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#A1A3AD - Devtoberfest 2024 - Create SAP Build App to Trigger Workflow",
+        "points": 250,
+        "URL": "https://developers.sap.com/tutorials/build-apps-workflow-trigger.html",
+        "Date": "2024-10-22",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#032218 - Devtoberfest 2024 - Populate Dropdown with SAP Data (ES5)",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/build-apps-workflow-es5.html",
+        "Date": "2024-10-22",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#84BBB5 - Devtoberfest 2024 - Check Status of Process from SAP Build App",
+        "points": 200,
+        "URL": "https://developers.sap.com/tutorials/build-apps-workflow-check-status.html",
+        "Date": "2024-10-22",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#74677B - Devtoberfest 2024 - Deploy SAP Build App to SAP BTP",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/build-apps-deply.html",
+        "Date": "2024-10-22",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#FBB496 - Devtoberfest 2024 - Integration, Week 4",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week4-integration-session-validation.html",
+        "Date": "2024-10-23",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#B8BE83 - Devtoberfest 2024 - Set Up API Management from Integration Suite",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/api-mgmt-isuite-initial-setup.html",
+        "Date": "2024-10-23",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#0B140F - Devtoberfest 2024 - Add an API Proxy to a Product",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/hcp-apim-create-product.html",
+        "Date": "2024-10-23",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#E6EAEB - Devtoberfest 2024 - Configure SAP API Management policies to avoid CORS issues and generate an API Key",
+        "points": 200,
+        "URL": "https://developers.sap.com/tutorials/btp-integration-suite-integral-api-management.html",
+        "Date": "2024-10-23",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#DF57AF - Devtoberfest 2024 - Protect Your API Proxy by Adding Application Key Verification",
+        "points": 200,
+        "URL": "https://developers.sap.com/tutorials/hcp-apim-verify-api.html",
+        "Date": "2024-10-23",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#35857D - Devtoberfest 2024 - Get Started with API Revisions",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/api-mgmt-revisioning.html",
+        "Date": "2024-10-23",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#ACBFDD - Devtoberfest 2024 - The Use Case: Connectivity to Non-SAP Applications using SAP Integration Suite",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/btp-integration-suite-nonsapconnectivity-usecase.html",
+        "Date": "2024-10-23",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#102529 - Devtoberfest 2024 - Preparing Your SAP Integration Suite Tenant",
+        "points": 250,
+        "URL": "https://developers.sap.com/tutorials/btp-integration-suite-nonsapconnectivity-settingup-suite.html",
+        "Date": "2024-10-23",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#2F0518 - Devtoberfest 2024 - Preparing Your Non-SAP Application's Trial Account",
+        "points": 150,
+        "URL": "https://developers.sap.com/tutorials/btp-integration-suite-nonsapconnectivity-settingup-thirdparty.html",
+        "Date": "2024-10-23",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#AB9FC6 - Devtoberfest 2024 - Establish Connection Between Your BambooHR Trial and Open Connectors",
+        "points": 200,
+        "URL": "https://developers.sap.com/tutorials/btp-integration-suite-nonsapconnectivity-openconnectors.html",
+        "Date": "2024-10-23",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#FDBCC7 - Devtoberfest 2024 - Design an Integration Flow to Connect with Open Connectors",
+        "points": 300,
+        "URL": "https://developers.sap.com/tutorials/btp-integration-suite-nonsapconnectivity-integration.html",
+        "Date": "2024-10-23",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#7B7898 - Devtoberfest 2024 - Test Your Integration Scenario",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/btp-integration-suite-nonsapconnectivity-test.html",
+        "Date": "2024-10-23",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#5F854C - Devtoberfest 2024 - MAD (ML, AI & Data), Week 4",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week4-ai-session-validation.html",
+        "Date": "2024-10-24",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#2C210B - Devtoberfest 2024 - MAD (ML, AI & Data), Validation Tutorial Jump Start Session on Generative AI Hub - Oct. 24",
+        "points": 600,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week4-ai-jump-start-validation-genai.html",
+        "Date": "2024-10-24",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#70C5D3 - Devtoberfest 2024 - MAD (ML, AI & Data),Validation Tutorial Jump Start Session on Joule - Oct. 24",
+        "points": 600,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week4-ai-jump-start-validation-joule.html",
+        "Date": "2024-10-24",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#B9F4FC - Devtoberfest 2024 - Devtoberfest 2024 - Frontend, Week 4",
+        "points": 1200,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week4-frontend-session-validation.html",
+        "Date": "2024-10-25",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#1F4654 - Devtoberfest 2024 - Get Started with an SAP Cloud Application Programming Model Project in SAP Continuous Integration and Delivery",
+        "points": 600,
+        "URL": "https://developers.sap.com/tutorials/cicd-start-cap.html",
+        "Date": "2024-10-25",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#D4E4C0 - Devtoberfest 2024 - Create Automated System Tests for SAP Cloud Application Programming Model Projects",
+        "points": 600,
+        "URL": "https://developers.sap.com/tutorials/cicd-wdi5-cap.html",
+        "Date": "2024-10-25",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "Devtoberfest 2024 - Spooktoberfest",
+        "points": 1000,
+        "URL": "",
+        "Date": "2024-10-25",
+        "Week": "Week 4"
+    },
+    {
+        "displayName": "#9C7B48 - Devtoberfest 2024 - Scavenger Hunt Completion ",
+        "points": 600,
+        "URL": "",
+        "Date": "2024-10-18",
+        "Week": "Scavenger Hunt"
+    },
+    {
+        "displayName": "#011E1D - Devtoberfest 2024 - ABAP Scavenger Hunt",
+        "points": 360,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-abap-scavengerhunt.html",
+        "Date": "2024-10-18",
+        "Week": "Scavenger Hunt"
+    },
+    {
+        "displayName": "#803668 - Devtoberfest 2024 - Basic CDS CLI challenge",
+        "points": 360,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-cap-cds-cli-basic.html",
+        "Date": "2024-10-18",
+        "Week": "Scavenger Hunt"
+    },
+    {
+        "displayName": "#F9F9F9 - Devtoberfest 2024 - Formula Editor Challenge",
+        "points": 360,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-tooling-formulaeditorchallenge.html",
+        "Date": "2024-10-18",
+        "Week": "Scavenger Hunt"
+    },
+    {
+        "displayName": "#185D66 - Devtoberfest 2024 - Tooling, Watch Actions Video",
+        "points": 180,
+        "URL": "https://developers.sap.com/tutorials/devtoberfest2024-week3-tooling-watch-actions.html",
+        "Date": "2024-10-18",
+        "Week": "Scavenger Hunt"
+    },
+    {
+        "displayName": "#416F49 - Devtoberfest 2024 - Design and Deploy Your First Integration Flow",
+        "points": 480,
+        "URL": "https://developers.sap.com/tutorials/cp-starter-integration-cpi-design-iflow.html",
+        "Date": "2024-10-18",
+        "Week": "Scavenger Hunt"
+    },
+    {
+        "displayName": "#548DEE - Devtoberfest 2024 - Expose Integration Flow Endpoint as API and Test the Flow",
+        "points": 200,
+        "URL": "https://developers.sap.com/tutorials/cp-starter-isuite-api-management.html",
+        "Date": "2024-10-18",
+        "Week": "Scavenger Hunt"
+    },
+    {
+        "displayName": "#2A0305 - Devtoberfest 2024 - Use the Migration Tooling",
+        "points": 360,
+        "URL": "https://developers.sap.com/tutorials/migration-tool.html",
+        "Date": "2024-10-18",
+        "Week": "Scavenger Hunt"
+    },
+    {
+        "displayName": "#2F373D - Devtoberfest 2024 - Use the Migration Assessment Application",
+        "points": 220,
+        "URL": "https://developers.sap.com/tutorials/migration-assessment.html",
+        "Date": "2024-10-18",
+        "Week": "Scavenger Hunt"
+    },
+    {
+        "displayName": "#000000 - Devtoberfest 2024 - Enable Migration Assessment Application",
+        "points": 110,
+        "URL": "https://developers.sap.com/tutorials/migration-assessment-enablement.html",
+        "Date": "2024-10-18",
+        "Week": "Scavenger Hunt"
+    },
+    {
+        "displayName": "#A1532C - Devtoberfest 2024 - Executing SAP HANA Cloud Tasks from the Command Line",
+        "points": 220,
+        "URL": "https://developers.sap.com/tutorials/hana-cloud-automation-cli.html",
+        "Date": "2024-10-18",
+        "Week": "Scavenger Hunt"
+    },
+    {
+        "displayName": "#BDB308 - Devtoberfest 2024 - Authenticate to SAP HANA Cloud using X.509",
+        "points": 180,
+        "URL": "https://developers.sap.com/tutorials/hana-clients-x509..html",
+        "Date": "2024-10-18",
+        "Week": "Scavenger Hunt"
+    },
+    {
+        "displayName": "#2E379A - Devtoberfest 2024 - Key User Adaptation for SAPUI5 Applications - Introduction",
+        "points": 100,
+        "URL": "https://developers.sap.com/tutorials/sapui5-flexibility-keyuseradaptation-1-introduction.html",
+        "Date": "2024-10-18",
+        "Week": "Scavenger Hunt"
+    },
+    {
+        "displayName": "#54285F - Devtoberfest 2024 - Key User Adaptation for SAPUI5 Applications - UI Changes and Modes",
+        "points": 180,
+        "URL": "https://developers.sap.com/tutorials/sapui5-flexibility-keyuseradaptation-2-deepdive.html",
+        "Date": "2024-10-18",
+        "Week": "Scavenger Hunt"
+    },
+    {
+        "displayName": "#D1D1E0 - Devtoberfest 2024 - Key User Adaptation for SAPUI5 Applications - Custom Actions, Views and Embedded Content",
+        "points": 180,
+        "URL": "https://developers.sap.com/tutorials/sapui5-flexibility-keyuseradaptation-3-advanced-topics.html",
+        "Date": "2024-10-18",
+        "Week": "Scavenger Hunt"
+    }       
 ]
