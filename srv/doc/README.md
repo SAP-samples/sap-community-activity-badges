@@ -2,7 +2,7 @@
 
 ## Introduction
 
-<img src="../images/sap_18.png" alt="SAP Logo" width="100"/>
+![SAP Logo](../images/sap_18.png)
 
 This service creates cards as images (svg or png) to display your SAP Community activity and achievements. Now you can share you SAP Community pride in other locations, such as you GitHub README or in your SAP Community signature.
 
@@ -101,4 +101,3 @@ The SAP Community ID is an integer that you can find at the end of URL of your p
 ![Community ID from Profile URL](../images/Finding_Your_Community_User_Id.png)
 
 There is also a profile check tool at: [/devtoberfest/profile/scnId.Here](./devtoberfest/profile/scnId.Here)
-
