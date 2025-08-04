@@ -68,7 +68,11 @@ module.exports = (app) => {
      *       200:
      *         description: A single user.
      */
-    app.get('/showcaseBadges/:scnId/:badge1?/:badge2?/:badge3?/:badge4?/:badge5?', nocache, async (req, res) => {
+    app.get('/showcaseBadges/:scnId{/*badgeIds}', nocache, async (req, res) => {
+        // Assign badge IDs to req.params.badge1 ... badge5
+        for (let i = 0; i < 5; i++) {
+            req.params[`badge${i + 1}`] =  Array.isArray(req.params.badgeIds) ? req.params.badgeIds[i] : undefined
+        }
         try {
             let isPng = false
             if (req.query.png || req.query.gif) { isPng = true }
@@ -217,7 +221,11 @@ module.exports = (app) => {
      *       200:
      *         description: A single user.
      */
-    app.get('/showcaseBadgesGroups/:scnId/:badge1?/:badge2?/:badge3?/:badge4?/:badge5?', async (req, res) => {
+    app.get('/showcaseBadgesGroups/:scnId{/*badgeIds}', async (req, res) => {
+        // Assign badge IDs to req.params.badge1 ... badge5
+        for (let i = 0; i < 5; i++) {
+            req.params[`badge${i + 1}`] =  Array.isArray(req.params.badgeIds) ? req.params.badgeIds[i] : undefined
+        }
         try {
             let isPng = false
             if (req.query.png || req.query.gif) { isPng = true }
@@ -305,7 +313,11 @@ module.exports = (app) => {
      *       200:
      *         description: A single user.
      */
-    app.get('/showcaseSingleBadge/:scnId/:badge1?', async (req, res) => {
+    app.get('/showcaseSingleBadge/:scnId{/*badgeIds}', async (req, res) => {
+        // Assign badge IDs to req.params.badge1 ... badge5
+        for (let i = 0; i < 5; i++) {
+            req.params[`badge${i + 1}`] =  Array.isArray(req.params.badgeIds) ? req.params.badgeIds[i] : undefined
+        }
         try {
             let isPng = false
             if (req.query.png || req.query.gif) { isPng = true }
