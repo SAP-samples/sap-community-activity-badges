@@ -31,10 +31,18 @@ async function init() {
         await Promise.all(array.map(callback))
       }
 
-      await forEachParallel(members.data.items, async (item) =>  {
+      //await forEachParallel(members.data.items, async (item) => {
+
+        for (let item of members.data.items) {
         console.log(`Processing ${item.login}`)
         let scnId = item.id //SCN Id
-        let scnItems = await khoros.callUserAPI(scnId)
+        var scnItems
+        try {
+          scnItems = await khoros.callUserAPI(scnId)
+        } catch (error) {
+          console.error(`Error fetching SCN data for ${item.login}:`, error)
+          continue
+        }
         let points = 0
         for (let item of scnItems.data.user_badges.items) {
           let badgeValue = badges.find(x => x.displayName == item.badge.title)
@@ -52,7 +60,7 @@ async function init() {
 
         item.points = points
         item.level = level
-      })
+      }
     } catch (error) {
       console.error(error)
     }

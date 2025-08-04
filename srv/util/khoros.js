@@ -11,9 +11,14 @@ async function callUserAPI(scnId) {
     const request = require('then-request')
     const urlBadges = `${userAPIURL}${scnId}`
 
-    let itemsRes = await request('GET', encodeURI(urlBadges))
+    try {
+      let itemsRes = await request('GET', encodeURI(urlBadges))
     const scnItems = JSON.parse(itemsRes.getBody())
     return scnItems
+    } catch (error) {
+      throw new Error(`Error fetching SCN data for ID ${scnId}: ${error.message}`)
+    }
+    
 }
 module.exports.callUserAPI = callUserAPI
 
