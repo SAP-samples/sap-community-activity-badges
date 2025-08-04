@@ -1,32 +1,32 @@
 {
   "name": "scn-badges-srv",
-  "version": "4.4.1",
+  "version": "5.0.0",
   "description": "SCN Badges Service Layer",
   "engines": {
-    "node": "^20.0.0 || ^22.0.0"
+    "node": "^22.0.0 || ^24.0.0"
   },
   "dependencies": {
     "@cloudnative/health-connect": "^2.1.0",
-    "@sap/logging": "^8.2.0",
-    "@sap/textbundle": "^5.2.0",
+    "@sap/logging": "^9.0.0",
+    "@sap/textbundle": "^6.0.0",
     "accept-language-parser": "latest",
     "cors": "^2.8.5",
-    "debug": "^4.3.7",
+    "debug": "^4.4.1",
     "ejs": "^3.1.10",
     "event-loop-lag": "1.4.0",
-    "express": "^4.21.0",
-    "glob": "11.0.0",
-    "got": "^14.4.2",
-    "inquirer": "^9.3.6",
+    "express": "latest-4",
+    "glob": "11.0.3",
+    "got": "^14.4.7",
+    "inquirer": "^9.3.7",
     "inquirer-fuzzy-path": "^2.3.0",
     "lodash": "^4.17.21",
-    "multer": "^1.4.5-lts.1",
+    "multer": "^1.4.5-lts.2",
     "mustache": "^4.2.0",
     "nocache": "^4.0.0",
     "node-xlsx": "^0.24.0",
     "overload-protection": "^1.2.3",
-    "serve-favicon": "^2.5.0",
-    "sharp": "^0.33.5",
+    "serve-favicon": "^2.5.1",
+    "sharp": "^0.34.3",
     "showdown": "^2.1.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
@@ -49,8 +49,8 @@
   },
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
-    "eslint": "^9.5.0",
-    "nodemon": "^3.1.4",
-    "typescript": "^5.5.2"
+    "eslint": "^9.32.0",
+    "nodemon": "^3.1.10",
+    "typescript": "^5.9.2"
   }
 }
