@@ -27,7 +27,7 @@ module.exports = (app) => {
             base.error(error)
             res.status(500).send(error.toString())
         }
-    }) 
+    })  
 
     app.get('/', async (req, res) => {
 

@@ -4,8 +4,7 @@ sap.ui.define([
     "sap/ui/core/UIComponent",
     "sap/ui/Device",
     "sap/profile/model/models",
-    "sap/base/util/UriParameters"
-], function (UIComponent, Device, models, UriParameters) {
+], function (UIComponent, Device, models) {
     "use strict"
 
     return UIComponent.extend("profile.Component", {
@@ -24,9 +23,14 @@ sap.ui.define([
 
             // set the device model
             this.setModel(models.createDeviceModel(), "device")
-            let scnId = UriParameters.fromQuery(window.location.search).get("scnId")
+
+            const hash = window.location.hash || "";
+            const q = hash.indexOf("?") >= 0 ? hash.slice(hash.indexOf("?") + 1) : "";
+            const scnId = new URLSearchParams(q).get("scnId");
+
+
             let model = this.getModel("config")
-            model.setData({scnId: scnId})
+            model.setData({ scnId: scnId })
         }
 
 

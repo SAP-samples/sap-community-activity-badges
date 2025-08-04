@@ -1,5 +1,5 @@
 {
-	"_version": "1.33.0",
+	"_version": "2.0",
 	"sap.app": {
 		"id": "profile",
 		"type": "application",
@@ -85,7 +85,7 @@
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"async": true,
-				"viewPath": "profile.view",
+				"path": "profile.view",
 				"controlAggregation": "pages",
 				"controlId": "app",
 				"clearControlAggregation": false
@@ -100,8 +100,8 @@
 					"viewType": "XML",
 					"transition": "slide",
 					"clearControlAggregation": false,
-					"viewId": "App",
-					"viewName": "App"
+					"id": "App",
+					"name": "App"
 				}
 			}
 		}

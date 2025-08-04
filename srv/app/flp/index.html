@@ -1,39 +1,85 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SAP Community Tools - Unsupported and for Fun</title>
 
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>SAP Community Tools - Unsupported and for Fun</title>
-	<script src="https://sapui5.hana.ondemand.com/1.124.1/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
+		<script>
+/* 			window["sap-ushell-config"] = {
+				defaultRenderer: "fiori2",
+				bootstrapPlugins: {
+					RuntimeAuthoringPlugin: { component: "sap.ushell.plugins.rta" },
+					PersonalizePlugin: { component: "sap.ushell.plugins.rta-personalize" }
+				},
+				services: {
+					NavTargetResolution: { config: { allowTestUrlComponentConfig: true, enableClientSideTargetResolution: true } },
+					EndUserFeedback: { adapter: { config: { enabled: true } } }
+				},
+				applications: {
+					"selfie-ui": {
+						title: "Selfie with the Dev Advocates",
+						description: "Devtoberfest 2025 Selfie with the Dev Advocates",
+						additionalInformation: "SAPUI5.Component=sap.selfie",
+						applicationType: "URL",
+						url: "./selfie",
+						navigationMode: "embedded"
+					},
+					"profile-ui": {
+						title: "SAP Community Profile and Badge Signature Tool",
+						description: "SAP Community Profile and Badge Signature Tool",
+						additionalInformation: "SAPUI5.Component=sap.profile",
+						applicationType: "URL",
+						url: "./profile",
+						navigationMode: "embedded"
+					},
+					"tags-ui": {
+						title: "All SAP Managed Tags",
+						description: "A-Z list of SAP managed tags.",
+						additionalInformation: "SAPUI5.Component=sap.tags",
+						applicationType: "URL",
+						url: "./tags",
+						navigationMode: "embedded"
+					}
+				}
+			}; */
 
-	<script src="https://sapui5.hana.ondemand.com/1.124.1/resources/sap-ui-core.js"
-		data-sap-ui-libs="sap.m, sap.ushell, sap.collaboration, sap.ui.layout, sap.ui.rta, sap.uxap"
-		data-sap-ui-compatVersion="edge" data-sap-ui-theme="sap_horizon"
-		data-sap-ui-async="true"
-		data-sap-ui-frameOptions="trusted"
-		data-sap-ui-bindingSyntax="complex"
-		data-sap-ui-xx-bindingSyntax="complex"
-		data-sap-ui-resourceroots='{"selfie": "./selfie", "profile": "./profile", "tags": "./tags",
-										"root": "./"}'
-		data-sap-ui-frameOptions="allow"></script>
+			function themeCalc() {
+				try {
+					return window.matchMedia("(prefers-color-scheme: dark)").matches ? "sap_horizon_dark" : "sap_horizon";
+				} catch (_e) {
+					console.warn("matchMedia not supported - using default theme");
+					return "sap_horizon";
+				}
+			}
+		</script>
 
-	<style>
-		html, body {height: 100%;}
-	</style>
-	<script>
-		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			sap.ui.getCore().applyTheme( "sap_horizon_dark" )//"sap_horizon")
-		}
-		sap.ui.getCore().attachInit(() => {
-			sap.ushell.Container.createRenderer().placeAt("content")
-		})
-	</script>
+		<!-- FLP sandbox (keeps up with legacy-free; don’t poke the renderer) -->
+		<script src="https://ui5.sap.com/1.136.3-legacy-free/resources/sap/ushell/bootstrap/sandbox2.js"
+			id="sap-ushell-bootstrap"></script>
 
-</head>
+		<!-- UI5 bootstrap -->
+		<script id="sap-ui-bootstrap" src="https://ui5.sap.com/1.136.3-legacy-free/resources/sap-ui-core.js"
+			data-sap-ui-async="true" data-sap-ui-libs="sap.m,sap.ushell,sap.fe.templates,sap.ui.rta" data-sap-ui-theme=""
+			data-sap-ui-compatVersion="edge" data-sap-ui-onInit="module:local/initModule", data-sap-ui-frameOptions="allow" data-sap-ui-resourceroots='{
+            "selfie":"./selfie",
+            "profile":"./profile",
+            "tags":"./tags",
+			"local": "./",
+			"root": "./"
+          }'>
+		  
+		</script>
+		<script src="https://ui5.sap.com/1.136.3-legacy-free/test-resources/sap/ushell/bootstrap/standalone.js" id="sap-ushell-bootstrap"></script>
 
-<body class="sapUiBody" id="content"></body>
+		<script>
+			// set theme as soon as possible after bootstrap attribute parsing
+		//	sap.ui.require(["sap/ui/core/Theming"], function (Theming) { Theming.setTheme(themeCalc()); });
+		</script>
+	</head>
+
+	<body id="content" class="sapUiBody sapUiSizeCompact" role="application"></body>
 
 </html>

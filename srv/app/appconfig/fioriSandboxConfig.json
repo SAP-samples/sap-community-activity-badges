@@ -26,7 +26,7 @@
     "applications": {
         "selfie-ui": {
             "title": "Selfie with the Dev Advocates",
-            "description": "Devtoberfest 2024 Selfie with the Dev Advocates",
+            "description": "Devtoberfest 2025 Selfie with the Dev Advocates",
             "additionalInformation": "SAPUI5.Component=sap.selfie",
             "applicationType": "URL",
             "url": "./selfie",

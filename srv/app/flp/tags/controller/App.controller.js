@@ -5,9 +5,10 @@ sap.ui.define([
     "tags/controller/BaseController",
     "sap/m/MessageBox",
     "sap/m/ColumnListItem",
-    "./Utils"
+    "./Utils",
+    "sap/ui/thirdparty/jquery"
 ],
-    function (BaseController, MessageBox, ColumnListItem, Utils) {
+    function (BaseController, MessageBox, ColumnListItem, Utils, jQuery) {
 
         return BaseController.extend("tags.controller.App", {
 
@@ -21,6 +22,16 @@ sap.ui.define([
                 this.startBusy()
                 let aUrl = `/khoros/tags`
                 let oController = this
+
+/*                 try {
+        const res = await fetch("/api/thing");
+        if (!res.ok) throw new Error(res.statusText);
+        const data = await res.json();
+        this.getView().setModel(new JSONModel(data), "api");
+      } catch (e) {
+        // handle error
+      } */
+
                 jQuery.ajax({
                     url: aUrl,
                     method: "GET",
