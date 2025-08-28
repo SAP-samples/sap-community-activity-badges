@@ -22,67 +22,67 @@ sap.ui.define([
             },
 
             loadProfile: async function () {
-                this.startBusy()
-                let aUrl = `/khoros/user/${this.getModel("profileModel").getProperty("/scnId")}`
-                let oController = this
-                jQuery.ajax({
-                    url: aUrl,
-                    method: "GET",
-                    dataType: "json",
-                    success: function (myJSON) {
-                        oController.endBusy(oController)
-                        let model = oController.getModel("profileModel")
-                        let data = { scnId: model.getProperty("/scnId"), data: myJSON.data }
+                this.startBusy();
+                let aUrl = `/khoros/user/${this.getModel("profileModel").getProperty("/scnId")}`;
+                let oController = this;
 
-                        data.signatureFull = data.data.signature
-                        const parser = new DOMParser()
-                        const htmlDoc = parser.parseFromString(data.signatureFull, 'text/html')
-                        const htmlElms = htmlDoc.getElementsByTagName('img')
-                        let src = ""
-                        for (const htmlElm of htmlElms) {
-                            src = htmlElm.getAttribute('src')
-                        }
-
-                        let selBadges = []
-                        for (let i = 0; i < 5; i++) {
-                            selBadges.push({ badge: "", url: "" })
-                        }
-
-                        if (src !== "") {
-                            const url = new URL(src)
-                            let pathname = url.pathname.split('/')
-                            for (let badgeIndex = 0; badgeIndex < 5; badgeIndex++) {
-                                let pathIndex = badgeIndex + 3
-                                if (pathname[pathIndex]) {
-                                    selBadges[badgeIndex].badge = pathname[pathIndex]
-                                }
-                            }
-                        }
-
-                        if (data.data && data.data.user_badges) {
-                            for (let index = 0; index < data.data.user_badges.items.length; index++) {
-                                data.data.user_badges.items[index].selected = ''
-                                data.data.user_badges.items[index].earned_date =
-                                    new Date((typeof date === "string" ? new Date(data.data.user_badges.items[index].earned_date) : data.data.user_badges.items[index].earned_date)
-                                    )
-
-                                for (let i = 0; i < selBadges.length; i++) {
-                                    if (selBadges[i].badge === data.data.user_badges.items[index].badge.id) {
-                                        data.data.user_badges.items[index].selected = "true"
-                                        selBadges[i].url = data.data.user_badges.items[index].badge.icon_url
-                                        break
-                                    }
-                                }
-                            }
-                        }
-                        data.selBadges = selBadges
-                        model.setData(data)
-                        oController.buildSignature()
-                    },
-                    error: function (error) {
-                        oController.onErrorCall(error, oController)
+                try {
+                    const response = await fetch(aUrl, { method: "GET" });
+                    if (!response.ok) {
+                       // oController.onErrorCall(response, oController)
+                        throw new Error(`${await response.text() || JSON.stringify(await response.json()) || response.status}`)
                     }
-                })
+                    const myJSON = await response.json();
+                    oController.endBusy(oController);
+                    let model = oController.getModel("profileModel");
+                    let data = { scnId: model.getProperty("/scnId"), data: myJSON.data };
+
+                    data.signatureFull = data.data.signature;
+                    const parser = new DOMParser();
+                    const htmlDoc = parser.parseFromString(data.signatureFull, 'text/html');
+                    const htmlElms = htmlDoc.getElementsByTagName('img');
+                    let src = "";
+                    for (const htmlElm of htmlElms) {
+                        src = htmlElm.getAttribute('src');
+                    }
+
+                    let selBadges = [];
+                    for (let i = 0; i < 5; i++) {
+                        selBadges.push({ badge: "", url: "" });
+                    }
+
+                    if (src !== "") {
+                        const url = new URL(src);
+                        let pathname = url.pathname.split('/');
+                        for (let badgeIndex = 0; badgeIndex < 5; badgeIndex++) {
+                            let pathIndex = badgeIndex + 3;
+                            if (pathname[pathIndex]) {
+                                selBadges[badgeIndex].badge = pathname[pathIndex];
+                            }
+                        }
+                    }
+
+                    if (data.data && data.data.user_badges) {
+                        for (let index = 0; index < data.data.user_badges.items.length; index++) {
+                            data.data.user_badges.items[index].selected = '';
+                            data.data.user_badges.items[index].earned_date =
+                                new Date((typeof date === "string" ? new Date(data.data.user_badges.items[index].earned_date) : data.data.user_badges.items[index].earned_date));
+
+                            for (let i = 0; i < selBadges.length; i++) {
+                                if (selBadges[i].badge === data.data.user_badges.items[index].badge.id) {
+                                    data.data.user_badges.items[index].selected = "true";
+                                    selBadges[i].url = data.data.user_badges.items[index].badge.icon_url;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    data.selBadges = selBadges;
+                    model.setData(data);
+                    oController.buildSignature();
+                } catch (error) {
+                    oController.onErrorCall(error, oController);
+                }
             },
 
             buildSignature: function () {

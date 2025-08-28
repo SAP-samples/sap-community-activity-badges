@@ -100,7 +100,8 @@ sap.ui.define([
                 oController.endBusy(oController)
             }
             sap.ui.require(["sap/m/MessageBox"], function (MessageBox) {
-                let errorMsg = oError.stack ||oError.message || oError.statusText || oError.responseText || String(oError) || "Unknown error"
+                console.log(JSON.stringify(oError))
+                let errorMsg = oError.statusText || oError.responseText || oError.stack || String(oError) || oError.message || "Unknown error"
                 if (oError.fileName || oError.lineNumber) {
                     errorMsg += `\nSource: ${oError.fileName || "unknown"}:${oError.lineNumber || "?"}`
                 }
