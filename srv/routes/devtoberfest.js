@@ -292,7 +292,7 @@ async function getSCNProfile(req) {
 
             let userNameScore = stringScore(userName)
             let points = 0
-            let endDate = new Date(2025, 10, 27)
+            let endDate = new Date(2025, 10, 24)
             for (let item of scnItems.data.user_badges.items) {
                 let badgeValue = badges.find(x => x.displayName == item.badge.title)
                 if (badgeValue) {
@@ -409,7 +409,7 @@ async function buildHowToPlay(isPng, profile, req) {
 
     items.push(svg.svgDevtoberfestTextLink(itemHeight, 60, itemDelay,
         text.getText('devtoberfest.column1.here'),
-        `https://community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2025-contest/ba-p/13781593#M467`, isPng))
+        `https://community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2025-contest-official-rules/ba-p/13781577`, isPng))
     itemHeight += 18
     itemDelay += 50
 
@@ -472,14 +472,14 @@ async function buildMenu(isPng, profile, req) {
 
     //Menu Awards
     items.push(
-        `<a xlink:href="https://community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2025-contest/ba-p/13781593#M467" target="_blank">` +
+        `<a xlink:href="https://community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2025-contest-official-rules/ba-p/13781577" target="_blank">` +
         `<title>${text.getText('devtoberfest.awards')}</title>` +
         svg.svgDevtoberfestItem(175, 900, 750, await svg.loadImageB64('../images/devtoberfest/menu/Frame.png'), 32, 29, isPng) +
         `</a>`)
 
     //Menu Points
     items.push(
-        `<a xlink:href="https://community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2025-contest/ba-p/13781593#M467" target="_blank">` +
+        `<a xlink:href="https://community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2025-contest-official-rules/ba-p/13781577" target="_blank">` +
         `<title>${text.getText('devtoberfest.points')}</title>` +
         svg.svgDevtoberfestItem(175, 960, 900, await svg.loadImageB64('../images/devtoberfest/menu/Frame-1.png'), 32, 29, isPng) +
         `</a>`)

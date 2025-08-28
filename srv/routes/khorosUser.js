@@ -21,7 +21,7 @@ module.exports = (app) => {
             }
             const memberQuery =
                 `select id, sso_id, login, email, first_name, last_name from users where node.id = 'grouphub:${req.params.grouphub}' `
-            const query = `${memberQuery} LIMIT 3000`
+            const query = `${memberQuery} LIMIT 6000`
             const outputQuery = `${communitysearchapibase}?q=${query}`
             let output = '<!DOCTYPE html><html><body>'
             output +=
