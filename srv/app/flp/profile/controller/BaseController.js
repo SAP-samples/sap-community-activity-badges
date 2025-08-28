@@ -99,16 +99,12 @@ sap.ui.define([
             if (oController) {
                 oController.endBusy(oController)
             }
-            sap.ui.require(["sap/m/MessageBox"], (MessageBox) => {
-                console.log(oError)
-                if (oError.statusCode === 500 || oError.statusCode === 400 || oError.statusCode === "500" || oError.statusCode === "400" || oError.status === 500 || oError.status === 400) {
-                    let errorRes = oError.responseText
-                    MessageBox.error(errorRes)
-                    return
-                } else {
-                    MessageBox.error(oError.statusText)
-                    return
+            sap.ui.require(["sap/m/MessageBox"], function (MessageBox) {
+                let errorMsg = oError.stack ||oError.message || oError.statusText || oError.responseText || String(oError) || "Unknown error"
+                if (oError.fileName || oError.lineNumber) {
+                    errorMsg += `\nSource: ${oError.fileName || "unknown"}:${oError.lineNumber || "?"}`
                 }
+                MessageBox.error(errorMsg)
             })
         }
 

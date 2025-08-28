@@ -1,70 +1,76 @@
-/* eslint-disable no-undef */
+/* eslint - disable no - undef */
 /*eslint-env es6 */
 "use strict";
 sap.ui.define([
     "tags/controller/BaseController",
     "sap/m/MessageBox",
-    "sap/m/ColumnListItem",
-    "./Utils",
-    "sap/ui/thirdparty/jquery"
-],
-    function (BaseController, MessageBox, ColumnListItem, Utils, jQuery) {
+    "sap/m/Panel",
+    "sap/ui/layout/VerticalLayout",
+    "sap/m/Link"
+], function (BaseController, MessageBox, Panel, VerticalLayout, Link) {
 
-        return BaseController.extend("tags.controller.App", {
+    return BaseController.extend("tags.controller.App", {
 
-            onInit: function () {
-                this.loadTags()
-                let model = this.getModel("tagsModel")
-                this.getView().setModel(model)
-            },
+        onInit: function () {
+            this.loadTags()
+            let model = this.getModel("tagsModel")
+            this.getView().setModel(model)
+        },
 
-            loadTags: async function () {
-                this.startBusy()
-                let aUrl = `/khoros/tags`
-                let oController = this
+        loadTags: async function () {
+            this.startBusy()
+            let aUrl = `/khoros/tags`
+            let oController = this
 
-/*                 try {
-        const res = await fetch("/api/thing");
-        if (!res.ok) throw new Error(res.statusText);
-        const data = await res.json();
-        this.getView().setModel(new JSONModel(data), "api");
-      } catch (e) {
-        // handle error
-      } */
+            try {
+                const res = await fetch(aUrl)
+                if (!res.ok) throw new Error(res.statusText)
+                const tags = await res.json()
+                oController.endBusy(oController)
+                let model = oController.getModel("tagsModel")
 
-                jQuery.ajax({
-                    url: aUrl,
-                    method: "GET",
-                    dataType: "json",
-                    success: function (tags) {
-                        oController.endBusy(oController)
-                        let model = oController.getModel("tagsModel")
-                        let page = new sap.m.Page({
-                            title: "Dynamic Panels from JSON",
-                            content: []
-                        })
-                        Object.keys(tags).forEach((groupName) => {
-                            let vBox = new sap.ui.layout.VerticalLayout({
-                                content: tags[groupName].map((item) => {
-                                    return new sap.m.Link({ text: item.title, href: item.link})
-                                })
+                const container = this.byId("mainPage")
+                if (container?.removeAllContent) {
+                    container.removeAllContent()
+                } else if (container?.removeAllItems) {
+                    container.removeAllItems()
+                }
+
+                Object.keys(tags || {}).forEach((groupName) => {
+                    const items = tags[groupName] || []
+
+                    const vBox = new VerticalLayout({
+                        content: items.map((item) =>
+                            new Link({
+                                text: item.title,
+                                href: item.link,
+                                target: "_blank"
                             })
-                            let panel = new sap.m.Panel({
-                                headerText: groupName,
-                                expandable: true,
-                                expanded: true,
-                                content: [vBox]
-                            })
-                            oController.getView().byId("mainPage").addContent(panel)
-                        })
+                        )
+                    })
 
-                    },
-                    error: function (error) {
-                        oController.onErrorCall(error, oController)
+                    const panel = new Panel({
+                        headerText: groupName,
+                        expandable: true,
+                        expanded: true,
+                        content: [vBox]
+                    })
+
+                    if (container?.addContent) {
+                        container.addContent(panel)
+                    } else if (container?.addItem) {
+                        container.addItem(panel)
+                    } else {
+                        // Fallback: if container is the view root, place directly
+                        this.getView().addContent(panel)
                     }
                 })
+            } catch (e) {
+                oController.onErrorCall(error, oController)
             }
 
-        })
-    }
+        }
+
+    })
+}
 )
