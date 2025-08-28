@@ -91,7 +91,7 @@ async function init() {
         let points = 0
         let trees = false
         for (let item of scnItems.content) {
-          if(item.displayName === 'SAP TechEd in 2023 Registered Attendee' || item.displayName === 'SAP TechEd in 2023 Attendee - Bangalore'){
+          if(item.displayName === 'SAP TechEd in 2025 Registered Attendee' || item.displayName === 'SAP TechEd in 2025 Attendee - Bangalore'){
             trees = true
           }
           let badgeValue = badges.find(x => x.displayName == item.displayName)
