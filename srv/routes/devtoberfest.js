@@ -141,16 +141,19 @@ async function renderSVG(isPng, profile, req) {
         svg.svgDevtoberfestItem(80, 50, 750, await svg.loadImageB64('../images/devtoberfest/Group_13.png'), 103, 668, isPng),
         buildPointsBanner(isPng, profile, req),
         buildMenu(isPng, profile, req),
-        //Green Alien Runner
-        svg.svgDevtoberfestItem(750, 240, 1250, await svg.loadImageB64('../images/devtoberfest/clouds/Runner.png'), 74, 51, isPng,
-            `<animate id="o7" begin="0;o8.end" attributeName="x" from="650" to="0" dur="4s" />` +
-            `<animate id="o8" begin="o7.end"  attributeName="x" from="0" to="650" dur="1s" />`
+        //Green Alien Runner 74, 51 750, 240
+        svg.svgDevtoberfestItem(710, 300, 1250, await svg.loadImageB64('../images/devtoberfest/clouds/Runner.gif'), 148, 102, isPng,
+            `<animate id="o7" begin="0;o8.end" attributeName="x" from="710" to="0" dur="4s" />` +
+            `<animateTransform id="o8" begin="o7.end" attributeName="transform" type="scale" from="1,1" to="-1,1" dur="0.001s" fill="freeze" />` +
+            `<animate id="o9" begin="o8.end" attributeName="x" from="0" to="-710" dur="1s" />` +
+            `<animateTransform id="o10" begin="o9.end" attributeName="transform" type="scale" from="-1,1" to="1,1" dur="0.001s" fill="freeze" />` 
         ),
         //Animated Cloud #1
         svg.svgDevtoberfestItem(550, 200, 1250, await svg.loadImageB64('../images/devtoberfest/clouds/Frame.png'), 90, 165, isPng,
-            `<animate id="o5" begin="0;o6.end" attributeName="x" from="650" to="0" dur="5s" />` +
-            `<animate id="o6" begin="o5.end" attributeName="x" from="0" to="650" dur="5s" />`
+                `<animate id="o5" begin="0;o6.end" attributeName="x" from="650" to="0" dur="5s" />` +
+                `<animate id="o6" begin="o5.end" attributeName="x" from="0" to="650" dur="5s" />` 
         ),
+
         //Main Progress Area
         svg.svgDevtoberfestItem(220, 150, 1000, await svg.loadImageB64('../images/devtoberfest/clouds/Group_12a.png'), 692, 983, isPng),
         buildCloud1(isPng, profile, req),
@@ -195,7 +198,7 @@ async function renderSVG(isPng, profile, req) {
             gameboardTitle,
             svg.svgBulkContent(pointsBanner),
             svg.svgBulkContent(menu),
-            greenAlienRunner,
+          //  greenAlienRunner,
             animatedCloud1,
             mainProgressArea,
             svg.svgBulkContent(cloud1),
@@ -207,6 +210,7 @@ async function renderSVG(isPng, profile, req) {
             redAlien,
             devtoberfestLogo,
             bottomCRTFrame,
+            greenAlienRunner,
             svg.svgBulkContent(avatarItems),
             svg.svgBulkContent(gameboardHeader),
             svg.svgBulkContent(column1),
@@ -261,7 +265,7 @@ async function getSCNProfile(req) {
             }
             return profile
         default:
- 
+
 
 
             //Check if they are registered for Devtoberfest - "Devtoberfest 2025 Participant"
@@ -271,12 +275,12 @@ async function getSCNProfile(req) {
             //Check if they are registered for Devtoberfest by checking the members json dump
             let members = await khoros.getDevtoberfestMembers()
             let registered = members.data.items.find(x => x.id == req.params.scnId)
-            if(!registered){
+            if (!registered) {
                 registered = members.data.items.find(x => x.login == req.params.scnId)
-                if(registered){
+                if (registered) {
                     req.params.scnId = registered.id
                 }
-            }        
+            }
             let [scnItems, pointsLevels, badges] = await Promise.all([
                 khoros.callUserAPI(req.params.scnId),
                 require('../util/points.json'),
