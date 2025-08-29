@@ -141,11 +141,11 @@ async function renderSVG(isPng, profile, req) {
         svg.svgDevtoberfestItem(80, 50, 750, await svg.loadImageB64('../images/devtoberfest/Group_13.png'), 103, 668, isPng),
         buildPointsBanner(isPng, profile, req),
         buildMenu(isPng, profile, req),
-        //Green Alien Runner 74, 51 750, 240
+        //Running Cat 74, 51 750, 240
         svg.svgDevtoberfestItem(710, 300, 1250, await svg.loadImageB64('../images/devtoberfest/clouds/Runner.gif'), 148, 102, isPng,
-            `<animate id="o7" begin="0;o8.end" attributeName="x" from="710" to="0" dur="4s" />` +
+            `<animate id="o7" begin="0;o10.end" attributeName="x" from="710" to="0" dur="5s" />` +
             `<animateTransform id="o8" begin="o7.end" attributeName="transform" type="scale" from="1,1" to="-1,1" dur="0.001s" fill="freeze" />` +
-            `<animate id="o9" begin="o8.end" attributeName="x" from="0" to="-710" dur="1s" />` +
+            `<animate id="o9" begin="o8.end" attributeName="x" from="0" to="-710" dur="2s" />` +
             `<animateTransform id="o10" begin="o9.end" attributeName="transform" type="scale" from="-1,1" to="1,1" dur="0.001s" fill="freeze" />` 
         ),
         //Animated Cloud #1
@@ -587,11 +587,11 @@ async function buildAvatar(isPng, profile, req) {
     if (!avatarNumber || avatarNumber < 0 || avatarNumber > 28) {
         avatarNumber = 0
     }
-    if (profile.scnId && profile.scnId === 'josh.bentley') {
+    if (profile.scnId && profile.scnId === '148' ) {
         avatarNumber = 27
     }
     let avatar = `../images/devtoberfest/avatars/Group-${avatarNumber.toString()}.png`
-    if (profile.scnId && profile.scnId === 'lars.hvam') {
+    if (profile.scnId && profile.scnId === '13959') {
         avatar = `../images/devtoberfest/avatars/cowboy.png`
     }
 
