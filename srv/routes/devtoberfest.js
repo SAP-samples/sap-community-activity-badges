@@ -330,9 +330,9 @@ function stringScore(string) {
         score += string.charAt(j).charCodeAt(0)
     }
 
-    //Calculate Modulo of Score and maximum Avatar number of 34 
+    //Calculate Modulo of Score and maximum Avatar number of 38
     //Given two positive numbers a and n, a modulo n (abbreviated as a mod n) is the remainder of the Euclidean division of a by n, where a is the dividend and n is the divisor
-    score = ((score % 34) + 34) % 34
+    score = ((score % 38) + 38) % 38
     if (score > 0) { score = score - 1 }
     return score
 }
@@ -584,7 +584,7 @@ async function buildAvatar(isPng, profile, req) {
     let text = texts.getBundle(req)
     let items = []
     let avatarNumber = profile.userNameScore
-    if (!avatarNumber || avatarNumber < 0 || avatarNumber > 33) {
+    if (!avatarNumber || avatarNumber < 0 || avatarNumber > 37) {
         avatarNumber = 0
     }
     if (profile.scnId && profile.scnId === '148' ) {

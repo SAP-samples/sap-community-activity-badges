@@ -1,6 +1,6 @@
 {
   "name": "scn-badges-srv",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "SCN Badges Service Layer",
   "engines": {
     "node": "^22.0.0 || ^24.0.0"
