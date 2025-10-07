@@ -216,7 +216,7 @@
     "Description": "As part of Devtoberfest 2025 - Complete Tutorial Devtoberfest 2025 - ABAP, Week 2 Validation"
   },
   {
-    "displayName": "Create Database Table and Generate UI Service",
+    "displayName": "Devtoberfest 2025 - Create Database Table and Generate UI Service",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-generate-ui-service.html",
     "Date": "2025-10-06",
@@ -224,7 +224,7 @@
     "Description": "As part of Devtoberfest 2025 - Complete Tutorial: Create Database Table and Generate UI Service"
   },
   {
-    "displayName": "Enhance the Business Object Data Model and Enable OData Streams",
+    "displayName": "Devtoberfest 2025 - Enhance the Business Object Data Model and Enable OData Streams",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-enhance-data-model.html",
     "Date": "2025-10-06",
@@ -232,7 +232,7 @@
     "Description": "As part of Devtoberfest 2025 - Complete Tutorial: Enhance the Business Object Data Model and Enable OData Streams"
   },
   {
-    "displayName": "Enhance the Business Object Behavior With Instance Action",
+    "displayName": "Devtoberfest 2025 - Enhance the Business Object Behavior With Instance Action",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-instance-action.html",
     "Date": "2025-10-06",
@@ -240,7 +240,7 @@
     "Description": "As part of Devtoberfest 2025 - Complete Tutorial: Enhance the Business Object Behavior With Instance Action"
   },
   {
-    "displayName": "Enhance the Business Object Behavior With Factory Action",
+    "displayName": "Devtoberfest 2025 - Enhance the Business Object Behavior With Factory Action",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-factory-action.html",
     "Date": "2025-10-06",
@@ -248,7 +248,7 @@
     "Description": "As part of Devtoberfest 2025 - Complete Tutorial: Enhance the Business Object Behavior With Factory Action"
   },
   {
-    "displayName": "Enhance the Business Object Behavior With Dynamic Feature Control",
+    "displayName": "Devtoberfest 2025 - Enhance the Business Object Behavior With Dynamic Feature Control",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-dynamic-feature-control.html",
     "Date": "2025-10-06",
@@ -256,7 +256,7 @@
     "Description": "As part of Devtoberfest 2025 - Complete Tutorial: Enhance the Business Object Behavior With Dynamic Feature Control"
   },
   {
-    "displayName": "Write an ABAP Unit Test for the RAP Business Object",
+    "displayName": "Devtoberfest 2025 - Write an ABAP Unit Test for the RAP Business Object",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-unit-testing.html",
     "Date": "2025-10-06",
@@ -264,7 +264,7 @@
     "Description": "As part of Devtoberfest 2025 - Complete Tutorial: Write an ABAP Unit Test for the RAP Business Object"
   },
   {
-    "displayName": "Devtoberfest 2025 - Tooling & Frontend, Week 2",
+    "displayName": "Devtoberfest 2025 - Tooling, Week 2",
     "points": 1200,
     "URL": "https://developers.sap.com/tutorials/devtoberfest2025-tooling-week2-session-validation.html",
     "Date": "2025-10-07",
@@ -272,7 +272,7 @@
     "Description": "As part of Devtoberfest 2025 - Completed Devtoberfest 2025 - Tooling & Frontend, Week 2 Validation"
   },
   {
-    "displayName": "Add Smart Controls to the User Interface",
+    "displayName": "Devtoberfest 2025 - Add Smart Controls to the User Interface",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/sapui5-fiori-cf-fiorify.html",
     "Date": "2025-10-07",
@@ -280,7 +280,7 @@
     "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Add Smart Controls to the User Interface"
   },
   {
-    "displayName": "4 - Create a Business Process Project",
+    "displayName": "Devtoberfest 2025 - Create a Business Process Project",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/codejam-04-spa-empty-process.html",
     "Date": "2025-10-07",
@@ -288,7 +288,7 @@
     "Description": "As part of Devtoberfest 2025 - Completed Tutorial: 4 - Create a Business Process Project"
   },
   {
-    "displayName": "5 - Add Approval Flow to Process",
+    "displayName": "Devtoberfest 2025 - Add Approval Flow to Process",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/codejam-05-spa-approval-flow.html",
     "Date": "2025-10-07",
@@ -296,7 +296,7 @@
     "Description": "As part of Devtoberfest 2025 - Completed Tutorial: 5 - Add Approval Flow to Process"
   },
   {
-    "displayName": "6 - Trigger Process from Your App",
+    "displayName": "Devtoberfest 2025 - Trigger Process from Your App",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/codejam-06-connect-app-process.html",
     "Date": "2025-10-07",
@@ -304,7 +304,7 @@
     "Description": "As part of Devtoberfest 2025 - Completed Tutorial: 6 - Trigger Process from Your App"
   },
   {
-    "displayName": "7 - Build and Deploy App to BTP",
+    "displayName": "Devtoberfest 2025 - Build and Deploy App to BTP",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/codejam-07-build-deploy-app.html",
     "Date": "2025-10-07",
@@ -320,7 +320,7 @@
     "Description": "As part of Devtoberfest 2025 - Completed Devtoberfest 2025 - Integration, Week 2 Validation"
   },
   {
-    "displayName": "Scenario overview",
+    "displayName": "Devtoberfest 2025 - Scenario overview",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/btp-transport-management-cpi-01-use-case.html",
     "Date": "2025-10-08",
@@ -328,7 +328,7 @@
     "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Scenario overview"
   },
   {
-    "displayName": "Set Up the SAP Integration Suite Source Subaccount ",
+    "displayName": "Devtoberfest 2025 - Set Up the SAP Integration Suite Source Subaccount ",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/btp-transport-management-cpi-02-set-up-source-account.html",
     "Date": "2025-10-08",
@@ -336,7 +336,7 @@
     "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Set Up the SAP Integration Suite Source Subaccount "
   },
   {
-    "displayName": "Set Up the SAP Integration Suite Target Subaccount ",
+    "displayName": "Devtoberfest 2025 - Set Up the SAP Integration Suite Target Subaccount ",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/btp-transport-management-cpi-03-set-up-target-account.html",
     "Date": "2025-10-08",
@@ -344,7 +344,7 @@
     "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Set Up the SAP Integration Suite Target Subaccount "
   },
   {
-    "displayName": "Create a Transport Destination and Configure the SAP Integration Suite Transport Landscape",
+    "displayName": "Devtoberfest 2025 - Create a Transport Destination and Configure the SAP Integration Suite Transport Landscape",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/btp-transport-management-cpi-04-connect-source-and-target.html",
     "Date": "2025-10-08",
@@ -352,7 +352,7 @@
     "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Create a Transport Destination and Configure the SAP Integration Suite Transport Landscape"
   },
   {
-    "displayName": "Establish an Export Connection from SAP Content Agent Service in the Source Subaccount to SAP Cloud Transport Management Service",
+    "displayName": "Devtoberfest 2025 - Establish an Export Connection from SAP Content Agent Service in the Source Subaccount to SAP Cloud Transport Management Service",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/btp-transport-management-cpi-05-create-ctms-destination.html",
     "Date": "2025-10-08",
@@ -360,7 +360,7 @@
     "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Establish an Export Connection from SAP Content Agent Service in the Source Subaccount to SAP Cloud Transport Management Service"
   },
   {
-    "displayName": "Enable the Transport in SAP Integration Suite",
+    "displayName": "Devtoberfest 2025 - Enable the Transport in SAP Integration Suite",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/btp-transport-management-cpi-06-enable-the-transport.html",
     "Date": "2025-10-08",
@@ -368,7 +368,7 @@
     "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Enable the Transport in SAP Integration Suite"
   },
   {
-    "displayName": "Run a Test Transport ",
+    "displayName": "Devtoberfest 2025 - Run a Test Transport ",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/btp-transport-management-cpi-07-test-transport.html",
     "Date": "2025-10-08",
@@ -376,7 +376,7 @@
     "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Run a Test Transport "
   },
   {
-    "displayName": "Use the SAP Content Agent Service UI to Start the Transport",
+    "displayName": "Devtoberfest 2025 - Use the SAP Content Agent Service UI to Start the Transport",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/btp-transport-management-cpi-08-cas-ui.html",
     "Date": "2025-10-08",
@@ -400,7 +400,7 @@
     "Description": "As part of Devtoberfest 2025 - Completed Devtoberfest 2025 - CAP, Week 2 Validation"
   },
   {
-    "displayName": "Introduction to Application Development Using CAP",
+    "displayName": "Devtoberfest 2025 - Introduction to Application Development Using CAP",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/introduction.html",
     "Date": "2025-10-10",
@@ -408,7 +408,7 @@
     "Description": "As part of Devtoberfest 2025 - Completed Tutorial:Introduction to Application Development Using CAP"
   },
   {
-    "displayName": "Set Up SAP Business Application Studio",
+    "displayName": "Devtoberfest 2025 - Set Up SAP Business Application Studio",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/set-up-bas.html",
     "Date": "2025-10-10",
@@ -416,44 +416,12 @@
     "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Set Up SAP Business Application Studio"
   },
   {
-    "displayName": "Build a CAP Application",
+    "displayName": "Devtoberfest 2025 - Build a CAP Application",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/build-cap-app.html",
     "Date": "2025-10-10",
     "Week": "Week 2",
     "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Build a CAP Application"
-  },
-  {
-    "displayName": "Devtoberfest 2025 - SAP Puzzles - Cryptic",
-    "points": 2000,
-    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-sap-crossword.html",
-    "Date": "2025-10-10",
-    "Week": "Week 2",
-    "Description": "Completed the SAP Cryptic Crossword Puzzle"
-  },
-  {
-    "displayName": "Devtoberfest 2025 - SAP Puzzles - Cryptic Bonus",
-    "points": 500,
-    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-sap-crossword-bonus.html",
-    "Date": "2025-10-10",
-    "Week": "Week 2",
-    "Description": "Completed the SAP Cryptic Crossword Bonus Puzzle"
-  },
-  {
-    "displayName": "Devtoberfest 2025 - SAP Puzzles - Scramble - Programming",
-    "points": 500,
-    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-fun-scramble-languages.html",
-    "Date": "2025-10-10",
-    "Week": "Week 2",
-    "Description": "Completed the Scramble Puzzle on Programming Languages"
-  },
-  {
-    "displayName": "Devtoberfest 2025 - SAP Puzzles - Scramble - Codejam",
-    "points": 500,
-    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-fun-scramble-codejam.html",
-    "Date": "2025-10-10",
-    "Week": "Week 2",
-    "Description": "Completed the Scramble Puzzle on Event-Based Processes CodeJam"
   },
   {
     "displayName": "Devtoberfest 2025 - Take the Next Step in Your Career and Master an SAP Certification",
