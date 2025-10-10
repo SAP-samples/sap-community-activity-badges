@@ -430,5 +430,285 @@
     "Date": "2025-10-10",
     "Week": "Week 2",
     "Description": "Completed the Take the Next Step in Your Career and Master an SAP Certification Session"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - ABAP, Week 3",
+    "points": 1200,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-abap-week3-session-validation.html",
+    "Date": "2025-10-13",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Complete Devtoberfest 2025 - ABAP, Week 3 Validation"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Enhance the Business Object Behavior With Unmanaged Internal Numbering",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-early-numbering.html",
+    "Date": "2025-10-13",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Complete Tutorial:Enhance the Business Object Behavior With Unmanaged Internal Numbering"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Enhance the Business Object Behavior With Determinations",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-determination.html",
+    "Date": "2025-10-13",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Complete Tutorial:Enhance the Business Object Behavior With Validations"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Enhance the Business Object Behavior With Validations",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/abap-environment-rap100-validation.html",
+    "Date": "2025-10-13",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Complete Tutorial:Enhance the Business Object Behavior With Determinations"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Create an SAP Fiori App and Deploy it to SAP BTP, ABAP Environment",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/abap-environment-deploy-fiori-elements-ui.html",
+    "Date": "2025-10-13",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Complete Tutorial Create an SAP Fiori App and Deploy it to SAP BTP, ABAP Environment"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Tooling Week 3",
+    "points": 1200,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-tooling-week3-session-validation.html",
+    "Date": "2025-10-14",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Devtoberfest 2025 - Tooling & Frontend, Week 3 Validation"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Create an SAPUI5 App from the Command Line",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/cp-cf-sapui5-local.html",
+    "Date": "2025-10-14",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Create an SAPUI5 App from the Command Line"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Create a Work Zone Site and Embed Your App",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/codejam-08-work-zone-app.html",
+    "Date": "2025-10-14",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: 8 - Create a Work Zone Site and Embed Your App"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Create Action to Get Data from SAP S/4HANA Cloud",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/codejam-09-action-get.html",
+    "Date": "2025-10-14",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: 9 - Create Action to Get Data from SAP S/4HANA Cloud"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Create Action Project to Post Data to CAP Service",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/codejam-10-action-post.html",
+    "Date": "2025-10-14",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: 10 - Create Action Project to Post Data to CAP Service"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Expand Process to Add Rework Flow",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/codejam-11-spa-rework.html",
+    "Date": "2025-10-14",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: 11 - Expand Process to Add Rework Flow"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Integration, Week 3",
+    "points": 1200,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-integration-week3-integration-session-validatio.html",
+    "Date": "2025-10-15",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Devtoberfest 2025 - Integration, Week 3 Validation"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Set Up API Management from Integration Suite",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/api-mgmt-isuite-initial-setup.html",
+    "Date": "2025-10-15",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Set Up API Management from Integration Suite"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Add an API Proxy to a Product",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/hcp-apim-create-product.html",
+    "Date": "2025-10-15",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Add an API Proxy to a Product"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Configure SAP API Management policies to avoid CORS issues and generate an API Key",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/btp-integration-suite-integral-api-management.html",
+    "Date": "2025-10-15",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Configure SAP API Management policies to avoid CORS issues and generate an API Key"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Protect Your API Proxy by Adding Application Key Verification",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/hcp-apim-verify-api.html",
+    "Date": "2025-10-15",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Protect Your API Proxy by Adding Application Key Verification"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Get Started with API Revisions",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/api-mgmt-revisioning.html",
+    "Date": "2025-10-15",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Get Started with API Revisions"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Tour Business Accelerator Hub",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/hcp-abh-getting-started.html",
+    "Date": "2025-10-15",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Tour the SAP Business Accelerator Hub"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Test SAP Business Accelerator Hub APIs with curl",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/hcp-abh-test-locally.html",
+    "Date": "2025-10-15",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Test SAP Business Accelerator Hub APIs with curl"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Data & AI, Week 3",
+    "points": 1200,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-dataai-week3-session-validation.html",
+    "Date": "2025-10-16",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Devtoberfest 2025 - Data & AI, Week 3 Validation"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - CAP, Week 3",
+    "points": 1200,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-cap-week3-session-validation.html",
+    "Date": "2025-10-17",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Devtoberfest 2025 - CAP, Week 3 Validation"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Add SAP Fiori Elements UIs",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/add-fiori-elements-uis.html",
+    "Date": "2025-10-17",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Add SAP Fiori Elements Uis"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Add Custom Logic",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/add-custom-logic.html",
+    "Date": "2025-10-17",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Add Custom Logic"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Use a Local Launch Page",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/use-local-launch-page.html",
+    "Date": "2025-10-17",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial:  Use a Local Launch Page"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Add Authorization",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/add-authorization.html",
+    "Date": "2025-10-17",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Add Authorization"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Add Test Cases",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/add-test-cases.html",
+    "Date": "2025-10-17",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Add Test Cases"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Prepare for Production",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/prep-for-prod.html",
+    "Date": "2025-10-17",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Prepare for Production"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Techtoberfest - SAP Puzzles - Cryptic",
+    "points": 2000,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-sap-crossword.html",
+    "Date": "2025-10-10",
+    "Week": "Week 2",
+    "Description": "Completed the SAP Cryptic Crossword Puzzle"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Techtoberfest - SAP Puzzles - Cryptic Bonus",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-sap-crossword-bonus.html",
+    "Date": "2025-10-10",
+    "Week": "Week 2",
+    "Description": "Completed the SAP Cryptic Crossword Bonus Puzzle"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Techtoberfest - SAP Puzzles - Scramble - Programming",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-fun-scramble-languages.html",
+    "Date": "2025-10-10",
+    "Week": "Week 2",
+    "Description": "Completed the Scramble Puzzle on Programming Languages"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Techtoberfest - SAP Puzzles - Scramble - Codejam",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-fun-scramble-codejam.html",
+    "Date": "2025-10-10",
+    "Week": "Week 2",
+    "Description": "Completed the Scramble Puzzle on Event-Based Processes CodeJam"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Bugtoberfest - ABAP",
+    "points": 1000,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-fun-coding-abap-docu.html",
+    "Date": "2025-10-17",
+    "Week": "Week 3",
+    "Description": "Completed the Coder's Challenge - ABAP"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Bugtoberfest – CAP",
+    "points": 1000,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-fun-coding-cap-docu.html",
+    "Date": "2025-10-17",
+    "Week": "Week 3",
+    "Description": "Completed the Coder's Challenge - CAP"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Bugtoberfest - SAP Build",
+    "points": 1000,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-fun-coding-build-docu.html",
+    "Date": "2025-10-17",
+    "Week": "Week 3",
+    "Description": "Completed the Coder's Challenge - SAP Build"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - How to Interview for an SAP Tech Job",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-community-week3-session-validation.html",
+    "Date": "2025-10-17",
+    "Week": "Week 3",
+    "Description": "As part of Devtoberfest 2025 - How to Interview for an SAP Tech Job"
   }
 ]
