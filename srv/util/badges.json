@@ -320,14 +320,6 @@
     "Description": "As part of Devtoberfest 2025 - Completed Devtoberfest 2025 - Integration, Week 2 Validation"
   },
   {
-    "displayName": "Devtoberfest 2025 - Scenario overview",
-    "points": 500,
-    "URL": "https://developers.sap.com/tutorials/btp-transport-management-cpi-01-use-case.html",
-    "Date": "2025-10-08",
-    "Week": "Week 2",
-    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Scenario overview"
-  },
-  {
     "displayName": "Devtoberfest 2025 - Set Up the SAP Integration Suite Source Subaccount ",
     "points": 500,
     "URL": "https://developers.sap.com/tutorials/btp-transport-management-cpi-02-set-up-source-account.html",
@@ -710,5 +702,205 @@
     "Date": "2025-10-17",
     "Week": "Week 3",
     "Description": "As part of Devtoberfest 2025 - How to Interview for an SAP Tech Job"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - ABAP, Week 4",
+    "points": 1200,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-abap-week4-session-validation.html",
+    "Date": "2025-10-20",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Complete Devtoberfest 2025 - ABAP, Week 4 Validation"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Extend a Custom Core Data Service in ABAP Environment",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/abap-environment-extend-cds-view.html",
+    "Date": "2025-10-20",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Complete Tutorial: Extend a Custom Core Data Service in ABAP Environment"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Learn the basic concepts required for the integration of SAP BTP, ABAP environment and SAP S/4HANA Cloud, public edition",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/abap-environment-business-partner-scenario.html",
+    "Date": "2025-10-20",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Complete Tutorial: Learn the basic concepts required for the integration of SAP BTP, ABAP environment and SAP S/4HANA Cloud, public edition"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Implement an Outbound Service Call in SAP BTP, ABAP environment for an OData Service via Service Consumption Model",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/abap-environment-business-partner-outbound-call.html",
+    "Date": "2025-10-20",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Complete Tutorial: Implement an Outbound Service Call in SAP BTP, ABAP environment for an OData Service via Service Consumption Model"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Tooling Week 4",
+    "points": 1200,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-tooling-week4-session-validation.html",
+    "Date": "2025-10-21",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Devtoberfest 2025 - Tooling & Frontend, Week 4 Validation"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Deploy the Fiori App to Cloud Foundry",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/sapui5-fiori-cf-deploy.html",
+    "Date": "2025-10-21",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Deploy the Fiori App to Cloud Foundry"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Enable App to Select Product by Scanning Barcode",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/codejam-12-scan-barcode.html",
+    "Date": "2025-10-21",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: 12 - Enable App to Select Product by Scanning Barcode"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Enable App to Filter Products",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/codejam-13-filtering.html",
+    "Date": "2025-10-21",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: 13 - Enable App to Filter Products"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Implement Spinner for Product Details Page",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/codejam-14-spinner.html",
+    "Date": "2025-10-21",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: 14 - Implement Spinner for Product Details Page"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Implement Conditional Formatting to Change Color Based on Data",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/codejam-15-conditional-formatting.html",
+    "Date": "2025-10-21",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: 15 - Implement Conditional Formatting to Change Color Based on Data"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Integration, Week 4",
+    "points": 1200,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-integration-week4-integration-session-validatio.html",
+    "Date": "2025-10-22",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Devtoberfest 2025 - Integration, Week 4 Validation"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - The Use Case: Connectivity to Non-SAP Applications using SAP Integration Suite",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/btp-integration-suite-nonsapconnectivity-usecase.html",
+    "Date": "2025-10-22",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: The Use Case: Connectivity to Non-SAP Applications using SAP Integration Suite"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Preparing Your SAP Integration Suite Tenant",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/btp-integration-suite-nonsapconnectivity-settingup-suite.html",
+    "Date": "2025-10-22",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Preparing Your SAP Integration Suite Tenant"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Preparing Your Non-SAP Application's Trial Account",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/btp-integration-suite-nonsapconnectivity-settingup-thirdparty.html",
+    "Date": "2025-10-22",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Preparing Your Non-SAP Application's Trial Account"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Establish Connection Between Your BambooHR Trial and Open Connectors",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/btp-integration-suite-nonsapconnectivity-openconnectors.html",
+    "Date": "2025-10-22",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Establish Connection Between Your BambooHR Trial and Open Connectors"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Design an Integration Flow to Connect with Open Connectors",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/btp-integration-suite-nonsapconnectivity-integration.html",
+    "Date": "2025-10-22",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Design an Integration Flow to Connect with Open Connectors"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Test Your Integration Scenario",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/btp-integration-suite-nonsapconnectivity-test.html",
+    "Date": "2025-10-22",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Test Your Integration Scenario"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Data & AI, Week 4",
+    "points": 1200,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-dataai-week4-session-validation.html",
+    "Date": "2025-10-23",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Devtoberfest 2025 - Data & AI, Week 4 Validation"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - CAP, Week 4",
+    "points": 1200,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-cap-week4-session-validation.html",
+    "Date": "2025-10-24",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Devtoberfest 2025 - CAP, Week 4 Validation"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Prepare for Deployment in the SAP BTP, Cloud Foundry Runtime",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/prepare-btp-cf.html",
+    "Date": "2025-10-24",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Prepare for Deployment in the SAP BTP, Cloud Foundry Runtime"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Deploy in SAP BTP, Cloud Foundry Runtime",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/deploy-to-cf.html",
+    "Date": "2025-10-24",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Deploy in SAP BTP, Cloud Foundry Runtime"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Assign the User Roles",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/user-role-assignment.html",
+    "Date": "2025-10-24",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Assign the User Roles"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Integrate Your Application with SAP Build Work Zone, Standard Edition",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/integrate-with-work-zone.html",
+    "Date": "2025-10-24",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Integrate Your Application with SAP Build Work Zone, Standard Edition"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Set Up a CI/CD Pipeline for SAP BTP, Cloud Foundry Runtime",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/set-up-cicd.html",
+    "Date": "2025-10-24",
+    "Week": "Week 4",
+    "Description": "As part of Devtoberfest 2025 - Completed Tutorial: Set Up a CI/CD Pipeline for SAP BTP, Cloud Foundry Runtime"
+  },
+  {
+    "displayName": "Devtoberfest 2025 - Developer Advocates Discuss: Developer Tools in the 21st Century",
+    "points": 500,
+    "URL": "https://developers.sap.com/tutorials/devtoberfest2025-community-week4-session-validation.html",
+    "Date": "2025-10-24",
+    "Week": "Week 4",
+    "Description": "Devtoberfest 2025 - Sit in as Developer Advocates Discuss: Developer Tools in the 21st Century"
   }
 ]
