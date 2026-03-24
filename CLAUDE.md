@@ -68,3 +68,13 @@ All badge/user data is fetched live from the SAP Community Khoros API. Responses
 ### Versioning
 
 The version in `srv/package.json` and `mta.yaml` are kept in sync and incremented for deployments.
+
+## Extended Documentation
+
+Full technical reference is in [srv/doc/developer-guide.md](srv/doc/developer-guide.md). It covers:
+
+- Every route with parameters, data flow, and response shape
+- Khoros API consumption details (both API hosts, SQL-like query syntax, field mappings)
+- SVG rendering engine function reference
+- Error handler variants
+- Static data file schemas
