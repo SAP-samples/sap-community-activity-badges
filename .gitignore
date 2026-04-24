@@ -107,3 +107,4 @@ dist
 
 /app/*.zip
 Makefile_20220208160644.mta
+.playwright-mcp/

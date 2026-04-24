@@ -224,14 +224,15 @@ async function renderSVG(isPng, profile, req) {
 }
 
 async function getSCNProfile(req) {
-    let profile = {}
+    let profile
     switch (req.params.scnId) {
         //Dummy Redirect SCN ID when none is supplied
-        case 'scnId.Here':
+        case 'scnId.Here': {
             let e = new Error('No SCN ID')
             e.name = 'No SCN ID'
             e.scnId = req.params.scnId
             throw e
+        }
         //special test users
         case 'test0':
             profile = {
@@ -264,7 +265,7 @@ async function getSCNProfile(req) {
                 points: 30500, level: 4
             }
             return profile
-        default:
+        default: {
 
 
 
@@ -320,13 +321,14 @@ async function getSCNProfile(req) {
 
             profile = { userName: userName, scnId: req.params.scnId, badges: scnItems, userNameScore: userNameScore, points: points, level: level }
             return profile
+        }
     }
 }
 
 function stringScore(string) {
     let score = 0
 
-    for (j = 0; j < string.length; j++) {
+    for (let j = 0; j < string.length; j++) {
         score += string.charAt(j).charCodeAt(0)
     }
 
@@ -387,8 +389,8 @@ async function buildHowToPlay(isPng, profile, req) {
     items.push(svg.svgDevtoberfestTextHeader(1050, 60, itemDelay,
         text.getText('devtoberfest.column1'), isPng))
 
-    wrappedOutput = wrapper(text.getText('devtoberfest.column1.1'), { wrapOn: 35 })
-    wrappedArray = wrappedOutput.split("\n")
+    let wrappedOutput = wrapper(text.getText('devtoberfest.column1.1'), { wrapOn: 35 })
+    let wrappedArray = wrappedOutput.split("\n")
     for (let item of wrappedArray) {
         items.push(await svg.svgDevtoberfestTextItem(itemHeight, 60, itemDelay,
             item, isPng))
@@ -414,8 +416,6 @@ async function buildHowToPlay(isPng, profile, req) {
     items.push(svg.svgDevtoberfestTextLink(itemHeight, 60, itemDelay,
         text.getText('devtoberfest.column1.here'),
         `https://community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2025-contest-official-rules/ba-p/13781577`, isPng))
-    itemHeight += 18
-    itemDelay += 50
 
     return items
 }
@@ -432,8 +432,8 @@ async function buildLawyersHappy(isPng, profile, req) {
     items.push(svg.svgDevtoberfestTextHeader(1050, columnStart, itemDelay,
         text.getText('devtoberfest.column2'), isPng))
 
-    wrappedOutput = wrapper(text.getText('devtoberfest.column2.1'), { wrapOn: 35 })
-    wrappedArray = wrappedOutput.split("\n")
+    let wrappedOutput = wrapper(text.getText('devtoberfest.column2.1'), { wrapOn: 35 })
+    let wrappedArray = wrappedOutput.split("\n")
     for (let item of wrappedArray) {
         items.push(await svg.svgDevtoberfestTextItem(itemHeight, columnStart, itemDelay,
             item, isPng))
@@ -444,8 +444,6 @@ async function buildLawyersHappy(isPng, profile, req) {
     items.push(svg.svgDevtoberfestTextLink(itemHeight, columnStart, itemDelay,
         text.getText('devtoberfest.column2.here'),
         `https://community.sap.com/t5/devtoberfest-blog-posts/devtoberfest-2025-contest-official-rules/ba-p/13781577`, isPng))
-    itemHeight += 18
-    itemDelay += 50
 
     return items
 }
@@ -580,8 +578,7 @@ async function buildCloud4(isPng, profile, req) {
     return items
 }
 
-async function buildAvatar(isPng, profile, req) {
-    let text = texts.getBundle(req)
+async function buildAvatar(isPng, profile) {
     let items = []
     let avatarNumber = profile.userNameScore
     if (!avatarNumber || avatarNumber < 0 || avatarNumber > 37) {
@@ -596,11 +593,11 @@ async function buildAvatar(isPng, profile, req) {
     }
 
 
-    avatarX = 0
-    avatarY = 0
-    avatarStyle = 'stagger avatar'
-    hearts = []
-    delay = 2000
+    let avatarX = 0
+    let avatarY = 0
+    let avatarStyle = 'stagger avatar'
+    let hearts = []
+    let delay = 2000
     switch (profile.level) {
         case 0:
             avatarX = 285

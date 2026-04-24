@@ -1,10 +1,7 @@
 //const got = require('got') 
 const request = require('then-request')
-const querystring = require('node:querystring')
 const khoros = require("../util/khoros")
 
-// Expect an optional Devtoberfest year, default to current year.
-const year = process.argv[2] || new Date().getFullYear()
 // Khoros Community Search API
 const communitysearchapibase = 'https://community.sap.com/khhcw49343/api/2.0/search'
 const texts = require("../util/texts")
@@ -585,17 +582,19 @@ module.exports = (app) => {
 async function getSCNProfile(scnId, app) {
     switch (scnId) {
         //Dummy Redirect SCN ID when none is supplied
-        case 'scnId.Here':
+        case 'scnId.Here': {
             let e = new Error('No SCN ID')
             e.name = 'No SCN ID'
             e.scnId = scnId
             throw e
-        default:
+        }
+        default: {
             const userURL = `https://groups.community.sap.com/api/2.0/users/${scnId}`
             app.logger.info(userURL)
             let userDetails = await request('GET', encodeURI(userURL))
             const userOutput = JSON.parse(userDetails.getBody())
             return userOutput
+        }
     }
 }
 
@@ -727,16 +726,13 @@ async function getMessagePosters(boardId, conversationId, app) {
  * @returns {object}
  */
 async function getTags(app) {
-    let newTags = []
-    let allTags = []
-    let i = 0
     const searchURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT id, title, tag_scope FROM products ` +
         //   `WHERE tag_scope.community.id = 'khhcw49343' `
         `WHERE status = 'active' LIMIT 10000 `
     app.logger.info(searchURL)
     let searchDetails = await request('GET', encodeURI(searchURL))
     const searchOutput = JSON.parse(searchDetails.getBody())
-    allTags = searchOutput.data.items
+    const allTags = searchOutput.data.items
 
 
     function isLetter(char) {
@@ -796,7 +792,6 @@ async function getEvents(boardId, app) {
  */
 async function getEvent(eventId, app) {
 
-    let eventDetails = {}
     const eventURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT occasion_data FROM messages WHERE id='${eventId}'`
     const rsvpURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT id, user.login, user.email, user.first_name, user.last_name, ` +
         `rsvp_response, user.view_href, user.sso_id FROM rsvps WHERE message.id = '${eventId}'`
@@ -818,7 +813,7 @@ async function getEvent(eventId, app) {
         output.view_href = item.user.view_href
         outputItems.push(output)
     }
-    eventDetails = {
+    const eventDetails = {
         event: eventOutput.data.items[0].occasion_data.location,
         startTime: eventOutput.data.items[0].occasion_data.start_time,
         endTime: eventOutput.data.items[0].occasion_data.end_time,
@@ -826,40 +821,5 @@ async function getEvent(eventId, app) {
         rsvp: outputItems
     }
     return eventDetails
-
-}
-
-
-// Function to make an API call to the Community Search API, and deal with the
-// pagination mechanism too, by following any next_cursor pointers until all the
-// data for the query result has been retrieved. For details on the pagination, see
-// https://developer.khoros.com/khoroscommunitydevdocs/docs/pagination-with-community-api-v2
-const retrieve = async (q) => {
-
-    let cursor, result, data = []
-
-    do {
-
-        // Retrieve as many records as we are allowed (LIMIT 1000) and also use the
-        // next_cursor mechanism to consume all "pages" of the result set.
-        const query = `${q} LIMIT 1000 ${cursor ? `CURSOR '${cursor}'` : ''}`
-
-        // Make the call, expect JSON in response.
-        result = await request('GET', `${communitysearchapibase}?q=${query}`)
-        console.log(`${communitysearchapibase}?q=${query}`)
-        result = JSON.parse(result.getBody())
-        console.log(result)
-        // got(`${communitysearchapibase}?q=${encodeURIComponent(query)}`, {}).json()
-
-        // Add the items to the existing data array.
-        data = data.concat(result.data.items)
-
-        // Save any next_cursor value.
-        cursor = result.data.next_cursor
-
-        // Repeat as long as there's a next_cursor.
-    } while (cursor && cursor.length > 0)
-
-    return data
 
 }

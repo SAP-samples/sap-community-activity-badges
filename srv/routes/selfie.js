@@ -1,5 +1,4 @@
 const svg = require("../util/svgRender")
-const texts = require("../util/texts")
 const sharp = require('sharp')
 
 module.exports = (app) => {
@@ -34,7 +33,7 @@ module.exports = (app) => {
     })
 
     const uploadHandler = upload.any() //.single('selfie')
-    app.post('/upload_selfie', async (req, res, next) => {
+    app.post('/upload_selfie', async (req, res, _next) => {
         await uploadHandler(req, res, async (err) => {
             if (err instanceof multer.MulterError) {
                 if(err.toString() == 'MulterError: File too large'){

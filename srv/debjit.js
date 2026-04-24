@@ -2,7 +2,7 @@
 async function init() {
     try {
         
-        let [pointsLevels, badges] = await Promise.all([
+        let [, badges] = await Promise.all([
             require('./util/points.json'),
             require('./util/badges.json')
           ])

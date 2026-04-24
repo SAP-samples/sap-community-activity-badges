@@ -1,5 +1,5 @@
 'use strict'
-module.exports = (app) => {
+module.exports = (_app) => {
 
     //Only needed if service requires authentication and this one won't
       /* 

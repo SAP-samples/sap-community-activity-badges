@@ -16,7 +16,7 @@ async function callUserAPI(scnId) {
     const scnItems = JSON.parse(itemsRes.getBody())
     return scnItems
     } catch (error) {
-      throw new Error(`Error fetching SCN data for ID ${scnId}: ${error.message}`)
+      throw new Error(`Error fetching SCN data for ID ${scnId}: ${error.message}`, { cause: error })
     }
     
 }

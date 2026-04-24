@@ -4,7 +4,8 @@
     "mbt": "^1.2.34"
   },
   "scripts": {
-    "build": "mbt build"
+    "build": "mbt build",
+    "lint": "cd srv && npx eslint ."
   },
   "version": "1.0.0"
 }

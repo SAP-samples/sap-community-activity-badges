@@ -1,0 +1,73 @@
+name: Deploy to Cloud Foundry
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Deployment label (informational)'
+        required: false
+        default: ''
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install MTA Build Tool
+        run: npm install -g mbt
+
+      - name: Install Cloud Foundry CLI
+        run: |
+          curl -fsSL "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=v8&source=github" \
+            | tar -xz -C /usr/local/bin
+          cf --version
+
+      - name: Install MultiApps CF CLI plugin
+        run: |
+          cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
+          cf install-plugin multiapps -f -r CF-Community
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: srv
+
+      - name: Lint
+        run: npx eslint .
+        working-directory: srv
+
+      - name: Build MTA
+        run: mbt build --mtar archive
+
+      - name: Login to Cloud Foundry
+        run: |
+          cf login \
+            -a "${{ secrets.CF_API }}" \
+            -u "${{ secrets.CF_USERNAME }}" \
+            -p "${{ secrets.CF_PASSWORD }}" \
+            -o "${{ secrets.CF_ORG }}" \
+            -s "${{ secrets.CF_SPACE }}"
+
+      - name: Deploy
+        run: cf deploy mta_archives/archive.mtar --retries 1 -f
+
+      - name: Summary
+        run: |
+          echo "## Deployment Summary" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Version:** ${{ github.event.inputs.version || github.sha }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Branch:** ${{ github.ref_name }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Triggered by:** ${{ github.actor }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "### Deployed Apps" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          cf apps >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"

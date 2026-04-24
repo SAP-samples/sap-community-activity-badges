@@ -325,7 +325,6 @@ module.exports = (app) => {
             const scnItems = await khoros.callUserAPI(req.params.scnId)
             const userName = khoros.handleUserName(req.params.scnId, scnItems)
 
-            let text = texts.getBundle(req)
             let itemHeight = 15
             let itemDelay = 250
 

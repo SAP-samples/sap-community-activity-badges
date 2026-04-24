@@ -58,7 +58,7 @@ async function handleError(error, req, res) {
             res.type("image/svg+xml").status(200).send(body)
         }
     } catch (error) {
-        app.logger.error(error)
+        console.error(error)
         res.status(500).send(error.toString())
     }
 }
@@ -166,7 +166,7 @@ module.exports.handleErrorDevtoberfest = handleErrorDevtoberfest
 async function getDevtoberfestText(error, req){
     const texts = require("../util/texts")
     let text = texts.getBundle(req)
-    let errorString = ''
+    let errorString
     if (error.name && error.name === 'No SCN ID'){
         errorString = text.getText('devtoberfest.missingID')
     }
@@ -174,7 +174,7 @@ async function getDevtoberfestText(error, req){
         errorString = text.getText('devtoberfest.missingReg')
     }
     else if (error.statusCode && error.statusCode === 404){
-        errorString = errorString = text.getText('devtoberfest.idNotFound')
+        errorString = text.getText('devtoberfest.idNotFound')
     }
     else if (error.error) {
         errorString = error.error

@@ -43,8 +43,6 @@ module.exports = (app) => {
             let isPng = false
             if (req.query.png || req.query.gif) { isPng = true }
 
-            const request = require('then-request')
-
             const scnItems = await khoros.callUserAPI(req.params.scnId)
             const userName = khoros.handleUserName(req.params.scnId, scnItems)
 

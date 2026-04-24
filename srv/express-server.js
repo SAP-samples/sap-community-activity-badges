@@ -1,10 +1,9 @@
-/* eslint-disable no-console */
 // @ts-check
 
 //Catch uncaught errors
 //@ts-ignore
 process.on('uncaughtException', function (err) {
-    console.error(err.name + ': ' + err.message, err.stack.replace(/.*\n/, '\n')) // eslint-disable-line
+    console.error(err.name + ': ' + err.message, err.stack.replace(/.*\n/, '\n'))
 })
 
 // @ts-ignore

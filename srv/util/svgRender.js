@@ -655,7 +655,7 @@ async function svgBadgeItem(height, width, delay, image, title, png = false) {
   const request = require('then-request')
   const sharp = require('sharp')
 
-  let finalImage = image
+  let finalImage
   let content =
     `
    <g transform="translate(${width.toString()}, ${height.toString()})">\n`
@@ -720,7 +720,7 @@ async function svgBadgeItemGroups(height, width, delay, image, title, png = fals
   const request = require('then-request')
   const sharp = require('sharp')
 
-  let finalImage = image
+  let finalImage
   let content =
     `
    <g transform="translate(${width.toString()}, ${height.toString()})">\n`
@@ -772,7 +772,6 @@ module.exports.svgBadgeItemGroups = svgBadgeItemGroups
  * @returns {Promise<string>}
  */
 async function svgBadgeItemSecond(height, width, delay, title, png = false) {
-  const request = require('then-request')
 
   let content =
     `
