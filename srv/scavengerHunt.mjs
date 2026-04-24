@@ -1,20 +1,7 @@
-import { fileURLToPath } from 'url'
-import { URL } from 'url'
-const __dirname = fileURLToPath(new URL('.', import.meta.url))
 import { createRequire } from 'module'
 // @ts-ignore
 const require = createRequire(import.meta.url)
-const excel = require("node-xlsx")
 const fs = require("fs")
-import inquirer from 'inquirer'
-
-function sleep(milliseconds) {
-  const date = Date.now()
-  let currentDate = null
-  do {
-    currentDate = Date.now()
-  } while (currentDate - date < milliseconds)
-}
 
 async function init() {
   try {

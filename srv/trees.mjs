@@ -1,68 +1,58 @@
 import { fileURLToPath } from 'url'
 import { URL } from 'url'
- const __dirname = fileURLToPath(new URL('.', import.meta.url))
- import { createRequire } from 'module'
-  // @ts-ignore
- const require = createRequire(import.meta.url)
-const excel = require("node-xlsx")
-const fs = require("fs")
-import inquirer from 'inquirer'
+import search from '@inquirer/search'
+import fs from 'fs'
+import path from 'path'
+import excel from 'node-xlsx'
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 function sleep(milliseconds) {
   const date = Date.now();
+  // eslint-disable-next-line no-useless-assignment -- used in do-while condition
   let currentDate = null;
   do {
     currentDate = Date.now();
   } while (currentDate - date < milliseconds);
 }
 
+function walkDir(dir, depth, maxDepth) {
+  if (depth > maxDepth) return []
+  const results = []
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (entry.name === 'node_modules') continue
+    const fullPath = path.join(dir, entry.name)
+    if (entry.isDirectory()) {
+      results.push(...walkDir(fullPath, depth + 1, maxDepth))
+    } else {
+      results.push(fullPath)
+    }
+  }
+  return results
+}
+
 async function init() {
   try {
+    const rootPath = path.resolve(__dirname, '../../devtoberfest-data')
+    const allFiles = walkDir(rootPath, 0, 5)
 
-   // const inquirer = require('inquirer')
-    inquirer.registerPrompt('fuzzypath', require('inquirer-fuzzy-path'))
-    const answer = await inquirer.prompt([
-      {
-        type: 'fuzzypath',
-        name: 'path',
-        excludePath: nodePath => nodePath.startsWith('node_modules'),
-        // excludePath :: (String) -> Bool
-        // excludePath to exclude some paths from the file-system scan
-        excludeFilter: nodePath => nodePath == '.',
-        // excludeFilter :: (String) -> Bool
-        // excludeFilter to exclude some paths from the final list, e.g. '.'
-        itemType: 'file',
-        // itemType :: 'any' | 'directory' | 'file'
-        // specify the type of nodes to display
-        // default value: 'any'
-        // example: itemType: 'file' - hides directories from the item list
-        rootPath: '../../devtoberfest-data',
-        // rootPath :: String
-        // Root search directory
-        message: 'Select a Contest Excel File to import',
-        default: 'Devtoberfest',
-        suggestOnly: false,
-        // suggestOnly :: Bool
-        // Restrict prompt answer to available choices or use them as suggestions
-        depthLimit: 5,
-        // depthLimit :: integer >= 0
-        // Limit the depth of sub-folders to scan
-        // Defaults to infinite depth if undefined
+    const filePath = await search({
+      message: 'Select a Contest Excel File to import',
+      source: (input) => {
+        const term = (input || 'Devtoberfest').toLowerCase()
+        return allFiles
+          .filter(f => f.toLowerCase().includes(term))
+          .map(f => ({ name: path.relative(rootPath, f), value: f }))
       }
-    ])
+    })
 
-    let [pointsLevels, badges] = await Promise.all([
-      require('./util/points.json'),
-      require('./util/badges.json')
-    ])
+    const badges = JSON.parse(fs.readFileSync(path.join(__dirname, 'util/badges.json'), 'utf8'))
+    const pointsLevels = JSON.parse(fs.readFileSync(path.join(__dirname, 'util/points.json'), 'utf8'))
 
-    // Parse a file
-    const workSheetsFromFile = excel.parse(answer.path, { raw: false })
+    const workSheetsFromFile = excel.parse(filePath, { raw: false })
     await Promise.all(workSheetsFromFile[0].data.map(async (item) => {
       try {
         if (item[0] === `type`) {
-   //       item[8] = 'Score'
-   //       item[9] = 'Level'
           return
         }
 
@@ -78,15 +68,14 @@ async function init() {
         scnId = scnId.replace("https://people.sap.com/", "")
         scnId = scnId.replace("http://scn.sap.com/people/", "")
         scnId = scnId.replace("people.sap.com/", "")
-        
+
         scnId = scnId.toLowerCase()
 
-        const request = require('then-request')
         const urlBadges = `https://people-api.services.sap.com/rs/badge/${scnId}?sort=timestamp,desc&size=1000`
 
-        let itemsRes = await request('GET', urlBadges)
+        const response = await fetch(urlBadges)
         sleep(20)
-        const scnItems = JSON.parse(itemsRes.getBody())
+        const scnItems = await response.json()
 
         let points = 0
         let trees = false
