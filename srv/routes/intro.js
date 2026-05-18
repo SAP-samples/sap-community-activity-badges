@@ -33,9 +33,8 @@ module.exports = (app) => {
 
         try {
             let mdReadMe = await fs.readFile(path.resolve(__dirname, "../doc/README.md"), "utf-8")
-            const showdown = require('showdown')
-            const converter = new showdown.Converter()
-            let content = converter.makeHtml(mdReadMe)
+            const { marked } = require('marked')
+            let content = marked.parse(mdReadMe)
             let html = `<!DOCTYPE html>
 <html lang="en">
 <head>
