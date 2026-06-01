@@ -46,7 +46,7 @@ Requires Node.js `^22.0.0 || ^24.0.0`.
 
 - **`srv/util/`** — Shared utilities:
   - `svgRender.js` — SVG building blocks (headers, styles, shapes, image embedding)
-  - `khoros.js` — SAP Community Khoros API calls (`https://community.sap.com/khhcw49343/api/2.0/users/:scnId`), file-based caching of API responses (1 day TTL via runtime-generated `tags.json`)
+  - `khoros.js` — SAP Community Khoros API calls. Direct user lookup (`/khhcw49343/api/2.0/users/:scnId`) was deprecated for anonymous callers in mid-2026 (returns HTTP 404 / code 303). `callUserAPI` now queries `…/api/2.0/search?q=SELECT author.* FROM messages WHERE author.id='<scnId>' LIMIT 1` and re-shapes the result to the legacy `{ data: <user> }` envelope so callers are unchanged. Falls back to `author.login` lookup with dot→underscore login normalization. File-based caching of API responses (1 day TTL via runtime-generated `tags.json`).
   - `error.js` — Error handler that renders errors as SVG/PNG images
   - `texts.js` — i18n via `@sap/textbundle`, reads `Accept-Language` header
   - `badges.json`, `badges2024.json` — Badge definitions (id, name, image URL)

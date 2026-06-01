@@ -283,14 +283,26 @@ The codebase uses two different Khoros API hosts for different purposes:
 
 | Host | API Version | Used For |
 |---|---|---|
-| `community.sap.com/khhcw49343/api/2.0/` | v2 REST | User profile with badge list (`/users/:id`) |
+| `community.sap.com/khhcw49343/api/2.0/` | v2 REST + Search | User profile with badge list — via `search` over `messages.author.*` (direct `/users/:id` was deprecated for anonymous callers in mid-2026) |
 | `groups.community.sap.com/api/2.0/` | v2 REST + Search | Events, RSVPs, boards, threads, member queries |
 
 ### User Profile API (`util/khoros.js`)
 
-**Endpoint:** `GET https://community.sap.com/khhcw49343/api/2.0/users/{scnId}`
+**Effective endpoint:** `GET https://community.sap.com/khhcw49343/api/2.0/search?q=SELECT ... FROM messages WHERE author.id = '{scnId}' LIMIT 1`
 
-The `scnId` can be either the numeric community ID or the string login name. The response is a Khoros standard user object. Key fields used:
+> **Why search and not `/users/:id`?** As of mid-2026 the SAP Community revoked anonymous read permission on the `users` collection (`allow_restapi_call_read`), so direct `GET /users/{scnId}` returns HTTP 404 ("The user was not found", code 303). The same data is still reachable through field expansion on a `messages` query, because the `messages` collection retains anonymous read. `callUserAPI` queries the search endpoint, projects the needed `author.*` fields, and re-shapes the result to the legacy `{ data: <user> }` envelope so callers stay unchanged.
+
+**Lookup strategy:** `callUserAPI(scnId)` tries up to three queries in order, returning the first non-empty result:
+
+1. If `scnId` is all digits → `WHERE author.id = '<scnId>'`
+2. Else (login form) → `WHERE author.login = '<scnId-with-dots-replaced-by-underscores>'`
+3. If still empty and the original differed from the normalized form → retry with the original (dotted) login
+
+The dot-to-underscore normalization handles the migration where logins like `thomas.jung` were renamed to `thomas_jung`.
+
+**Caveat:** A user is reachable only if they have authored at least one message. Pure read-only profiles (zero posts) return `null` and `callUserAPI` throws `"No messages found for user '<scnId>' — user may have zero posts or the ID/login is unknown"`.
+
+The `scnId` can be either the numeric community ID or the string login name. The response is re-shaped to look like a Khoros user object. Key fields used:
 
 ```
 data.login                      → fallback display name
