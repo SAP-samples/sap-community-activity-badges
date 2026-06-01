@@ -4,21 +4,77 @@ const path = require('path')
 const cacheFile = path.join(__dirname, 'util', 'tags.json')
 module.exports.cacheFile = cacheFile
 
+// Direct user lookups against this endpoint started returning HTTP 404 (code 303,
+// "The user was not found") around mid-2026 after SAP Community revoked
+// allow_restapi_call_read for the anonymous user. Kept exported for backward
+// compatibility — callUserAPI now goes through the messages.author.* expansion
+// at searchAPIURL (see below).
 const userAPIURL = 'https://community.sap.com/khhcw49343/api/2.0/users/'
-module.exports.userAPIURL
+module.exports.userAPIURL = userAPIURL
 
-async function callUserAPI(scnId) {
+const searchAPIURL = 'https://community.sap.com/khhcw49343/api/2.0/search'
+module.exports.searchAPIURL = searchAPIURL
+
+// Fields projected from messages.author.* — together they reconstruct the
+// shape the routes expect under scnItems.data.* (login, name, metrics, rank,
+// and user_badges.items[].badge.{id,title,icon_url,description} + earned_date).
+const AUTHOR_FIELDS = [
+    'author.id',
+    'author.login',
+    'author.first_name',
+    'author.last_name',
+    'author.rank.name',
+    'author.metrics.posts',
+    'author.user_badges.badge.id',
+    'author.user_badges.badge.title',
+    'author.user_badges.badge.icon_url',
+    'author.user_badges.badge.description',
+    'author.user_badges.earned_date'
+].join(',')
+
+async function searchAuthor(whereClause) {
     const request = require('then-request')
-    const urlBadges = `${userAPIURL}${scnId}`
-
-    try {
-      let itemsRes = await request('GET', encodeURI(urlBadges))
-    const scnItems = JSON.parse(itemsRes.getBody())
-    return scnItems
-    } catch (error) {
-      throw new Error(`Error fetching SCN data for ID ${scnId}: ${error.message}`, { cause: error })
+    const query = `SELECT ${AUTHOR_FIELDS} FROM messages WHERE ${whereClause} LIMIT 1`
+    const url = `${searchAPIURL}?q=${encodeURIComponent(query)}`
+    const res = await request('GET', url)
+    const body = JSON.parse(res.getBody())
+    if (body.status !== 'success') {
+        throw new Error(`Khoros search failed: ${body.message || JSON.stringify(body)}`)
     }
-    
+    return body?.data?.items?.[0]?.author || null
+}
+
+// Resolves a user via two strategies, in order:
+//   1. If scnId looks numeric → SELECT ... WHERE author.id = '<scnId>'
+//   2. Else / on miss          → SELECT ... WHERE author.login = '<normalized>'
+// where normalization replaces dots with underscores (the community migrated
+// dotted logins like "thomas.jung" to "thomas_jung").
+// Returned shape mirrors the legacy /users/:id response — { data: <author> } —
+// so callers (showcaseBadges, activityCounts, devtoberfest) remain unchanged.
+async function callUserAPI(scnId) {
+    try {
+        const id = String(scnId)
+        const isNumeric = /^\d+$/.test(id)
+        let author = null
+
+        if (isNumeric) {
+            author = await searchAuthor(`author.id = '${id}'`)
+        }
+        if (!author) {
+            const login = id.replace(/\./g, '_')
+            author = await searchAuthor(`author.login = '${login}'`)
+        }
+        if (!author && !isNumeric && id !== id.replace(/\./g, '_')) {
+            // last-ditch: try the original (dotted) form unchanged
+            author = await searchAuthor(`author.login = '${id}'`)
+        }
+        if (!author) {
+            throw new Error(`No messages found for user '${scnId}' — user may have zero posts or the ID/login is unknown`)
+        }
+        return { data: author }
+    } catch (error) {
+        throw new Error(`Error fetching SCN data for ID ${scnId}: ${error.message}`, { cause: error })
+    }
 }
 module.exports.callUserAPI = callUserAPI
 
