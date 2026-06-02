@@ -109,3 +109,6 @@ dist
 Makefile_20220208160644.mta
 .playwright-mcp/
 .superpowers/
+
+# Git worktrees for parallel feature development
+.worktrees/
