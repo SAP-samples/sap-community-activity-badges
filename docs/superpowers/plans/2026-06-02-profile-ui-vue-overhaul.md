@@ -94,7 +94,7 @@ docs/superpowers/plans/2026-06-02-profile-ui-vue-overhaul.md   ← this file
 
 ### Files modified
 
-- `srv/routes/intro.js` — remove the existing `/profile/` redirect; add `/profile` static mount + SPA fallback. Reorder so the static mount precedes the catch-all `/` route.
+- `srv/routes/intro.js` — remove the existing `/profile/` redirect; add `/profile` static mount + SPA fallback (regex catch-all).
 - `srv/app/flp/index.html` — add a top-of-`<head>` script that catches `#profile-ui` and replaces the location with `/profile`.
 - `srv/package.json` — add `concurrently`, `wait-on` devDependencies; replace `dev` script with the orchestrator; add `dev:express`, `dev:server-only`, `dev:vue`, `build:vue`, `test:vue`.
 - `package.json` (repo root) — chain Vue install + build before `mbt build`.
@@ -178,7 +178,7 @@ Write `srv/app/profile-vue/package.json`:
   "dependencies": {
     "@ui5/webcomponents": "^2.13.0",
     "@ui5/webcomponents-fiori": "^2.13.0",
-    "@ui5/webcomponents-vue": "^0.0.0-beta",
+    "@ui5/webcomponents-icons": "^2.13.0",
     "pinia": "^2.3.0",
     "vue": "^3.5.13",
     "vue-i18n": "^10.0.5",
@@ -200,6 +200,8 @@ Write `srv/app/profile-vue/package.json`:
 ```
 
 > Pin versions slightly above current latest as a reasonable floor. If `npm install` reports an unresolved range, bump only that one to the highest dist-tag.
+>
+> **Note on `@ui5/webcomponents-vue`:** the spec mentions this Vue wrapper package, but in practice this plan uses UI5 Web Components directly as native custom elements (registered via side-effect imports in `main.ts`) with `compilerOptions.isCustomElement` telling Vue to leave them alone. That gives us all the components we need without a beta wrapper layer. We can revisit adopting `@ui5/webcomponents-vue` later if event-typing ergonomics warrant it.
 
 - [ ] **Step 2: Create `tsconfig.json` and `tsconfig.node.json`**
 
@@ -1587,63 +1589,54 @@ npm test -- convert-i18n
 ```
 Expected: all 8 tests **pass**.
 
-- [ ] **Step 5: Run the converter — generates 11 JSON files**
+- [ ] **Step 5: Add the new i18n keys to the SOURCE `.properties` files**
+
+> Important: we add new keys to the source `.properties` files in `srv/app/flp/profile/i18n/`, NOT to the generated JSON. This makes the converter idempotent — anyone running `npm run i18n:convert` later will preserve all keys.
+
+Append this block to the END of `srv/app/flp/profile/i18n/i18n.properties` (the English default):
+
+```properties
+
+# --- Vue overhaul keys (2026-06) ---
+error.notFound=User ''{scnId}'' not found.
+error.network=Could not reach the SAP Community service. Check your connection and try again.
+error.unexpected=Something unexpected happened while loading the profile.
+error.retry=Retry
+view.table=Table
+view.grid=Grid
+embed.html=HTML
+embed.markdown=Markdown
+embed.url=URL only
+embed.copy=Copy
+embed.copied=Copied
+embed.copyFallback=Selected — press Ctrl+C to copy
+signature.alt={scnId} SAP Community signature
+mobile.preview=Preview
+mobile.expand=Show signature
+mobile.collapse=Hide signature
+theme.toggle=Toggle theme
+```
+
+Append the same block (English values) to each of the other 10 locale files: `i18n_de.properties`, `i18n_es.properties`, `i18n_fr.properties`, `i18n_hi.properties`, `i18n_i-klingon.properties`, `i18n_it.properties`, `i18n_iw.properties`, `i18n_ja.properties`, `i18n_la.properties`, `i18n_pl.properties`. `vue-i18n` falls back to English for any missing key, so this is safe — translation polish becomes a follow-up issue.
+
+> **Recommended fast path:** for the initial PR, copy the English block verbatim into the other 10 files. Open a follow-up issue for translation polish. Document this choice in the PR description. (Klingon and Latin can get period-appropriate flavor later — e.g. Klingon `error.network` → `qaStaH nuq jay'?` — but English is fine for now.)
+
+- [ ] **Step 6: Run the converter — generates 11 JSON files containing both old and new keys**
 
 ```bash
 npm run i18n:convert
 ls src/i18n/locales/
 ```
+
 Expected output: 11 JSON files: `de.json en.json es.json fr.json hi.json i-klingon.json it.json iw.json ja.json la.json pl.json`.
 
-Spot-check `en.json` contains the existing keys plus our nested structure:
+Spot-check `en.json` contains the new keys:
 
 ```bash
-node -e "console.log(JSON.stringify(require('./src/i18n/locales/en.json').profile, null, 2))" | head -10
-```
-Expected: keys like `scnId`, `Toolbar1`, `badgeId`, `limitErr` are present.
-
-- [ ] **Step 6: Add the new keys to `en.json` manually**
-
-Open `src/i18n/locales/en.json` and ADD (do not overwrite existing keys) these blocks at the top level:
-
-```jsonc
-{
-  // ... existing keys ...
-  "error": {
-    "notFound": "User '{scnId}' not found.",
-    "network": "Could not reach the SAP Community service. Check your connection and try again.",
-    "unexpected": "Something unexpected happened while loading the profile.",
-    "retry": "Retry"
-  },
-  "view": {
-    "table": "Table",
-    "grid": "Grid"
-  },
-  "embed": {
-    "html": "HTML",
-    "markdown": "Markdown",
-    "url": "URL only",
-    "copy": "Copy",
-    "copied": "Copied",
-    "copyFallback": "Selected — press Ctrl+C to copy"
-  },
-  "signature": {
-    "alt": "{scnId} SAP Community signature"
-  },
-  "mobile": {
-    "preview": "Preview",
-    "expand": "Show signature",
-    "collapse": "Hide signature"
-  },
-  "theme": {
-    "toggle": "Toggle theme"
-  }
-}
+node -e "const j = require('./src/i18n/locales/en.json'); console.log(j.error, j.embed, j.view)"
 ```
 
-Then copy the same block (with English values) into the other 10 locale files. `vue-i18n` will fall back to English for any missing key, so a translator pass can come later. Klingon and Latin can get period-appropriate flavor — keep simple translations for now if uncertain (e.g. Klingon `error.network` → `qaStaH nuq jay'?`).
-
-> **Recommended fast path:** for the initial PR, copy the English block verbatim into the other 10 files. Open a follow-up issue for translation polish. Document this choice in the PR description.
+Expected: prints the `error`, `embed`, `view` blocks with English values. Re-running `npm run i18n:convert` produces byte-identical output (idempotent).
 
 - [ ] **Step 7: Commit**
 
@@ -1651,8 +1644,13 @@ Then copy the same block (with English values) into the other 10 locale files. `
 cd ../../..
 git add srv/app/profile-vue/scripts/convert-i18n.mjs \
         srv/app/profile-vue/tests/unit/convert-i18n.spec.ts \
-        srv/app/profile-vue/src/i18n/locales/
-git commit -m "feat(profile-vue): port 11 locales from SAPUI5 + i18n converter"
+        srv/app/profile-vue/src/i18n/locales/ \
+        srv/app/flp/profile/i18n/
+git commit -m "feat(profile-vue): port 11 locales from SAPUI5 + i18n converter
+
+Adds new Vue-overhaul keys (error.*, view.*, embed.*, signature.*,
+mobile.*, theme.*) to the source .properties files so the converter
+is idempotent."
 ```
 
 ---
@@ -1823,7 +1821,7 @@ app.use(router)
 app.mount('#app')
 ```
 
-> Note: add `@ui5/webcomponents-icons` to `package.json` dependencies. If `npm install` reports the package missing, run `npm install @ui5/webcomponents-icons` in `srv/app/profile-vue/`.
+> Note: `@ui5/webcomponents-icons` is included in the Task 1 `package.json`. If you ever add icons that aren't already side-effect-imported here, add another `import '@ui5/webcomponents-icons/dist/<icon-name>.js'` line.
 
 - [ ] **Step 4: Update `src/App.vue` to render the router view**
 
@@ -1873,7 +1871,7 @@ body {
 
 ```bash
 cd srv/app/profile-vue
-npm install @ui5/webcomponents-icons
+npm install
 npm run build
 ```
 Expected: 0 errors. `dist/index.html` + `dist/assets/` produced.
@@ -3868,8 +3866,10 @@ git commit -m "feat(dev): single npm run dev orchestrates Express + Vite"
 
 ```bash
 cd srv/app/profile-vue
-npx playwright install --with-deps chromium
+npx playwright install chromium
 ```
+
+> On Linux CI you can also pass `--with-deps` to install required system libraries (`npx playwright install --with-deps chromium`); on macOS/Windows leave it off.
 
 - [ ] **Step 2: Create `playwright.config.ts`**
 
@@ -3886,7 +3886,7 @@ export default defineConfig({
     trace: 'retain-on-failure'
   },
   webServer: {
-    command: 'npm --prefix ../../.. run --silent --workspaces=false build:vue && npm --prefix ../.. start',
+    command: 'npm --prefix ../.. run --silent build:vue && npm --prefix ../.. start',
     url: 'http://localhost:4000/',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000
@@ -3897,7 +3897,7 @@ export default defineConfig({
 })
 ```
 
-> Note: the `webServer.command` builds the Vue dist then starts Express. If the e2e test runs in a context where the dist is already built, the build step is fast (Vite caches).
+> Note: the `webServer.command` builds the Vue dist then starts Express. The `--prefix ../..` is `srv/`, where `build:vue` and `start` are defined (added in Tasks 20 and pre-existing respectively). If the e2e test runs in a context where the dist is already built, the build step is fast (Vite caches).
 
 - [ ] **Step 3: Write the happy-path test**
 
