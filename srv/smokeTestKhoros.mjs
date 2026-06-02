@@ -3,6 +3,7 @@
 // and a login-form lookup. Confirms the shape consumed by routes is intact:
 //   - data.login / data.first_name / data.last_name
 //   - data.metrics.posts / data.rank.name
+//   - data.avatar.profile / data.signature / data.view_href  (FLP Badge Signature Builder)
 //   - data.user_badges.items[].badge.id|title|icon_url
 //   - data.user_badges.items[].earned_date
 //
@@ -41,6 +42,15 @@ async function runCase(label, scnId) {
     assert(typeof result?.data?.last_name === 'string', '.data.last_name is string')
     assert(typeof result?.data?.metrics?.posts === 'number', '.data.metrics.posts is number')
     assert(typeof result?.data?.rank?.name === 'string', '.data.rank.name is string')
+    // Fields used by the FLP Badge Signature Builder (App.view.xml + App.controller.js).
+    // These don't have to be non-empty (a fresh user may have no signature/avatar),
+    // but the keys must exist so SAPUI5 binding paths resolve without errors.
+    assert('avatar' in (result?.data ?? {}), '.data.avatar key present (FLP avatar binding)')
+    assert(typeof result?.data?.avatar?.profile === 'string' || result?.data?.avatar?.profile === null,
+        '.data.avatar.profile is string or null')
+    assert(typeof result?.data?.signature === 'string', '.data.signature is string (HTML, may be empty)')
+    assert(typeof result?.data?.view_href === 'string' && result.data.view_href.length > 0,
+        '.data.view_href is non-empty URL')
     assert(Array.isArray(result?.data?.user_badges?.items), '.data.user_badges.items is array')
     assert((result?.data?.user_badges?.items?.length ?? 0) > 0, 'has at least one badge')
 

@@ -589,11 +589,15 @@ async function getSCNProfile(scnId, app) {
             throw e
         }
         default: {
-            const userURL = `https://groups.community.sap.com/api/2.0/users/${scnId}`
-            app.logger.info(userURL)
-            let userDetails = await request('GET', encodeURI(userURL))
-            const userOutput = JSON.parse(userDetails.getBody())
-            return userOutput
+            // Direct GET /api/2.0/users/:scnId was deprecated for anonymous
+            // callers in mid-2026 (across BOTH the community.sap.com/khhcw49343
+            // and groups.community.sap.com hosts), so this route now goes
+            // through the same messages.author.* expansion the SVG-rendering
+            // routes use. callUserAPI projects avatar/signature/view_href
+            // alongside the badge fields the Badge Signature Builder needs
+            // (see srv/app/flp/profile/controller/App.controller.js).
+            app.logger.info(`getSCNProfile via callUserAPI('${scnId}')`)
+            return await khoros.callUserAPI(scnId)
         }
     }
 }

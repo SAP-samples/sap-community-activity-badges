@@ -207,11 +207,11 @@ Returns the Devtoberfest profile as raw JSON (same data as the gameboard uses in
 All routes in `srv/routes/khorosUser.js`. These are internal/admin tools. No authentication is required but they proxy sensitive community data (email addresses, RSVP lists).
 
 Both Khoros API base URLs are used:
-- User profiles: `https://community.sap.com/khhcw49343/api/2.0/` (old SCN)
+- User profiles: `https://community.sap.com/khhcw49343/api/2.0/search` (via `messages.author.*` field expansion — direct `/users/:id` was deprecated for anonymous callers in mid-2026 on **both** hosts)
 - Community search: `https://groups.community.sap.com/api/2.0/search` (new community)
 
 #### `GET /khoros/user/:scnId`
-Returns raw Khoros user profile JSON from the new community API (`groups.community.sap.com/api/2.0/users/:scnId`).
+Returns Khoros user profile JSON. Delegates to `khoros.callUserAPI(scnId)` (see `util/khoros.js`) which queries the search endpoint over `messages.author.*` and re-shapes the result to the legacy `{ data: <user> }` envelope. The projection includes `avatar.profile`, `signature`, and `view_href` so the FLP Badge Signature Builder (`/flp/#profile-ui`) can render the avatar, parse the existing signature, and link the generated `<img>` to the user's profile.
 
 #### `GET /khoros/event/:eventId`
 Returns structured event details including location, start/end times, timezone, and RSVP list (login, email, view_href). Fetches event data and RSVPs in parallel.
