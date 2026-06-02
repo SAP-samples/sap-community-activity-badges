@@ -2,5 +2,5 @@
 </script>
 
 <template>
-  <div>profile-vue scaffold OK</div>
+  <RouterView />
 </template>

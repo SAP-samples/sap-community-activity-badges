@@ -1,0 +1,7 @@
+:root { color-scheme: light dark; }
+html, body, #app { margin: 0; padding: 0; height: 100%; }
+body {
+  font-family: var(--sapFontFamily, system-ui, sans-serif);
+  background: var(--sapBackgroundColor, #fff);
+  color: var(--sapTextColor, #000);
+}
