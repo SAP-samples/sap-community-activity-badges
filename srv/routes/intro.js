@@ -14,8 +14,17 @@ module.exports = (app) => {
     app.get('/selfie/', async (req, res) => {
         return res.redirect("/flp/#selfie-ui")
     })
-    app.get('/profile/', async (req, res) => {
-        return res.redirect("/flp/#profile-ui")
+    // New Vue SPA — served from the built dist directory
+    const profileDist = path.join(__dirname, '../app/profile-vue/dist')
+    app.use('/profile', express.static(profileDist))
+    app.get(/^\/profile(\/.*)?$/, async (req, res) => {
+        try {
+            const indexHtml = path.join(profileDist, 'index.html')
+            res.sendFile(indexHtml, { dotfiles: 'allow' })
+        } catch (error) {
+            app.logger.error(error)
+            res.status(500).send(error.toString())
+        }
     })
     app.use('/i18n', express.static(path.join(__dirname, '../_i18n')))
     app.use('/favicon.ico', express.static(path.join(__dirname, '../app/favicon.ico')))
