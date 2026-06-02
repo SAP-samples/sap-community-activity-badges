@@ -9,7 +9,7 @@
 - Replace the SAPUI5 1.147 application that currently renders at `/flp/#profile-ui` with a modern Vue 3 SPA at `/profile`.
 - Keep every field, action, and externally-visible behavior of today's app.
 - Improve the badge-picking UX so the live signature preview is always visible while picking.
-- Preserve all 12 existing locales (including the Klingon and Latin easter eggs).
+- Preserve all 11 existing locales (English + 10 variants, including the Klingon and Latin easter eggs).
 - Touch zero server logic. The new app is a pure presentation-layer rewrite over the existing `/khoros/user/:scnId` and `/showcase*` endpoints.
 - One-command local dev: `cd srv && npm run dev` brings up everything.
 
@@ -34,7 +34,7 @@
 | 7 | Badge browser | **View toggle**: `<ui5-table>` (default) ⇄ card grid |
 | 8 | Embed code | **Tabs**: HTML / Markdown / URL |
 | 9 | Mobile signature | **Sticky-bottom collapsible bar** that expands to a fullscreen `<ui5-dialog>` |
-| 10 | i18n | Port all 12 locales verbatim (en/de/es/fr/hi/i-klingon/it/iw/ja/la/pl plus default) |
+| 10 | i18n | Port all 11 locales verbatim: `en` (from default `i18n.properties`), `de`, `es`, `fr`, `hi`, `i-klingon`, `it`, `iw`, `ja`, `la`, `pl` |
 | 11 | Local dev | Single `npm run dev` in `srv/` runs Express + Vite together |
 
 ## Architecture
@@ -45,7 +45,7 @@
 - **`@ui5/webcomponents-vue`** + `@ui5/webcomponents` + `@ui5/webcomponents-fiori` (Fiori theme `sap_horizon` / `sap_horizon_dark`).
 - **Vite 7+** dev server (HMR) and build.
 - **Pinia** — single store for cross-component state.
-- **vue-i18n** — fed from JSON generated at build time from existing `i18n_*.properties`.
+- **vue-i18n** — fed from 11 JSON files generated at build time from existing `i18n.properties` (→ `en.json`) + `i18n_*.properties` (→ `<locale>.json`).
 - **Vue Router** in HTML5 history mode, single route `/profile/:scnId?`.
 - **Vitest** + **`@vue/test-utils`** + **`@pinia/testing`** for unit tests.
 - **Playwright** for one happy-path end-to-end test.
@@ -97,10 +97,13 @@ The MTAR `mta.yaml` already packages `srv/`; the new `dist/` is included automat
   "scripts": {
     "dev": "concurrently -k -n express,vue -c blue,magenta \"npm:dev:express\" \"npm:dev:vue\"",
     "dev:express": "nodemon index.js",
+    "dev:server-only": "nodemon index.js",
     "dev:vue": "wait-on -t 30000 http://localhost:4000 && npm --prefix app/profile-vue run dev"
   }
 }
 ```
+
+The `dev:server-only` alias preserves the legacy "just run Express" behavior for contributors who don't need the Vue app running (e.g., when iterating on the SVG endpoints alone).
 
 `srv/app/profile-vue/vite.config.ts` proxies all server-side routes:
 
@@ -115,6 +118,8 @@ server: {
   }
 }
 ```
+
+Static assets used by the SPA (favicon, `badge-placeholder.svg`) live in `srv/app/profile-vue/public/` and are served by Vite directly during dev and copied into `dist/` at build time — no proxy needed.
 
 Result: `cd srv && npm install && npm run dev` brings up Express on 4000 and Vite on 5173 in one terminal. Open `http://localhost:5173/profile/<scn-id>`. Ctrl+C kills both cleanly.
 
@@ -270,7 +275,7 @@ Exactly **one** application network call: `GET /khoros/user/:scnId`. The signatu
 - `SignatureRail` — `<img>` has interpolated `alt`; tab labels localized; copy buttons announce "Copied" via `<ui5-toast aria-live="polite">`.
 - Color contrast inherited from `sap_horizon` / `sap_horizon_dark` (WCAG AA).
 - Reduced motion: only animation is the mobile bottom-bar expand; gated on `prefers-reduced-motion`.
-- `<html lang>` set from active vue-i18n locale; all 12 locales are valid BCP47 (`i-klingon` and `la` included).
+- `<html lang>` set from active vue-i18n locale; all 11 locales are valid BCP47 (`i-klingon` and `la` included).
 
 ### Theme
 
@@ -278,9 +283,9 @@ Light/dark follows `prefers-color-scheme` by default (mirrors current FLP `theme
 
 ## Internationalization
 
-All 12 existing locales are ported verbatim. A small build-time script `scripts/convert-i18n.mjs` reads each `srv/app/flp/profile/i18n/i18n_*.properties` (and the default `i18n.properties`) and emits matching `src/i18n/locales/*.json` for vue-i18n. The conversion is idempotent — re-runnable on any source change.
+All 11 existing locales are ported verbatim. A small build-time script `scripts/convert-i18n.mjs` reads `srv/app/flp/profile/i18n/i18n.properties` (→ `en.json`) and each `i18n_<locale>.properties` (→ `<locale>.json`) and emits matching `src/i18n/locales/*.json` for vue-i18n. The conversion is idempotent — re-runnable on any source change.
 
-### New keys (added to all 12 locales)
+### New keys (added to all 11 locales)
 
 - `error.notFound`, `error.network`, `error.unexpected`, `error.retry`
 - `view.table`, `view.grid`
@@ -336,7 +341,7 @@ srv/
 │       │   │   └── khoros.ts
 │       │   ├── i18n/
 │       │   │   ├── index.ts
-│       │   │   └── locales/                  ← 12 generated JSON files
+│       │   │   └── locales/                  ← 11 generated JSON files (en, de, es, fr, hi, i-klingon, it, iw, ja, la, pl)
 │       │   └── styles/
 │       │       └── main.css                  ← layout-only; theme via UI5 WC
 │       └── tests/
@@ -370,7 +375,7 @@ srv/
 4. Build leaf components: `ScnIdInput`, `ProfileDetails`, `SelectedBadgesEditor`, `BadgeTable`, `BadgeGrid`, `BadgeBrowser`, `SignatureRail`.
 5. Wire layout in `ProfileApp.vue` (sticky right rail, responsive grid).
 6. Add `MobileSignatureBar` + viewport composable.
-7. i18n converter + 12 locales.
+7. i18n converter + 11 locales.
 8. Express static mount + SPA fallback. `/profile/<scnId>` works end-to-end against the built dist.
 9. Add `#profile-ui` redirect snippet to `srv/app/flp/index.html`.
 10. `srv/package.json`: `concurrently` + `wait-on` + `dev`/`dev:express`/`dev:vue` scripts.
@@ -384,7 +389,7 @@ srv/
 - `/profile/<existing-scn-id>` loads in a built `mbt` MTAR; profile populates; selecting/deselecting badges updates the right-rail signature in real time; the "Copy HTML" button writes a working `<a><img/></a>` snippet to the clipboard.
 - `/flp/#profile-ui` redirects to `/profile` (verified in browser).
 - `npm test` passes (Vitest unit + Playwright happy path).
-- All 12 locales render without missing-key warnings.
+- All 11 locales render without missing-key warnings.
 - Mobile bottom-bar tested on a phone-width viewport.
 - Existing FLP `selfie` and `tags` tiles still work unchanged.
 
