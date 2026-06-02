@@ -112,3 +112,6 @@ Makefile_20220208160644.mta
 
 # Git worktrees for parallel feature development
 .worktrees/
+
+srv/app/profile-vue/dist/
+srv/app/profile-vue/node_modules/

@@ -1,0 +1,36 @@
+{
+  "name": "profile-vue",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "i18n:convert": "node scripts/convert-i18n.mjs"
+  },
+  "dependencies": {
+    "@ui5/webcomponents": "^2.13.0",
+    "@ui5/webcomponents-fiori": "^2.13.0",
+    "@ui5/webcomponents-icons": "^2.13.0",
+    "pinia": "^2.3.0",
+    "vue": "^3.5.13",
+    "vue-i18n": "^10.0.5",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@pinia/testing": "^0.1.7",
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.10.0",
+    "@vitejs/plugin-vue": "^6.0.7",
+    "@vue/test-utils": "^2.4.6",
+    "jsdom": "^25.0.1",
+    "typescript": "^5.7.2",
+    "vite": "^7.0.0",
+    "vitest": "^2.1.8",
+    "vue-tsc": "^2.2.0"
+  }
+}
