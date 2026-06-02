@@ -1,0 +1,57 @@
+{
+  "appTitle": "כלי חתימת פרופיל ותג של קהילת SAP",
+  "gui": {
+    "loading": "טוען נתונים",
+    "loadingLong": "אנא המתן... טוען נתונים"
+  },
+  "profile": {
+    "Toolbar1": "בחר מזהה פרופיל של קהילת SAP",
+    "scnId": "מזהה קהילת SAP",
+    "login": "התחברות",
+    "url": "כתובת URL של הפרופיל",
+    "Toolbar2": "חתימה",
+    "signaturePreview": "תצוגה מקדימה של החתימה",
+    "signature": "חתימה",
+    "badges": "תגים",
+    "fname": "שם פרטי",
+    "lname": "שם משפחה",
+    "rank": "דירוג",
+    "selBadges": "תגים שנבחרו",
+    "badgeId": "מזהה התג",
+    "badgeImage": "תמונת התג",
+    "select": "בחר",
+    "badgeTitle": "כותרת",
+    "dateEarned": "תאריך קבלה",
+    "awarded": "מספר החברים שיש להם את התג הזה",
+    "limitErr": "ניתן לבחור עד חמישה תגים בלבד"
+  },
+  "error": {
+    "notFound": "User ''{scnId}'' not found.",
+    "network": "Could not reach the SAP Community service. Check your connection and try again.",
+    "unexpected": "Something unexpected happened while loading the profile.",
+    "retry": "Retry"
+  },
+  "view": {
+    "table": "Table",
+    "grid": "Grid"
+  },
+  "embed": {
+    "html": "HTML",
+    "markdown": "Markdown",
+    "url": "URL only",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFallback": "Selected — press Ctrl+C to copy"
+  },
+  "signature": {
+    "alt": "{scnId} SAP Community signature"
+  },
+  "mobile": {
+    "preview": "Preview",
+    "expand": "Show signature",
+    "collapse": "Hide signature"
+  },
+  "theme": {
+    "toggle": "Toggle theme"
+  }
+}

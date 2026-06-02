@@ -1,0 +1,57 @@
+{
+  "appTitle": "Outil de Signature de Profil et de Badge de la Communauté SAP",
+  "gui": {
+    "loading": "Chargement des données",
+    "loadingLong": "Veuillez patienter... Chargement des données"
+  },
+  "profile": {
+    "Toolbar1": "Choisir l'ID de Profil de la Communauté SAP",
+    "scnId": "ID de la Communauté SAP",
+    "login": "Connexion",
+    "url": "URL du Profil",
+    "Toolbar2": "Signature",
+    "signaturePreview": "Aperçu de la Signature",
+    "signature": "Signature",
+    "badges": "Badges",
+    "fname": "Prénom",
+    "lname": "Nom de Famille",
+    "rank": "Rang",
+    "selBadges": "Badges Sélectionnés",
+    "badgeId": "ID du Badge",
+    "badgeImage": "Image du Badge",
+    "select": "Sélectionner",
+    "badgeTitle": "Titre",
+    "dateEarned": "Date d'Obtention",
+    "awarded": "Nombre de Membres Ayant ce Badge",
+    "limitErr": "Vous ne pouvez sélectionner que cinq badges"
+  },
+  "error": {
+    "notFound": "User ''{scnId}'' not found.",
+    "network": "Could not reach the SAP Community service. Check your connection and try again.",
+    "unexpected": "Something unexpected happened while loading the profile.",
+    "retry": "Retry"
+  },
+  "view": {
+    "table": "Table",
+    "grid": "Grid"
+  },
+  "embed": {
+    "html": "HTML",
+    "markdown": "Markdown",
+    "url": "URL only",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFallback": "Selected — press Ctrl+C to copy"
+  },
+  "signature": {
+    "alt": "{scnId} SAP Community signature"
+  },
+  "mobile": {
+    "preview": "Preview",
+    "expand": "Show signature",
+    "collapse": "Hide signature"
+  },
+  "theme": {
+    "toggle": "Toggle theme"
+  }
+}

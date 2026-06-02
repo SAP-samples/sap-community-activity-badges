@@ -1,0 +1,57 @@
+{
+  "appTitle": "Herramienta de Firma de Perfil y Distintivo de la Comunidad SAP",
+  "gui": {
+    "loading": "Cargando Datos",
+    "loadingLong": "Por favor espere... Cargando Datos"
+  },
+  "profile": {
+    "Toolbar1": "Seleccionar ID de Perfil de la Comunidad SAP",
+    "scnId": "ID de la Comunidad SAP",
+    "login": "Iniciar Sesión",
+    "url": "URL del Perfil",
+    "Toolbar2": "Firma",
+    "signaturePreview": "Vista Previa de la Firma",
+    "signature": "Firma",
+    "badges": "Distintivos",
+    "fname": "Nombre",
+    "lname": "Apellido",
+    "rank": "Rango",
+    "selBadges": "Distintivos Seleccionados",
+    "badgeId": "ID del Distintivo",
+    "badgeImage": "Imagen del Distintivo",
+    "select": "Seleccionar",
+    "badgeTitle": "Título",
+    "dateEarned": "Fecha de Obtención",
+    "awarded": "Número de Miembros que Tienen este Distintivo",
+    "limitErr": "Solo puedes seleccionar cinco distintivos"
+  },
+  "error": {
+    "notFound": "User ''{scnId}'' not found.",
+    "network": "Could not reach the SAP Community service. Check your connection and try again.",
+    "unexpected": "Something unexpected happened while loading the profile.",
+    "retry": "Retry"
+  },
+  "view": {
+    "table": "Table",
+    "grid": "Grid"
+  },
+  "embed": {
+    "html": "HTML",
+    "markdown": "Markdown",
+    "url": "URL only",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFallback": "Selected — press Ctrl+C to copy"
+  },
+  "signature": {
+    "alt": "{scnId} SAP Community signature"
+  },
+  "mobile": {
+    "preview": "Preview",
+    "expand": "Show signature",
+    "collapse": "Hide signature"
+  },
+  "theme": {
+    "toggle": "Toggle theme"
+  }
+}

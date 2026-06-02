@@ -1,0 +1,57 @@
+{
+  "appTitle": "Instrumentum Signaturae Profili Communitatis SAP et Insignium",
+  "gui": {
+    "loading": "Data Onerans",
+    "loadingLong": "Exspectate, quaeso... Data Onerans"
+  },
+  "profile": {
+    "Toolbar1": "Elige SAP Communitatis Profili ID",
+    "scnId": "ID Communitatis SAP",
+    "login": "Login",
+    "url": "URL Profili",
+    "Toolbar2": "Signatura",
+    "signaturePreview": "Praevisum Signaturae",
+    "signature": "Signatura",
+    "badges": "Insignia",
+    "fname": "Praenomen",
+    "lname": "Nomen",
+    "rank": "Gradus",
+    "selBadges": "Insignia Selecta",
+    "badgeId": "ID Insignii",
+    "badgeImage": "Imago Insignii",
+    "select": "Elige",
+    "badgeTitle": "Titulus",
+    "dateEarned": "Data Acquisita",
+    "awarded": "Nummus Sociorum qui Hoc Insigne Habent",
+    "limitErr": "Tantum quinque insignia eligere potes"
+  },
+  "error": {
+    "notFound": "User ''{scnId}'' not found.",
+    "network": "Could not reach the SAP Community service. Check your connection and try again.",
+    "unexpected": "Something unexpected happened while loading the profile.",
+    "retry": "Retry"
+  },
+  "view": {
+    "table": "Table",
+    "grid": "Grid"
+  },
+  "embed": {
+    "html": "HTML",
+    "markdown": "Markdown",
+    "url": "URL only",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFallback": "Selected — press Ctrl+C to copy"
+  },
+  "signature": {
+    "alt": "{scnId} SAP Community signature"
+  },
+  "mobile": {
+    "preview": "Preview",
+    "expand": "Show signature",
+    "collapse": "Hide signature"
+  },
+  "theme": {
+    "toggle": "Toggle theme"
+  }
+}
