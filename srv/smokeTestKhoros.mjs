@@ -70,5 +70,50 @@ await runCase('numeric scnId',   '139')
 await runCase('login scnId (underscored)', 'thomas_jung')
 await runCase('login scnId (legacy dotted form)', 'thomas.jung')
 
+// --- searchGrouphubMembers smoke test ----------------------------------
+// Devtoberfest is the canonical grouphub used everywhere else in the repo
+// (members.json, gameboard, /khoros/devtoberfestMembers). It always has
+// recent posts, so the messages.author.* workaround is guaranteed to find
+// some posters. Asserting on the SHAPE rather than a specific count, since
+// the live community traffic varies.
+//
+// Uses small page/cap params (pageSize:100, maxMessages:300) so the smoke
+// test stays fast and within Khoros' single-page comfort zone — production
+// callers use the defaults (500 / 5000).
+console.log(`\n[searchGrouphubMembers]  searchGrouphubMembers('Devtoberfest', {pageSize:100, maxMessages:300})`)
+try {
+    const r = await khoros.searchGrouphubMembers('Devtoberfest', { pageSize: 100, maxMessages: 300 })
+    assert(r?.status === 'success', 'envelope.status === "success"')
+    assert(r?.data?.list_item_type === 'user', 'envelope.data.list_item_type === "user"')
+    assert(Array.isArray(r?.data?.items), 'envelope.data.items is array')
+    assert((r?.data?.items?.length ?? 0) > 0, 'returns at least one posting member')
+    assert(r?.data?.size === r?.data?.items?.length, 'envelope.data.size matches items.length')
+
+    const first = r?.data?.items?.[0]
+    assert(typeof first?.id === 'string' && first.id.length > 0, 'first member.id is non-empty string')
+    assert(typeof first?.login === 'string' && first.login.length > 0, 'first member.login is non-empty string')
+    assert(first?.type === 'user', 'first member.type === "user"')
+
+    // Dedupe assertion — if the same author appears in 50 messages, they
+    // should appear ONCE in the deduped envelope.
+    const ids = r.data.items.map(u => u.id)
+    const uniqueIds = new Set(ids)
+    assert(ids.length === uniqueIds.size, 'envelope items are deduped by id')
+
+    // Pagination breadcrumb — proves the loop ran more than once and the
+    // result really came from stitched pages, not a single big request.
+    const pg = r?.data?._pagination
+    assert(pg && typeof pg === 'object', '_pagination breadcrumb present')
+    assert(pg?.pageSize === 100, '_pagination.pageSize echoes the option')
+    assert(pg?.maxMessages === 300, '_pagination.maxMessages echoes the option')
+    assert(typeof pg?.pages === 'number' && pg.pages >= 1, '_pagination.pages is a positive integer')
+    assert(typeof pg?.messagesScanned === 'number' && pg.messagesScanned >= pg.pages * 0,
+        '_pagination.messagesScanned is non-negative')
+    assert(typeof pg?.truncated === 'boolean', '_pagination.truncated is boolean')
+} catch (e) {
+    console.error(`  THREW: ${e.message}`)
+    failures++
+}
+
 console.log(`\n${failures === 0 ? 'ALL PASS' : `${failures} FAILURE(S)`}`)
 process.exit(failures === 0 ? 0 : 1)

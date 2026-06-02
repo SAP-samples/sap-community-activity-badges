@@ -4,17 +4,12 @@ import search from '@inquirer/search'
 import fs from 'fs'
 import path from 'path'
 import excel from 'node-xlsx'
+import { createRequire } from 'node:module'
+
+const require = createRequire(import.meta.url)
+const khoros = require('./util/khoros.js')
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
-
-function sleep(milliseconds) {
-  const date = Date.now();
-  // eslint-disable-next-line no-useless-assignment -- used in do-while condition
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
 
 function walkDir(dir, depth, maxDepth) {
   if (depth > maxDepth) return []
@@ -71,15 +66,27 @@ async function init() {
 
         scnId = scnId.toLowerCase()
 
-        const urlBadges = `https://people-api.services.sap.com/rs/badge/${scnId}?sort=timestamp,desc&size=1000`
-
-        const response = await fetch(urlBadges)
-        sleep(20)
-        const scnItems = await response.json()
+        // The legacy people-api.services.sap.com/rs/badge/<scnId> endpoint
+        // returned HTTP 410 Gone (verified 2026-06-02). Source the same
+        // {displayName, timestamp} pairs from Khoros via callUserAPI, which
+        // returns user_badges.items[].badge.title (= displayName) and
+        // .earned_date (= timestamp). callUserAPI handles dot/underscore
+        // login normalization internally, so no extra preprocessing here.
+        let scnItems
+        try {
+          scnItems = await khoros.callUserAPI(scnId)
+        } catch (error) {
+          console.error(`Error fetching SCN data for ${scnId}:`, error.message)
+          return
+        }
+        const userBadges = (scnItems?.data?.user_badges?.items || []).map(b => ({
+          displayName: b?.badge?.title,
+          timestamp: b?.earned_date
+        }))
 
         let points = 0
         let trees = false
-        for (let item of scnItems.content) {
+        for (let item of userBadges) {
           if(item.displayName === 'SAP TechEd in 2025 Registered Attendee' || item.displayName === 'SAP TechEd in 2025 Attendee - Bangalore'){
             trees = true
           }

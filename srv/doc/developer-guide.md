@@ -229,7 +229,15 @@ Returns all upcoming events (start_time >= now) for a board, ordered by start ti
 JSON version of `eventRegs` — returns an array of `{ id, name, href, startTime, endTime, timezone, rsvpCount, location }`.
 
 #### `GET /khoros/members/:grouphub`
-Returns an HTML page containing a link to the Khoros Search API query for members of a group hub (`SELECT id, sso_id, login, email... WHERE node.id = 'grouphub:{name}'`). Limit 6000.
+
+Admin page for listing the members of a SAP Community grouphub. Renders an HTML page with two links:
+
+1. **Open in browser (logged in)** — the legacy `SELECT ... FROM users WHERE node.id = 'grouphub:<name>'` Khoros Search URL. Anonymous callers receive an empty result set since the mid-2026 permission revocation, but admins who are signed in to community.sap.com in the same browser session still get the full PII (email, sso_id, first/last name). This is the existing admin workflow and is preserved as-is.
+2. **View as JSON (anonymous)** — appends `?format=json` to the same URL. The route then runs the `messages.author.*` workaround (`khoros.searchGrouphubMembers`) and returns a deduped Khoros-style user-list envelope. Caveats:
+   - Only authors who have **posted** in the grouphub appear; lurkers are not surfaced.
+   - PII fields (`email`, `sso_id`) are redacted to empty strings by Khoros for anonymous callers and are not projected.
+   - `first_name` / `last_name` are populated only when the underlying user record exposes them publicly.
+   - The query paginates through messages in pages of 500 (Khoros 504s above ~6000) and stops on natural exhaustion, on a `maxMessages` ceiling of 5000, or after 3 consecutive saturated pages add no new authors. Response includes a `data._pagination` breadcrumb (`{ pages, messagesScanned, truncated, pageSize, maxMessages }`); if `truncated` is `true` the ceiling clipped a very active grouphub and `maxMessages` should be bumped.
 
 #### `GET /khoros/devtoberfestMembers`
 Returns the cached `members.json` fetched from GitHub (same data used by the gameboard).
