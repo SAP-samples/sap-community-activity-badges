@@ -74,7 +74,7 @@ Standalone ESM scripts at the `srv/` root for offline data management (not part 
 - `badgeCheck.mjs` — Verify badges for community members
 - `contest.mjs` — Process Devtoberfest contest data
 - `scavengerHunt.mjs` — Process scavenger hunt entries
-- `trees.mjs` — Process tree-planting initiative data
+- `trees.mjs` — Process tree-planting initiative data. Originally pulled badges from `https://people-api.services.sap.com/rs/badge/<scnId>`, but that endpoint returned HTTP 410 Gone in mid-2026; now sources `displayName`/`timestamp` pairs from `khoros.callUserAPI(scnId)` (mapping `badge.title` → `displayName`, `earned_date` → `timestamp`).
 
 Run with `node srv/<script>.mjs` from the repo root.
 

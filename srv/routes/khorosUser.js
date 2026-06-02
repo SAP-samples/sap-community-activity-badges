@@ -8,23 +8,76 @@ const texts = require("../util/texts")
 
 module.exports = (app) => {
 
+    /**
+     * @swagger
+     * /khoros/members/{grouphub}:
+     *   get:
+     *     summary: List members of a SAP Community grouphub
+     *     description: |
+     *       Returns an HTML admin page with two ways to view members:
+     *       1. A "Open in browser (logged in)" link that runs the legacy
+     *          `SELECT ... FROM users WHERE node.id = 'grouphub:<name>'`
+     *          search. Clicking this link in a browser that already has an
+     *          SAP Community login cookie returns full PII (email, sso_id,
+     *          first/last name) — that is the existing admin workflow.
+     *       2. A "View as JSON (anonymous)" link to `?format=json`, which
+     *          uses an anonymously-readable `messages.author.*` workaround.
+     *          PII fields (email, sso_id) are not available via this path —
+     *          Khoros redacts them at the response layer for unauthenticated
+     *          callers — but `id`, `login`, `view_href`, and `first/last_name`
+     *          (when public on the user record) are returned.
+     *
+     *       Adding `?format=json` returns option 2 directly as JSON.
+     *     parameters:
+     *       - in: path
+     *         name: grouphub
+     *         required: true
+     *         description: SAP Community grouphub name (e.g. Devtoberfest)
+     *         schema:
+     *           type: string
+     *       - in: query
+     *         name: format
+     *         required: false
+     *         description: When set to "json", returns JSON via the messages.author.* workaround instead of HTML.
+     *         schema:
+     *           type: string
+     *     responses:
+     *       200:
+     *         description: HTML admin page (default) or JSON list of grouphub members.
+     */
     app.get('/khoros/members/:grouphub', async (req, res) => {
         try {
-            let groupHub = ''
-            if (req.params.grouphub) {
-                groupHub = req.params.grouphub
-            } else {
-                groupHub = 'Devtoberfest'
-            }
+            const groupHub = req.params.grouphub || 'Devtoberfest'
             const memberQuery =
-                `select id, sso_id, login, email, first_name, last_name from users where node.id = 'grouphub:${req.params.grouphub}' `
+                `select id, sso_id, login, email, first_name, last_name from users where node.id = 'grouphub:${groupHub}' `
             const query = `${memberQuery} LIMIT 6000`
-            const outputQuery = `${communitysearchapibase}?q=${query}`
+            const loggedInQueryURL = `${communitysearchapibase}?q=${query}`
+
+            // JSON path — admin tooling that can't run in a logged-in browser
+            // session (CI scripts, server-to-server, etc.) gets the redacted
+            // anonymous result via the messages.author.* workaround.
+            if (req.query.format === 'json') {
+                const members = await khoros.searchGrouphubMembers(groupHub)
+                return res.type("application/json").status(200).send(members)
+            }
+
+            // Default HTML — the legacy admin workflow. The "FROM users" query
+            // that backs the first link returns 0 items for anonymous callers
+            // (silent permission revocation, mid-2026), but works as expected
+            // when the admin is signed in to community.sap.com in the same
+            // browser session, which is how this page has always been used.
             let output = '<!DOCTYPE html><html><body>'
-            output +=
-                `
-                \n<a href="${encodeURI(outputQuery)}"><h3>${groupHub} Members</h2></a>
-                `
+            output += `<h2>${groupHub} Members</h2>`
+            output += `
+                <p>
+                    <a href="${encodeURI(loggedInQueryURL)}" target="_blank">Open in browser (logged in)</a>
+                    &nbsp;—&nbsp; full PII (email, sso_id, first/last name); requires an active SAP Community login in this browser.
+                </p>
+                <p>
+                    <a href="?format=json" target="_blank">View as JSON (anonymous)</a>
+                    &nbsp;—&nbsp; works without login, but Khoros redacts <code>email</code> / <code>sso_id</code> for anonymous callers and only members who have <em>posted</em> in the grouphub appear (lurkers are not surfaced).
+                </p>
+            `
             output += `</body></html>`
             return res.type("text/html").status(200).send(output)
 
