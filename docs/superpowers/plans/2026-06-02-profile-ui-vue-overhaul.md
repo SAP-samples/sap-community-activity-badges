@@ -6,7 +6,7 @@
 
 **Architecture:** Self-contained Vite + Vue 3 + TS app under `srv/app/profile-vue/`, built to `dist/` and served by the existing Express server at `/profile`. Pinia store + `computed` signature URLs replace the imperative `buildSignature()` chain. Old `/flp/#profile-ui` URL gets a tiny client-side redirect.
 
-**Tech Stack:** Vue 3.5, TypeScript, Vite 7, `@ui5/webcomponents` + `@ui5/webcomponents-fiori` + `@ui5/webcomponents-vue`, Pinia, Vue Router, vue-i18n, Vitest + `@vue/test-utils` + `@pinia/testing`, Playwright, `concurrently` + `wait-on`.
+**Tech Stack:** Vue 3.5, TypeScript, Vite 7, `@ui5/webcomponents` + `@ui5/webcomponents-fiori` + `@ui5/webcomponents-icons` (used as native custom elements via Vue's `isCustomElement`), Pinia, Vue Router, vue-i18n, Vitest + `@vue/test-utils` + `@pinia/testing`, Playwright, `concurrently` + `wait-on`.
 
 **Spec:** [`docs/superpowers/specs/2026-06-02-profile-ui-vue-overhaul-design.md`](../specs/2026-06-02-profile-ui-vue-overhaul-design.md)
 
