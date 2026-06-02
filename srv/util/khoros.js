@@ -17,7 +17,10 @@ module.exports.searchAPIURL = searchAPIURL
 
 // Fields projected from messages.author.* — together they reconstruct the
 // shape the routes expect under scnItems.data.* (login, name, metrics, rank,
-// and user_badges.items[].badge.{id,title,icon_url,description} + earned_date).
+// avatar, signature, view_href, and user_badges.items[].badge.{id,title,
+// icon_url,description} + earned_date). avatar/signature/view_href are
+// consumed by the FLP Badge Signature Builder (srv/app/flp/profile/) which
+// hits /khoros/user/:scnId via getSCNProfile (routes/khorosUser.js).
 const AUTHOR_FIELDS = [
     'author.id',
     'author.login',
@@ -25,6 +28,9 @@ const AUTHOR_FIELDS = [
     'author.last_name',
     'author.rank.name',
     'author.metrics.posts',
+    'author.avatar.profile',
+    'author.signature',
+    'author.view_href',
     'author.user_badges.badge.id',
     'author.user_badges.badge.title',
     'author.user_badges.badge.icon_url',
