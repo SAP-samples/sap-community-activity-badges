@@ -1,0 +1,52 @@
+{
+  "data": {
+    "id": "12345",
+    "login": "demo_user",
+    "first_name": "Demo",
+    "last_name": "User",
+    "view_href": "https://community.sap.com/t5/user/viewprofilepage/user-id/12345",
+    "signature": "<a href=\"https://community.sap.com/t5/user/viewprofilepage/user-id/12345\" target=\"_blank\"><img src=\"https://devrel-tools-prod-scn-badges-srv.cfapps.eu10.hana.ondemand.com/showcaseBadgesGroups/demo_user/cap-champion/devtoberfest-2025/first-blog\"/></a>",
+    "avatar": { "profile": "https://example.com/avatar.png" },
+    "rank": { "name": "Active Contributor" },
+    "user_badges": {
+      "items": [
+        {
+          "earned_date": "2024-09-01T12:00:00Z",
+          "badge": {
+            "id": "cap-champion",
+            "title": "CAP Champion",
+            "icon_url": "https://example.com/badges/cap-champion.png",
+            "awarded": 42
+          }
+        },
+        {
+          "earned_date": "2025-10-01T12:00:00Z",
+          "badge": {
+            "id": "devtoberfest-2025",
+            "title": "Devtoberfest 2025",
+            "icon_url": "https://example.com/badges/devtoberfest-2025.png",
+            "awarded": 1500
+          }
+        },
+        {
+          "earned_date": "2018-04-01T12:00:00Z",
+          "badge": {
+            "id": "first-blog",
+            "title": "First Blog Post",
+            "icon_url": "https://example.com/badges/first-blog.png",
+            "awarded": 9001
+          }
+        },
+        {
+          "earned_date": "2023-01-15T12:00:00Z",
+          "badge": {
+            "id": "five-year",
+            "title": "Five Year Member",
+            "icon_url": "https://example.com/badges/five-year.png",
+            "awarded": 250
+          }
+        }
+      ]
+    }
+  }
+}
