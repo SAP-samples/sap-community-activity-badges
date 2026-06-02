@@ -115,5 +115,50 @@ try {
     failures++
 }
 
+// --- groups.community.sap.com helpers (refactor coverage) ---------------
+// These exercise the data-fetching helpers that used to be inlined in
+// routes/khorosUser.js. They run against the live SAP Community API, so
+// we keep assertions on shape/non-emptiness rather than exact values.
+const stubApp = { logger: { info() {}, error() {} } }
+
+console.log(`\n[getBoards]  khoros.getBoards()`)
+try {
+    const r = await khoros.getBoards(stubApp)
+    assert(r?.status === 'success', 'envelope.status === "success"')
+    assert(Array.isArray(r?.data?.items) && r.data.items.length > 0, 'returns at least one board')
+    assert(typeof r?.data?.items?.[0]?.id === 'string', 'first board has string id')
+} catch (e) {
+    console.error(`  THREW: ${e.message}`)
+    failures++
+}
+
+console.log(`\n[getBoard]  khoros.getBoard('application-developmentforum-board')`)
+try {
+    const b = await khoros.getBoard('application-developmentforum-board', stubApp)
+    assert(b && typeof b === 'object', 'returns a board object')
+    assert(b?.id === 'application-developmentforum-board', 'board.id matches request')
+} catch (e) {
+    console.error(`  THREW: ${e.message}`)
+    failures++
+}
+
+console.log(`\n[getCommunityTags]  khoros.getCommunityTags()`)
+try {
+    const groupsByLetter = await khoros.getCommunityTags(stubApp)
+    assert(groupsByLetter && typeof groupsByLetter === 'object', 'returns a grouped object')
+    const letterKeys = Object.keys(groupsByLetter)
+    assert(letterKeys.length > 0, 'has at least one letter group')
+    const sampleGroup = groupsByLetter[letterKeys[0]]
+    assert(Array.isArray(sampleGroup) && sampleGroup.length > 0, 'first group has items')
+    const sample = sampleGroup[0]
+    assert(typeof sample?.title === 'string', 'tag.title is string')
+    assert(typeof sample?.link === 'string' && sample.link.startsWith('https://community.sap.com/'),
+        'tag.link is community URL')
+    assert(typeof sample?.sortTitle === 'string', 'tag.sortTitle is string (computed)')
+} catch (e) {
+    console.error(`  THREW: ${e.message}`)
+    failures++
+}
+
 console.log(`\n${failures === 0 ? 'ALL PASS' : `${failures} FAILURE(S)`}`)
 process.exit(failures === 0 ? 0 : 1)

@@ -1,5 +1,4 @@
-//const got = require('got') 
-const request = require('then-request')
+//const got = require('got')
 const khoros = require("../util/khoros")
 
 // Khoros Community Search API
@@ -179,7 +178,7 @@ module.exports = (app) => {
      */
     app.get('/khoros/event/:eventId', async (req, res) => {
         try {
-            let profile = await getEvent(req.params.eventId, app)
+            let profile = await khoros.getEvent(req.params.eventId, app)
             return res.type("application/json").status(200).send(profile)
         } catch (error) {
             app.logger.error(error)
@@ -208,7 +207,7 @@ module.exports = (app) => {
      */
     app.get('/khoros/events/:boardId', async (req, res) => {
         try {
-            let profile = await getEvents(req.params.boardId, app)
+            let profile = await khoros.getEvents(req.params.boardId, app)
             return res.type("application/json").status(200).send(profile)
         } catch (error) {
             app.logger.error(error)
@@ -265,7 +264,7 @@ module.exports = (app) => {
      */
     app.get('/khoros/eventRegsRaw/:boardId', async (req, res) => {
         try {
-            let profile = await getEventsRegs(req.params.boardId, app)
+            let profile = await khoros.getEventsRegs(req.params.boardId, app)
             return res.type("application/json").status(200).send(profile)
         } catch (error) {
             app.logger.error(error)
@@ -316,7 +315,7 @@ module.exports = (app) => {
      */
     app.get('/khoros/messagePosters/:boardId/:conversationId', async (req, res) => {
         try {
-            let posters = await getMessagePosters(req.params.boardId, req.params.conversationId, app)
+            let posters = await khoros.getMessagePosters(req.params.boardId, req.params.conversationId, app)
             return res.type("application/json").status(200).send(posters)
         } catch (error) {
             app.logger.error(error)
@@ -352,7 +351,7 @@ module.exports = (app) => {
      */
     app.get('/khoros/tags', async (req, res) => {
         try {
-            let tags = await getTags(app)
+            let tags = await khoros.getCommunityTags(app)
             return res.type("application/json").status(200).send(tags)
         } catch (error) {
             app.logger.error(error)
@@ -381,7 +380,7 @@ module.exports = (app) => {
      */
     app.get('/khoros/eventRegs/:boardId', async (req, res) => {
         try {
-            let profile = await getEventsRegs(req.params.boardId, app)
+            let profile = await khoros.getEventsRegs(req.params.boardId, app)
             function escape(s) {
                 let lookup = {
                     '&': "",
@@ -528,7 +527,7 @@ module.exports = (app) => {
      */
     app.get('/khoros/boards/', async (req, res) => {
         try {
-            let profile = await getBoards(app)
+            let profile = await khoros.getBoards(app)
             return res.type("application/json").status(200).send(profile)
         } catch (error) {
             app.logger.error(error)
@@ -557,7 +556,7 @@ module.exports = (app) => {
      */
     app.get('/khoros/board/:boardId', async (req, res) => {
         try {
-            let profile = await getBoard(req.params.boardId, app)
+            let profile = await khoros.getBoard(req.params.boardId, app)
             return res.type("application/json").status(200).send(profile)
         } catch (error) {
             app.logger.error(error)
@@ -586,7 +585,7 @@ module.exports = (app) => {
      */
     app.get('/khoros/topics/:boardId', async (req, res) => {
         try {
-            let profile = await getTopics(req.params.boardId, app)
+            let profile = await khoros.getTopics(req.params.boardId, app)
             return res.type("application/json").status(200).send(profile)
         } catch (error) {
             app.logger.error(error)
@@ -616,7 +615,7 @@ module.exports = (app) => {
      */
     app.get('/khoros/thread/:threadId', async (req, res) => {
         try {
-            let details = await getMessagesForDiscussion(req.params.threadId, app)
+            let details = await khoros.getMessagesForDiscussion(req.params.threadId, app)
             return res.type("application/json").status(200).send(details)
         } catch (error) {
             app.logger.error(error)
@@ -655,228 +654,8 @@ async function getSCNProfile(scnId, app) {
     }
 }
 
-/**
- * Get Single Board Details
- * @param {string} threadId - SAP Community Unique ID for a discussion thread
- * @param {object} app - Express App object
- * @returns {object}
- */
-async function getMessagesForDiscussion(threadId, app) {
-    const threadURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT ` +
-        `type, id, view_href, author.type, author.id, author.login` +
-        ` FROM messages where ancestors.id = '${threadId}'`
-    app.logger.info(threadURL)
-    let threadDetails = await request('GET', encodeURI(threadURL))
-    const threadOutput = JSON.parse(threadDetails.getBody())
-    return threadOutput.data.items
-}
-
-/**
- * Get all SAP Community Boards
- * @param {object} app - Express App object
- * @returns {object}
- */
-async function getBoards(app) {
-    const boardURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT * FROM boards`
-    app.logger.info(boardURL)
-    let boardDetails = await request('GET', encodeURI(boardURL))
-    const boardOutput = JSON.parse(boardDetails.getBody())
-    return boardOutput
-}
-
-/**
- * Get Single Board Details
- * @param {string} boardId - SAP Community Unique Name for a Board
- * @param {object} app - Express App object
- * @returns {object}
- */
-async function getBoard(boardId, app) {
-    const boardURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT * FROM boards where id = '${boardId}'`
-    app.logger.info(boardURL)
-    let boardDetails = await request('GET', encodeURI(boardURL))
-    const boardOutput = JSON.parse(boardDetails.getBody())
-    return boardOutput.data.items[0]
-}
-
-/**
- * Get List of Topics/Threads for a Board
- * @param {string} boardId - SAP Community Unique Name for a Board
- * @param {object} app - Express App object
- * @returns {object}
- */
-async function getTopics(boardId, app) {
-    const boardURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT * FROM messages WHERE board.id = '${boardId}' AND depth = 0`
-    app.logger.info(boardURL)
-    let boardDetails = await request('GET', encodeURI(boardURL))
-    const boardOutput = JSON.parse(boardDetails.getBody())
-    return boardOutput.data.items
-}
-
-/**
- * Return the Events for a Board with Registration Summary
- * @param {string} boardId - SAP Community Unique Name for a Board
- * @param {object} app - Express App object
- * @returns {object}
- */
-async function getEventsRegs(boardId, app) {
-    const start = new Date()
-
-    const eventURL =
-        `https://groups.community.sap.com/api/2.0/search?q=` +
-        `SELECT id, subject, view_href, occasion_data.location, occasion_data.start_time, occasion_data.end_time, occasion_data.timezone ` +
-        `FROM messages WHERE board.id='${boardId}' and occasion_data.start_time >= '${start.toISOString()}' order by occasion_data.start_time asc`
-
-    app.logger.info(eventURL)
-    let eventDetails = await request('GET', encodeURI(eventURL))
-    const eventOutput = JSON.parse(eventDetails.getBody())
-    let finalOutput = await Promise.all(eventOutput.data.items.map(async (item) => {
-        let newItem = {}
-        const rsvpURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT count(*) ` +
-            `FROM rsvps WHERE message.id = '${item.id}' and rsvp_response = 'yes'`
-        const rsvpDetails = await request('GET', encodeURI(rsvpURL))
-        const rsvpOutput = JSON.parse(rsvpDetails.getBody())
-        newItem.id = item.id
-        newItem.name = item.subject
-        newItem.href = item.view_href
-        newItem.startTime = item.occasion_data.start_time
-        newItem.endTime = item.occasion_data.end_time
-        newItem.timezone = item.occasion_data.timezone
-        newItem.rsvpCount = rsvpOutput.data.count
-        newItem.location = item.occasion_data.location
-
-        return newItem
-    }))
-    return finalOutput
-}
-
-/**
- * Request the SAP Community Events Listing for a given Board
- * @param {string} boardId - SAP Community Unique Name for a Board
- * @param {integer} conversationId - Unique thread ID within a Board
- * @param {object} app - Express App object
- * @returns {object}
- */
-async function getMessagePosters(boardId, conversationId, app) {
-    let newMessages = []
-    let allMessages = []
-    let i = 0
-    while (newMessages.length > 1 || i === 0) {
-        const searchURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT author FROM messages WHERE ` +
-            `board.id = '${boardId}' and topic.id = '${conversationId}' LIMIT ${(i + 1) * 100} OFFSET ${i * 100}`
-        app.logger.info(searchURL)
-        let searchDetails = await request('GET', encodeURI(searchURL))
-        const searchOutput = JSON.parse(searchDetails.getBody())
-        newMessages = searchOutput.data.items
-        if (newMessages.length > 1) {
-            allMessages = allMessages.concat(newMessages)
-        }
-        i++
-    }
-    const allAuthors = allMessages.map(e => { return { "login": e.author.login, "id": e.author.id, "view_href": e.author.view_href } })
-    const uniqueAuthors = [...new Set(allAuthors.map(o => JSON.stringify(o)))].map(s => JSON.parse(s))
-    return uniqueAuthors
-}
-
-/**
- * Request the SAP Community Tags
- * @param {object} app - Express App object
- * @returns {object}
- */
-async function getTags(app) {
-    const searchURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT id, title, tag_scope FROM products ` +
-        //   `WHERE tag_scope.community.id = 'khhcw49343' `
-        `WHERE status = 'active' LIMIT 10000 `
-    app.logger.info(searchURL)
-    let searchDetails = await request('GET', encodeURI(searchURL))
-    const searchOutput = JSON.parse(searchDetails.getBody())
-    const allTags = searchOutput.data.items
-
-
-    function isLetter(char) {
-        return /^[a-zA-Z]$/.test(char)
-    }
-
-    for (let item of allTags) {
-        if (item.title.startsWith(`SAP `)) {
-            item.sortTitle = item.title.slice(4)
-        } else {
-            item.sortTitle = item.title
-        }
-        item.group = item.sortTitle.slice(0, 1).toUpperCase()
-        if (!isLetter(item.group)){
-            item.group = ``
-        }
-        item.link = encodeURI(`https://community.sap.com/t5/c-khhcw49343/${item.title}/pd-p/${item.id}`)
-    }
-
-    allTags.sort((a, b) => a.sortTitle.localeCompare(b.sortTitle))
-
-    let groupedData = allTags.reduce(function (groups, item) {
-        let group = item.group || " " // Handle empty groups
-        if (!groups[group]) {
-            groups[group] = []
-        }
-        groups[group].push(item)
-        return groups
-    }, {})
-
-    return groupedData
-}
-
-/**
- * Request the SAP Community Events Listing for a given Board
- * @param {string} boardId - SAP Community Unique Name for a Board
- * @param {object} app - Express App object
- * @returns {object}
- */
-async function getEvents(boardId, app) {
-    const start = new Date()
-
-    const eventURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT * FROM messages WHERE board.id='${boardId}' ` +
-        `and occasion_data.start_time >= '${start.toISOString()}' order by occasion_data.start_time asc`
-    app.logger.info(eventURL)
-    let eventDetails = await request('GET', encodeURI(eventURL))
-    const eventOutput = JSON.parse(eventDetails.getBody())
-    return eventOutput
-
-}
-
-/**
- * Request the SAP Community Event Details
- * @param {number} eventId - SAP Community Event ID unique numeric
- * @param {object} app - Express App object
- * @returns {object}
- */
-async function getEvent(eventId, app) {
-
-    const eventURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT occasion_data FROM messages WHERE id='${eventId}'`
-    const rsvpURL = `https://groups.community.sap.com/api/2.0/search?q=SELECT id, user.login, user.email, user.first_name, user.last_name, ` +
-        `rsvp_response, user.view_href, user.sso_id FROM rsvps WHERE message.id = '${eventId}'`
-    app.logger.info(eventURL)
-    app.logger.info(rsvpURL)
-    let [event, rsvp] = await Promise.all([
-        request('GET', encodeURI(eventURL)),
-        request('GET', encodeURI(rsvpURL))
-    ])
-
-    const eventOutput = JSON.parse(event.getBody())
-    const rsvpOutput = JSON.parse(rsvp.getBody())
-    let outputItems = []
-    for (let item of rsvpOutput.data.items) {
-        let output = {}
-        output.id = item.user.id
-        output.login = item.user.login
-        output.email = item.user.email
-        output.view_href = item.user.view_href
-        outputItems.push(output)
-    }
-    const eventDetails = {
-        event: eventOutput.data.items[0].occasion_data.location,
-        startTime: eventOutput.data.items[0].occasion_data.start_time,
-        endTime: eventOutput.data.items[0].occasion_data.end_time,
-        timezone: eventOutput.data.items[0].occasion_data.timezone,
-        rsvp: outputItems
-    }
-    return eventDetails
-
-}
+// All the other Khoros data-fetching helpers (getBoards, getBoard, getTopics,
+// getMessagesForDiscussion, getEvents, getEvent, getEventsRegs,
+// getMessagePosters, getCommunityTags) live in srv/util/khoros.js so a future
+// API-shape change can be patched in one place. Import them via the `khoros`
+// require at the top of this file.
