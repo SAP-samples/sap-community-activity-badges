@@ -270,3 +270,192 @@ function checkFileAge(filePath) {
     return members
   }
   module.exports.getDevtoberfestMembers = getDevtoberfestMembers
+
+// =============================================================================
+// groups.community.sap.com — events, boards, threads, RSVPs, products
+// -----------------------------------------------------------------------------
+// The community.sap.com/khhcw49343 host (above) carries user-shaped data and
+// has been hit by the mid-2026 anonymous-read revocation. THIS host serves
+// boards, threads, events, and RSVPs and remains anonymously readable. Routes
+// in routes/khorosUser.js previously inlined `request('GET', URL)` calls
+// against it; centralizing them here means a future API-shape change only
+// needs to be patched in one place.
+// =============================================================================
+
+const groupsSearchAPIURL = 'https://groups.community.sap.com/api/2.0/search'
+module.exports.groupsSearchAPIURL = groupsSearchAPIURL
+
+// Low-level helper: run an arbitrary `q=<liql>` against the groups search
+// endpoint and return the parsed `data.items` array (or the full body if the
+// caller needs metadata like `data.count`). Designed as a thin shim — the
+// LiQL queries themselves are short and route-specific, so leaking the WHERE
+// clause to callers keeps each helper readable.
+//
+// `opts.full=true` returns the parsed top-level body instead of `data.items`.
+async function searchGroups(liqlQuery, app, opts = {}) {
+    const request = require('then-request')
+    const url = `${groupsSearchAPIURL}?q=${liqlQuery}`
+    if (app?.logger?.info) app.logger.info(url)
+    const res = await request('GET', encodeURI(url))
+    const body = JSON.parse(res.getBody())
+    if (body.status !== 'success') {
+        throw new Error(`Khoros groups-search failed: ${body.message || JSON.stringify(body)}`)
+    }
+    return opts.full ? body : (body?.data?.items || [])
+}
+module.exports.searchGroups = searchGroups
+
+async function getBoards(app) {
+    const items = await searchGroups(`SELECT * FROM boards`, app, { full: true })
+    return items
+}
+module.exports.getBoards = getBoards
+
+async function getBoard(boardId, app) {
+    const items = await searchGroups(`SELECT * FROM boards where id = '${boardId}'`, app)
+    return items[0]
+}
+module.exports.getBoard = getBoard
+
+async function getTopics(boardId, app) {
+    return await searchGroups(
+        `SELECT * FROM messages WHERE board.id = '${boardId}' AND depth = 0`,
+        app
+    )
+}
+module.exports.getTopics = getTopics
+
+async function getMessagesForDiscussion(threadId, app) {
+    return await searchGroups(
+        `SELECT type, id, view_href, author.type, author.id, author.login` +
+        ` FROM messages where ancestors.id = '${threadId}'`,
+        app
+    )
+}
+module.exports.getMessagesForDiscussion = getMessagesForDiscussion
+
+// Returns the raw upcoming-events search response (full envelope).
+async function getEvents(boardId, app) {
+    const start = new Date()
+    return await searchGroups(
+        `SELECT * FROM messages WHERE board.id='${boardId}' ` +
+        `and occasion_data.start_time >= '${start.toISOString()}' order by occasion_data.start_time asc`,
+        app,
+        { full: true }
+    )
+}
+module.exports.getEvents = getEvents
+
+// Per-board upcoming events with RSVP-count fan-out. One search to find the
+// events; then one count(*) query per event in parallel via Promise.all.
+async function getEventsRegs(boardId, app) {
+    const start = new Date()
+    const events = await searchGroups(
+        `SELECT id, subject, view_href, occasion_data.location, occasion_data.start_time, occasion_data.end_time, occasion_data.timezone ` +
+        `FROM messages WHERE board.id='${boardId}' and occasion_data.start_time >= '${start.toISOString()}' order by occasion_data.start_time asc`,
+        app
+    )
+    return await Promise.all(events.map(async (item) => {
+        const rsvpBody = await searchGroups(
+            `SELECT count(*) FROM rsvps WHERE message.id = '${item.id}' and rsvp_response = 'yes'`,
+            app,
+            { full: true }
+        )
+        return {
+            id: item.id,
+            name: item.subject,
+            href: item.view_href,
+            startTime: item.occasion_data.start_time,
+            endTime: item.occasion_data.end_time,
+            timezone: item.occasion_data.timezone,
+            rsvpCount: rsvpBody.data.count,
+            location: item.occasion_data.location
+        }
+    }))
+}
+module.exports.getEventsRegs = getEventsRegs
+
+// Single event details + RSVP list.
+async function getEvent(eventId, app) {
+    const [eventItems, rsvpItems] = await Promise.all([
+        searchGroups(`SELECT occasion_data FROM messages WHERE id='${eventId}'`, app),
+        searchGroups(
+            `SELECT id, user.login, user.email, user.first_name, user.last_name, ` +
+            `rsvp_response, user.view_href, user.sso_id FROM rsvps WHERE message.id = '${eventId}'`,
+            app
+        )
+    ])
+    const outputItems = rsvpItems.map(item => ({
+        id: item.user.id,
+        login: item.user.login,
+        email: item.user.email,
+        view_href: item.user.view_href
+    }))
+    return {
+        event: eventItems[0].occasion_data.location,
+        startTime: eventItems[0].occasion_data.start_time,
+        endTime: eventItems[0].occasion_data.end_time,
+        timezone: eventItems[0].occasion_data.timezone,
+        rsvp: outputItems
+    }
+}
+module.exports.getEvent = getEvent
+
+// Paginate a thread's messages 100 at a time, deduping authors.
+//
+// QUIRK PRESERVED: the original implementation only included a page in the
+// dedupe set if it returned MORE than 1 message (`newMessages.length > 1`).
+// On a thread with exactly 1 message, that lone author is silently dropped.
+// This is preserved verbatim so the route's response stays byte-identical
+// across the refactor; if you intend to change it, do so in a separate
+// behaviour-change commit with its own tests.
+async function getMessagePosters(boardId, conversationId, app) {
+    let newMessages = []
+    const allMessages = []
+    let i = 0
+    while (newMessages.length > 1 || i === 0) {
+        newMessages = await searchGroups(
+            `SELECT author FROM messages WHERE board.id = '${boardId}' and topic.id = '${conversationId}' ` +
+            `LIMIT ${(i + 1) * 100} OFFSET ${i * 100}`,
+            app
+        )
+        if (newMessages.length > 1) {
+            allMessages.push(...newMessages)
+        }
+        i++
+    }
+    const allAuthors = allMessages.map(e => ({
+        login: e.author.login,
+        id: e.author.id,
+        view_href: e.author.view_href
+    }))
+    return [...new Set(allAuthors.map(o => JSON.stringify(o)))].map(s => JSON.parse(s))
+}
+module.exports.getMessagePosters = getMessagePosters
+
+// Active SAP Community products/tags, sorted alphabetically and grouped by
+// first letter ("SAP " prefix is stripped for sort purposes).
+async function getCommunityTags(app) {
+    const allTags = await searchGroups(
+        `SELECT id, title, tag_scope FROM products WHERE status = 'active' LIMIT 10000 `,
+        app
+    )
+
+    function isLetter(char) { return /^[a-zA-Z]$/.test(char) }
+
+    for (const item of allTags) {
+        item.sortTitle = item.title.startsWith('SAP ') ? item.title.slice(4) : item.title
+        item.group = item.sortTitle.slice(0, 1).toUpperCase()
+        if (!isLetter(item.group)) item.group = ``
+        item.link = encodeURI(`https://community.sap.com/t5/c-khhcw49343/${item.title}/pd-p/${item.id}`)
+    }
+    allTags.sort((a, b) => a.sortTitle.localeCompare(b.sortTitle))
+
+    return allTags.reduce((groups, item) => {
+        const group = item.group || ' '
+        if (!groups[group]) groups[group] = []
+        groups[group].push(item)
+        return groups
+    }, {})
+}
+module.exports.getCommunityTags = getCommunityTags
