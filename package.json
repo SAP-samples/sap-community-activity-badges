@@ -4,7 +4,7 @@
     "mbt": "^1.2.34"
   },
   "scripts": {
-    "build": "mbt build",
+    "build": "npm --prefix srv/app/profile-vue ci && npm --prefix srv/app/profile-vue run build && mbt build",
     "lint": "cd srv && npx eslint ."
   },
   "version": "1.0.0"
