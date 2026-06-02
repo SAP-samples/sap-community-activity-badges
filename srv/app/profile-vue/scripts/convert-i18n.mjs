@@ -21,9 +21,12 @@ const OUT_DIR = resolve(__dirname, '../src/i18n/locales')
 
 /** Decodes \uXXXX escapes in a properties value string. */
 function decodeEscapes(s) {
-  return s.replace(/\\u([0-9a-fA-F]{4})/g, (_m, hex) =>
+  // Decode \uXXXX escapes
+  const unicodeDecoded = s.replace(/\\u([0-9a-fA-F]{4})/g, (_m, hex) =>
     String.fromCharCode(parseInt(hex, 16))
   )
+  // Collapse Java MessageFormat doubled single-quote escapes ('' → ')
+  return unicodeDecoded.replace(/''/g, "'")
 }
 
 /**

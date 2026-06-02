@@ -26,7 +26,7 @@
     "limitErr": "आप केवल पांच बैज चुन सकते हैं"
   },
   "error": {
-    "notFound": "User ''{scnId}'' not found.",
+    "notFound": "User '{scnId}' not found.",
     "network": "Could not reach the SAP Community service. Check your connection and try again.",
     "unexpected": "Something unexpected happened while loading the profile.",
     "retry": "Retry"

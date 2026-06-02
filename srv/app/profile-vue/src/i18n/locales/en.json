@@ -27,7 +27,7 @@
     "signature2Preview": "Light Signature Preview"
   },
   "error": {
-    "notFound": "User ''{scnId}'' not found.",
+    "notFound": "User '{scnId}' not found.",
     "network": "Could not reach the SAP Community service. Check your connection and try again.",
     "unexpected": "Something unexpected happened while loading the profile.",
     "retry": "Retry"

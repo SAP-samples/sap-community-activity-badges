@@ -19,7 +19,7 @@ const store = useProfileStore()
         >{{ $t('view.table') }}</ui5-button>
         <ui5-button
           :design="store.viewMode === 'grid' ? 'Emphasized' : 'Default'"
-          icon="grid-view"
+          icon="grid"
           @click="store.setViewMode('grid')"
           data-testid="view-toggle-grid"
         >{{ $t('view.grid') }}</ui5-button>

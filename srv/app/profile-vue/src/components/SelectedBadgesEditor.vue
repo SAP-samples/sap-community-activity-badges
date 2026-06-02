@@ -70,7 +70,7 @@ function onRemove(id: string | '') {
             <ui5-button
               icon="decline"
               design="Transparent"
-              :tooltip="$t('embed.copy')"
+              :tooltip="`Remove ${slot.title}`"
               :data-testid="`remove-btn-${idx}`"
               :aria-label="`Remove ${slot.title}`"
               @click="onRemove(slot.id)"

@@ -35,4 +35,9 @@ describe('propertiesToObject', () => {
   it('treats = inside the value as part of the value', () => {
     expect(propertiesToObject('eq=a=b=c')).toEqual({ eq: 'a=b=c' })
   })
+
+  it("collapses '' MessageFormat escapes to a single quote", () => {
+    expect(propertiesToObject("k=User ''{name}'' not found"))
+      .toEqual({ k: "User '{name}' not found" })
+  })
 })
