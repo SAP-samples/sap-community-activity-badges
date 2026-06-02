@@ -158,7 +158,7 @@ Signature URLs are **computed**; no `buildSignature()` function exists. The brow
 ### Vue components (`src/components/`)
 
 - **`ProfileApp.vue`** — root layout; sticky right rail; slots all children.
-- **`AppHeader.vue`** — title, locale switcher (12 locales), theme toggle.
+- **`AppHeader.vue`** — title, locale switcher (11 locales), theme toggle.
 - **`ScnIdInput.vue`** — `<ui5-input>` for SCN ID + load action + avatar/name/rank chip once loaded.
 - **`ProfileDetails.vue`** — read-only `<ui5-form>`: login, profile URL, first/last name, rank.
 - **`SelectedBadgesEditor.vue`** — vertical list, 5 fixed slots: drag handle ⠿ · icon · title · ✕. HTML5 DnD with keyboard fallback (`Alt+ArrowUp` / `Alt+ArrowDown`). Empty slots rendered as dashed-outline placeholders.
