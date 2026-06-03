@@ -124,7 +124,22 @@ module.exports = (app) => {
         } catch (error) {
             app.logger.error(error)
             let text = texts.getBundle(req)
-            return res.status(500).send(text.getText('errorCommunityID'))
+            const message = text.getText('errorCommunityID')
+            // Distinguish "user not found" (404) from genuine upstream
+            // failures (500). The Khoros search returns zero items for
+            // unknown SCN IDs, which callUserAPI re-throws with a "No
+            // messages found for user" message — surface that as 404 so
+            // clients can show a friendly "user not found" instead of a
+            // generic "something unexpected happened".
+            const errMessage = error?.message || ''
+            const notFound =
+                errMessage.includes('No messages found for user') ||
+                error?.name === 'No SCN ID' ||
+                error?.code === 303
+            const status = notFound ? 404 : 500
+            return res.status(status)
+                .type('application/json')
+                .send({ error: notFound ? 'notFound' : 'unexpected', message, scnId: req.params.scnId })
         }
     })
 
