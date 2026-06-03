@@ -1,0 +1,57 @@
+{
+  "appTitle": "SAP समुदाय प्रोफ़ाइल और बैज सिग्नेचर टूल",
+  "gui": {
+    "loading": "डेटा लोड हो रहा है",
+    "loadingLong": "कृपया प्रतीक्षा करें... डेटा लोड हो रहा है"
+  },
+  "profile": {
+    "Toolbar1": "SAP समुदाय प्रोफ़ाइल ID चुनें",
+    "scnId": "SAP समुदाय ID",
+    "login": "लॉगिन",
+    "url": "प्रोफ़ाइल URL",
+    "Toolbar2": "हस्ताक्षर",
+    "signaturePreview": "हस्ताक्षर पूर्वावलोकन",
+    "signature": "हस्ताक्षर",
+    "badges": "बैज",
+    "fname": "प्रथम नाम",
+    "lname": "अंतिम नाम",
+    "rank": "रैंक",
+    "selBadges": "चयनित बैज",
+    "badgeId": "बैज ID",
+    "badgeImage": "बैज इमेज",
+    "select": "चुनें",
+    "badgeTitle": "शीर्षक",
+    "dateEarned": "अर्जित तिथि",
+    "awarded": "इस बैज वाले सदस्यों की संख्या",
+    "limitErr": "आप केवल पांच बैज चुन सकते हैं"
+  },
+  "error": {
+    "notFound": "User '{scnId}' not found.",
+    "network": "Could not reach the SAP Community service. Check your connection and try again.",
+    "unexpected": "Something unexpected happened while loading the profile.",
+    "retry": "Retry"
+  },
+  "view": {
+    "table": "Table",
+    "grid": "Grid"
+  },
+  "embed": {
+    "html": "HTML",
+    "markdown": "Markdown",
+    "url": "URL only",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFallback": "Selected — press Ctrl+C to copy"
+  },
+  "signature": {
+    "alt": "{scnId} SAP Community signature"
+  },
+  "mobile": {
+    "preview": "Preview",
+    "expand": "Show signature",
+    "collapse": "Hide signature"
+  },
+  "theme": {
+    "toggle": "Toggle theme"
+  }
+}

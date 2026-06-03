@@ -1,0 +1,19 @@
+node_modules
+dist
+.vite
+*.tsbuildinfo
+test-results
+playwright-report
+
+# vue-tsc -b emit artifacts (Vite handles real emit; tsc is for type-checking only)
+src/**/*.js
+src/**/*.d.ts
+!src/types/*.d.ts
+tests/**/*.js
+tests/**/*.d.ts
+vite.config.js
+vite.config.d.ts
+vitest.config.js
+vitest.config.d.ts
+playwright.config.js
+playwright.config.d.ts

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Badge image unavailable">
+  <circle cx="32" cy="32" r="28" fill="#e5e5e5" stroke="#bcbcbc" stroke-width="2"/>
+  <text x="32" y="40" font-family="system-ui, sans-serif" font-size="28" text-anchor="middle" fill="#9a9a9a">?</text>
+</svg>

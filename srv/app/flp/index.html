@@ -8,6 +8,13 @@
 		<title>SAP Community Tools - Unsupported and for Fun</title>
 
 		<script>
+			// Legacy URL redirect — the SAPUI5 #profile-ui app has moved to /profile.
+			if (window.location.hash === '#profile-ui') {
+				window.location.replace('/profile');
+			}
+		</script>
+
+		<script>
 /* 			window["sap-ushell-config"] = {
 				defaultRenderer: "fiori2",
 				bootstrapPlugins: {

@@ -108,3 +108,10 @@ dist
 /app/*.zip
 Makefile_20220208160644.mta
 .playwright-mcp/
+.superpowers/
+
+# Git worktrees for parallel feature development
+.worktrees/
+
+srv/app/profile-vue/dist/
+srv/app/profile-vue/node_modules/

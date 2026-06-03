@@ -1,0 +1,57 @@
+{
+  "appTitle": "SAPコミュニティプロファイル＆バッジ署名ツール",
+  "gui": {
+    "loading": "データを読み込み中",
+    "loadingLong": "お待ちください...データを読み込み中"
+  },
+  "profile": {
+    "Toolbar1": "SAPコミュニティプロファイルIDを選択",
+    "scnId": "SAPコミュニティID",
+    "login": "ログイン",
+    "url": "プロファイルURL",
+    "Toolbar2": "署名",
+    "signaturePreview": "署名プレビュー",
+    "signature": "署名",
+    "badges": "バッジ",
+    "fname": "名",
+    "lname": "姓",
+    "rank": "ランク",
+    "selBadges": "選択されたバッジ",
+    "badgeId": "バッジID",
+    "badgeImage": "バッジ画像",
+    "select": "選択",
+    "badgeTitle": "タイトル",
+    "dateEarned": "取得日",
+    "awarded": "このバッジを持つメンバーの数",
+    "limitErr": "バッジは5つまでしか選択できません"
+  },
+  "error": {
+    "notFound": "User '{scnId}' not found.",
+    "network": "Could not reach the SAP Community service. Check your connection and try again.",
+    "unexpected": "Something unexpected happened while loading the profile.",
+    "retry": "Retry"
+  },
+  "view": {
+    "table": "Table",
+    "grid": "Grid"
+  },
+  "embed": {
+    "html": "HTML",
+    "markdown": "Markdown",
+    "url": "URL only",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFallback": "Selected — press Ctrl+C to copy"
+  },
+  "signature": {
+    "alt": "{scnId} SAP Community signature"
+  },
+  "mobile": {
+    "preview": "Preview",
+    "expand": "Show signature",
+    "collapse": "Hide signature"
+  },
+  "theme": {
+    "toggle": "Toggle theme"
+  }
+}

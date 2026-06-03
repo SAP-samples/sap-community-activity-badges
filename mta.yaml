@@ -13,5 +13,5 @@ modules:
         properties:
           srv-url: ${default-url}
     build-parameters:
-      ignore: ["/node_modules"]
+      ignore: ["/node_modules", "/app/profile-vue/node_modules", "/app/profile-vue/src", "/app/profile-vue/tests", "/app/profile-vue/scripts", "/app/profile-vue/.vite", "/app/profile-vue/test-results", "/app/profile-vue/playwright-report"]
       supported-platform: [CF]
