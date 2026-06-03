@@ -53,6 +53,9 @@
     "collapse": "Hide signature"
   },
   "theme": {
-    "toggle": "Toggle theme"
+    "toggle": "Toggle theme",
+    "light": "Theme: light (click for dark)",
+    "dark": "Theme: dark (click for auto)",
+    "auto": "Theme: auto — follows OS (click for light)"
   }
 }

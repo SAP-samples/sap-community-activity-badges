@@ -6,22 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SAP Community Profile and Badge Signature Tool</title>
     <!--
-      SAP Horizon theme CSS variables. Two stylesheets are loaded; only the one
-      whose [data-theme] selector matches the <html> attribute applies. main.ts
-      flips data-theme="sap_horizon" or "sap_horizon_dark" before the app mounts,
-      and AppHeader.vue updates it on toggle.
+      The SAP Horizon theme CSS variables are injected at runtime by src/theme.ts
+      (see ensureStylesheets) — that lets us toggle light/dark by flipping the
+      disabled flag on a <link>, and the CSS files are bundled locally from
+      @sap-theming/theming-base-content (no runtime CDN dependency).
     -->
-    <link
-      rel="stylesheet"
-      id="ui5-theme-light"
-      href="https://unpkg.com/@sap-theming/theming-base-content/content/Base/baseLib/sap_horizon/css_variables.css"
-    />
-    <link
-      rel="stylesheet"
-      id="ui5-theme-dark"
-      href="https://unpkg.com/@sap-theming/theming-base-content/content/Base/baseLib/sap_horizon_dark/css_variables.css"
-      disabled
-    />
   </head>
   <body>
     <div id="app"></div>

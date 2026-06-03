@@ -21,6 +21,9 @@ import '@ui5/webcomponents-icons/dist/table-view.js'
 import '@ui5/webcomponents-icons/dist/grid.js'
 import '@ui5/webcomponents-icons/dist/copy.js'
 import '@ui5/webcomponents-icons/dist/decline.js'
+import '@ui5/webcomponents-icons/dist/light-mode.js'
+import '@ui5/webcomponents-icons/dist/dark-mode.js'
+import '@ui5/webcomponents-icons/dist/desktop-mobile.js'
 
 import { applyTheme, resolveTheme, watchOsTheme } from './theme'
 

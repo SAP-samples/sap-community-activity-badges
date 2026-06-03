@@ -1,26 +1,47 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { setLocale, SUPPORTED_LOCALES, type SupportedLocale } from '@/i18n'
-import { resolveTheme, setPreference, type Theme } from '@/theme'
+import { readPreference, setPreference, type ThemePreference } from '@/theme'
 
 const { locale } = useI18n()
 
-// Track the *currently rendered* theme (resolved from the user's preference or
-// the OS default). Toggling produces an explicit override; the user can clear
-// the override by toggling back to the OS-current state — actually no, that
-// would still be a saved override. For now there's no "auto" affordance in the
-// UI; if you want one, add a third state (e.g. cycle Light → Dark → Auto).
-const theme = ref<Theme>(resolveTheme())
+// Track the user's preference, not the resolved theme. 'auto' is the default
+// and means "follow OS"; the toggle cycles Light → Dark → Auto so the user
+// can always get back to OS-following without clearing localStorage manually.
+const preference = ref<ThemePreference>(readPreference())
+
+// Pick an icon that reflects the current preference (NOT the resolved theme):
+// - 'auto'              → desktop-mobile (intent: follow device)
+// - 'sap_horizon'       → light-mode
+// - 'sap_horizon_dark'  → dark-mode
+const themeIcon = computed(() => {
+  if (preference.value === 'sap_horizon') return 'light-mode'
+  if (preference.value === 'sap_horizon_dark') return 'dark-mode'
+  return 'desktop-mobile'
+})
+
+// Tooltip / aria-label tells the user what *clicking* will do next.
+const themeLabelKey = computed(() => {
+  if (preference.value === 'sap_horizon') return 'theme.light'
+  if (preference.value === 'sap_horizon_dark') return 'theme.dark'
+  return 'theme.auto'
+})
 
 function onLocaleChange(e: Event) {
   const v = (e.target as HTMLSelectElement).value as SupportedLocale
   setLocale(v)
 }
 
-function toggleTheme() {
-  theme.value = theme.value === 'sap_horizon' ? 'sap_horizon_dark' : 'sap_horizon'
-  setPreference(theme.value)
+// Cycle order: Light → Dark → Auto → Light. Auto is the rest state we always
+// pass through; that gives the user one click to get back to OS-following.
+function cycleTheme() {
+  const next: ThemePreference =
+    preference.value === 'sap_horizon' ? 'sap_horizon_dark'
+    : preference.value === 'sap_horizon_dark' ? 'auto'
+    : 'sap_horizon'
+  preference.value = next
+  setPreference(next)
 }
 </script>
 
@@ -43,9 +64,12 @@ function toggleTheme() {
       </select>
       <ui5-button
         design="Transparent"
-        @click="toggleTheme"
-        :aria-label="$t('theme.toggle')"
-      >🌓</ui5-button>
+        :icon="themeIcon"
+        :tooltip="$t(themeLabelKey)"
+        :aria-label="$t(themeLabelKey)"
+        :data-testid="`theme-toggle-${preference}`"
+        @click="cycleTheme"
+      />
     </div>
   </header>
 </template>
@@ -79,3 +103,4 @@ function toggleTheme() {
   padding: 0.25rem 0.5rem;
 }
 </style>
+
