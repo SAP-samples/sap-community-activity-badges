@@ -13,6 +13,7 @@
     "i18n:convert": "node scripts/convert-i18n.mjs"
   },
   "dependencies": {
+    "@sap-theming/theming-base-content": "^11.35.0",
     "@ui5/webcomponents": "^2.13.0",
     "@ui5/webcomponents-fiori": "^2.13.0",
     "@ui5/webcomponents-icons": "^2.13.0",

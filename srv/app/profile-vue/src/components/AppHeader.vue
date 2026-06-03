@@ -1,36 +1,47 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { setLocale, SUPPORTED_LOCALES, type SupportedLocale } from '@/i18n'
-import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js'
+import { readPreference, setPreference, type ThemePreference } from '@/theme'
 
 const { locale } = useI18n()
 
-function detectInitialTheme(): 'sap_horizon' | 'sap_horizon_dark' {
-  try {
-    const saved = typeof localStorage !== 'undefined' ? localStorage.getItem('profileTheme') : null
-    if (saved === 'sap_horizon' || saved === 'sap_horizon_dark') return saved
-  } catch { /* ignore */ }
-  try {
-    if (typeof window !== 'undefined' && typeof window.matchMedia === 'function'
-      && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'sap_horizon_dark'
-    }
-  } catch { /* ignore */ }
-  return 'sap_horizon'
-}
+// Track the user's preference, not the resolved theme. 'auto' is the default
+// and means "follow OS"; the toggle cycles Light → Dark → Auto so the user
+// can always get back to OS-following without clearing localStorage manually.
+const preference = ref<ThemePreference>(readPreference())
 
-const theme = ref<'sap_horizon' | 'sap_horizon_dark'>(detectInitialTheme())
+// Pick an icon that reflects the current preference (NOT the resolved theme):
+// - 'auto'              → desktop-mobile (intent: follow device)
+// - 'sap_horizon'       → light-mode
+// - 'sap_horizon_dark'  → dark-mode
+const themeIcon = computed(() => {
+  if (preference.value === 'sap_horizon') return 'light-mode'
+  if (preference.value === 'sap_horizon_dark') return 'dark-mode'
+  return 'desktop-mobile'
+})
+
+// Tooltip / aria-label tells the user what *clicking* will do next.
+const themeLabelKey = computed(() => {
+  if (preference.value === 'sap_horizon') return 'theme.light'
+  if (preference.value === 'sap_horizon_dark') return 'theme.dark'
+  return 'theme.auto'
+})
 
 function onLocaleChange(e: Event) {
   const v = (e.target as HTMLSelectElement).value as SupportedLocale
   setLocale(v)
 }
 
-function toggleTheme() {
-  theme.value = theme.value === 'sap_horizon' ? 'sap_horizon_dark' : 'sap_horizon'
-  setTheme(theme.value)
-  try { localStorage.setItem('profileTheme', theme.value) } catch { /* ignore */ }
+// Cycle order: Light → Dark → Auto → Light. Auto is the rest state we always
+// pass through; that gives the user one click to get back to OS-following.
+function cycleTheme() {
+  const next: ThemePreference =
+    preference.value === 'sap_horizon' ? 'sap_horizon_dark'
+    : preference.value === 'sap_horizon_dark' ? 'auto'
+    : 'sap_horizon'
+  preference.value = next
+  setPreference(next)
 }
 </script>
 
@@ -53,9 +64,12 @@ function toggleTheme() {
       </select>
       <ui5-button
         design="Transparent"
-        @click="toggleTheme"
-        :aria-label="$t('theme.toggle')"
-      >🌓</ui5-button>
+        :icon="themeIcon"
+        :tooltip="$t(themeLabelKey)"
+        :aria-label="$t(themeLabelKey)"
+        :data-testid="`theme-toggle-${preference}`"
+        @click="cycleTheme"
+      />
     </div>
   </header>
 </template>
@@ -89,3 +103,4 @@ function toggleTheme() {
   padding: 0.25rem 0.5rem;
 }
 </style>
+

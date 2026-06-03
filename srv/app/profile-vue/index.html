@@ -5,6 +5,12 @@
     <link rel="icon" type="image/x-icon" href="/profile/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SAP Community Profile and Badge Signature Tool</title>
+    <!--
+      The SAP Horizon theme CSS variables are injected at runtime by src/theme.ts
+      (see ensureStylesheets) — that lets us toggle light/dark by flipping the
+      disabled flag on a <link>, and the CSS files are bundled locally from
+      @sap-theming/theming-base-content (no runtime CDN dependency).
+    -->
   </head>
   <body>
     <div id="app"></div>
