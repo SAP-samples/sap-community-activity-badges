@@ -38,6 +38,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "install:vue": "npm --prefix app/profile-vue install",
+    "install:all": "npm install && npm run install:vue",
     "dev": "concurrently -k -n express,vue -c blue,magenta \"npm:dev:express\" \"npm:dev:vue\"",
     "dev:express": "nodemon index",
     "dev:server-only": "nodemon index",

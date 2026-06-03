@@ -8,19 +8,25 @@ All development commands are run from the `srv/` directory (the Node.js service)
 
 ```bash
 cd srv
-npm install          # Install dependencies
-npm run dev          # Start with nodemon (auto-reload)
-npm start            # Start production server (port 4000 by default, overridden by PORT env var)
-npm run types        # Regenerate TypeScript declarations in srv/types/
+npm run install:all     # Install Express deps AND the nested Vue app's deps (one-time per checkout)
+npm run dev             # Start Express + Vite dev server (concurrent, ports 4000 and 5173)
+npm run dev:server-only # Start Express only (nodemon, port 4000) — when the Vue app isn't needed
+npm start               # Start production server (port 4000 by default, overridden by PORT env var)
+npm run types           # Regenerate TypeScript declarations in srv/types/
+npm run test:vue        # Run the Vue app's Vitest unit tests
 ```
+
+> **Why `install:all` and not `npm install`?** The Vue SPA at `srv/app/profile-vue/` has its own `package.json` (Vite/Vue/UI5 don't ship to production). Plain `npm install` in `srv/` only handles Express's deps. `install:all` runs both. We don't use a `postinstall` hook for security reasons (postinstall scripts are a supply-chain attack vector).
+
+When `npm run dev` is running, open `http://localhost:5173/profile/<scn-id>` (Vite's dev server proxies API calls to Express).
 
 To build the MTAR for SAP BTP Cloud Foundry deployment, run from the root:
 
 ```bash
-npm run build        # Runs mbt build (requires Cloud MTA Build Tool)
+npm run build        # Builds the Vue SPA, then runs mbt build (requires Cloud MTA Build Tool)
 ```
 
-There are no automated tests (`npm test` is a stub).
+There are no automated tests for the Express service (`npm test` is a stub). The Vue app has 73 Vitest unit tests; run via `npm run test:vue`.
 
 ## Architecture
 
