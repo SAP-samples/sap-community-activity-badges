@@ -22,20 +22,10 @@ import '@ui5/webcomponents-icons/dist/grid.js'
 import '@ui5/webcomponents-icons/dist/copy.js'
 import '@ui5/webcomponents-icons/dist/decline.js'
 
-import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js'
+import { applyTheme, resolveTheme, watchOsTheme } from './theme'
 
-function detectTheme(): 'sap_horizon' | 'sap_horizon_dark' {
-  try {
-    const saved = localStorage.getItem('profileTheme')
-    if (saved === 'sap_horizon' || saved === 'sap_horizon_dark') return saved
-  } catch { /* ignore */ }
-  try {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'sap_horizon_dark' : 'sap_horizon'
-  } catch { return 'sap_horizon' }
-}
-
-setTheme(detectTheme())
+applyTheme(resolveTheme())
+watchOsTheme()
 setLocale(i18n.global.locale.value as never)
 
 const app = createApp(App)

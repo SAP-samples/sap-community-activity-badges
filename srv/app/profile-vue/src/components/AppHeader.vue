@@ -2,25 +2,16 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { setLocale, SUPPORTED_LOCALES, type SupportedLocale } from '@/i18n'
-import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js'
+import { resolveTheme, setPreference, type Theme } from '@/theme'
 
 const { locale } = useI18n()
 
-function detectInitialTheme(): 'sap_horizon' | 'sap_horizon_dark' {
-  try {
-    const saved = typeof localStorage !== 'undefined' ? localStorage.getItem('profileTheme') : null
-    if (saved === 'sap_horizon' || saved === 'sap_horizon_dark') return saved
-  } catch { /* ignore */ }
-  try {
-    if (typeof window !== 'undefined' && typeof window.matchMedia === 'function'
-      && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'sap_horizon_dark'
-    }
-  } catch { /* ignore */ }
-  return 'sap_horizon'
-}
-
-const theme = ref<'sap_horizon' | 'sap_horizon_dark'>(detectInitialTheme())
+// Track the *currently rendered* theme (resolved from the user's preference or
+// the OS default). Toggling produces an explicit override; the user can clear
+// the override by toggling back to the OS-current state — actually no, that
+// would still be a saved override. For now there's no "auto" affordance in the
+// UI; if you want one, add a third state (e.g. cycle Light → Dark → Auto).
+const theme = ref<Theme>(resolveTheme())
 
 function onLocaleChange(e: Event) {
   const v = (e.target as HTMLSelectElement).value as SupportedLocale
@@ -29,8 +20,7 @@ function onLocaleChange(e: Event) {
 
 function toggleTheme() {
   theme.value = theme.value === 'sap_horizon' ? 'sap_horizon_dark' : 'sap_horizon'
-  setTheme(theme.value)
-  try { localStorage.setItem('profileTheme', theme.value) } catch { /* ignore */ }
+  setPreference(theme.value)
 }
 </script>
 
