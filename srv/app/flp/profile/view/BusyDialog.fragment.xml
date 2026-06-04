@@ -1,4 +1,0 @@
-<core:FragmentDefinition xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-    <BusyDialog title="{i18n>gui.loading}" text="{i18n>gui.loadingLong}" showCancelButton="false" />
-</core:FragmentDefinition>

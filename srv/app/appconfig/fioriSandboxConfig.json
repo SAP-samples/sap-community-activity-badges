@@ -32,14 +32,6 @@
             "url": "./selfie",
             "navigationMode": "embedded"
         },
-        "profile-ui": {
-            "title": "SAP Community Profile and Badge Signature Tool",
-            "description": "SAP Community Profile and Badge Signature Tool",
-            "additionalInformation": "SAPUI5.Component=sap.profile",
-            "applicationType": "URL",
-            "url": "./profile",
-            "navigationMode": "embedded"
-        },
         "tags-ui": {
             "title": "All SAP Managed Tags",
             "description": "Check out the comprehensive A-Z list of SAP managed tags, our curated vocabulary to help you categorize and enhance your content creation in SAP Community.",
