@@ -4,7 +4,6 @@ import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
   plugins: [
-    // @ts-ignore vite/vitest version drift in plugin types
     vue({
       template: {
         compilerOptions: { isCustomElement: (tag) => tag.startsWith('ui5-') }
