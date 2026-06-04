@@ -9,8 +9,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test",
-    "i18n:convert": "node scripts/convert-i18n.mjs"
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@sap-theming/theming-base-content": "^11.35.0",
