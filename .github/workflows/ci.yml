@@ -1,4 +1,8 @@
 name: CI
+# Runs on every PR to main. Lints + tests Express, builds + tests the Vue SPA
+# (vitest + Playwright e2e), and validates the MTA build. See PR #50 for
+# rationale (Vue tests were absent from CI before, which let PR #28 ship a
+# blank-page regression to prod).
 
 on:
   pull_request:
