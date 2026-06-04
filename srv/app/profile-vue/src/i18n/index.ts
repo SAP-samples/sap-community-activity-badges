@@ -16,24 +16,23 @@ export const SUPPORTED_LOCALES = [
 ] as const
 export type SupportedLocale = typeof SUPPORTED_LOCALES[number]
 
+/** True when `code` is one of the locales we ship messages for. */
+export function isSupportedLocale(code: string): code is SupportedLocale {
+  return (SUPPORTED_LOCALES as readonly string[]).includes(code)
+}
+
 const STORAGE_KEY = 'profileLocale'
 
 function detectInitialLocale(): SupportedLocale {
   try {
     const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved && SUPPORTED_LOCALES.includes(saved as SupportedLocale)) {
-      return saved as SupportedLocale
-    }
+    if (saved && isSupportedLocale(saved)) return saved
   } catch { /* localStorage unavailable; fall through */ }
   const browser = (typeof navigator !== 'undefined' ? navigator.language : 'en').toLowerCase()
   // Match exact codes first (e.g. 'i-klingon'), then primary subtag.
-  if (SUPPORTED_LOCALES.includes(browser as SupportedLocale)) {
-    return browser as SupportedLocale
-  }
+  if (isSupportedLocale(browser)) return browser
   const primary = browser.split('-')[0]
-  if (SUPPORTED_LOCALES.includes(primary as SupportedLocale)) {
-    return primary as SupportedLocale
-  }
+  if (isSupportedLocale(primary)) return primary
   return 'en'
 }
 
@@ -48,8 +47,25 @@ export const i18n = createI18n({
   }
 })
 
-export function setLocale(locale: SupportedLocale): void {
-  ;(i18n.global.locale as unknown as { value: SupportedLocale }).value = locale
+/**
+ * Set the active locale. No-op for unsupported codes.
+ *
+ * vue-i18n v10's Composition API types `i18n.global.locale` as a
+ * `WritableComputedRef<string>` whose `.value` is `string` — but mutating it
+ * is supported and is the documented way to switch locale at runtime. The
+ * single-property cast below narrows the type to what we actually use without
+ * resorting to `as unknown` or `as never`.
+ */
+export function setLocale(locale: string): void {
+  if (!isSupportedLocale(locale)) return
+  const ref = i18n.global.locale as { value: SupportedLocale }
+  ref.value = locale
   document.documentElement.setAttribute('lang', locale)
   try { localStorage.setItem(STORAGE_KEY, locale) } catch { /* ignore */ }
+}
+
+/** Read the current locale (typed). */
+export function currentLocale(): SupportedLocale {
+  const value = (i18n.global.locale as { value: string }).value
+  return isSupportedLocale(value) ? value : 'en'
 }

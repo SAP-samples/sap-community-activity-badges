@@ -28,6 +28,15 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    // Default Vite warns at 500 kB. Our main chunk is ~910 kB raw (~220 kB
+    // gzipped) and consists almost entirely of @ui5/webcomponents code —
+    // Select, TabContainer, Table, Avatar, Dialog, Toast, et al. all in one
+    // chunk because they share base classes and tree-shaking can't separate
+    // them. Issue #36 measured that the Assets-fetch.js alternative saves
+    // only ~4 kB raw, so there's no easy split. Threshold bumped to silence
+    // the noise; revisit if a future feature pulls in significantly more
+    // weight (e.g. AnalyticalTable, full Fiori page templates, charts).
+    chunkSizeWarningLimit: 1000
   }
 })
