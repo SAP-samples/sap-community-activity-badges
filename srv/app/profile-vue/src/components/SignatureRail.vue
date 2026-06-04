@@ -29,6 +29,19 @@ async function onCopy() {
   setTimeout(() => (toastShown.value = false), 2500)
 }
 
+/**
+ * <ui5-tabcontainer> fires `tab-select` (CustomEvent) with the selected
+ * tab DOM element on event.detail.tab. We tag each <ui5-tab> with a
+ * data-tab-key='html' | 'markdown' | 'url' so we can read it back here.
+ */
+function onTabSelect(e: Event) {
+  const detail = (e as CustomEvent<{ tab?: HTMLElement }>).detail
+  const key = detail?.tab?.getAttribute('data-tab-key')
+  if (key === 'html' || key === 'markdown' || key === 'url') {
+    activeTab.value = key
+  }
+}
+
 function handleImgError(e: Event) {
   ;(e.target as HTMLImageElement).src = '/profile/badge-placeholder.svg'
 }
@@ -60,27 +73,34 @@ function handleImgError(e: Event) {
       />
     </div>
 
-    <div class="sig-rail__tabs" role="tablist">
-      <button
-        :class="['tab', { active: activeTab === 'html' }]"
-        @click="activeTab = 'html'"
-        :aria-selected="activeTab === 'html'"
-      >{{ $t('embed.html') }}</button>
-      <button
-        :class="['tab', { active: activeTab === 'markdown' }]"
-        @click="activeTab = 'markdown'"
-        :aria-selected="activeTab === 'markdown'"
-      >{{ $t('embed.markdown') }}</button>
-      <button
-        :class="['tab', { active: activeTab === 'url' }]"
-        @click="activeTab = 'url'"
-        :aria-selected="activeTab === 'url'"
-      >{{ $t('embed.url') }}</button>
-    </div>
-
-    <pre v-if="activeTab === 'html'" data-testid="embed-html-text">{{ embedHtml }}</pre>
-    <pre v-else-if="activeTab === 'markdown'" data-testid="embed-md-text">{{ embedMarkdown }}</pre>
-    <pre v-else data-testid="embed-url-text">{{ fullEmbedUrl }}</pre>
+    <ui5-tabcontainer
+      class="sig-rail__tabs"
+      collapsed
+      tabs-overflow-mode="End"
+      @tab-select="onTabSelect"
+    >
+      <ui5-tab
+        :text="$t('embed.html')"
+        :selected="activeTab === 'html' || undefined"
+        data-tab-key="html"
+      >
+        <pre data-testid="embed-html-text">{{ embedHtml }}</pre>
+      </ui5-tab>
+      <ui5-tab
+        :text="$t('embed.markdown')"
+        :selected="activeTab === 'markdown' || undefined"
+        data-tab-key="markdown"
+      >
+        <pre data-testid="embed-md-text">{{ embedMarkdown }}</pre>
+      </ui5-tab>
+      <ui5-tab
+        :text="$t('embed.url')"
+        :selected="activeTab === 'url' || undefined"
+        data-tab-key="url"
+      >
+        <pre data-testid="embed-url-text">{{ fullEmbedUrl }}</pre>
+      </ui5-tab>
+    </ui5-tabcontainer>
 
     <div class="sig-rail__actions">
       <ui5-button
@@ -127,28 +147,7 @@ function handleImgError(e: Event) {
   letter-spacing: 0.04em;
 }
 .sig-rail__tabs {
-  display: flex;
-  gap: 0.25rem;
   margin-top: 0.5rem;
-}
-.tab {
-  flex: 1;
-  padding: 0.375rem 0.5rem;
-  border: 1px solid var(--sapList_BorderColor, #e5e5e5);
-  background: transparent;
-  /* Explicit color — without this, inactive tab labels inherit a transparent
-     value from the cascade (the <aside> uses --sapList_Background) and the
-     text becomes invisible against the rail background. */
-  color: var(--sapTextColor, #131e29);
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 0.8125rem;
-  border-radius: 0.25rem;
-}
-.tab.active {
-  background: var(--sapButton_Selected_Background, #ebf5fe);
-  border-color: var(--sapButton_Selected_BorderColor, #0a6ed1);
-  color: var(--sapButton_Selected_TextColor, #0854a0);
 }
 pre {
   margin: 0;
@@ -160,6 +159,7 @@ pre {
   font-size: 0.75rem;
   white-space: pre-wrap;
   word-break: break-all;
+  color: var(--sapTextColor, #131e29);
 }
 .sig-rail__actions {
   display: flex;
