@@ -11,6 +11,7 @@
     "url": "כתובת URL של הפרופיל",
     "Toolbar2": "חתימה",
     "signaturePreview": "תצוגה מקדימה של החתימה",
+    "signature2Preview": "תצוגה מקדימה של חתימה בהירה",
     "signature": "חתימה",
     "badges": "תגים",
     "fname": "שם פרטי",
@@ -26,35 +27,35 @@
     "limitErr": "ניתן לבחור עד חמישה תגים בלבד"
   },
   "error": {
-    "notFound": "User '{scnId}' not found.",
-    "network": "Could not reach the SAP Community service. Check your connection and try again.",
-    "unexpected": "Something unexpected happened while loading the profile.",
-    "retry": "Retry"
+    "notFound": "המשתמש '{scnId}' לא נמצא.",
+    "network": "לא ניתן להגיע לשירות קהילת SAP. בדוק את החיבור שלך ונסה שוב.",
+    "unexpected": "אירעה שגיאה בלתי צפויה בעת טעינת הפרופיל.",
+    "retry": "נסה שוב"
   },
   "view": {
-    "table": "Table",
-    "grid": "Grid"
+    "table": "טבלה",
+    "grid": "רשת"
   },
   "embed": {
     "html": "HTML",
     "markdown": "Markdown",
-    "url": "URL only",
-    "copy": "Copy",
-    "copied": "Copied",
-    "copyFallback": "Selected — press Ctrl+C to copy"
+    "url": "רק כתובת URL",
+    "copy": "העתק",
+    "copied": "הועתק",
+    "copyFallback": "נבחר — לחץ Ctrl+C להעתקה"
   },
   "signature": {
-    "alt": "{scnId} SAP Community signature"
+    "alt": "חתימת קהילת SAP של {scnId}"
   },
   "mobile": {
-    "preview": "Preview",
-    "expand": "Show signature",
-    "collapse": "Hide signature"
+    "preview": "תצוגה מקדימה",
+    "expand": "הצג חתימה",
+    "collapse": "הסתר חתימה"
   },
   "theme": {
-    "toggle": "Toggle theme",
-    "light": "Theme: light (click for dark)",
-    "dark": "Theme: dark (click for auto)",
-    "auto": "Theme: auto — follows OS (click for light)"
+    "toggle": "החלף ערכת נושא",
+    "light": "ערכת נושא: בהיר (לחץ עבור כהה)",
+    "dark": "ערכת נושא: כהה (לחץ עבור אוטומטי)",
+    "auto": "ערכת נושא: אוטומטי — בהתאם למערכת (לחץ עבור בהיר)"
   }
 }

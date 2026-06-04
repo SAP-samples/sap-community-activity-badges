@@ -11,6 +11,7 @@
     "url": "URL del Perfil",
     "Toolbar2": "Firma",
     "signaturePreview": "Vista Previa de la Firma",
+    "signature2Preview": "Vista Previa de la Firma Clara",
     "signature": "Firma",
     "badges": "Distintivos",
     "fname": "Nombre",
@@ -26,35 +27,35 @@
     "limitErr": "Solo puedes seleccionar cinco distintivos"
   },
   "error": {
-    "notFound": "User '{scnId}' not found.",
-    "network": "Could not reach the SAP Community service. Check your connection and try again.",
-    "unexpected": "Something unexpected happened while loading the profile.",
-    "retry": "Retry"
+    "notFound": "Usuario '{scnId}' no encontrado.",
+    "network": "No se pudo conectar con el servicio de la Comunidad SAP. Compruebe su conexión e inténtelo de nuevo.",
+    "unexpected": "Ocurrió algo inesperado al cargar el perfil.",
+    "retry": "Reintentar"
   },
   "view": {
-    "table": "Table",
-    "grid": "Grid"
+    "table": "Tabla",
+    "grid": "Cuadrícula"
   },
   "embed": {
     "html": "HTML",
     "markdown": "Markdown",
-    "url": "URL only",
-    "copy": "Copy",
-    "copied": "Copied",
-    "copyFallback": "Selected — press Ctrl+C to copy"
+    "url": "Solo URL",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "copyFallback": "Seleccionado — presione Ctrl+C para copiar"
   },
   "signature": {
-    "alt": "{scnId} SAP Community signature"
+    "alt": "Firma de la Comunidad SAP de {scnId}"
   },
   "mobile": {
-    "preview": "Preview",
-    "expand": "Show signature",
-    "collapse": "Hide signature"
+    "preview": "Vista Previa",
+    "expand": "Mostrar firma",
+    "collapse": "Ocultar firma"
   },
   "theme": {
-    "toggle": "Toggle theme",
-    "light": "Theme: light (click for dark)",
-    "dark": "Theme: dark (click for auto)",
-    "auto": "Theme: auto — follows OS (click for light)"
+    "toggle": "Cambiar tema",
+    "light": "Tema: claro (haga clic para oscuro)",
+    "dark": "Tema: oscuro (haga clic para automático)",
+    "auto": "Tema: automático — sigue al sistema (haga clic para claro)"
   }
 }

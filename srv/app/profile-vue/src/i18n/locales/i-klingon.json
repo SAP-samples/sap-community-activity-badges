@@ -11,6 +11,7 @@
     "url": "Profile URL",
     "Toolbar2": "Signature",
     "signaturePreview": "Signature Preview",
+    "signature2Preview": "Light Signature Preview",
     "signature": "Signature",
     "badges": "Badges",
     "fname": "pe'meH pong",
@@ -26,10 +27,10 @@
     "limitErr": "You can only select five badges"
   },
   "error": {
-    "notFound": "User '{scnId}' not found.",
-    "network": "Could not reach the SAP Community service. Check your connection and try again.",
-    "unexpected": "Something unexpected happened while loading the profile.",
-    "retry": "Retry"
+    "notFound": "Usor '{scnId}' tu'lu'be'.",
+    "network": "qaStaH nuq jay'? SAP Qumwl' lengmeH naDev vIghoSlaHbe'. Connection inspect 'ej iterum tenta.",
+    "unexpected": "qaStaH nuq! Profile loading mIq Qaghta'.",
+    "retry": "Retry — iterum tenta"
   },
   "view": {
     "table": "Table",
@@ -39,22 +40,22 @@
     "html": "HTML",
     "markdown": "Markdown",
     "url": "URL only",
-    "copy": "Copy",
-    "copied": "Copied",
-    "copyFallback": "Selected — press Ctrl+C to copy"
+    "copy": "Copy — choS",
+    "copied": "Qapla' — choSta'",
+    "copyFallback": "wIvta' — Ctrl+C yIqIp"
   },
   "signature": {
-    "alt": "{scnId} SAP Community signature"
+    "alt": "{scnId} SAP Qumwl' signature"
   },
   "mobile": {
     "preview": "Preview",
-    "expand": "Show signature",
-    "collapse": "Hide signature"
+    "expand": "Signature 'angmoH",
+    "collapse": "Signature So'moH"
   },
   "theme": {
-    "toggle": "Toggle theme",
-    "light": "Theme: light (click for dark)",
-    "dark": "Theme: dark (click for auto)",
-    "auto": "Theme: auto — follows OS (click for light)"
+    "toggle": "Theme choH",
+    "light": "Theme: wovmoH (HurghmoH lo'meH yIqIp)",
+    "dark": "Theme: HurghmoH (auto lo'meH yIqIp)",
+    "auto": "Theme: auto — system tlhej (wovmoH lo'meH yIqIp)"
   }
 }

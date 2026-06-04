@@ -11,6 +11,7 @@
     "url": "प्रोफ़ाइल URL",
     "Toolbar2": "हस्ताक्षर",
     "signaturePreview": "हस्ताक्षर पूर्वावलोकन",
+    "signature2Preview": "हल्का हस्ताक्षर पूर्वावलोकन",
     "signature": "हस्ताक्षर",
     "badges": "बैज",
     "fname": "प्रथम नाम",
@@ -26,35 +27,35 @@
     "limitErr": "आप केवल पांच बैज चुन सकते हैं"
   },
   "error": {
-    "notFound": "User '{scnId}' not found.",
-    "network": "Could not reach the SAP Community service. Check your connection and try again.",
-    "unexpected": "Something unexpected happened while loading the profile.",
-    "retry": "Retry"
+    "notFound": "उपयोगकर्ता '{scnId}' नहीं मिला।",
+    "network": "SAP समुदाय सेवा से संपर्क नहीं हो सका। अपना कनेक्शन जांचें और पुनः प्रयास करें।",
+    "unexpected": "प्रोफ़ाइल लोड करते समय कुछ अनपेक्षित हुआ।",
+    "retry": "पुनः प्रयास करें"
   },
   "view": {
-    "table": "Table",
-    "grid": "Grid"
+    "table": "तालिका",
+    "grid": "ग्रिड"
   },
   "embed": {
     "html": "HTML",
     "markdown": "Markdown",
-    "url": "URL only",
-    "copy": "Copy",
-    "copied": "Copied",
-    "copyFallback": "Selected — press Ctrl+C to copy"
+    "url": "केवल URL",
+    "copy": "कॉपी करें",
+    "copied": "कॉपी हो गया",
+    "copyFallback": "चुना गया — कॉपी करने के लिए Ctrl+C दबाएं"
   },
   "signature": {
-    "alt": "{scnId} SAP Community signature"
+    "alt": "{scnId} SAP समुदाय हस्ताक्षर"
   },
   "mobile": {
-    "preview": "Preview",
-    "expand": "Show signature",
-    "collapse": "Hide signature"
+    "preview": "पूर्वावलोकन",
+    "expand": "हस्ताक्षर दिखाएं",
+    "collapse": "हस्ताक्षर छिपाएं"
   },
   "theme": {
-    "toggle": "Toggle theme",
-    "light": "Theme: light (click for dark)",
-    "dark": "Theme: dark (click for auto)",
-    "auto": "Theme: auto — follows OS (click for light)"
+    "toggle": "थीम बदलें",
+    "light": "थीम: हल्का (डार्क के लिए क्लिक करें)",
+    "dark": "थीम: डार्क (ऑटो के लिए क्लिक करें)",
+    "auto": "थीम: ऑटो — सिस्टम के अनुसार (हल्के के लिए क्लिक करें)"
   }
 }

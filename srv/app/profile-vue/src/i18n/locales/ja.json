@@ -11,6 +11,7 @@
     "url": "プロファイルURL",
     "Toolbar2": "署名",
     "signaturePreview": "署名プレビュー",
+    "signature2Preview": "ライト署名プレビュー",
     "signature": "署名",
     "badges": "バッジ",
     "fname": "名",
@@ -26,35 +27,35 @@
     "limitErr": "バッジは5つまでしか選択できません"
   },
   "error": {
-    "notFound": "User '{scnId}' not found.",
-    "network": "Could not reach the SAP Community service. Check your connection and try again.",
-    "unexpected": "Something unexpected happened while loading the profile.",
-    "retry": "Retry"
+    "notFound": "ユーザー '{scnId}' が見つかりません。",
+    "network": "SAPコミュニティサービスに接続できませんでした。接続を確認して再試行してください。",
+    "unexpected": "プロファイルの読み込み中に予期しないエラーが発生しました。",
+    "retry": "再試行"
   },
   "view": {
-    "table": "Table",
-    "grid": "Grid"
+    "table": "テーブル",
+    "grid": "グリッド"
   },
   "embed": {
     "html": "HTML",
     "markdown": "Markdown",
-    "url": "URL only",
-    "copy": "Copy",
-    "copied": "Copied",
-    "copyFallback": "Selected — press Ctrl+C to copy"
+    "url": "URLのみ",
+    "copy": "コピー",
+    "copied": "コピーしました",
+    "copyFallback": "選択済み — Ctrl+Cでコピーしてください"
   },
   "signature": {
-    "alt": "{scnId} SAP Community signature"
+    "alt": "{scnId} のSAPコミュニティ署名"
   },
   "mobile": {
-    "preview": "Preview",
-    "expand": "Show signature",
-    "collapse": "Hide signature"
+    "preview": "プレビュー",
+    "expand": "署名を表示",
+    "collapse": "署名を非表示"
   },
   "theme": {
-    "toggle": "Toggle theme",
-    "light": "Theme: light (click for dark)",
-    "dark": "Theme: dark (click for auto)",
-    "auto": "Theme: auto — follows OS (click for light)"
+    "toggle": "テーマを切り替え",
+    "light": "テーマ: ライト（クリックでダーク）",
+    "dark": "テーマ: ダーク（クリックで自動）",
+    "auto": "テーマ: 自動 — システムに従う（クリックでライト）"
   }
 }
