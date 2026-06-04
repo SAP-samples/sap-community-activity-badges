@@ -36,6 +36,14 @@ function toggleSort(col: typeof sortBy.value) {
   else { sortBy.value = col; sortDir.value = 'desc' }
 }
 
+// Up/down arrow appended to the active column header. Other columns get nothing.
+// We render this as plain text rather than a UI5 sort-icon so it works without
+// relying on a UI5 column-level sort API that's still in flux for v2 tables.
+function sortIndicator(col: typeof sortBy.value): string {
+  if (sortBy.value !== col) return ''
+  return sortDir.value === 'asc' ? ' ↑' : ' ↓'
+}
+
 function fmtDate(d?: string) {
   if (!d) return ''
   const t = Date.parse(d)
@@ -55,59 +63,57 @@ function handleImgError(e: Event) {
       @input="(e: Event) => (filter = (e.target as HTMLInputElement).value)"
       data-testid="badge-table-filter"
     />
-    <table class="grid">
-      <thead>
-        <tr>
-          <th>{{ $t('profile.select') }}</th>
-          <th>{{ $t('profile.badgeId') }}</th>
-          <th class="sortable" @click="toggleSort('title')">{{ $t('profile.badgeTitle') }}</th>
-          <th>{{ $t('profile.badgeImage') }}</th>
-          <th class="sortable" @click="toggleSort('earned')">{{ $t('profile.dateEarned') }}</th>
-          <th class="sortable" @click="toggleSort('awarded')">{{ $t('profile.awarded') }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="row in filtered" :key="row.badge.id">
-          <td>
-            <ui5-checkbox
-              :checked="row.selected || undefined"
-              @change="store.toggleBadge(row.badge.id)"
-              :data-testid="`badge-cb-${row.badge.id}`"
-            />
-          </td>
-          <td>{{ row.badge.id }}</td>
-          <td>{{ row.badge.title }}</td>
-          <td>
-            <img
-              v-if="row.badge.icon_url"
-              :src="row.badge.icon_url"
-              :alt="row.badge.title"
-              width="48" height="48"
-              @error="handleImgError"
-            />
-          </td>
-          <td>{{ fmtDate(row.earned_date) }}</td>
-          <td>{{ row.badge.awarded }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <ui5-table
+      class="badge-table__table"
+      no-data-text="No badges"
+      overflow-mode="Scroll"
+    >
+      <ui5-table-header-row slot="headerRow">
+        <ui5-table-header-cell>{{ $t('profile.select') }}</ui5-table-header-cell>
+        <ui5-table-header-cell>{{ $t('profile.badgeId') }}</ui5-table-header-cell>
+        <ui5-table-header-cell
+          class="sortable"
+          @click="toggleSort('title')"
+        >{{ $t('profile.badgeTitle') }}{{ sortIndicator('title') }}</ui5-table-header-cell>
+        <ui5-table-header-cell>{{ $t('profile.badgeImage') }}</ui5-table-header-cell>
+        <ui5-table-header-cell
+          class="sortable"
+          @click="toggleSort('earned')"
+        >{{ $t('profile.dateEarned') }}{{ sortIndicator('earned') }}</ui5-table-header-cell>
+        <ui5-table-header-cell
+          class="sortable"
+          @click="toggleSort('awarded')"
+        >{{ $t('profile.awarded') }}{{ sortIndicator('awarded') }}</ui5-table-header-cell>
+      </ui5-table-header-row>
+      <ui5-table-row v-for="row in filtered" :key="row.badge.id">
+        <ui5-table-cell>
+          <ui5-checkbox
+            :checked="row.selected || undefined"
+            @change="store.toggleBadge(row.badge.id)"
+            :data-testid="`badge-cb-${row.badge.id}`"
+          />
+        </ui5-table-cell>
+        <ui5-table-cell>{{ row.badge.id }}</ui5-table-cell>
+        <ui5-table-cell>{{ row.badge.title }}</ui5-table-cell>
+        <ui5-table-cell>
+          <img
+            v-if="row.badge.icon_url"
+            :src="row.badge.icon_url"
+            :alt="row.badge.title"
+            width="48" height="48"
+            @error="handleImgError"
+          />
+        </ui5-table-cell>
+        <ui5-table-cell>{{ fmtDate(row.earned_date) }}</ui5-table-cell>
+        <ui5-table-cell>{{ row.badge.awarded }}</ui5-table-cell>
+      </ui5-table-row>
+    </ui5-table>
   </div>
 </template>
 
 <style scoped>
 .badge-table { display: flex; flex-direction: column; gap: 0.5rem; }
-.grid {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.875rem;
-}
-.grid th, .grid td {
-  text-align: left;
-  padding: 0.5rem;
-  border-bottom: 1px solid var(--sapList_BorderColor, #e5e5e5);
-  vertical-align: middle;
-}
-.grid th { font-weight: 600; color: var(--sapNeutralTextColor); }
+.badge-table__table { width: 100%; }
 .sortable { cursor: pointer; user-select: none; }
 .sortable:hover { color: var(--sapLinkColor); }
 </style>
