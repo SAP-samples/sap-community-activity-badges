@@ -25,6 +25,12 @@ import '@ui5/webcomponents-icons/dist/light-mode.js'
 import '@ui5/webcomponents-icons/dist/dark-mode.js'
 import '@ui5/webcomponents-icons/dist/desktop-mobile.js'
 
+// Register the theme bundles and i18n assets so setTheme('sap_horizon_dark')
+// actually has dark assets to apply (without this, UI5 warns
+// "non-registered theme" and silently falls back to light).
+import '@ui5/webcomponents/dist/Assets.js'
+import '@ui5/webcomponents-fiori/dist/Assets.js'
+
 import { applyTheme, resolveTheme, watchOsTheme } from './theme'
 
 applyTheme(resolveTheme())

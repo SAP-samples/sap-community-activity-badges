@@ -136,6 +136,10 @@ function handleImgError(e: Event) {
   padding: 0.375rem 0.5rem;
   border: 1px solid var(--sapList_BorderColor, #e5e5e5);
   background: transparent;
+  /* Explicit color — without this, inactive tab labels inherit a transparent
+     value from the cascade (the <aside> uses --sapList_Background) and the
+     text becomes invisible against the rail background. */
+  color: var(--sapTextColor, #131e29);
   cursor: pointer;
   font-family: inherit;
   font-size: 0.8125rem;
