@@ -11,6 +11,7 @@
     "url": "URL Profilu",
     "Toolbar2": "Podpis",
     "signaturePreview": "Podgląd Podpisu",
+    "signature2Preview": "Podgląd Jasnego Podpisu",
     "signature": "Podpis",
     "badges": "Odznaki",
     "fname": "Imię",
@@ -26,35 +27,35 @@
     "limitErr": "Możesz wybrać tylko pięć odznak"
   },
   "error": {
-    "notFound": "User '{scnId}' not found.",
-    "network": "Could not reach the SAP Community service. Check your connection and try again.",
-    "unexpected": "Something unexpected happened while loading the profile.",
-    "retry": "Retry"
+    "notFound": "Użytkownik '{scnId}' nie został znaleziony.",
+    "network": "Nie można nawiązać połączenia z usługą Społeczności SAP. Sprawdź swoje połączenie i spróbuj ponownie.",
+    "unexpected": "Wystąpił nieoczekiwany błąd podczas ładowania profilu.",
+    "retry": "Spróbuj ponownie"
   },
   "view": {
-    "table": "Table",
-    "grid": "Grid"
+    "table": "Tabela",
+    "grid": "Siatka"
   },
   "embed": {
     "html": "HTML",
     "markdown": "Markdown",
-    "url": "URL only",
-    "copy": "Copy",
-    "copied": "Copied",
-    "copyFallback": "Selected — press Ctrl+C to copy"
+    "url": "Tylko URL",
+    "copy": "Kopiuj",
+    "copied": "Skopiowano",
+    "copyFallback": "Zaznaczono — naciśnij Ctrl+C, aby skopiować"
   },
   "signature": {
-    "alt": "{scnId} SAP Community signature"
+    "alt": "Podpis Społeczności SAP użytkownika {scnId}"
   },
   "mobile": {
-    "preview": "Preview",
-    "expand": "Show signature",
-    "collapse": "Hide signature"
+    "preview": "Podgląd",
+    "expand": "Pokaż podpis",
+    "collapse": "Ukryj podpis"
   },
   "theme": {
-    "toggle": "Toggle theme",
-    "light": "Theme: light (click for dark)",
-    "dark": "Theme: dark (click for auto)",
-    "auto": "Theme: auto — follows OS (click for light)"
+    "toggle": "Przełącz motyw",
+    "light": "Motyw: jasny (kliknij dla ciemnego)",
+    "dark": "Motyw: ciemny (kliknij dla automatycznego)",
+    "auto": "Motyw: automatyczny — zgodny z systemem (kliknij dla jasnego)"
   }
 }

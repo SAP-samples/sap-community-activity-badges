@@ -11,6 +11,7 @@
     "url": "URL Profili",
     "Toolbar2": "Signatura",
     "signaturePreview": "Praevisum Signaturae",
+    "signature2Preview": "Praevisum Signaturae Lucidae",
     "signature": "Signatura",
     "badges": "Insignia",
     "fname": "Praenomen",
@@ -26,35 +27,35 @@
     "limitErr": "Tantum quinque insignia eligere potes"
   },
   "error": {
-    "notFound": "User '{scnId}' not found.",
-    "network": "Could not reach the SAP Community service. Check your connection and try again.",
-    "unexpected": "Something unexpected happened while loading the profile.",
-    "retry": "Retry"
+    "notFound": "Usor '{scnId}' non inventus est.",
+    "network": "Servitium Communitatis SAP attingi non potuit. Connexionem tuam inspice et iterum tenta.",
+    "unexpected": "Aliquid inopinatum accidit dum profilum oneratur.",
+    "retry": "Iterum tenta"
   },
   "view": {
-    "table": "Table",
-    "grid": "Grid"
+    "table": "Tabula",
+    "grid": "Reticulum"
   },
   "embed": {
     "html": "HTML",
     "markdown": "Markdown",
-    "url": "URL only",
-    "copy": "Copy",
-    "copied": "Copied",
-    "copyFallback": "Selected — press Ctrl+C to copy"
+    "url": "URL tantum",
+    "copy": "Transcribe",
+    "copied": "Transcriptum",
+    "copyFallback": "Selectum — preme Ctrl+C ad transcribendum"
   },
   "signature": {
-    "alt": "{scnId} SAP Community signature"
+    "alt": "Signatura Communitatis SAP usoris {scnId}"
   },
   "mobile": {
-    "preview": "Preview",
-    "expand": "Show signature",
-    "collapse": "Hide signature"
+    "preview": "Praevisum",
+    "expand": "Signaturam ostende",
+    "collapse": "Signaturam absconde"
   },
   "theme": {
-    "toggle": "Toggle theme",
-    "light": "Theme: light (click for dark)",
-    "dark": "Theme: dark (click for auto)",
-    "auto": "Theme: auto — follows OS (click for light)"
+    "toggle": "Speciem muta",
+    "light": "Species: lucida (preme pro obscura)",
+    "dark": "Species: obscura (preme pro automatica)",
+    "auto": "Species: automatica — systema sequitur (preme pro lucida)"
   }
 }

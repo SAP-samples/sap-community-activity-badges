@@ -11,6 +11,7 @@
     "url": "URL du Profil",
     "Toolbar2": "Signature",
     "signaturePreview": "Aperçu de la Signature",
+    "signature2Preview": "Aperçu de la Signature Claire",
     "signature": "Signature",
     "badges": "Badges",
     "fname": "Prénom",
@@ -26,35 +27,35 @@
     "limitErr": "Vous ne pouvez sélectionner que cinq badges"
   },
   "error": {
-    "notFound": "User '{scnId}' not found.",
-    "network": "Could not reach the SAP Community service. Check your connection and try again.",
-    "unexpected": "Something unexpected happened while loading the profile.",
-    "retry": "Retry"
+    "notFound": "Utilisateur '{scnId}' introuvable.",
+    "network": "Impossible de joindre le service de la Communauté SAP. Vérifiez votre connexion et réessayez.",
+    "unexpected": "Une erreur inattendue s'est produite lors du chargement du profil.",
+    "retry": "Réessayer"
   },
   "view": {
-    "table": "Table",
-    "grid": "Grid"
+    "table": "Tableau",
+    "grid": "Grille"
   },
   "embed": {
     "html": "HTML",
     "markdown": "Markdown",
-    "url": "URL only",
-    "copy": "Copy",
-    "copied": "Copied",
-    "copyFallback": "Selected — press Ctrl+C to copy"
+    "url": "URL uniquement",
+    "copy": "Copier",
+    "copied": "Copié",
+    "copyFallback": "Sélectionné — appuyez sur Ctrl+C pour copier"
   },
   "signature": {
-    "alt": "{scnId} SAP Community signature"
+    "alt": "Signature de la Communauté SAP de {scnId}"
   },
   "mobile": {
-    "preview": "Preview",
-    "expand": "Show signature",
-    "collapse": "Hide signature"
+    "preview": "Aperçu",
+    "expand": "Afficher la signature",
+    "collapse": "Masquer la signature"
   },
   "theme": {
-    "toggle": "Toggle theme",
-    "light": "Theme: light (click for dark)",
-    "dark": "Theme: dark (click for auto)",
-    "auto": "Theme: auto — follows OS (click for light)"
+    "toggle": "Changer de thème",
+    "light": "Thème : clair (cliquer pour sombre)",
+    "dark": "Thème : sombre (cliquer pour automatique)",
+    "auto": "Thème : automatique — suit le système (cliquer pour clair)"
   }
 }

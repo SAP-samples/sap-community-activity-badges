@@ -11,6 +11,7 @@
     "url": "Profil-URL",
     "Toolbar2": "Unterschrift",
     "signaturePreview": "Signaturvorschau",
+    "signature2Preview": "Helle Signaturvorschau",
     "signature": "Unterschrift",
     "badges": "Abzeichen",
     "fname": "Vorname",
@@ -26,35 +27,35 @@
     "limitErr": "Sie können nur fünf Abzeichen auswählen"
   },
   "error": {
-    "notFound": "User '{scnId}' not found.",
-    "network": "Could not reach the SAP Community service. Check your connection and try again.",
-    "unexpected": "Something unexpected happened while loading the profile.",
-    "retry": "Retry"
+    "notFound": "Benutzer '{scnId}' wurde nicht gefunden.",
+    "network": "Der SAP Community-Dienst ist nicht erreichbar. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+    "unexpected": "Beim Laden des Profils ist ein unerwarteter Fehler aufgetreten.",
+    "retry": "Erneut versuchen"
   },
   "view": {
-    "table": "Table",
-    "grid": "Grid"
+    "table": "Tabelle",
+    "grid": "Raster"
   },
   "embed": {
     "html": "HTML",
     "markdown": "Markdown",
-    "url": "URL only",
-    "copy": "Copy",
-    "copied": "Copied",
-    "copyFallback": "Selected — press Ctrl+C to copy"
+    "url": "Nur URL",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "copyFallback": "Markiert — drücken Sie Strg+C zum Kopieren"
   },
   "signature": {
-    "alt": "{scnId} SAP Community signature"
+    "alt": "SAP Community-Signatur von {scnId}"
   },
   "mobile": {
-    "preview": "Preview",
-    "expand": "Show signature",
-    "collapse": "Hide signature"
+    "preview": "Vorschau",
+    "expand": "Signatur anzeigen",
+    "collapse": "Signatur ausblenden"
   },
   "theme": {
-    "toggle": "Toggle theme",
-    "light": "Theme: light (click for dark)",
-    "dark": "Theme: dark (click for auto)",
-    "auto": "Theme: auto — follows OS (click for light)"
+    "toggle": "Design umschalten",
+    "light": "Design: Hell (Klicken für Dunkel)",
+    "dark": "Design: Dunkel (Klicken für Automatisch)",
+    "auto": "Design: Automatisch — folgt dem System (Klicken für Hell)"
   }
 }

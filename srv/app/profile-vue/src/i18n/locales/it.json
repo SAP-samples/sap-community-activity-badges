@@ -11,6 +11,7 @@
     "url": "URL del Profilo",
     "Toolbar2": "Firma",
     "signaturePreview": "Anteprima Firma",
+    "signature2Preview": "Anteprima Firma Chiara",
     "signature": "Firma",
     "badges": "Badge",
     "fname": "Nome",
@@ -26,35 +27,35 @@
     "limitErr": "È possibile selezionare solo cinque badge"
   },
   "error": {
-    "notFound": "User '{scnId}' not found.",
-    "network": "Could not reach the SAP Community service. Check your connection and try again.",
-    "unexpected": "Something unexpected happened while loading the profile.",
-    "retry": "Retry"
+    "notFound": "Utente '{scnId}' non trovato.",
+    "network": "Impossibile raggiungere il servizio della Comunità SAP. Controlla la tua connessione e riprova.",
+    "unexpected": "Si è verificato un errore imprevisto durante il caricamento del profilo.",
+    "retry": "Riprova"
   },
   "view": {
-    "table": "Table",
-    "grid": "Grid"
+    "table": "Tabella",
+    "grid": "Griglia"
   },
   "embed": {
     "html": "HTML",
     "markdown": "Markdown",
-    "url": "URL only",
-    "copy": "Copy",
-    "copied": "Copied",
-    "copyFallback": "Selected — press Ctrl+C to copy"
+    "url": "Solo URL",
+    "copy": "Copia",
+    "copied": "Copiato",
+    "copyFallback": "Selezionato — premi Ctrl+C per copiare"
   },
   "signature": {
-    "alt": "{scnId} SAP Community signature"
+    "alt": "Firma della Comunità SAP di {scnId}"
   },
   "mobile": {
-    "preview": "Preview",
-    "expand": "Show signature",
-    "collapse": "Hide signature"
+    "preview": "Anteprima",
+    "expand": "Mostra firma",
+    "collapse": "Nascondi firma"
   },
   "theme": {
-    "toggle": "Toggle theme",
-    "light": "Theme: light (click for dark)",
-    "dark": "Theme: dark (click for auto)",
-    "auto": "Theme: auto — follows OS (click for light)"
+    "toggle": "Cambia tema",
+    "light": "Tema: chiaro (clicca per scuro)",
+    "dark": "Tema: scuro (clicca per automatico)",
+    "auto": "Tema: automatico — segue il sistema (clicca per chiaro)"
   }
 }
