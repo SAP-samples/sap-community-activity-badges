@@ -13,7 +13,8 @@
     "resolveJsonModule": true,
     "types": ["vite/client", "vitest/globals"],
     "baseUrl": ".",
-    "paths": { "@/*": ["src/*"] }
+    "paths": { "@/*": ["src/*"] },
+    "noEmit": true
   },
   "include": ["src/**/*", "tests/**/*"],
   "exclude": ["tests/e2e/**"],

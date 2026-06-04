@@ -1,11 +1,14 @@
 node_modules
 dist
 .vite
+.tsbuild
 *.tsbuildinfo
 test-results
 playwright-report
 
-# vue-tsc -b emit artifacts (Vite handles real emit; tsc is for type-checking only)
+# vue-tsc -b emit artifacts (Vite handles real emit; tsc is for type-checking only).
+# tsconfig.json now sets noEmit:true so future builds shouldn't produce these.
+# Ignored anyway as a safety net for stale files from previous builds.
 src/**/*.js
 src/**/*.d.ts
 !src/types/*.d.ts

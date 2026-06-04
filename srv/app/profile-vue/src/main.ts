@@ -44,7 +44,9 @@ import { applyTheme, resolveTheme, watchOsTheme } from './theme'
 
 applyTheme(resolveTheme())
 watchOsTheme()
-setLocale(i18n.global.locale.value as never)
+// Mirror the active locale onto <html lang> + localStorage. setLocale() validates
+// the input and ignores unsupported codes, so passing the raw string is safe.
+setLocale(i18n.global.locale.value)
 
 const app = createApp(App)
 app.use(createPinia())
