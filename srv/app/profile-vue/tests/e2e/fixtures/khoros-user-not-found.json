@@ -1,0 +1,5 @@
+{
+  "error": "notFound",
+  "message": "The SAP Community ID you specified was not found or does not expose public badge information",
+  "scnId": "ghost"
+}

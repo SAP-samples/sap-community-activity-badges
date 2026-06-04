@@ -48,17 +48,18 @@ function onKey(e: KeyboardEvent) {
       data-testid="load-btn"
       @click="onLoad"
     >{{ $t('profile.Toolbar1') }}</ui5-button>
-    <div v-if="profile" class="user-chip">
+    <div v-if="profile" class="user-chip" data-testid="user-chip">
       <ui5-avatar
         v-if="profile.avatar?.profile"
         size="S"
         shape="Circle"
+        data-testid="user-avatar"
       >
         <img :src="profile.avatar.profile" :alt="fullName || profile.login || ''" />
       </ui5-avatar>
       <div class="user-chip__text">
-        <strong>{{ fullName || profile.login }}</strong>
-        <span v-if="profile.rank?.name">{{ profile.rank.name }}</span>
+        <strong data-testid="user-name">{{ fullName || profile.login }}</strong>
+        <span v-if="profile.rank?.name" data-testid="user-rank">{{ profile.rank.name }}</span>
       </div>
     </div>
   </section>
