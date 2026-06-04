@@ -51,8 +51,12 @@ describe('AppHeader', () => {
   it('changing locale calls setLocale', async () => {
     const wrapper = mountHeader()
     const select = wrapper.find('[data-testid=locale-select]')
-    await select.setValue('de')
-    await select.trigger('change')
+    // <ui5-select> emits a `change` CustomEvent with
+    // event.detail.selectedOption.value (not event.target.value). Simulate
+    // by dispatching the same event shape.
+    select.element.dispatchEvent(new CustomEvent('change', {
+      detail: { selectedOption: { value: 'de' } }
+    }))
     expect(setLocale).toHaveBeenCalledWith('de')
   })
 

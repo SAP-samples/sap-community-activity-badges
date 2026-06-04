@@ -29,8 +29,11 @@ const themeLabelKey = computed(() => {
 })
 
 function onLocaleChange(e: Event) {
-  const v = (e.target as HTMLSelectElement).value as SupportedLocale
-  setLocale(v)
+  // <ui5-select> fires `change` with the new value on event.detail.selectedOption.value
+  // (NOT on event.target.value like a plain HTML <select>).
+  const detail = (e as CustomEvent<{ selectedOption?: { value?: string } }>).detail
+  const v = detail?.selectedOption?.value as SupportedLocale | undefined
+  if (v) setLocale(v)
 }
 
 // Cycle order: Light → Dark → Auto → Light. Auto is the rest state we always
@@ -49,19 +52,20 @@ function cycleTheme() {
   <header class="app-header">
     <h1>{{ $t('appTitle') }}</h1>
     <div class="app-header__controls">
-      <select
+      <ui5-select
         data-testid="locale-select"
         :value="locale"
         @change="onLocaleChange"
-        :aria-label="'Locale'"
+        accessible-name="Locale"
       >
-        <option
+        <ui5-option
           v-for="loc in SUPPORTED_LOCALES"
           :key="loc"
           :value="loc"
+          :selected="locale === loc || undefined"
           data-testid="locale-option"
-        >{{ loc }}</option>
-      </select>
+        >{{ loc }}</ui5-option>
+      </ui5-select>
       <ui5-button
         design="Transparent"
         :icon="themeIcon"
@@ -94,13 +98,6 @@ function cycleTheme() {
   display: flex;
   gap: 0.5rem;
   align-items: center;
-}
-.app-header__controls select {
-  background: transparent;
-  color: inherit;
-  border: 1px solid currentColor;
-  border-radius: 0.25rem;
-  padding: 0.25rem 0.5rem;
 }
 </style>
 
