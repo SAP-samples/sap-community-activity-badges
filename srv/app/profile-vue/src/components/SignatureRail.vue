@@ -75,7 +75,6 @@ function handleImgError(e: Event) {
 
     <ui5-tabcontainer
       class="sig-rail__tabs"
-      collapsed
       tabs-overflow-mode="End"
       @tab-select="onTabSelect"
     >
